@@ -10,26 +10,63 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // Shows which page the user is currently on
 // ============================================================
 
+// (function () {
+//     function loadLivePage() {
+//         const pageDisplay =
+//             document.getElementById("liv-open-page");
+//         if (!pageDisplay) return;
+
+//         pageDisplay.textContent =
+//             `You are on: ${document.title} page.`;
+//     }
+//     // DOM अभी load हो रहा है
+//     if (document.readyState === "loading") {
+//         document.addEventListener(
+//             "DOMContentLoaded",
+//             loadLivePage
+//         );
+//     }
+//     // DOM पहले से load हो चुका है
+//     else {
+//         loadLivePage();
+//     }
+// })();
+
+
 (function () {
+
+    "use strict";
+
     function loadLivePage() {
+
         const pageDisplay =
             document.getElementById("liv-open-page");
+
         if (!pageDisplay) return;
 
         pageDisplay.textContent =
-            `You are on: ${document.title} page.`;
+            document.title
+                .trim()
+                .split(/\s+/)
+                .slice(0, 2)
+                .join(" ");
+
     }
-    // DOM अभी load हो रहा है
+
     if (document.readyState === "loading") {
+
         document.addEventListener(
             "DOMContentLoaded",
-            loadLivePage
+            loadLivePage,
+            { once: true }
         );
-    }
-    // DOM पहले से load हो चुका है
-    else {
+
+    } else {
+
         loadLivePage();
+
     }
+
 })();
 
 
