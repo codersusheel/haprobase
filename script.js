@@ -12,7 +12,7 @@ document.querySelectorAll(".copy-link").forEach(link => {
 
             await navigator.clipboard.writeText(this.href);
 
-            this.textContent = "Copied!";
+            this.textContent = "Link Copied!";
 
             setTimeout(() => {
                 this.textContent = originalText;
