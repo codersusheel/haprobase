@@ -1,16 +1,11 @@
 (function () {
-
     "use strict";
-
 
     /* =========================================================
        PREVENT DUPLICATE SCRIPT
     ========================================================= */
 
-    if (window.__HPV_SMART_LOADER__) {
-        return;
-    }
-
+    if (window.__HPV_SMART_LOADER__) return;
     window.__HPV_SMART_LOADER__ = true;
 
 
@@ -19,140 +14,122 @@
     ========================================================= */
 
     const CONFIG = {
-
-        MIN_VISIBLE_TIME: 280,
-
-        MAX_VISIBLE_TIME: 8000,
-
+        MIN_VISIBLE_TIME: 180,
+        MAX_VISIBLE_TIME: 6000,
         BRAND: "Haproven"
-
     };
 
 
     /* =========================================================
-       EARLY PRELOADER
-       Inject immediately into HEAD.
-       This is the important part for rapid refresh.
+       EARLY LOADING STATE
     ========================================================= */
 
-    const earlyStyle =
-        document.createElement("style");
+    const html = document.documentElement;
 
-    earlyStyle.id =
-        "hpv-early-loader-style";
+    html.classList.add("hpv-loading");
 
-    earlyStyle.textContent = `
 
-        html.hpv-loading {
-            background: #2a2a44 !important;
+    /* =========================================================
+       EARLY CSS
+    ========================================================= */
+
+    const style = document.createElement("style");
+
+    style.id = "hpv-early-loader-style";
+
+    style.textContent = `
+
+        html.hpv-loading,
+        html.hpv-loading body {
+            background:#000 !important;
         }
 
         #hpv-smart-loader {
+            position:fixed;
+            inset:0;
+            width:100%;
+            height:100%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
 
-            position: fixed;
+            background:#000;
 
-            inset: 0;
+            z-index:2147483647;
 
-            width: 100%;
-            height: 100%;
+            opacity:1;
+            visibility:visible;
 
-            display: flex;
+            pointer-events:all;
 
-            align-items: center;
-            justify-content: center;
+            contain:strict;
 
-            background:
-                #070709;
-
-            z-index:
-                2147483647;
-
-            opacity: 1;
-
-            visibility: visible;
-
-            pointer-events: all;
+            will-change:opacity;
 
             transition:
-                opacity .28s ease,
-                visibility .28s ease;
-
+                opacity .18s ease,
+                visibility .18s ease;
         }
 
 
         #hpv-smart-loader.hpv-hide {
-
-            opacity: 0;
-
-            visibility: hidden;
-
-            pointer-events: none;
-
+            opacity:0;
+            visibility:hidden;
+            pointer-events:none;
         }
 
 
         .hpv-loader-center {
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            flex-direction: column;
-
-            height:100%;
             width:100%;
+            height:100%;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            flex-direction:column;
 
             background:#000;
-            
-
-
         }
 
 
         .hpv-loader-brand {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
+            display:flex;
+            align-items:center;
+            justify-content:center;
         }
 
 
         .hpv-loader-icon {
+            position:relative;
 
-            position: relative;
+            width:46px;
+            height:60px;
 
-            width: 46px;
-            height: 60px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
 
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
+            will-change:transform;
 
             animation:
                 hpvFloat
                 1.4s
                 ease-in-out
                 infinite;
-
         }
 
 
         .hpv-loader-shadow {
+            position:absolute;
 
-            position: absolute;
+            width:42px;
+            height:57px;
 
-            width: 42px;
-            height: 57px;
+            top:-3px;
+            left:-3px;
 
-            top: -3px;
-            left: -3px;
-
-            opacity: .32;
+            opacity:.32;
 
             background:
                 linear-gradient(
@@ -161,31 +138,29 @@
                     #ffffff44
                 );
 
-            clip-path: polygon(
-                0 0,
-                100% 0,
-                100% 100%,
-                50% 88%,
-                0 100%
-            );
+            clip-path:
+                polygon(
+                    0 0,
+                    100% 0,
+                    100% 100%,
+                    50% 88%,
+                    0 100%
+                );
 
             border-radius:
                 8px 8px 0 0;
-
         }
 
 
         .hpv-loader-bookmark {
+            position:relative;
 
-            position: relative;
+            width:38px;
+            height:53px;
 
-            width: 38px;
-            height: 53px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
+            display:flex;
+            align-items:center;
+            justify-content:center;
 
             background:
                 linear-gradient(
@@ -194,151 +169,135 @@
                     #d94dff
                 );
 
-            clip-path: polygon(
-                0 0,
-                100% 0,
-                100% 100%,
-                50% 88%,
-                0 100%
-            );
+            clip-path:
+                polygon(
+                    0 0,
+                    100% 0,
+                    100% 100%,
+                    50% 88%,
+                    0 100%
+                );
 
             border-radius:
                 7px 7px 0 0;
 
             box-shadow:
-
                 0 0 22px
-                rgba(188, 27, 231, .42),
+                rgba(188,27,231,.42),
 
                 0 10px 30px
-                rgba(188, 27, 231, .20);
-
+                rgba(188,27,231,.20);
         }
 
 
         .hpv-loader-icon svg {
+            width:38px;
+            height:38px;
 
-            width: 38px;
-            height: 38px;
-
-            fill: none;
-
+            fill:none;
         }
 
 
         .hpv-loader-path {
+            stroke:#fff;
 
-            stroke: #fff;
+            stroke-width:6;
 
-            stroke-width: 6;
+            stroke-linecap:round;
+            stroke-linejoin:round;
 
-            stroke-linecap: round;
-
-            stroke-linejoin: round;
-
-            stroke-dasharray: 260;
-
-            stroke-dashoffset: 260;
+            stroke-dasharray:260;
+            stroke-dashoffset:260;
 
             animation:
                 hpvDraw
                 1.5s
                 ease-in-out
                 infinite;
-
         }
 
 
         .hpv-loader-name {
+            display:flex;
 
-            display: flex;
+            flex-direction:column;
+            justify-content:center;
 
-            flex-direction: column;
-
-            justify-content: center;
-
-            min-width: 92px;
+            min-width:92px;
 
             padding:
                 8px 13px 8px 10px;
 
-            margin-left: -2px;
+            margin-left:-2px;
 
             border:
                 1px solid
-                rgba(188, 27, 231, .72);
+                rgba(188,27,231,.72);
 
-            border-left: none;
+            border-left:none;
 
             border-radius:
                 0 10px 10px 0;
 
             background:
-                rgba(12, 12, 14, .96);
-
+                rgba(12,12,14,.96);
         }
 
 
         .hpv-loader-name strong {
-
-            color: #fff;
+            color:#fff;
 
             font-family:
                 Inter,
                 system-ui,
                 sans-serif;
 
-            font-size: 12px;
+            font-size:12px;
+            font-weight:900;
 
-            font-weight: 900;
-
-            line-height: 1;
-
+            line-height:1;
         }
 
 
         .hpv-loader-status {
+            margin-top:5px;
 
-            margin-top: 5px;
-
-            color: rgba(
-                255,
-                255,
-                255,
-                .55
-            );
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .55
+                );
 
             font-family:
                 Inter,
                 system-ui,
                 sans-serif;
 
-            font-size: 8px;
+            font-size:8px;
 
-            font-weight: 600;
+            font-weight:600;
 
-            letter-spacing: 1px;
+            letter-spacing:1px;
 
-            text-transform: uppercase;
+            text-transform:uppercase;
 
-            line-height: 1;
-
+            line-height:1;
         }
 
 
         .hpv-loader-progress {
+            position:relative;
 
-            position: relative;
+            width:125px;
+            height:2px;
 
-            width: 125px;
+            margin-top:20px;
 
-            height: 2px;
+            overflow:hidden;
 
-            margin-top: 20px;
-
-            overflow: hidden;
-
-            border-radius: 10px;
+            border-radius:10px;
 
             background:
                 rgba(
@@ -347,22 +306,19 @@
                     255,
                     .08
                 );
-
         }
 
 
         .hpv-loader-progress-bar {
+            position:absolute;
 
-            position: absolute;
+            top:0;
+            left:0;
 
-            top: 0;
-            left: 0;
+            width:7%;
+            height:100%;
 
-            width: 7%;
-
-            height: 100%;
-
-            border-radius: 10px;
+            border-radius:10px;
 
             background:
                 linear-gradient(
@@ -380,9 +336,10 @@
                     .8
                 );
 
-            transition:
-                width .25s ease;
+            will-change:width;
 
+            transition:
+                width .18s linear;
         }
 
 
@@ -392,7 +349,6 @@
 
         #hpv-smart-loader.hpv-offline
         .hpv-loader-status {
-
             color:
                 rgba(
                     255,
@@ -400,13 +356,11 @@
                     255,
                     .9
                 );
-
         }
 
 
         #hpv-smart-loader.hpv-offline
         .hpv-loader-bookmark {
-
             background:
                 linear-gradient(
                     135deg,
@@ -414,18 +368,15 @@
                     #777
                 );
 
-            box-shadow: none;
-
+            box-shadow:none;
         }
 
 
         #hpv-smart-loader.hpv-offline
         .hpv-loader-progress-bar {
+            background:#777;
 
-            background: #777;
-
-            box-shadow: none;
-
+            box-shadow:none;
         }
 
 
@@ -437,17 +388,11 @@
 
             0%,
             100% {
-
-                transform:
-                    translateY(0);
-
+                transform:translateY(0);
             }
 
             50% {
-
-                transform:
-                    translateY(-5px);
-
+                transform:translateY(-5px);
             }
 
         }
@@ -456,53 +401,33 @@
         @keyframes hpvDraw {
 
             0% {
-
-                stroke-dashoffset:
-                    260;
-
-                opacity: 0.9;
-
+                stroke-dashoffset:260;
+                opacity:.9;
             }
 
             45% {
-
-                stroke-dashoffset:
-                    0;
-
-                opacity: 1;
-
+                stroke-dashoffset:0;
+                opacity:1;
             }
 
             70% {
-
-                stroke-dashoffset:
-                    0;
-
-                opacity: 1;
-
+                stroke-dashoffset:0;
+                opacity:1;
             }
 
             100% {
-
-                stroke-dashoffset:
-                    -260;
-
-                opacity: .55;
-
+                stroke-dashoffset:-260;
+                opacity:.55;
             }
 
         }
 
 
-        @media (
-            prefers-reduced-motion: reduce
-        ) {
+        @media(prefers-reduced-motion:reduce) {
 
             .hpv-loader-icon,
             .hpv-loader-path {
-
-                animation: none;
-
+                animation:none !important;
             }
 
         }
@@ -510,167 +435,137 @@
     `;
 
 
-    /*
-       Insert style as early as possible.
-    */
+    /* =========================================================
+       INSERT CSS AS EARLY AS POSSIBLE
+    ========================================================= */
 
     if (document.head) {
-
-        document.head.prepend(
-            earlyStyle
-        );
-
+        document.head.prepend(style);
     } else {
-
-        document.documentElement.prepend(
-            earlyStyle
-        );
-
+        document.documentElement.prepend(style);
     }
 
 
     /* =========================================================
-       MARK DOCUMENT AS LOADING
-       Happens immediately.
+       LOADER HTML
     ========================================================= */
 
-    document.documentElement.classList.add(
-        "hpv-loading"
-    );
+    const loader = document.createElement("div");
 
+    loader.id = "hpv-smart-loader";
 
-    /* =========================================================
-       CREATE LOADER HTML
-    ========================================================= */
+    loader.innerHTML = `
 
-    function createLoader() {
+        <div class="hpv-loader-center">
 
-        if (
-            document.getElementById(
-                "hpv-smart-loader"
-            )
-        ) {
+            <div class="hpv-loader-brand">
 
-            return;
+                <div class="hpv-loader-icon">
 
-        }
+                    <div class="hpv-loader-shadow"></div>
 
+                    <div class="hpv-loader-bookmark">
 
-        const loader =
-            document.createElement("div");
-
-        loader.id =
-            "hpv-smart-loader";
-
-
-        loader.innerHTML = `
-
-            <div class="hpv-loader-center">
-
-                <div class="hpv-loader-brand">
-
-                    <div class="hpv-loader-icon">
-
-                        <div
-                            class="hpv-loader-shadow"
-                        ></div>
-
-                        <div
-                            class="hpv-loader-bookmark"
+                        <svg
+                            viewBox="0 0 100 100"
+                            aria-hidden="true"
                         >
 
-                            <svg
-                                viewBox="0 0 100 100"
-                                aria-hidden="true"
-                            >
+                            <path
+                                class="hpv-loader-path"
+                                d="
+                                    M10 0 L10 70
+                                    A10 10 0 0 0 30 70
+                                    L30 20
+                                    A10 10 0 0 1 50 20
+                                    L50 70
+                                    A16 9 0 0 0 70 80
+                                    A13 20 0 0 1 80 94
+                                    L100 95
+                                "
+                            />
 
-                                <path
-                                    class="hpv-loader-path"
-                                    d="
-                                        M10 0 L10 70
-                                        A10 10 0 0 0 30 70
-                                        L30 20
-                                        A10 10 0 0 1 50 20
-                                        L50 70
-                                        A16 9 0 0 0 70 80
-                                        A13 20 0 0 1 80 94
-                                        L100 95
-                                    "
-                                />
-
-                            </svg>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="hpv-loader-name">
-
-                        <strong>
-                            ${CONFIG.BRAND}
-                        </strong>
-
-                        <small
-                            class="hpv-loader-status"
-                        >
-                            Loading
-                        </small>
+                        </svg>
 
                     </div>
 
                 </div>
 
 
-                <div class="hpv-loader-progress">
+                <div class="hpv-loader-name">
 
-                    <span
-                        class="hpv-loader-progress-bar"
-                    ></span>
+                    <strong>
+                        ${CONFIG.BRAND}
+                    </strong>
+
+                    <small class="hpv-loader-status">
+                        Loading
+                    </small>
 
                 </div>
 
             </div>
 
-        `;
+
+            <div class="hpv-loader-progress">
+
+                <span
+                    class="hpv-loader-progress-bar"
+                ></span>
+
+            </div>
+
+        </div>
+
+    `;
 
 
-        /*
-           Put loader at the very beginning
-           of body.
-        */
+    /* =========================================================
+       MOUNT
+    ========================================================= */
 
-        if (document.body) {
+    function mountLoader() {
 
-            document.body.prepend(
-                loader
-            );
-
-        } else {
-
-            document.addEventListener(
-                "DOMContentLoaded",
-                function () {
-
-                    if (
-                        !document.getElementById(
-                            "hpv-smart-loader"
-                        )
-                    ) {
-
-                        document.body.prepend(
-                            loader
-                        );
-
-                    }
-
-                },
-                { once: true }
-            );
-
+        if (
+            document.body &&
+            !document.getElementById(
+                "hpv-smart-loader"
+            )
+        ) {
+            document.body.prepend(loader);
         }
 
     }
+
+
+    if (document.body) {
+        mountLoader();
+    } else {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            mountLoader,
+            { once:true }
+        );
+
+    }
+
+
+    /* =========================================================
+       UI CACHE
+    ========================================================= */
+
+    let root = loader;
+
+    const status =
+        loader.querySelector(
+            ".hpv-loader-status"
+        );
+
+    const bar =
+        loader.querySelector(
+            ".hpv-loader-progress-bar"
+        );
 
 
     /* =========================================================
@@ -679,102 +574,15 @@
 
     let progress = 7;
 
-    let progressTimer = null;
+    let progressFrame = 0;
 
-    let safetyTimer = null;
+    let safetyTimer = 0;
 
-    let startedAt = Date.now();
+    let finishTimer = 0;
+
+    let startedAt = 0;
 
     let finished = false;
-
-
-    /* =========================================================
-       GET UI
-    ========================================================= */
-
-    function getUI() {
-
-        const root =
-            document.getElementById(
-                "hpv-smart-loader"
-            );
-
-        if (!root) {
-            return null;
-        }
-
-
-        return {
-
-            root,
-
-            status:
-                root.querySelector(
-                    ".hpv-loader-status"
-                ),
-
-            bar:
-                root.querySelector(
-                    ".hpv-loader-progress-bar"
-                )
-
-        };
-
-    }
-
-
-    /* =========================================================
-       RESET ANIMATION
-    ========================================================= */
-
-    function resetAnimation() {
-
-        const ui =
-            getUI();
-
-        if (!ui) {
-            return;
-        }
-
-
-        const icon =
-            ui.root.querySelector(
-                ".hpv-loader-icon"
-            );
-
-
-        const path =
-            ui.root.querySelector(
-                ".hpv-loader-path"
-            );
-
-
-        if (icon) {
-
-            icon.style.animation =
-                "none";
-
-            void icon.offsetWidth;
-
-            icon.style.animation =
-                "";
-
-        }
-
-
-        if (path) {
-
-            path.style.animation =
-                "none";
-
-            void path.offsetWidth;
-
-            path.style.animation =
-                "";
-
-        }
-
-    }
 
 
     /* =========================================================
@@ -783,25 +591,15 @@
 
     function setProgress(value) {
 
-        const ui =
-            getUI();
+        progress = Math.min(
+            94,
+            Math.max(
+                0,
+                value
+            )
+        );
 
-        if (!ui) {
-            return;
-        }
-
-
-        progress =
-            Math.min(
-                94,
-                Math.max(
-                    0,
-                    value
-                )
-            );
-
-
-        ui.bar.style.width =
+        bar.style.width =
             progress + "%";
 
     }
@@ -809,157 +607,111 @@
 
     function startProgress() {
 
-        clearInterval(
-            progressTimer
+        cancelAnimationFrame(
+            progressFrame
         );
-
 
         progress = 7;
 
-        setProgress(
-            progress
-        );
+        setProgress(7);
 
 
-        progressTimer =
-            setInterval(
-                function () {
+        function tick() {
 
-                    if (finished) {
-                        return;
-                    }
+            if (finished) return;
 
 
-                    if (
-                        progress < 50
-                    ) {
+            if (progress < 50) {
 
-                        progress +=
-                            Math.random() *
-                            3 + 1;
+                progress +=
+                    Math.random() * 2.8 + .8;
 
-                    }
+            }
 
-                    else if (
-                        progress < 75
-                    ) {
+            else if (progress < 75) {
 
-                        progress +=
-                            Math.random() *
-                            1.4;
+                progress +=
+                    Math.random() * 1.2;
 
-                    }
+            }
 
-                    else if (
-                        progress < 88
-                    ) {
+            else if (progress < 88) {
 
-                        progress +=
-                            Math.random() *
-                            .4;
+                progress +=
+                    Math.random() * .35;
 
-                    }
+            }
 
-                    else {
+            else {
 
-                        progress +=
-                            Math.random() *
-                            .08;
+                progress +=
+                    Math.random() * .06;
 
-                    }
+            }
 
 
-                    setProgress(
-                        progress
-                    );
+            setProgress(progress);
 
-                },
 
-                350
-            );
+            progressFrame =
+                requestAnimationFrame(tick);
+
+        }
+
+
+        progressFrame =
+            requestAnimationFrame(tick);
 
     }
 
 
     /* =========================================================
-       SHOW
+       SHOW LOADER
     ========================================================= */
 
     function showLoader() {
 
-        createLoader();
+        clearTimeout(safetyTimer);
+        clearTimeout(finishTimer);
 
-
-        const ui =
-            getUI();
-
-        if (!ui) {
-            return;
-        }
-
-
-        clearInterval(
-            progressTimer
-        );
-
-        clearTimeout(
-            safetyTimer
+        cancelAnimationFrame(
+            progressFrame
         );
 
 
         finished = false;
 
         startedAt =
-            Date.now();
+            performance.now();
 
 
-        ui.root.style.display =
+        root.style.display =
             "flex";
 
 
-        ui.root.classList.remove(
-            "hpv-hide"
-        );
-
-        ui.root.classList.remove(
+        root.classList.remove(
+            "hpv-hide",
             "hpv-offline"
         );
 
 
-        ui.status.textContent =
+        html.classList.add(
+            "hpv-loading"
+        );
+
+
+        status.textContent =
             navigator.onLine
                 ? "Loading"
                 : "No Internet Connection";
 
 
-        document.documentElement.classList.add(
-            "hpv-loading"
-        );
-
-
-        /*
-           Force fresh animation
-           on every navigation.
-        */
-
-        resetAnimation();
-
         startProgress();
 
 
-        /*
-           Never let our custom loader
-           stay forever.
-        */
-
         safetyTimer =
             setTimeout(
-                function () {
-
-                    finishLoader();
-
-                },
-
+                finishLoader,
                 CONFIG.MAX_VISIBLE_TIME
             );
 
@@ -967,21 +719,18 @@
 
 
     /* =========================================================
-       FINISH
+       FINISH LOADER
     ========================================================= */
 
     function finishLoader() {
 
-        if (finished) {
-            return;
-        }
-
+        if (finished) return;
 
         finished = true;
 
 
-        clearInterval(
-            progressTimer
+        cancelAnimationFrame(
+            progressFrame
         );
 
         clearTimeout(
@@ -989,16 +738,8 @@
         );
 
 
-        const ui =
-            getUI();
-
-        if (!ui) {
-            return;
-        }
-
-
         const elapsed =
-            Date.now() -
+            performance.now() -
             startedAt;
 
 
@@ -1010,56 +751,49 @@
             );
 
 
-        setTimeout(
-            function () {
+        finishTimer =
+            setTimeout(() => {
 
-                setProgress(
-                    100
-                );
+                setProgress(100);
 
 
-                setTimeout(
-                    function () {
+                requestAnimationFrame(() => {
 
-                        ui.root.classList.add(
-                            "hpv-hide"
-                        );
+                    root.classList.add(
+                        "hpv-hide"
+                    );
 
-
-                        document.documentElement.classList.remove(
-                            "hpv-loading"
-                        );
+                    html.classList.remove(
+                        "hpv-loading"
+                    );
 
 
-                        setTimeout(
-                            function () {
+                    /*
 
-                                ui.root.style.display =
-                                    "none";
+                       No extra 300ms timer.
+                       CSS handles the fade.
 
-                            },
+                    */
 
-                            300
-                        );
+                    setTimeout(() => {
 
-                    },
+                        root.style.display =
+                            "none";
 
-                    70
-                );
+                    }, 190);
 
-            },
+                });
 
-            remaining
-        );
+            }, remaining);
 
     }
 
 
     /* =========================================================
-       INITIAL LOADER
+       INITIAL
     ========================================================= */
 
-    createLoader();
+    mountLoader();
 
     showLoader();
 
@@ -1073,10 +807,7 @@
         "complete"
     ) {
 
-        setTimeout(
-            finishLoader,
-            60
-        );
+        finishLoader();
 
     } else {
 
@@ -1084,7 +815,7 @@
             "load",
             finishLoader,
             {
-                once: true
+                once:true
             }
         );
 
@@ -1097,25 +828,19 @@
 
     window.addEventListener(
         "offline",
-        function () {
+        () => {
 
-            const ui =
-                getUI();
+            if (finished) return;
 
-            if (!ui || finished) {
-                return;
-            }
-
-
-            ui.root.classList.add(
+            root.classList.add(
                 "hpv-offline"
             );
 
-
-            ui.status.textContent =
+            status.textContent =
                 "No Internet Connection";
 
-        }
+        },
+        { passive:true }
     );
 
 
@@ -1125,22 +850,17 @@
 
     window.addEventListener(
         "online",
-        function () {
+        () => {
 
-            const ui =
-                getUI();
-
-            if (!ui || finished) {
-                return;
-            }
+            if (finished) return;
 
 
-            ui.root.classList.remove(
+            root.classList.remove(
                 "hpv-offline"
             );
 
 
-            ui.status.textContent =
+            status.textContent =
                 "Connection Restored";
 
 
@@ -1152,23 +872,39 @@
             );
 
 
-            setTimeout(
-                function () {
+            setTimeout(() => {
 
-                    if (!finished) {
+                if (!finished) {
 
-                        ui.status.textContent =
-                            "Loading";
+                    status.textContent =
+                        "Loading";
 
-                    }
+                }
 
-                },
+            }, 450);
 
-                600
-            );
-
-        }
+        },
+        { passive:true }
     );
+
+
+    /* =========================================================
+       COPY SELECTOR
+    ========================================================= */
+
+    const COPY_SELECTOR = `
+        [data-copy],
+        [data-copy-text],
+        [data-clipboard],
+        [data-clipboard-text],
+        .copy,
+        .copy-btn,
+        .copy-button,
+        .copy-link,
+        .clipboard,
+        .clipboard-btn,
+        .clipboard-button
+    `;
 
 
     /* =========================================================
@@ -1177,132 +913,51 @@
 
     function shouldLoad(link) {
 
-        if (!link) {
-            return false;
-        }
-
-
         if (
+            !link ||
             link.tagName !== "A"
         ) {
             return false;
         }
 
 
-        /*
-           New tab.
-        */
-
         if (
             link.target === "_blank" ||
             link.target === "_parent" ||
             link.target === "_top"
         ) {
-
             return false;
-
         }
 
 
-        /*
-           Download.
-        */
-
         if (
-            link.hasAttribute(
-                "download"
-            )
+            link.hasAttribute("download") ||
+            link.hasAttribute("data-no-loader")
         ) {
-
             return false;
-
         }
 
 
-        /*
-           Explicit disable.
-        */
-
         if (
-            link.hasAttribute(
-                "data-no-loader"
-            )
+            link.matches(COPY_SELECTOR) ||
+            link.closest(COPY_SELECTOR)
         ) {
-
             return false;
-
-        }
-
-
-        /*
-           Copy systems.
-        */
-
-        if (
-            link.matches(`
-                [data-copy],
-                [data-copy-text],
-                [data-clipboard],
-                [data-clipboard-text],
-                .copy,
-                .copy-btn,
-                .copy-button,
-                .copy-link,
-                .clipboard,
-                .clipboard-btn,
-                .clipboard-button
-            `)
-        ) {
-
-            return false;
-
-        }
-
-
-        /*
-           Inside copy element.
-        */
-
-        if (
-            link.closest(`
-                [data-copy],
-                [data-copy-text],
-                [data-clipboard],
-                [data-clipboard-text],
-                .copy,
-                .copy-btn,
-                .copy-button,
-                .copy-link,
-                .clipboard,
-                .clipboard-btn,
-                .clipboard-button
-            `)
-        ) {
-
-            return false;
-
         }
 
 
         const href =
-            link.getAttribute(
-                "href"
-            );
+            link.getAttribute("href");
 
 
         if (
             !href ||
             href === "#" ||
-            href
-                .trim()
+            href.trim()
                 .toLowerCase()
-                .startsWith(
-                    "javascript:"
-                )
+                .startsWith("javascript:")
         ) {
-
             return false;
-
         }
 
 
@@ -1317,7 +972,17 @@
 
     document.addEventListener(
         "click",
-        function (event) {
+        event => {
+
+            if (
+                event.ctrlKey ||
+                event.metaKey ||
+                event.shiftKey ||
+                event.altKey
+            ) {
+                return;
+            }
+
 
             const link =
                 event.target.closest("a");
@@ -1326,42 +991,14 @@
             if (
                 !shouldLoad(link)
             ) {
-
                 return;
-
             }
 
 
-            /*
-               Don't intercept:
-               Ctrl
-               Cmd
-               Shift
-               Alt
-            */
-
-            if (
-                event.ctrlKey ||
-                event.metaKey ||
-                event.shiftKey ||
-                event.altKey
-            ) {
-
-                return;
-
-            }
-
-
-            let current;
             let target;
 
 
             try {
-
-                current =
-                    new URL(
-                        location.href
-                    );
 
                 target =
                     new URL(
@@ -1378,56 +1015,42 @@
             }
 
 
-            /*
-               External.
-            */
+            /* External */
 
             if (
-                current.origin !==
-                target.origin
+                target.origin !==
+                location.origin
             ) {
-
                 return;
-
             }
 
 
-            /*
-               Same page hash.
-            */
+            /* Same hash */
 
             if (
-                current.pathname ===
-                target.pathname &&
+                location.pathname ===
+                    target.pathname &&
 
-                current.search ===
-                target.search &&
+                location.search ===
+                    target.search &&
 
                 target.hash
             ) {
-
                 return;
-
             }
 
 
-            /*
-               Same URL.
-            */
+            /* Same URL */
 
             if (
-                current.href ===
+                location.href ===
                 target.href
             ) {
-
                 return;
-
             }
 
 
-            /*
-               REAL PAGE NAVIGATION
-            */
+            /* REAL NAVIGATION */
 
             showLoader();
 
@@ -1442,13 +1065,17 @@
 
     window.addEventListener(
         "pageshow",
-        function (event) {
+        event => {
 
             if (
                 event.persisted
             ) {
 
-                finishLoader();
+                showLoader();
+
+                requestAnimationFrame(
+                    finishLoader
+                );
 
             }
 
@@ -1462,18 +1089,22 @@
 
     window.addEventListener(
         "pagehide",
-        function () {
+        () => {
 
-            clearInterval(
-                progressTimer
+            cancelAnimationFrame(
+                progressFrame
             );
 
             clearTimeout(
                 safetyTimer
             );
 
-        }
-    );
+            clearTimeout(
+                finishTimer
+            );
 
+        },
+        { passive:true }
+    );
 
 })();
