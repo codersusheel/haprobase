@@ -32,7 +32,6 @@ document.getElementById("year").textContent = new Date().getFullYear();
 //     }
 // })();
 
-
 (function () {
 
     "use strict";
@@ -44,12 +43,15 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
         if (!pageDisplay) return;
 
-        pageDisplay.textContent =
+        const pageName =
             document.title
                 .trim()
                 .split(/\s+/)
                 .slice(0, 2)
                 .join(" ");
+
+        pageDisplay.textContent =
+            `Now viewing:: ${pageName}`;
 
     }
 
@@ -68,6 +70,13 @@ document.getElementById("year").textContent = new Date().getFullYear();
     }
 
 })();
+
+
+
+
+
+
+
 
 
 
