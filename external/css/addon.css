@@ -1,4 +1,5 @@
 
 
-@import url('/external/css/main/aside.css');
-@import url('/external/css/main/style.css');
+@import url('https://haprobase.netlify.app/external/css/main/style.css');
+@import url('https://haprobase.netlify.app/external/css/main/aside.css');
+
