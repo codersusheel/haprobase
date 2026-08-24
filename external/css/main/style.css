@@ -1001,11 +1001,6 @@ header {
 
 
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
-}
 
 #theme-toggle {
     border: none;
@@ -1322,6 +1317,12 @@ ul {
 
 
 
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    /* transition: background-color 0.3s, color 0.3s; */
+}
 
 
 
