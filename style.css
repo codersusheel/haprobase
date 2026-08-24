@@ -1,0 +1,584 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    padding: 15px;
+    background-color: black;
+
+}
+
+.header {
+    display: flex;
+    max-width: 1280px;
+    margin: auto;
+    justify-content: space-between;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+header a {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+main {
+    max-width: 1280px;
+    margin: auto;
+}
+
+
+
+
+/* =========================================================
+   HAPROBASE HERO
+========================================================= */
+
+.haprobase-hero {
+    position: relative;
+    width: 100%;
+    min-height: 650px;
+    padding: 90px 24px;
+    overflow: hidden;
+}
+
+
+
+.haprobase-hero .hero-container {
+    position: relative;
+    width: 100%;
+    max-width: 1180px;
+    min-height: 500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr) minmax(400px, 0.9fr);
+    align-items: center;
+    gap: 80px;
+}
+
+
+.haprobase-hero .hero-content {
+    width: 100%;
+    max-width: 650px;
+}
+
+
+.haprobase-hero .hero-content h1 {
+    margin: 0;
+    font-size:
+        clamp(48px, 6vw, 76px);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -3px;
+}
+
+
+.haprobase-hero .hero-content h1 span {
+    display: block;
+    margin-top: 14px;
+    max-width: 620px;
+    font-size:
+        clamp(27px, 3vw, 42px);
+    font-weight: 650;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    opacity: 0.7;
+}
+
+.haprobase-hero .hero-content p {
+    opacity: 0.7;
+}
+
+
+.haprobase-hero .hero-description {
+    max-width: 590px;
+    margin: 28px 0 0;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+
+.haprobase-hero .hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+}
+
+
+.haprobase-hero .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 21px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 650;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.haprobase-hero .hero-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.haprobase-hero .hero-btn-primary {
+    color: #ffffff;
+
+    background:
+        linear-gradient(135deg,
+            #6366f1,
+            #0ea5e9);
+
+    box-shadow:
+        0 10px 30px rgba(79, 70, 229, 0.22);
+}
+
+
+.haprobase-hero .hero-btn-primary:hover {
+    box-shadow:
+        0 15px 38px rgba(79, 70, 229, 0.30);
+}
+
+
+
+.haprobase-hero .hero-btn-secondary {
+    color: #0ea5e9;
+    border: 1px solid var(--border-color, #606161);
+}
+
+
+.haprobase-hero .hero-btn-secondary:hover {
+    border-color: #3d5aed;
+}
+
+
+
+.haprobase-hero .hero-stats {
+    display: flex;
+    align-items: stretch;
+    margin-top: 48px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border-color, #e5e7eb);
+}
+
+
+.haprobase-hero .hero-stat {
+    min-width: 100px;
+    padding-right: 25px;
+    margin-right: 25px;
+    border-right: 1px solid var(--border-color, #e5e7eb);
+}
+
+
+.haprobase-hero .hero-stat:last-child {
+    padding-right: 0;
+    margin-right: 0;
+    border-right: none;
+}
+
+
+.haprobase-hero .hero-stat strong {
+    display: block;
+    opacity: 0.6;
+    font-size: 16px;
+    font-weight: 750;
+}
+
+
+.haprobase-hero .hero-stat span {
+    display: block;
+    margin-top: 5px;
+    color:
+        var(--text-secondary, #94a3b8);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+
+.haprobase-hero .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 430px;
+}
+
+
+.haprobase-hero .hero-visual::before {
+    content: "";
+    position: absolute;
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    background:
+        linear-gradient(135deg,
+            rgba(99, 102, 241, 0.18),
+            rgba(14, 165, 233, 0.10));
+    filter: blur(45px);
+}
+
+
+.haprobase-hero .base-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 440px;
+    padding: 24px;
+    border:
+        1px solid var(--border-color, #e5e7eb);
+    border-radius: 20px;
+    background:
+        var(--card-bg,
+            rgba(255, 255, 255, 0.85));
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.10);
+    backdrop-filter: blur(18px);
+    transform: rotate(1deg);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.haprobase-hero .base-card:hover {
+    transform:
+        rotate(0deg) translateY(-6px);
+    box-shadow:
+        0 35px 90px rgba(15, 23, 42, 0.15);
+}
+
+
+
+.haprobase-hero .base-card-header {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding-bottom: 20px;
+    border-bottom:
+        1px solid var(--border-color, #e5e7eb);
+}
+
+
+.haprobase-hero .base-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background:
+        linear-gradient(135deg,
+            #6366f1,
+            #0ea5e9);
+
+    box-shadow:
+        0 9px 24px rgba(79, 70, 229, 0.22);
+}
+
+
+
+.haprobase-hero .base-card-header strong {
+    display: block;
+    color:
+        var(--text-color, #111827);
+    font-size: 16px;
+
+    font-weight: 750;
+}
+
+
+.haprobase-hero .base-card-header span {
+    display: block;
+    margin-top: 4px;
+    color:
+        var(--text-secondary, #94a3b8);
+    font-size: 12px;
+}
+
+
+
+.haprobase-hero .base-tree {
+    padding: 15px 0;
+}
+
+
+.haprobase-hero .tree-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 10px;
+    border-radius: 9px;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.haprobase-hero .tree-item:hover {
+    background:
+        var(--hover-bg, #f8fafc);
+    transform: translateX(5px);
+}
+
+
+.haprobase-hero .tree-item span {
+    width: 25px;
+    flex-shrink: 0;
+    color:
+        var(--text-secondary, #656f7d);
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+}
+
+
+.haprobase-hero .tree-item b {
+    color:
+        var(--text-color, #334155);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+
+
+.haprobase-hero .base-card-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-top: 17px;
+
+    border-top:
+        1px solid var(--border-color, #4f5256);
+
+    color:
+        var(--text-secondary, #363a41);
+
+    font-size: 11px;
+}
+
+
+
+.haprobase-hero .status {
+    color: #2051f1;
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+
+@media (max-width: 950px) {
+
+    .haprobase-hero {
+        padding: 75px 22px;
+    }
+
+
+    .haprobase-hero .hero-container {
+        grid-template-columns: 1fr;
+        gap: 65px;
+        text-align: center;
+    }
+
+
+    .haprobase-hero .hero-content {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .haprobase-hero .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .haprobase-hero .hero-actions {
+        justify-content: center;
+    }
+
+
+    .haprobase-hero .hero-stats {
+        justify-content: center;
+        text-align: left;
+    }
+
+
+    .haprobase-hero .hero-visual {
+        min-height: 380px;
+    }
+
+}
+
+
+
+@media (max-width: 600px) {
+
+    .haprobase-hero {
+        min-height: auto;
+        padding:
+            55px 16px 70px;
+    }
+
+
+    .haprobase-hero .hero-container {
+        gap: 50px;
+    }
+
+    .haprobase-hero .hero-content h1 {
+        font-size: 48px;
+        letter-spacing: -2.5px;
+    }
+
+
+    .haprobase-hero .hero-content h1 span {
+        margin-top: 12px;
+        font-size: 27px;
+        letter-spacing: -1px;
+    }
+
+
+    .haprobase-hero .hero-description {
+        margin-top: 22px;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+
+    .haprobase-hero .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 28px;
+    }
+
+
+    .haprobase-hero .hero-btn {
+        width: 100%;
+    }
+
+
+    .haprobase-hero .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 38px;
+        text-align: left;
+    }
+
+
+    .haprobase-hero .hero-stat {
+        min-width: 0;
+        padding: 0;
+        margin: 0;
+        border: none;
+    }
+
+
+    .haprobase-hero .hero-visual {
+        min-height: 320px;
+    }
+
+
+    .haprobase-hero .hero-visual::before {
+        width: 240px;
+        height: 240px;
+    }
+
+
+    .haprobase-hero .base-card {
+        max-width: 100%;
+        padding: 18px;
+        border-radius: 17px;
+        transform: none;
+    }
+
+
+    .haprobase-hero .base-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .haprobase-hero .base-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+
+    .haprobase-hero .tree-item {
+        padding: 11px 6px;
+    }
+
+
+    .haprobase-hero .tree-item b {
+        font-size: 12px;
+    }
+
+}
+
+
+
+
+@media (max-width: 380px) {
+
+    .haprobase-hero .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .haprobase-hero .hero-content h1 span {
+        font-size: 24px;
+    }
+
+    .haprobase-hero .hero-stats {
+        gap: 16px;
+    }
+
+    .haprobase-hero .base-card {
+        padding: 15px;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .haprobase-hero *,
+    .haprobase-hero *::before,
+    .haprobase-hero *::after {
+        transition: none !important;
+    }
+
+}
+
+
+
+
+/* =========================================================
+   new
+========================================================= */
