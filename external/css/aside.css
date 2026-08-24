@@ -1,0 +1,78 @@
+.project-content span {
+    color: var(--title);
+}
+
+
+@media (min-width: 1280px) {
+
+    .sidebar {
+        display: block;
+    }
+
+    .header {
+        max-width: 100%;
+        justify-content: flex-start;
+        /* gap: 45px; */
+        gap: 2%;
+        padding: 30px 10px !important;
+
+    }
+
+ 
+
+    header {
+        background: transparent;
+    }
+
+
+}
+
+
+@media (min-width: 1280px) {
+
+    #header {
+        transform: translateY(0) !important;
+
+    }
+
+    .header-senter {
+        display: none !important;
+    }
+
+
+    .main,
+    footer {
+        padding-left: 220px;
+    }
+
+    .main {
+        background-color: #94a3b8;
+    }
+
+    .sidebar-footer {
+        padding-left: 10px;
+    }
+
+
+    .section {
+        padding-right: 70px;
+        padding-left: 10px;
+        padding-top: 100px;
+    }
+
+
+    .team-dropdown {
+        position: absolute;
+        top: 9px;
+        left: 228px;
+        width: 270px;
+        max-width: 270px;
+        height: 400px;
+    }
+
+}
+
+
+
+
+

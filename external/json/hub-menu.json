@@ -1,0 +1,84 @@
+{
+    "liveText": " HAproven New upadate Live",
+    "hub-menu": [
+        {
+            "name": "Haproven",
+            "url": "https://Haproven.netlify.app/",
+            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+        },
+        {
+            "name": "HaproID",
+            "url": "https://haproid.netlify.app/",
+            "img": "https://haproid.netlify.app/assets/img/haproid-logo.png"
+        },
+        {
+            "name": "HaproShow",
+            "url": "https://haproshow.netlify.app/",
+            "img": "https://haproid.netlify.app/assets/img/haproid-logo.png"
+        },
+        {
+            "name": "Hapro.Blog",
+            "url": "https://haproven-blog.netlify.app/",
+            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+        },
+        {
+            "name": "Hapro..Core",
+            "url": "https://haproven-core.netlify.app/",
+            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+        },
+        {
+            "name": "HaproAPI",
+            "url": "https://haproapi.netlify.app/",
+            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+        },
+        {
+            "name": "HaproFun",
+            "url": "https://haprofun.netlify.app/",
+            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+        },
+        {
+            "name": "HaproSel",
+            "url": "https://haprosel.netlify.app/",
+            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+        },
+        {
+            "name": "HaproLearn",
+            "url": "https://haprolearn.netlify.app/",
+            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+        }
+    ],
+
+    
+    "social_links": [
+        {
+            "platform": "YouTube",
+            "url": "https://www.youtube.com/@Haproven",
+            "icon": "fab fa-youtube",
+            "is_active": true
+        },
+        {
+            "platform": "GitHub",
+            "url": "https://github.com/haproven",
+            "icon": "fab fa-github",
+            "is_active": true
+        },
+        {
+            "platform": "LinkedIn",
+            "url": "https://www.linkedin.com/company/haproven/",
+            "icon": "fab fa-linkedin",
+            "is_active": true
+        },
+        {
+            "platform": "Instagram",
+            "url": "https://www.instagram.com/haproven/",
+            "icon": "fab fa-instagram",
+            "is_active": true
+        },
+        {
+            "platform": "Twitter",
+            "url": "https://x.com/HaprovenTech",
+            "icon": "fa-brands fa-x-twitter",
+            "is_active": true
+        }
+    ]
+}
