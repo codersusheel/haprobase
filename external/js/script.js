@@ -47,11 +47,11 @@ document.getElementById("year").textContent = new Date().getFullYear();
             document.title
                 .trim()
                 .split(/\s+/)
-                .slice(0, 2)
+                .slice(0, 3)
                 .join(" ");
 
         pageDisplay.textContent =
-            `Now viewing:: ${pageName}`;
+            `Now viewing: ${pageName}`;
 
     }
 
