@@ -32,7 +32,6 @@ document.getElementById("year").textContent = new Date().getFullYear();
 //     }
 // })();
 
-
 (function () {
 
     "use strict";
@@ -44,15 +43,17 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
         if (!pageDisplay) return;
 
-        const pageName =
-            document.title
-                .trim()
-                .split(/\s+/)
-                .slice(0, 3)
-                .join(" ");
+        const title =
+            document.title.trim();
 
         pageDisplay.textContent =
-            `Now viewing: ${pageName}`;
+            `Now viewing: ${title}`;
+
+        pageDisplay.style.display = "-webkit-box";
+        pageDisplay.style.webkitBoxOrient = "vertical";
+        pageDisplay.style.webkitLineClamp = "2";
+        pageDisplay.style.overflow = "hidden";
+        pageDisplay.style.textOverflow = "ellipsis";
 
     }
 
@@ -71,9 +72,6 @@ document.getElementById("year").textContent = new Date().getFullYear();
     }
 
 })();
-
-
-
 
 
 
