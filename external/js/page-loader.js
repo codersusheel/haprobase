@@ -4,14 +4,14 @@
 
 
     /* =========================================================
-       PREVENT DUPLICATE INITIALIZATION
+       PREVENT DUPLICATE SCRIPT
     ========================================================= */
 
-    if (window.__HPV_PAGE_LOADER__) {
+    if (window.__HPV_SMART_LOADER__) {
         return;
     }
 
-    window.__HPV_PAGE_LOADER__ = true;
+    window.__HPV_SMART_LOADER__ = true;
 
 
     /* =========================================================
@@ -20,27 +20,34 @@
 
     const CONFIG = {
 
-        MIN_TIME: 300,
+        MIN_VISIBLE_TIME: 280,
 
-        MAX_TIME: 8000,
+        MAX_VISIBLE_TIME: 8000,
 
-        PROGRESS_START: 8
+        BRAND: "Haproven"
 
     };
 
 
     /* =========================================================
-       STYLE
+       EARLY PRELOADER
+       Inject immediately into HEAD.
+       This is the important part for rapid refresh.
     ========================================================= */
 
-    const style = document.createElement("style");
+    const earlyStyle =
+        document.createElement("style");
 
-    style.id =
-        "hpv-page-loader-style";
+    earlyStyle.id =
+        "hpv-early-loader-style";
 
-    style.textContent = `
+    earlyStyle.textContent = `
 
-        #hpv-page-loader {
+        html.hpv-loading {
+            background: #2a2a44 !important;
+        }
+
+        #hpv-smart-loader {
 
             position: fixed;
 
@@ -54,18 +61,11 @@
             align-items: center;
             justify-content: center;
 
-            flex-direction: column;
-
             background:
-                rgba(7, 7, 9, .95);
+                #070709;
 
-            backdrop-filter:
-                blur(14px);
-
-            -webkit-backdrop-filter:
-                blur(14px);
-
-            z-index: 2147483647;
+            z-index:
+                2147483647;
 
             opacity: 1;
 
@@ -74,13 +74,13 @@
             pointer-events: all;
 
             transition:
-                opacity .30s ease,
-                visibility .30s ease;
+                opacity .28s ease,
+                visibility .28s ease;
 
         }
 
 
-        #hpv-page-loader.hpv-hidden {
+        #hpv-smart-loader.hpv-hide {
 
             opacity: 0;
 
@@ -91,26 +91,24 @@
         }
 
 
-        /* =====================================================
-           CENTER
-        ===================================================== */
-
         .hpv-loader-center {
 
             display: flex;
 
+            align-items: center;
+            justify-content: center;
+
             flex-direction: column;
 
-            align-items: center;
+            height:100%;
+            width:100%;
 
-            justify-content: center;
+            background:#000;
+            
+
 
         }
 
-
-        /* =====================================================
-           BRAND
-        ===================================================== */
 
         .hpv-loader-brand {
 
@@ -120,22 +118,15 @@
 
             justify-content: center;
 
-            animation:
-                hpvEnter .35s ease-out both;
-
         }
 
-
-        /* =====================================================
-           ICON
-        ===================================================== */
 
         .hpv-loader-icon {
 
             position: relative;
 
-            width: 48px;
-            height: 62px;
+            width: 46px;
+            height: 60px;
 
             display: flex;
 
@@ -143,10 +134,10 @@
             justify-content: center;
 
             animation:
-                hpvFloat 1.5s ease-in-out infinite;
-
-            will-change:
-                transform;
+                hpvFloat
+                1.4s
+                ease-in-out
+                infinite;
 
         }
 
@@ -155,8 +146,8 @@
 
             position: absolute;
 
-            width: 43px;
-            height: 58px;
+            width: 42px;
+            height: 57px;
 
             top: -3px;
             left: -3px;
@@ -188,8 +179,8 @@
 
             position: relative;
 
-            width: 40px;
-            height: 56px;
+            width: 38px;
+            height: 53px;
 
             display: flex;
 
@@ -214,23 +205,21 @@
             border-radius:
                 7px 7px 0 0;
 
-            z-index: 2;
-
             box-shadow:
-                0 0 20px
-                rgba(188, 27, 231, .35);
+
+                0 0 22px
+                rgba(188, 27, 231, .42),
+
+                0 10px 30px
+                rgba(188, 27, 231, .20);
 
         }
 
 
-        /* =====================================================
-           SVG
-        ===================================================== */
-
         .hpv-loader-icon svg {
 
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
 
             fill: none;
 
@@ -252,16 +241,13 @@
             stroke-dashoffset: 260;
 
             animation:
-                hpvDraw 1.5s
+                hpvDraw
+                1.5s
                 ease-in-out
                 infinite;
 
         }
 
-
-        /* =====================================================
-           NAME
-        ===================================================== */
 
         .hpv-loader-name {
 
@@ -274,13 +260,13 @@
             min-width: 92px;
 
             padding:
-                8px 14px 8px 11px;
+                8px 13px 8px 10px;
 
             margin-left: -2px;
 
             border:
                 1px solid
-                rgba(188, 27, 231, .7);
+                rgba(188, 27, 231, .72);
 
             border-left: none;
 
@@ -288,7 +274,7 @@
                 0 10px 10px 0;
 
             background:
-                rgba(12, 12, 14, .95);
+                rgba(12, 12, 14, .96);
 
         }
 
@@ -302,7 +288,7 @@
                 system-ui,
                 sans-serif;
 
-            font-size: 13px;
+            font-size: 12px;
 
             font-weight: 900;
 
@@ -315,9 +301,12 @@
 
             margin-top: 5px;
 
-            color: #fff;
-
-            opacity: .55;
+            color: rgba(
+                255,
+                255,
+                255,
+                .55
+            );
 
             font-family:
                 Inter,
@@ -337,15 +326,11 @@
         }
 
 
-        /* =====================================================
-           PROGRESS
-        ===================================================== */
-
-        .hpv-progress {
+        .hpv-loader-progress {
 
             position: relative;
 
-            width: 130px;
+            width: 125px;
 
             height: 2px;
 
@@ -356,20 +341,24 @@
             border-radius: 10px;
 
             background:
-                rgba(255, 255, 255, .08);
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .08
+                );
 
         }
 
 
-        .hpv-progress-bar {
+        .hpv-loader-progress-bar {
 
             position: absolute;
 
             top: 0;
-
             left: 0;
 
-            width: 8%;
+            width: 7%;
 
             height: 100%;
 
@@ -384,7 +373,12 @@
 
             box-shadow:
                 0 0 10px
-                rgba(188, 27, 231, .8);
+                rgba(
+                    188,
+                    27,
+                    231,
+                    .8
+                );
 
             transition:
                 width .25s ease;
@@ -396,7 +390,21 @@
            OFFLINE
         ===================================================== */
 
-        #hpv-page-loader.hpv-offline
+        #hpv-smart-loader.hpv-offline
+        .hpv-loader-status {
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .9
+                );
+
+        }
+
+
+        #hpv-smart-loader.hpv-offline
         .hpv-loader-bookmark {
 
             background:
@@ -411,8 +419,8 @@
         }
 
 
-        #hpv-page-loader.hpv-offline
-        .hpv-progress-bar {
+        #hpv-smart-loader.hpv-offline
+        .hpv-loader-progress-bar {
 
             background: #777;
 
@@ -424,31 +432,6 @@
         /* =====================================================
            ANIMATION
         ===================================================== */
-
-        @keyframes hpvEnter {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    scale(.94)
-                    translateY(8px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    scale(1)
-                    translateY(0);
-
-            }
-
-        }
-
 
         @keyframes hpvFloat {
 
@@ -474,15 +457,17 @@
 
             0% {
 
-                stroke-dashoffset: 260;
+                stroke-dashoffset:
+                    260;
 
-                opacity: .55;
+                opacity: 0.9;
 
             }
 
             45% {
 
-                stroke-dashoffset: 0;
+                stroke-dashoffset:
+                    0;
 
                 opacity: 1;
 
@@ -490,7 +475,8 @@
 
             70% {
 
-                stroke-dashoffset: 0;
+                stroke-dashoffset:
+                    0;
 
                 opacity: 1;
 
@@ -498,7 +484,8 @@
 
             100% {
 
-                stroke-dashoffset: -260;
+                stroke-dashoffset:
+                    -260;
 
                 opacity: .55;
 
@@ -507,47 +494,14 @@
         }
 
 
-        @media (max-width: 480px) {
+        @media (
+            prefers-reduced-motion: reduce
+        ) {
 
-            .hpv-loader-icon {
+            .hpv-loader-icon,
+            .hpv-loader-path {
 
-                width: 42px;
-                height: 55px;
-
-            }
-
-            .hpv-loader-bookmark {
-
-                width: 35px;
-                height: 49px;
-
-            }
-
-            .hpv-loader-shadow {
-
-                width: 38px;
-                height: 51px;
-
-            }
-
-            .hpv-loader-name {
-
-                min-width: 82px;
-
-                padding:
-                    7px 11px 7px 9px;
-
-            }
-
-            .hpv-loader-name strong {
-
-                font-size: 11px;
-
-            }
-
-            .hpv-progress {
-
-                width: 110px;
+                animation: none;
 
             }
 
@@ -555,111 +509,163 @@
 
     `;
 
-    document.head.appendChild(style);
+
+    /*
+       Insert style as early as possible.
+    */
+
+    if (document.head) {
+
+        document.head.prepend(
+            earlyStyle
+        );
+
+    } else {
+
+        document.documentElement.prepend(
+            earlyStyle
+        );
+
+    }
 
 
     /* =========================================================
-       CREATE LOADER
+       MARK DOCUMENT AS LOADING
+       Happens immediately.
     ========================================================= */
 
-    const loader =
-        document.createElement("div");
-
-    loader.id =
-        "hpv-page-loader";
-
-    loader.setAttribute(
-        "aria-hidden",
-        "true"
+    document.documentElement.classList.add(
+        "hpv-loading"
     );
 
 
-    loader.innerHTML = `
+    /* =========================================================
+       CREATE LOADER HTML
+    ========================================================= */
 
-        <div class="hpv-loader-center">
+    function createLoader() {
 
-            <div class="hpv-loader-brand">
+        if (
+            document.getElementById(
+                "hpv-smart-loader"
+            )
+        ) {
 
-                <div class="hpv-loader-icon">
+            return;
 
-                    <div class="hpv-loader-shadow"></div>
+        }
 
-                    <div class="hpv-loader-bookmark">
 
-                        <svg
-                            viewBox="0 0 100 100"
-                            aria-hidden="true"
+        const loader =
+            document.createElement("div");
+
+        loader.id =
+            "hpv-smart-loader";
+
+
+        loader.innerHTML = `
+
+            <div class="hpv-loader-center">
+
+                <div class="hpv-loader-brand">
+
+                    <div class="hpv-loader-icon">
+
+                        <div
+                            class="hpv-loader-shadow"
+                        ></div>
+
+                        <div
+                            class="hpv-loader-bookmark"
                         >
 
-                            <path
-                                class="hpv-loader-path"
-                                d="
-                                    M10 0 L10 70
-                                    A10 10 0 0 0 30 70
-                                    L30 20
-                                    A10 10 0 0 1 50 20
-                                    L50 70
-                                    A16 9 0 0 0 70 80
-                                    A13 20 0 0 1 80 94
-                                    L100 95
-                                "
-                            />
+                            <svg
+                                viewBox="0 0 100 100"
+                                aria-hidden="true"
+                            >
 
-                        </svg>
+                                <path
+                                    class="hpv-loader-path"
+                                    d="
+                                        M10 0 L10 70
+                                        A10 10 0 0 0 30 70
+                                        L30 20
+                                        A10 10 0 0 1 50 20
+                                        L50 70
+                                        A16 9 0 0 0 70 80
+                                        A13 20 0 0 1 80 94
+                                        L100 95
+                                    "
+                                />
+
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hpv-loader-name">
+
+                        <strong>
+                            ${CONFIG.BRAND}
+                        </strong>
+
+                        <small
+                            class="hpv-loader-status"
+                        >
+                            Loading
+                        </small>
 
                     </div>
 
                 </div>
 
 
-                <div class="hpv-loader-name">
+                <div class="hpv-loader-progress">
 
-                    <strong>
-                        Haproven
-                    </strong>
-
-                    <small
-                        class="hpv-loader-status"
-                    >
-                        Loading
-                    </small>
+                    <span
+                        class="hpv-loader-progress-bar"
+                    ></span>
 
                 </div>
 
             </div>
 
-
-            <div class="hpv-progress">
-
-                <span
-                    class="hpv-progress-bar"
-                ></span>
-
-            </div>
-
-        </div>
-
-    `;
+        `;
 
 
-    /* =========================================================
-       INSERT
-    ========================================================= */
+        /*
+           Put loader at the very beginning
+           of body.
+        */
 
-    function insertLoader() {
-
-        if (!document.body) {
-            return;
-        }
-
-        if (
-            !document.getElementById(
-                "hpv-page-loader"
-            )
-        ) {
+        if (document.body) {
 
             document.body.prepend(
                 loader
+            );
+
+        } else {
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                function () {
+
+                    if (
+                        !document.getElementById(
+                            "hpv-smart-loader"
+                        )
+                    ) {
+
+                        document.body.prepend(
+                            loader
+                        );
+
+                    }
+
+                },
+                { once: true }
             );
 
         }
@@ -668,19 +674,35 @@
 
 
     /* =========================================================
-       GET ELEMENTS
+       STATE
+    ========================================================= */
+
+    let progress = 7;
+
+    let progressTimer = null;
+
+    let safetyTimer = null;
+
+    let startedAt = Date.now();
+
+    let finished = false;
+
+
+    /* =========================================================
+       GET UI
     ========================================================= */
 
     function getUI() {
 
         const root =
             document.getElementById(
-                "hpv-page-loader"
+                "hpv-smart-loader"
             );
 
         if (!root) {
             return null;
         }
+
 
         return {
 
@@ -691,14 +713,9 @@
                     ".hpv-loader-status"
                 ),
 
-            progress:
+            bar:
                 root.querySelector(
-                    ".hpv-progress-bar"
-                ),
-
-            icon:
-                root.querySelector(
-                    ".hpv-loader-icon"
+                    ".hpv-loader-progress-bar"
                 )
 
         };
@@ -707,38 +724,23 @@
 
 
     /* =========================================================
-       STATE
-    ========================================================= */
-
-    let progressTimer = null;
-
-    let safetyTimer = null;
-
-    let startedAt = 0;
-
-    let finished = false;
-
-
-    /* =========================================================
        RESET ANIMATION
-       Fixes repeated refresh / stuck animation.
     ========================================================= */
 
     function resetAnimation() {
 
-        const ui = getUI();
+        const ui =
+            getUI();
 
         if (!ui) {
             return;
         }
 
 
-        ui.icon.style.animation = "none";
-
-        ui.icon.offsetHeight;
-
-        ui.icon.style.animation =
-            "";
+        const icon =
+            ui.root.querySelector(
+                ".hpv-loader-icon"
+            );
 
 
         const path =
@@ -746,12 +748,26 @@
                 ".hpv-loader-path"
             );
 
+
+        if (icon) {
+
+            icon.style.animation =
+                "none";
+
+            void icon.offsetWidth;
+
+            icon.style.animation =
+                "";
+
+        }
+
+
         if (path) {
 
             path.style.animation =
                 "none";
 
-            path.offsetHeight;
+            void path.offsetWidth;
 
             path.style.animation =
                 "";
@@ -765,16 +781,15 @@
        PROGRESS
     ========================================================= */
 
-    let progress = CONFIG.PROGRESS_START;
-
-
     function setProgress(value) {
 
-        const ui = getUI();
+        const ui =
+            getUI();
 
         if (!ui) {
             return;
         }
+
 
         progress =
             Math.min(
@@ -785,7 +800,8 @@
                 )
             );
 
-        ui.progress.style.width =
+
+        ui.bar.style.width =
             progress + "%";
 
     }
@@ -798,9 +814,7 @@
         );
 
 
-        progress =
-            CONFIG.PROGRESS_START;
-
+        progress = 7;
 
         setProgress(
             progress
@@ -816,27 +830,41 @@
                     }
 
 
-                    /*
-                       Never reach 100%
-                       until actual page load.
-                    */
-
-                    if (progress < 55) {
-
-                        progress +=
-                            Math.random() * 3 + 1;
-
-                    } else if (
-                        progress < 78
+                    if (
+                        progress < 50
                     ) {
 
                         progress +=
-                            Math.random() * 1.5;
+                            Math.random() *
+                            3 + 1;
 
-                    } else {
+                    }
+
+                    else if (
+                        progress < 75
+                    ) {
 
                         progress +=
-                            Math.random() * .25;
+                            Math.random() *
+                            1.4;
+
+                    }
+
+                    else if (
+                        progress < 88
+                    ) {
+
+                        progress +=
+                            Math.random() *
+                            .4;
+
+                    }
+
+                    else {
+
+                        progress +=
+                            Math.random() *
+                            .08;
 
                     }
 
@@ -859,22 +887,23 @@
 
     function showLoader() {
 
-        insertLoader();
+        createLoader();
 
 
-        const ui = getUI();
+        const ui =
+            getUI();
 
         if (!ui) {
             return;
         }
 
 
-        clearTimeout(
-            safetyTimer
-        );
-
         clearInterval(
             progressTimer
+        );
+
+        clearTimeout(
+            safetyTimer
         );
 
 
@@ -888,18 +917,8 @@
             "flex";
 
 
-        /*
-           Force animation reset.
-
-           This is important when user
-           rapidly refreshes / navigates.
-        */
-
-        resetAnimation();
-
-
         ui.root.classList.remove(
-            "hpv-hidden"
+            "hpv-hide"
         );
 
         ui.root.classList.remove(
@@ -913,33 +932,42 @@
                 : "No Internet Connection";
 
 
+        document.documentElement.classList.add(
+            "hpv-loading"
+        );
+
+
+        /*
+           Force fresh animation
+           on every navigation.
+        */
+
+        resetAnimation();
+
         startProgress();
 
 
         /*
-           Never keep custom loader forever.
+           Never let our custom loader
+           stay forever.
         */
 
         safetyTimer =
             setTimeout(
                 function () {
 
-                    if (!finished) {
-
-                        finishLoader();
-
-                    }
+                    finishLoader();
 
                 },
 
-                CONFIG.MAX_TIME
+                CONFIG.MAX_VISIBLE_TIME
             );
 
     }
 
 
     /* =========================================================
-       HIDE
+       FINISH
     ========================================================= */
 
     function finishLoader() {
@@ -961,7 +989,8 @@
         );
 
 
-        const ui = getUI();
+        const ui =
+            getUI();
 
         if (!ui) {
             return;
@@ -973,10 +1002,10 @@
             startedAt;
 
 
-        const wait =
+        const remaining =
             Math.max(
                 0,
-                CONFIG.MIN_TIME -
+                CONFIG.MIN_VISIBLE_TIME -
                 elapsed
             );
 
@@ -993,7 +1022,12 @@
                     function () {
 
                         ui.root.classList.add(
-                            "hpv-hidden"
+                            "hpv-hide"
+                        );
+
+
+                        document.documentElement.classList.remove(
+                            "hpv-loading"
                         );
 
 
@@ -1005,79 +1039,56 @@
 
                             },
 
-                            320
+                            300
                         );
 
                     },
 
-                    80
+                    70
                 );
 
             },
 
-            wait
+            remaining
         );
 
     }
 
 
     /* =========================================================
-       INITIAL PAGE
+       INITIAL LOADER
     ========================================================= */
 
-    function startInitialLoader() {
+    createLoader();
 
-        showLoader();
-
-
-        /*
-           If page is already loaded,
-           don't keep loader.
-        */
-
-        if (
-            document.readyState ===
-            "complete"
-        ) {
-
-            setTimeout(
-                finishLoader,
-                80
-            );
-
-        }
-
-    }
+    showLoader();
 
 
-    if (document.body) {
+    /* =========================================================
+       PAGE LOAD
+    ========================================================= */
 
-        startInitialLoader();
+    if (
+        document.readyState ===
+        "complete"
+    ) {
+
+        setTimeout(
+            finishLoader,
+            60
+        );
 
     } else {
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            startInitialLoader,
-            { once: true }
+        window.addEventListener(
+            "load",
+            finishLoader,
+            {
+                once: true
+            }
         );
 
     }
-
-
-    /* =========================================================
-       REAL PAGE LOAD
-    ========================================================= */
-
-    window.addEventListener(
-        "load",
-        function () {
-
-            finishLoader();
-
-        },
-        { once: true }
-    );
 
 
     /* =========================================================
@@ -1088,19 +1099,10 @@
         "offline",
         function () {
 
-            const ui = getUI();
+            const ui =
+                getUI();
 
-            if (!ui) {
-                return;
-            }
-
-
-            /*
-               Only show offline state
-               while loader is active.
-            */
-
-            if (finished) {
+            if (!ui || finished) {
                 return;
             }
 
@@ -1112,11 +1114,6 @@
 
             ui.status.textContent =
                 "No Internet Connection";
-
-
-            setProgress(
-                progress
-            );
 
         }
     );
@@ -1130,14 +1127,10 @@
         "online",
         function () {
 
-            const ui = getUI();
+            const ui =
+                getUI();
 
-            if (!ui) {
-                return;
-            }
-
-
-            if (finished) {
+            if (!ui || finished) {
                 return;
             }
 
@@ -1179,19 +1172,15 @@
 
 
     /* =========================================================
-       SHOULD THIS LINK SHOW LOADER?
+       CHECK REAL NAVIGATION
     ========================================================= */
 
-    function isRealNavigation(link) {
+    function shouldLoad(link) {
 
         if (!link) {
             return false;
         }
 
-
-        /*
-           Not an anchor navigation.
-        */
 
         if (
             link.tagName !== "A"
@@ -1201,7 +1190,7 @@
 
 
         /*
-           New tab/window.
+           New tab.
         */
 
         if (
@@ -1231,7 +1220,7 @@
 
 
         /*
-           Explicitly disabled.
+           Explicit disable.
         */
 
         if (
@@ -1246,24 +1235,23 @@
 
 
         /*
-           Common copy buttons / copy links.
+           Copy systems.
         */
 
         if (
-            link.matches(
-                `
+            link.matches(`
                 [data-copy],
                 [data-copy-text],
                 [data-clipboard],
                 [data-clipboard-text],
+                .copy,
                 .copy-btn,
                 .copy-button,
                 .copy-link,
-                .copy,
+                .clipboard,
                 .clipboard-btn,
                 .clipboard-button
-                `
-            )
+            `)
         ) {
 
             return false;
@@ -1272,24 +1260,23 @@
 
 
         /*
-           If link is inside a copy control.
+           Inside copy element.
         */
 
         if (
-            link.closest(
-                `
+            link.closest(`
                 [data-copy],
                 [data-copy-text],
                 [data-clipboard],
                 [data-clipboard-text],
+                .copy,
                 .copy-btn,
                 .copy-button,
                 .copy-link,
-                .copy,
+                .clipboard,
                 .clipboard-btn,
                 .clipboard-button
-                `
-            )
+            `)
         ) {
 
             return false;
@@ -1297,13 +1284,16 @@
         }
 
 
-        /*
-           Javascript links.
-        */
+        const href =
+            link.getAttribute(
+                "href"
+            );
+
 
         if (
-            link.getAttribute("href") &&
-            link.getAttribute("href")
+            !href ||
+            href === "#" ||
+            href
                 .trim()
                 .toLowerCase()
                 .startsWith(
@@ -1316,52 +1306,25 @@
         }
 
 
-        /*
-           Empty href.
-        */
-
-        if (
-            !link.getAttribute("href") ||
-            link.getAttribute("href") === "#"
-        ) {
-
-            return false;
-
-        }
-
-
-        /*
-           Modifier key handling
-           is done separately.
-        */
-
         return true;
 
     }
 
 
     /* =========================================================
-       INTERNAL NAVIGATION
+       NAVIGATION
     ========================================================= */
 
     document.addEventListener(
         "click",
         function (event) {
 
-            /*
-               IMPORTANT:
-
-               Find the nearest anchor,
-               but don't treat buttons /
-               copy controls as navigation.
-            */
-
             const link =
                 event.target.closest("a");
 
 
             if (
-                !isRealNavigation(link)
+                !shouldLoad(link)
             ) {
 
                 return;
@@ -1370,9 +1333,11 @@
 
 
             /*
-               Ctrl / Cmd / Shift / Alt
-               means user is doing something
-               other than normal navigation.
+               Don't intercept:
+               Ctrl
+               Cmd
+               Shift
+               Alt
             */
 
             if (
@@ -1404,7 +1369,9 @@
                         location.href
                     );
 
-            } catch (error) {
+            }
+
+            catch {
 
                 return;
 
@@ -1412,7 +1379,7 @@
 
 
             /*
-               External website.
+               External.
             */
 
             if (
@@ -1426,15 +1393,15 @@
 
 
             /*
-               Same document hash.
+               Same page hash.
             */
 
             if (
                 current.pathname ===
-                    target.pathname &&
+                target.pathname &&
 
                 current.search ===
-                    target.search &&
+                target.search &&
 
                 target.hash
             ) {
@@ -1459,7 +1426,7 @@
 
 
             /*
-               REAL NAVIGATION
+               REAL PAGE NAVIGATION
             */
 
             showLoader();
@@ -1477,11 +1444,33 @@
         "pageshow",
         function (event) {
 
-            if (event.persisted) {
+            if (
+                event.persisted
+            ) {
 
                 finishLoader();
 
             }
+
+        }
+    );
+
+
+    /* =========================================================
+       CLEANUP
+    ========================================================= */
+
+    window.addEventListener(
+        "pagehide",
+        function () {
+
+            clearInterval(
+                progressTimer
+            );
+
+            clearTimeout(
+                safetyTimer
+            );
 
         }
     );
