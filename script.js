@@ -40,12 +40,10 @@
 
 
 
-
-
 (function () {
     "use strict";
 
-    document.addEventListener("click", function (event) {
+    document.addEventListener("click", async function (event) {
 
         const link = event.target.closest(".copy-link");
 
@@ -54,56 +52,53 @@
         event.preventDefault();
 
         const originalText = link.textContent;
+        const href = link.getAttribute("href");
 
-        // Current page ke base se URL generate hoga
-        const copyURL = new URL(
-            link.getAttribute("href"),
-            window.location.href
-        ).href;
+        if (!href) return;
 
-        function showCopied() {
+        // HaproBase path automatically add
+        const baseURL = "https://codersusheel.github.io/haprobase/";
+
+        const cleanPath = href
+            .replace(/^https?:\/\/[^/]+/i, "")
+            .replace(/^\/+/, "");
+
+        const copyURL = baseURL + cleanPath;
+
+        try {
+
+            await navigator.clipboard.writeText(copyURL);
+
             link.textContent = "Link Copied!";
 
-            setTimeout(function () {
+            setTimeout(() => {
                 link.textContent = originalText;
             }, 1500);
-        }
 
-        // Clipboard API
-        if (navigator.clipboard) {
+        } catch (error) {
 
-            navigator.clipboard.writeText(copyURL)
-                .then(showCopied)
-                .catch(function () {
-                    fallbackCopy(copyURL);
-                });
-
-        } else {
-
-            fallbackCopy(copyURL);
-
-        }
-
-        function fallbackCopy(text) {
-
+            // Fallback
             const textarea = document.createElement("textarea");
 
-            textarea.value = text;
-            textarea.setAttribute("readonly", "");
+            textarea.value = copyURL;
             textarea.style.position = "fixed";
             textarea.style.left = "-9999px";
-            textarea.style.top = "0";
 
             document.body.appendChild(textarea);
 
             textarea.select();
-            textarea.setSelectionRange(0, textarea.value.length);
 
             try {
                 document.execCommand("copy");
-                showCopied();
-            } catch (error) {
-                console.error("Copy failed:", error);
+
+                link.textContent = "Link Copied!";
+
+                setTimeout(() => {
+                    link.textContent = originalText;
+                }, 1500);
+
+            } catch (fallbackError) {
+                console.error("Copy failed:", fallbackError);
             }
 
             textarea.remove();
