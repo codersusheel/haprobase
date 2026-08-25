@@ -9,7 +9,7 @@
         {
             "name": "HaproID",
             "url": "https://haproid.netlify.app/",
-            "img": "https://haproid.netlify.app/assets/img/haproid-logo.png"
+            "img": "https://haproid.netlify.app/assets/img/haproid-icon.png"
         },
         {
             "name": "HaproShow",
@@ -44,6 +44,10 @@
         {
             "name": "HaproLearn",
             "url": "https://haprolearn.netlify.app/",
+            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+        },        {
+            "name": "HaproHack",
+            "url": "https://HaproHack.netlify.app/",
             "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
         }
     ],
