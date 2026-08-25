@@ -45,14 +45,18 @@
             "name": "HaproLearn",
             "url": "https://haprolearn.netlify.app/",
             "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
-        },        {
+        },
+        {
             "name": "HaproHack",
             "url": "https://HaproHack.netlify.app/",
             "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+        },
+        {
+            "name": "haproBade",
+            "url": "https://haprobase.netlify.app/",
+            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
         }
     ],
-
-    
     "social_links": [
         {
             "platform": "YouTube",
