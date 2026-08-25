@@ -29,55 +29,36 @@
 // });
 
 
+document.querySelectorAll(".copy-link").forEach(link => {
 
-(function () {
-    "use strict";
+    link.addEventListener("click", async function (event) {
 
-    document.querySelectorAll(".copy-link").forEach(function (link) {
+        event.preventDefault();
 
-        link.addEventListener("click", async function (event) {
+        const originalText = this.textContent;
 
-            event.preventDefault();
+        // Relative/path URL → Complete GitHub Pages URL
+        const copyURL = new URL(
+            this.getAttribute("href"),
+            window.location.origin
+        ).href;
 
-            const originalText = this.textContent;
-            const url = this.href;
+        try {
 
-            try {
-                await navigator.clipboard.writeText(url);
+            await navigator.clipboard.writeText(copyURL);
 
-                this.textContent = "Link Copied!";
+            this.textContent = "Link Copied!";
 
-                setTimeout(() => {
-                    this.textContent = originalText;
-                }, 1500);
+            setTimeout(() => {
+                this.textContent = originalText;
+            }, 1500);
 
-            } catch (error) {
-                console.error("Copy failed:", error);
+        } catch (error) {
 
-                // Fallback for browsers where Clipboard API is unavailable
-                const textarea = document.createElement("textarea");
-                textarea.value = url;
-                textarea.style.position = "fixed";
-                textarea.style.opacity = "0";
+            console.error("Copy failed:", error);
 
-                document.body.appendChild(textarea);
-                textarea.select();
-
-                try {
-                    document.execCommand("copy");
-                    this.textContent = "Link Copied!";
-
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                    }, 1500);
-                } catch (fallbackError) {
-                    console.error("Fallback copy failed:", fallbackError);
-                }
-
-                document.body.removeChild(textarea);
-            }
-        });
+        }
 
     });
 
-})();
+});
