@@ -52,7 +52,12 @@
             "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
         },
         {
-            "name": "haproBade",
+            "name": "Haproven Frame",
+            "url": "https://haproven-frame.netlify.app/",
+            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+        },
+        {
+            "name": "haproBase",
             "url": "https://haprobase.netlify.app/",
             "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
         }
