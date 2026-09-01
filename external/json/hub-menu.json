@@ -54,7 +54,7 @@
         {
             "name": "HaproFrame",
             "url": "https://haproven-frame.netlify.app/",
-            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+            "img": "/external/img/logo/HaproFrame.png"
         },
         {
             "name": "haproBase",
