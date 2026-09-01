@@ -29,7 +29,7 @@
         {
             "name": "HaproAPI",
             "url": "https://haproapi.netlify.app/",
-            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+            "img": "/external/img/logo/haproapi.png"
         },
         {
             "name": "HaproFun",
