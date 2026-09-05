@@ -12,6 +12,11 @@
             "img": "https://haproid.netlify.app/assets/img/haproid-icon.png"
         },
         {
+            "name": "HaproAPI",
+            "url": "https://haproapi.netlify.app/",
+            "img": "https://haprobase.netlify.app/external/img/logo/haproapi.png"
+        },
+        {
             "name": "HaproShow",
             "url": "https://haproshow.netlify.app/",
             "img": "https://haproid.netlify.app/assets/img/haproid-logo.png"
@@ -25,11 +30,6 @@
             "name": "Hapro..Core",
             "url": "https://haproven-core.netlify.app/",
             "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
-        },
-        {
-            "name": "HaproAPI",
-            "url": "https://haproapi.netlify.app/",
-            "img": "https://haprobase.netlify.app/external/img/logo/haproapi.png"
         },
         {
             "name": "HaproFun",
