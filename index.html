@@ -13,14 +13,20 @@
     <link rel="apple-touch-icon" href="https://haproven.netlify.app/assets/img/haproven-logo.png">
     <link rel="shortcut icon" href="https://haproven.netlify.app/assets/img/haproven-logo.png">
 
-    <link rel="stylesheet" href="style.css">
 
 
-    <style>
+    <!-- <style>
         html {
             visibility: hidden
         }
-    </style>
+    </style> -->
+
+
+
+    <link rel="stylesheet" href="https://codersusheel.github.io/haprobase/external/css/base.css">
+
+    <link rel="stylesheet" href="/assets/css/base.css">
+
 
 </head>
 
@@ -30,34 +36,122 @@
 
 <body>
 
-    <style>
-        body {
-            background-color: rgba(3, 1, 18, 0.912);
-            color: #e5e7eb;
-        }
 
-        main a {
-            color: black;
-            text-decoration: none;
-        }
-    </style>
 
-    <header>
+
+    <header id="header">
+
         <div class="header">
-            <a href="">HaproBase</a>
-            <nav id="nav">
-                <ul>
-                    <li><a href="pages/Encoded Generator.html">Encoded Generator</a></li>
-                    <li><a href="">page</a></li>
-                    <li><a href="">page</a></li>
-                    <li><a href="">page</a></li>
+            <div class="logo">
+                <a href="/">
+                    <div class="haproven-brand animate" data-name="Haproven by haproven ">haproven</div>
+                </a>
+            </div>
+
+            <div class="header-senter">
+                <ul id="header-links">
+                    <li class="nav-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</li>
+                    <li class="nav-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</li>
+                    <li class="nav-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</li>
                 </ul>
-            </nav>
+            </div>
+
+
+            <div class="header-right-side">
+
+                <div class="header-manu">
+                    <div class="menu-wrapper">
+
+                        <button class="dot-menu-btn" id="dot6menu" aria-label="Toggle Apps Menu">
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                        </button>
+
+                        <div class="team-dropdown" id="teamDropdown">
+
+                            <div class="quick-actions" id="dot6">
+                                <a href="javascript:void(0)" class="action-box" onclick="toggleLanguage()">
+                                    <div class="language-switch">
+                                        <button id="langBtn">हिंदी</button>
+                                    </div>
+                                    <span>Lang..</span>
+                                </a>
+                                <a id="theme-toggle" class="action-box" href="javascript:void(0)">
+                                    <span class="icon sun">☀️</span>
+                                    <span class="icon moon">🌙</span>
+                                    <span>Theme</span>
+                                </a>
+                                <a href="#" id="login-action" class="action-box">
+                                    <i class="ri-login-circle-line"></i>
+                                    <span>Login</span>
+                                </a>
+
+                                <a href="#" id="main-audio-button" class="action-box">
+                                    <i class="fa-solid fa-volume-low"></i>
+                                    <span>Audio</span>
+                                </a>
+
+                            </div>
+
+                            <ul class="by-haproven" id="by-haproven">
+                                <!-- haproven eco. link -->
+                                <li>
+                                    <a href="" class="member-box">
+                                        <i class="fas fa-circle-notch fa-spin fa-4px"></i>
+                                        <span>Loading...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" class="member-box">
+                                        <i class="fas fa-circle-notch fa-spin fa-4px"></i>
+                                        <span>Loading...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" class="member-box">
+                                        <i class="fas fa-circle-notch fa-spin fa-4px"></i>
+                                        <span>Loading...</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-toggle" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <nav id="navbar-mobile">
+                    <div class="menu-title">Main Menu</div>
+
+                    <ul class="navbar-mobile" id="mobile-sidebar">
+                        <li class="sidebar-icon-loading">
+                            <i class="fas fa-circle-notch fa-spin"></i> <span>Loading Menu...</span>
+                        </li>
+                    </ul>
+
+                    <hr class="hr">
+
+                    <div class="mobile-social haproven-sosal-links">
+                        <a aria-label="loading"><i class="fas fa-circle-notch fa-spin" style="color: #007bff;"></i></a>
+                        <a aria-label="loading"><i class="fas fa-circle-notch fa-spin" style="color: #007bff;"></i></a>
+                        <a aria-label="loading"><i class="fas fa-circle-notch fa-spin" style="color: #007bff;"></i></a>
+                    </div>
+                </nav>
+            </div>
+
         </div>
     </header>
 
 
-    <main>
+
+
+    <main class="main">
         <article class="hero haprobase-hero">
 
             <div class="hero-container">
@@ -222,26 +316,27 @@
 
 
     <footer>
-
+        <div class="footer">
+            &copy;<span id="year"></span> Haproven • Built with ❤️ in India
+        </div>
     </footer>
-    <style>
-        footer {
-            height: 80px;
-            width: 100%;
-            position: fixed;
-            bottom: 0px;
-            left: 0;
-            right: 0;
-            background-color: black;
-            z-index: 99999;
-        }
-    </style>
 
 
-    <script src="script.js"></script>
+
+
+
+
+
+
+
 
     <script>
-        document.write(unescape('%3Cscript%20src%3D%22%2Fexternal%2Fjs%2Fbundle.js%22%3E%3C%2Fscript%3E'));
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJhc3NldHMvanMvYWxsLmpzIj48L3NjcmlwdD4K"));
+    </script>
+
+    <!-- yyyyyy -->
+    <script>
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSIvZXh0ZXJuYWwvanMvYnVuZGxlLmpzIj48L3NjcmlwdD4K"));
     </script>
 
 </body>

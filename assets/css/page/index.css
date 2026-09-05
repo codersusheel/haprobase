@@ -4,34 +4,6 @@
     box-sizing: border-box;
 }
 
-header {
-    padding: 15px;
-    background-color: black;
-
-}
-
-.header {
-    display: flex;
-    max-width: 1280px;
-    margin: auto;
-    justify-content: space-between;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-
-header a {
-    color: aliceblue;
-    text-decoration: none;
-}
-
-main {
-    max-width: 1280px;
-    margin: auto;
-}
 
 
 
@@ -303,8 +275,7 @@ main {
 
 .haprobase-hero .base-card-header strong {
     display: block;
-    color:
-        var(--text-color, #111827);
+    color: #111827;
     font-size: 16px;
 
     font-weight: 750;

@@ -1,0 +1,84 @@
+{
+  "navigation_system": [
+    {
+      "category": "Haproven Core Pillars",
+      "items": [
+        {
+          "name": "Pages",
+          "icon": "fa-file",
+          "type": "dropdown",
+          "placements": ["header", "sidebar_laptop", "sidebar_mobile"],
+          "dropdown_items": [
+            {
+              "name": "Hackathon",
+              "icon": "fa-trophy",
+              "placements": ["sidebar_laptop", "sidebar_mobile"]
+            },
+            {
+              "name": "About",
+              "icon": "fa-info-circle",
+              "placements": ["header", "sidebar_mobile"]
+            },
+            {
+              "name": "Directory",
+              "icon": "fa-folder",
+              "placements": ["header", "sidebar_mobile"]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "category": "Pages & Quick Links",
+      "items": [
+        {
+          "name": "About",
+          "icon": "fa-info-circle",
+          "placements": ["sidebar_laptop", "sidebar_mobile"]
+        },
+        {
+          "name": "Directory",
+          "icon": "fa-folder",
+          "placements": ["sidebar_laptop", "sidebar_mobile"]
+        },
+        {
+          "name": "Benefits",
+          "icon": "fa-file",
+          "type": "dropdown",
+          "placements": ["header", "sidebar_laptop", "sidebar_mobile"],
+          "dropdown_items": [
+            {
+              "name": "General Benefits",
+              "icon": "fa-gift",
+              "placements": ["header", "sidebar_laptop", "sidebar_mobile"]
+            },
+            {
+              "name": "Certificates Benefits",
+              "icon": "fa-certificate",
+              "placements": ["header", "sidebar_laptop", "sidebar_mobile"]
+            }
+          ]
+        },
+        {
+          "name": "Support & Verification",
+          "icon": "fa-shield-alt",
+          "type": "dropdown",
+          "placements": ["header", "sidebar_laptop", "sidebar_mobile"],
+          "dropdown_items": [
+            {
+              "name": "Hapro-cert ID",
+              "icon": "fa-award",
+              "placements": ["header", "sidebar_laptop", "sidebar_mobile"]
+            },
+            {
+              "name": "FAQs",
+              "icon": "fa-question-circle",
+              "placements": ["header", "sidebar_laptop", "sidebar_mobile"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

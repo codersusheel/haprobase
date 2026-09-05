@@ -344,7 +344,7 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("Assets/json/side-link.json")
+    fetch("/external/json/side-link.json")
         .then(response => response.json())
         .then(data => renderNavigation(data.navigation_system))
         .catch(err => console.error("JSON Loading Error:", err));
