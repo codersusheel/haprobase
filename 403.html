@@ -1,206 +1,223 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>403 - Forbidden</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>403 - Forbidden</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #1e1e2f, #26263d);
-            color: #fff;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #26263d);
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
 
-        .container {
-            padding: 40px;
-        }
+  .container { padding: 40px; }
 
-        h1 {
-            font-size: 8rem;
-            color: #ff4d4d;
-            text-shadow: 0 0 20px rgba(255, 77, 77, 0.6);
-            margin-bottom: 10px;
-        }
+  h1 {
+    font-size: 8rem;
+    color: #ff4d4d;
+    text-shadow: 0 0 20px rgba(255, 77, 77, 0.6);
+    margin-bottom: 10px;
+  }
 
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #f5f5f5;
-        }
+  h2 { font-size: 1.8rem; margin-bottom: 15px; color: #f5f5f5; }
 
-        p {
-            color: #bbb;
-            margin-bottom: 30px;
-            font-size: 1rem;
-        }
+  p { color: #bbb; margin-bottom: 30px; font-size: 1rem; }
 
-        .btn-row {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+  .btn-row {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #ff4d4d;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: transform 0.2s ease, background 0.2s ease;
-        }
+  .btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #ff4d4d;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
 
-        .btn:hover {
-            background: #e63946;
-            transform: scale(1.05);
-        }
+  .btn:hover { background: #e63946; transform: scale(1.05); }
 
-        .btn.secondary {
-            background: #4d5bff;
-        }
+  .btn.secondary { background: #4d5bff; }
+  .btn.secondary:hover { background: #3a46cc; }
 
-        .btn.secondary:hover {
-            background: #3a46cc;
-        }
+  .btn.hidden { display: none !important; }
 
-        .btn.hidden {
-            display: none !important;
-        }
+  #warning {
+    margin-top: 20px;
+    color: #ffcc00;
+    font-size: 0.9rem;
+    display: none;
+  }
 
-        #warning {
-            margin-top: 20px;
-            color: #ffcc00;
-            font-size: 0.9rem;
-            display: none;
-        }
-
-        #warning.show {
-            display: block;
-        }
-    </style>
+  #warning.show { display: block; }
+</style>
 </head>
-
 <body>
 
-    <div class="container">
-        <h1>403</h1>
-        <h2>Access Forbidden</h2>
-        <p>Aapko is page ko access karne ki permission nahi hai.</p>
+  <div class="container">
+    <h1>403</h1>
+    <h2>Access Forbidden</h2>
+    <p>Aapko is page ko access karne ki permission nahi hai.</p>
 
-        <div class="btn-row">
-            <button id="backBtn" class="btn secondary hidden" onclick="goBack()">⬅️ Wapas Jayein</button>
-            <button id="homeBtn" class="btn hidden" onclick="goHome()">🏠 Home Par Jayein</button>
-        </div>
-
-        <div id="warning">⚠️ Developer Tools abhi bhi khule hain. Inhe band karein.</div>
+    <div class="btn-row">
+      <button id="backBtn" class="btn secondary hidden" onclick="goBack()">⬅️ Wapas Jayein</button>
+      <button id="homeBtn" class="btn hidden" onclick="goHome()">🏠 Home Par Jayein</button>
     </div>
 
-    <script>
-        const CONFIG = {
-            homeURL: "/",
-            checkInterval: 250,
-            sizeThreshold: 160,
-            timingThreshold: 100,
-            lockKey: "dt_lock"
-        };
+    <div id="warning">⚠️ Developer Tools abhi bhi khule hain. Inhe band karein.</div>
+  </div>
 
-        const homeBtn = document.getElementById('homeBtn');
-        const backBtn = document.getElementById('backBtn');
-        const warning = document.getElementById('warning');
+<script>
+  const CONFIG = {
+    homeURL: "/",
+    checkInterval: 250,
+    sizeThreshold: 160,
+    timingThreshold: 100,
+    lockKey: "dt_lock",
+    returnKey: "dt_return",
+    confirmCycles: 2   // state badalne se pehle itni baar consecutively same result aana chahiye
+  };
 
-        let devtoolsOpen = false;
+  const homeBtn = document.getElementById('homeBtn');
+  const backBtn = document.getElementById('backBtn');
+  const warning = document.getElementById('warning');
 
-        /* Method 1: window size difference (docked devtools) */
-        function checkBySize() {
-            const widthDiff = window.outerWidth - window.innerWidth;
-            const heightDiff = window.outerHeight - window.innerHeight;
-            return widthDiff > CONFIG.sizeThreshold || heightDiff > CONFIG.sizeThreshold;
-        }
+  let devtoolsOpen = false;   // confirmed/current state
+  let pendingState = null;    // jo state ban rahi hai (confirm hone tak)
+  let pendingCount = 0;
 
-        /* Method 2: debugger timing trick (undocked devtools) */
-        function checkByTiming() {
-            const start = performance.now();
-            // eslint-disable-next-line no-debugger
-            debugger;
-            const end = performance.now();
-            return (end - start) > CONFIG.timingThreshold;
-        }
+  /* Method 1: window size difference (docked devtools) */
+  function checkBySize() {
+    const widthDiff = window.outerWidth - window.innerWidth;
+    const heightDiff = window.outerHeight - window.innerHeight;
+    return widthDiff > CONFIG.sizeThreshold || heightDiff > CONFIG.sizeThreshold;
+  }
 
-        function detectDevTools() {
-            return checkBySize() || checkByTiming();
-        }
+  /* Method 2: debugger timing trick (undocked devtools) */
+  function checkByTiming() {
+    const start = performance.now();
+    // eslint-disable-next-line no-debugger
+    debugger;
+    const end = performance.now();
+    return (end - start) > CONFIG.timingThreshold;
+  }
 
-        function clearLockAnd(action) {
-            /* Lock hataye bina jaane se anti-inspect.js turant wapas
-               403 par bhej dega, isliye pehle lock hatana zaroori hai */
-            sessionStorage.removeItem(CONFIG.lockKey);
-            action();
-        }
+  function detectDevToolsRaw() {
+    return checkBySize() || checkByTiming();
+  }
 
-        function goHome() {
-            clearLockAnd(() => { window.location.href = CONFIG.homeURL; });
-        }
+  /* =========================================
+     DEBOUNCED DETECTION
+     Ek hi galat reading se state turant nahi badalti - lagatar
+     'confirmCycles' baar wahi result aana chahiye, tabhi state
+     confirm hoti hai. Isse "devtools band karne ke baad bhi 403
+     hata nahi" wala flaky-detection bug fix hota hai.
+     ========================================= */
+  function detectDevTools() {
+    const raw = detectDevToolsRaw();
 
-        function goBack() {
-            clearLockAnd(() => {
-                if (window.history.length > 1) {
-                    window.history.back();
-                } else {
-                    window.location.href = CONFIG.homeURL;
-                }
-            });
-        }
+    if (raw === pendingState) {
+      pendingCount++;
+    } else {
+      pendingState = raw;
+      pendingCount = 1;
+    }
 
-        function setState(isOpen) {
-            if (isOpen === devtoolsOpen) return; // no change, skip unnecessary DOM writes
-            devtoolsOpen = isOpen;
+    if (pendingCount >= CONFIG.confirmCycles) {
+      return raw; // confirmed
+    }
+    return devtoolsOpen; // abhi purani confirmed state hi rakho
+  }
 
-            if (isOpen) {
-                sessionStorage.setItem(CONFIG.lockKey, "1");
-                homeBtn.classList.add('hidden');
-                backBtn.classList.add('hidden');
-                warning.classList.add('show');
-            } else {
-                sessionStorage.removeItem(CONFIG.lockKey);
-                homeBtn.classList.remove('hidden');
-                backBtn.classList.remove('hidden');
-                warning.classList.remove('show');
-            }
-        }
+  function clearLockAnd(action) {
+    sessionStorage.removeItem(CONFIG.lockKey);
+    action();
+  }
 
-        function runCheck() {
-            setState(detectDevTools());
-        }
+  function goHome() {
+    clearLockAnd(() => { window.location.href = CONFIG.homeURL; });
+  }
 
-        setInterval(runCheck, CONFIG.checkInterval);
-        window.addEventListener('resize', runCheck);
-        runCheck();
+  function goBack() {
+    clearLockAnd(() => {
+      /* anti-inspect.js ne redirect karte waqt asli page ka URL
+         save kiya tha - usi par reliably wapas bhejo, browser
+         history ke bharose nahi (wo location.replace ki wajah se
+         galat entry par le ja sakta hai) */
+      const returnURL = sessionStorage.getItem(CONFIG.returnKey);
+      if (returnURL) {
+        window.location.href = returnURL;
+      } else if (document.referrer) {
+        window.location.href = document.referrer;
+      } else {
+        window.location.href = CONFIG.homeURL;
+      }
+    });
+  }
 
-        /* Back-forward cache se restore hone par bhi turant re-check */
-        window.addEventListener('pageshow', (event) => {
-            if (event.persisted) window.location.reload();
-            else runCheck();
-        });
-    </script>
+  function setState(isOpen) {
+    if (isOpen === devtoolsOpen) return;
+    devtoolsOpen = isOpen;
+
+    if (isOpen) {
+      sessionStorage.setItem(CONFIG.lockKey, "1");
+      homeBtn.classList.add('hidden');
+      backBtn.classList.add('hidden');
+      warning.classList.add('show');
+    } else {
+      sessionStorage.removeItem(CONFIG.lockKey);
+      homeBtn.classList.remove('hidden');
+      backBtn.classList.remove('hidden');
+      warning.classList.remove('show');
+    }
+  }
+
+  function runCheck() {
+    setState(detectDevTools());
+  }
+
+  setInterval(runCheck, CONFIG.checkInterval);
+  window.addEventListener('resize', runCheck);
+  runCheck();
+
+  /* Back-forward cache se restore hone par bhi turant re-check */
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) window.location.reload();
+    else runCheck();
+  });
+
+  /* =========================================
+     HISTORY TRAP - native browser Back/Forward button
+     Jab tak devtools open hai (lock lagi hai), agar user native
+     back/forward button dabaye, to use isi 403 page par wapas
+     khinch liya jata hai - bahar nikalne nahi dete.
+     ========================================= */
+  history.pushState({ trap: true }, '', location.href);
+
+  window.addEventListener('popstate', () => {
+    if (devtoolsOpen || sessionStorage.getItem(CONFIG.lockKey) === "1") {
+      history.pushState({ trap: true }, '', location.href);
+    }
+  });
+</script>
 
 </body>
-
 </html>

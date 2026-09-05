@@ -64,6 +64,15 @@
 
     function go403() {
         setLock();
+        /* Jis page se redirect ho raha hai uska URL save karo -
+           taaki 403.html ka "Wapas Jayein" button reliably usi
+           page par le jaa sake (browser history ke bharose nahi
+           rehna, kyunki location.replace history entry ko
+           overwrite kar deta hai) */
+        try {
+            sessionStorage.setItem("dt_return", window.location.href);
+        } catch (e) { /* ignore */ }
+
         if (blocked) return;
         blocked = true;
         window.location.replace(CONFIG.redirectURL);
