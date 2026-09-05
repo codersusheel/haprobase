@@ -1,382 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="robots"
-        content="noindex, nofollow, noarchive"
-    >
-
-    <title>403 Forbidden</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 - Forbidden</title>
     <style>
-
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        html,
         body {
-            margin: 0;
-            width: 100%;
-            min-height: 100%;
-        }
-
-        body {
-            min-height: 100vh;
-
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #26263d);
+            color: #fff;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-
-            padding: 24px;
-
-            background: #050505;
-            color: #ffffff;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
             text-align: center;
+            overflow: hidden;
         }
 
-        .error {
-            width: 100%;
-            max-width: 620px;
-        }
-
-        .code {
-            margin: 0;
-
-            font-size: clamp(
-                100px,
-                22vw,
-                180px
-            );
-
-            line-height: .85;
-
-            font-weight: 900;
-
-            letter-spacing: -8px;
-
-            user-select: none;
-        }
-
-        .line {
-            width: 60px;
-            height: 3px;
-
-            margin: 30px auto;
-
-            background: #ffffff;
+        .container {
+            padding: 40px;
         }
 
         h1 {
-            margin: 0 0 14px;
+            font-size: 8rem;
+            color: #ff4d4d;
+            text-shadow: 0 0 20px rgba(255, 77, 77, 0.6);
+            margin-bottom: 10px;
+        }
 
-            font-size: clamp(
-                26px,
-                5vw,
-                38px
-            );
-
-            font-weight: 800;
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #f5f5f5;
         }
 
         p {
-            margin: 0 auto;
-
-            max-width: 500px;
-
-            font-size: 15px;
-
-            line-height: 1.7;
-
-            color:
-                rgba(255, 255, 255, .6);
+            color: #bbb;
+            margin-bottom: 30px;
+            font-size: 1rem;
         }
 
-        .status {
-            display: inline-block;
-
-            margin-top: 25px;
-
-            padding: 7px 13px;
-
-            border: 1px solid
-                rgba(255, 255, 255, .15);
-
-            border-radius: 999px;
-
-            font-size: 11px;
-
-            letter-spacing: .7px;
-
-            color:
-                rgba(255, 255, 255, .45);
-        }
-
-        .actions {
-            margin-top: 30px;
-
+        .btn-row {
             display: flex;
-
+            gap: 15px;
             justify-content: center;
-
-            align-items: center;
-
-            gap: 10px;
-
             flex-wrap: wrap;
         }
 
         .btn {
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            min-width: 130px;
-
-            padding: 11px 20px;
-
-            border-radius: 7px;
-
-            font-size: 14px;
-
-            font-weight: 700;
-
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ff4d4d;
+            color: #fff;
             text-decoration: none;
-
+            font-weight: bold;
+            border-radius: 30px;
+            border: none;
             cursor: pointer;
-
-            transition:
-                opacity .2s ease,
-                transform .2s ease;
-        }
-
-        .home {
-            background: #ffffff;
-
-            color: #000000;
-
-            border: 1px solid #ffffff;
-        }
-
-        .refresh {
-            background: transparent;
-
-            color: #ffffff;
-
-            border: 1px solid
-                rgba(255, 255, 255, .2);
+            font-size: 1rem;
+            transition: transform 0.2s ease, background 0.2s ease;
         }
 
         .btn:hover {
-            opacity: .85;
-
-            transform:
-                translateY(-1px);
+            background: #e63946;
+            transform: scale(1.05);
         }
 
+        .btn.secondary {
+            background: #4d5bff;
+        }
 
-        /* =================================
-           BLOCKED / SUSPICIOUS STATE
-           ================================= */
+        .btn.secondary:hover {
+            background: #3a46cc;
+        }
 
-        body.protected .home {
+        .btn.hidden {
+            display: none !important;
+        }
+
+        #warning {
+            margin-top: 20px;
+            color: #ffcc00;
+            font-size: 0.9rem;
             display: none;
         }
 
-
-        /* =================================
-           MOBILE
-           ================================= */
-
-        @media (max-width: 480px) {
-
-            body {
-                padding: 20px;
-            }
-
-            .code {
-                letter-spacing: -4px;
-            }
-
-            p {
-                font-size: 14px;
-            }
-
-            .actions {
-                width: 100%;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
+        #warning.show {
+            display: block;
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-    <main class="error">
+    <div class="container">
+        <h1>403</h1>
+        <h2>Access Forbidden</h2>
+        <p>Aapko is page ko access karne ki permission nahi hai.</p>
 
-        <div
-            class="code"
-            aria-label="403"
-        >
-            403
+        <div class="btn-row">
+            <button id="backBtn" class="btn secondary hidden" onclick="goBack()">⬅️ Wapas Jayein</button>
+            <button id="homeBtn" class="btn hidden" onclick="goHome()">🏠 Home Par Jayein</button>
         </div>
 
-
-        <div class="line"></div>
-
-
-        <h1>
-            Access Denied
-        </h1>
-
-
-        <p>
-            You don't have permission to access this resource.
-            The requested page is protected or unavailable.
-        </p>
-
-
-        <div class="status">
-            ACCESS DENIED
-        </div>
-
-
-        <div class="actions">
-
-            <a
-                class="btn home"
-                href="/"
-            >
-                Return to Home
-            </a>
-
-
-            <button
-                class="btn refresh"
-                type="button"
-                onclick="location.reload()"
-            >
-                Refresh Page
-            </button>
-
-        </div>
-
-    </main>
-
+        <div id="warning">⚠️ Developer Tools abhi bhi khule hain. Inhe band karein.</div>
+    </div>
 
     <script>
+        const CONFIG = {
+            homeURL: "/",
+            checkInterval: 250,
+            sizeThreshold: 160,
+            timingThreshold: 100,
+            lockKey: "dt_lock"
+        };
 
-        "use strict";
+        const homeBtn = document.getElementById('homeBtn');
+        const backBtn = document.getElementById('backBtn');
+        const warning = document.getElementById('warning');
 
+        let devtoolsOpen = false;
 
-        /* =================================
-           SECURITY STATE
-           ================================= */
-
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
-
-
-        const blockedByURL =
-            params.get("blocked") === "1";
-
-
-        const blockedFromSession =
-            sessionStorage.getItem(
-                "page_protection_blocked"
-            ) === "1";
-
-
-        /*
-         * If protection redirected the user
-         * here, permanently keep this page
-         * in protected state for this tab.
-         */
-
-        if (
-            blockedByURL ||
-            blockedFromSession
-        ) {
-
-            sessionStorage.setItem(
-                "page_protection_blocked",
-                "1"
-            );
-
-            document.body.classList.add(
-                "protected"
-            );
-
+        /* Method 1: window size difference (docked devtools) */
+        function checkBySize() {
+            const widthDiff = window.outerWidth - window.innerWidth;
+            const heightDiff = window.outerHeight - window.innerHeight;
+            return widthDiff > CONFIG.sizeThreshold || heightDiff > CONFIG.sizeThreshold;
         }
 
-
-        /* =================================
-           CONSOLE SECURITY MESSAGE
-           ================================= */
-
-        if (
-            blockedByURL ||
-            blockedFromSession
-        ) {
-
-            console.warn(
-                "%c403 ACCESS DENIED",
-                "color:red;font-size:22px;font-weight:bold;"
-            );
-
-            console.warn(
-                "Protected page access was blocked."
-            );
-
-            console.warn(
-                "Security state: ACTIVE"
-            );
-
-        } else {
-
-            console.info(
-                "%c403 Forbidden",
-                "font-size:18px;font-weight:bold;"
-            );
-
+        /* Method 2: debugger timing trick (undocked devtools) */
+        function checkByTiming() {
+            const start = performance.now();
+            // eslint-disable-next-line no-debugger
+            debugger;
+            const end = performance.now();
+            return (end - start) > CONFIG.timingThreshold;
         }
 
+        function detectDevTools() {
+            return checkBySize() || checkByTiming();
+        }
 
-        /* =================================
-           PROTECTION INFORMATION
-           ================================= */
+        function clearLockAnd(action) {
+            /* Lock hataye bina jaane se anti-inspect.js turant wapas
+               403 par bhej dega, isliye pehle lock hatana zaroori hai */
+            sessionStorage.removeItem(CONFIG.lockKey);
+            action();
+        }
 
-        Object.freeze({
-            blocked: true,
-            page: "403"
+        function goHome() {
+            clearLockAnd(() => { window.location.href = CONFIG.homeURL; });
+        }
+
+        function goBack() {
+            clearLockAnd(() => {
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    window.location.href = CONFIG.homeURL;
+                }
+            });
+        }
+
+        function setState(isOpen) {
+            if (isOpen === devtoolsOpen) return; // no change, skip unnecessary DOM writes
+            devtoolsOpen = isOpen;
+
+            if (isOpen) {
+                sessionStorage.setItem(CONFIG.lockKey, "1");
+                homeBtn.classList.add('hidden');
+                backBtn.classList.add('hidden');
+                warning.classList.add('show');
+            } else {
+                sessionStorage.removeItem(CONFIG.lockKey);
+                homeBtn.classList.remove('hidden');
+                backBtn.classList.remove('hidden');
+                warning.classList.remove('show');
+            }
+        }
+
+        function runCheck() {
+            setState(detectDevTools());
+        }
+
+        setInterval(runCheck, CONFIG.checkInterval);
+        window.addEventListener('resize', runCheck);
+        runCheck();
+
+        /* Back-forward cache se restore hone par bhi turant re-check */
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) window.location.reload();
+            else runCheck();
         });
-
     </script>
 
 </body>

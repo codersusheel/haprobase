@@ -1,6 +1,6 @@
 const paths = [
-    "/external/js/page-loader.js",
-    "/external/js/security/page-protection.js",
+    "/external/js/security/devtools-guard.js",
+    "/external/js/security/content-protect.js",
     atob("L2Fzc2V0cy9hcGkvZ2xvYmFsLmpz")
 ];
 

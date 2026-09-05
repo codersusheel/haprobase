@@ -14,10 +14,14 @@
     const files = [
 
         // page-protection.js
-        "L2V4dGVybmFsL2pzL3NlY3VyaXR5L3BhZ2UtcHJvdGVjdGlvbi5qcw==",
+        // "L2V4dGVybmFsL2pzL3NlY3VyaXR5L2FudGktaW5zcGVjdC5qcw==",
 
         // global.js
         "L2Fzc2V0cy9hcGkvZ2xvYmFsLmpz"
+
+        // "L2V4dGVybmFsL2pzL3NlY3VyaXR5L2FudGktaW5zcGVjdC5qcw==",
+
+        // "L2V4dGVybmFsL2pzL3NlY3VyaXR5L3BhZ2UtcHJvdGVjdGlvbi5qcw=="
 
 
 

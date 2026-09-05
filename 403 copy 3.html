@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 - Forbidden</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #26263d);
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 8rem;
+            color: #ff4d4d;
+            text-shadow: 0 0 20px rgba(255, 77, 77, 0.6);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #f5f5f5;
+        }
+
+        p {
+            color: #bbb;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        #homeBtn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ff4d4d;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        #homeBtn:hover {
+            background: #e63946;
+            transform: scale(1.05);
+        }
+
+        #homeBtn.hidden {
+            display: none !important;
+        }
+
+        #warning {
+            margin-top: 20px;
+            color: #ffcc00;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        #warning.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>403</h1>
+        <h2>Access Forbidden</h2>
+        <p>Aapko is page ko access karne ki permission nahi hai.</p>
+
+        <button id="homeBtn" onclick="window.location.href='/'">🏠 Home Par Jayein</button>
+
+        <div id="warning">⚠️ Developer Tools detect hue hain, isliye button chhupa diya gaya hai.</div>
+    </div>
+
+    <script>
+        const homeBtn = document.getElementById('homeBtn');
+        const warning = document.getElementById('warning');
+
+        let devtoolsOpen = false;
+
+        function setState(isOpen) {
+            if (isOpen === devtoolsOpen) return; // no change, skip unnecessary DOM writes
+            devtoolsOpen = isOpen;
+            if (isOpen) {
+                homeBtn.classList.add('hidden');
+                warning.classList.add('show');
+            } else {
+                homeBtn.classList.remove('hidden');
+                warning.classList.remove('show');
+            }
+        }
+
+        // Method 1: window size difference (works when devtools is docked)
+        function checkBySize() {
+            const threshold = 160;
+            const widthDiff = window.outerWidth - window.innerWidth;
+            const heightDiff = window.outerHeight - window.innerHeight;
+            return widthDiff > threshold || heightDiff > threshold;
+        }
+
+        // Method 2: debugger timing trick (works even for undocked devtools)
+        function checkByTiming() {
+            const start = performance.now();
+            // eslint-disable-next-line no-debugger
+            debugger;
+            const end = performance.now();
+            return (end - start) > 100;
+        }
+
+        function detectDevTools() {
+            const isOpen = checkBySize() || checkByTiming();
+            setState(isOpen);
+        }
+
+        // Check repeatedly
+        setInterval(detectDevTools, 500);
+        window.addEventListener('resize', detectDevTools);
+        detectDevTools();
+    </script>
+
+</body>
+
+</html>
