@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dual Script Encoded Generator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f1f5f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .encoder-card {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      max-width: 550px;
+      width: 100%;
+    }
+
+    .encoder-card h2 {
+      font-size: 1.5rem;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .encoder-card p {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-group input:focus {
+      border-color: #2563eb;
+    }
+
+    .btn-encode {
+      width: 100%;
+      padding: 12px;
+      background-color: #2563eb;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 10px;
+    }
+
+    .btn-encode:hover {
+      background-color: #1d4ed8;
+    }
+
+    .output-group {
+      margin-top: 25px;
+      display: none;
+    }
+
+    .output-box {
+      background-color: #0f172a;
+      color: #38bdf8;
+      border-radius: 8px;
+      padding: 15px;
+      word-break: break-all;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.88rem;
+      white-space: pre-wrap;
+      position: relative;
+    }
+
+    .btn-copy {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #10b981;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      float: right;
+    }
+
+    .btn-copy:hover {
+      background-color: #059669;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="encoder-card">
+    <h2>Dual Script Encoded Generator</h2>
+    <p>दो स्क्रिप्ट फ़ाइल के लिंक डालें और बेस64 एन्कोडेड script टैग पाएँ।</p>
+
+    <div class="input-group">
+      <label for="script1">पहला Script Link (URL / Path):</label>
+      <input type="text" id="script1" placeholder="उदा. /assets/js/bundle.js">
+    </div>
+
+    <div class="input-group">
+      <label for="script2">दूसरा Script Link (URL / Path):</label>
+      <input type="text" id="script2" placeholder="उदा. /assets/js/app.js">
+    </div>
+
+    <button class="btn-encode" onclick="generateEncodedScript()">Generate Script</button>
+
+    <div class="output-group" id="outputGroup">
+      <div class="input-group">
+        <label>Generated Script Tag:</label>
+        <div class="output-box" id="encodedResult"></div>
+        <button class="btn-copy" onclick="copyToClipboard()">Copy Code</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function generateEncodedScript() {
+      const link1 = document.getElementById('script1').value.trim();
+      const link2 = document.getElementById('script2').value.trim();
+      const outputGroup = document.getElementById('outputGroup');
+      const resultBox = document.getElementById('encodedResult');
+
+      if (!link1 || !link2) {
+        alert("कृपया दोनों Script Link दर्ज करें!");
+        return;
+      }
+
+      // दोनों स्क्रिप्ट्स को लोडिंग करने का प्योर JS लॉजिक
+      const rawJsCode = `var s1=document.createElement('script');s1.src='${link1}';document.head.appendChild(s1);var s2=document.createElement('script');s2.src='${link2}';document.head.appendChild(s2);`;
+
+      // Base64 Encoding
+      const base64Encoded = btoa(rawJsCode);
+
+      // पूरा Script Tag
+      const finalCode = `<script>\n  eval(atob('${base64Encoded}'));\n<\/script>`;
+
+      resultBox.innerText = finalCode;
+      outputGroup.style.display = 'block';
+    }
+
+    function copyToClipboard() {
+      const codeText = document.getElementById('encodedResult').innerText;
+      navigator.clipboard.writeText(codeText).then(() => {
+        alert("कोड कॉपी हो गया है!");
+      });
+    }
+  </script>
+
+</body>
+</html>
