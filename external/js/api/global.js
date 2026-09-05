@@ -15,7 +15,7 @@
 
         const JSON_SOURCES = [
             "https://raw.githubusercontent.com/codersusheel/haprobase/main/external/json/hub-menu.json",
-            "/assets/json/hub-menu.json"
+            "/external/json/hub-menu.json"
         ];
 
         try {
@@ -171,7 +171,7 @@
 
         const JSON_SOURCES = [
             "https://raw.githubusercontent.com/codersusheel/haprobase/main/external/json/hub-menu.json",
-            "/assets/json/hub-menu.json"
+            "/external/json/hub-menu.json"
         ];
 
         for (const source of JSON_SOURCES) {
@@ -238,7 +238,7 @@
 
         const JSON_SOURCES = [
             "https://raw.githubusercontent.com/codersusheel/haprobase/main/external/json/hub-menu.json",
-            "/assets/json/hub-menu.json"
+            "/external/json/hub-menu.json"
         ];
 
         for (const source of JSON_SOURCES) {
