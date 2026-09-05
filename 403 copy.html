@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow, noarchive"
+    >
+
+    <meta
+        name="description"
+        content="403 Forbidden - Access to this resource is denied."
+    >
+
+    <title>403 Forbidden</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            color: #ffffff;
+
+            font-family:
+                Inter,
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    #300000 0%,
+                    #120000 38%,
+                    #050505 72%,
+                    #000000 100%
+                );
+
+            overflow-x: hidden;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 760px;
+
+            text-align: center;
+        }
+
+        .status {
+            font-size: clamp(100px, 20vw, 190px);
+
+            line-height: .85;
+
+            font-weight: 900;
+
+            letter-spacing: -10px;
+
+            color: #ffffff;
+
+            text-shadow:
+                0 0 30px rgba(255, 0, 0, .18);
+
+            user-select: none;
+        }
+
+        .line {
+            width: 80px;
+            height: 4px;
+
+            margin: 32px auto;
+
+            border-radius: 10px;
+
+            background: #ffffff;
+        }
+
+        h1 {
+            font-size: clamp(25px, 5vw, 40px);
+
+            line-height: 1.2;
+
+            font-weight: 800;
+
+            margin-bottom: 18px;
+        }
+
+        .description {
+            max-width: 580px;
+
+            margin: 0 auto;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            color: rgba(255, 255, 255, .65);
+        }
+
+        .info {
+            margin-top: 28px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 9px 16px;
+
+            border: 1px solid
+                rgba(255, 255, 255, .12);
+
+            border-radius: 999px;
+
+            background:
+                rgba(255, 255, 255, .035);
+
+            color:
+                rgba(255, 255, 255, .48);
+
+            font-size: 12px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+        }
+
+        .actions {
+            margin-top: 35px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-width: 135px;
+
+            padding: 12px 20px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition:
+                transform .2s ease,
+                background .2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary {
+            color: #000000;
+
+            background: #ffffff;
+        }
+
+        .secondary {
+            color: #ffffff;
+
+            border: 1px solid
+                rgba(255, 255, 255, .15);
+
+            background:
+                rgba(255, 255, 255, .04);
+        }
+
+        footer {
+            margin-top: 55px;
+
+            font-size: 11px;
+
+            color:
+                rgba(255, 255, 255, .25);
+        }
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .status {
+                letter-spacing: -5px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <main class="page">
+
+        <div
+            class="status"
+            aria-label="403"
+        >
+            403
+        </div>
+
+        <div class="line"></div>
+
+        <h1>
+            Forbidden
+        </h1>
+
+        <p class="description">
+            You don't have permission to access this resource.
+            The requested page is protected or unavailable
+            from your current environment.
+        </p>
+
+        <div class="info">
+            <span class="dot"></span>
+            Access Denied
+        </div>
+
+        <div class="actions">
+
+            <a
+                class="button primary"
+                href="/"
+            >
+                Go to Home
+            </a>
+
+            <a
+                class="button secondary"
+                href="javascript:history.back()"
+            >
+                Go Back
+            </a>
+
+        </div>
+
+        <footer>
+            HTTP 403 • Forbidden
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
