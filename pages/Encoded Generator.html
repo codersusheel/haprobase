@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Single Script Encoder</title>
+  <title>Dual Script Encoder</title>
   <style>
     * {
       box-sizing: border-box;
@@ -122,19 +122,24 @@
 <body>
 
   <div class="encoder-card">
-    <h2>Script Encoder</h2>
-    <p>अपनी JS फ़ाइल का लिंक डालें और एन्कोडेड <code>&lt;script&gt;</code> टैग पाएँ।</p>
+    <h2>Dual Script Encoder</h2>
+    <p>दो अलग-अलग Script Link या पूरा <code>&lt;script&gt;</code> टैग डालें और एक ही एन्कोडेड कोड पाएँ।</p>
 
     <div class="input-group">
-      <label for="scriptLink">Script Link (Path / URL):</label>
-      <input type="text" id="scriptLink" placeholder="उदा. /assets/js/bundle.js">
+      <label for="script1">पहला Script Link / Tag:</label>
+      <input type="text" id="script1" placeholder="उदा. /assets/js/bundle.js या <script src='...'></script>">
     </div>
 
-    <button class="btn-encode" onclick="generateScript()">Generate Encoded Script</button>
+    <div class="input-group">
+      <label for="script2">दूसरा Script Link / Tag:</label>
+      <input type="text" id="script2" placeholder="उदा. /assets/js/main.js या <script src='...'></script>">
+    </div>
+
+    <button class="btn-encode" onclick="generateDualScript()">Generate Encoded Script</button>
 
     <div class="output-group" id="outputGroup">
       <div class="input-group">
-        <label>Generated Script Tag:</label>
+        <label>Generated Single Script Tag:</label>
         <div class="output-box" id="encodedResult"></div>
         <button class="btn-copy" onclick="copyToClipboard()">Copy Code</button>
       </div>
@@ -142,23 +147,34 @@
   </div>
 
   <script>
-    function generateScript() {
-      const link = document.getElementById('scriptLink').value.trim();
+    // URL/Path निकालने के लिए फ़ंक्शन
+    function extractSrc(input) {
+      const match = input.match(/src=["']([^"']+)["']/i);
+      return (match && match[1]) ? match[1] : input;
+    }
+
+    function generateDualScript() {
+      let link1 = document.getElementById('script1').value.trim();
+      let link2 = document.getElementById('script2').value.trim();
       const outputGroup = document.getElementById('outputGroup');
       const resultBox = document.getElementById('encodedResult');
 
-      if (!link) {
-        alert("कृपया Script Link दर्ज करें!");
+      if (!link1 || !link2) {
+        alert("कृपया दोनों Script Link या Tag दर्ज करें!");
         return;
       }
 
-      // 1. वही लॉजिक जो आपके उदाहरण में था
-      const rawJsCode = `var s=document.createElement('script');s.src='${link}';document.head.appendChild(s);`;
+      // दोनों इनपुट से Clean Path निकालना
+      link1 = extractSrc(link1);
+      link2 = extractSrc(link2);
 
-      // 2. Base64 Encoding
+      // दोनों JS स्क्रिप्ट्स को एक साथ लोडिंग करने का लॉजिक
+      const rawJsCode = `var s1=document.createElement('script');s1.src='${link1}';document.head.appendChild(s1);var s2=document.createElement('script');s2.src='${link2}';document.head.appendChild(s2);`;
+
+      // Base64 Encoding
       const base64Encoded = btoa(rawJsCode);
 
-      // 3. आउटपुट फॉर्मेट तैयार करना
+      // फाइनल कोड
       const finalCode = `<script>\n  eval(atob('${base64Encoded}'));\n<\/script>`;
 
       resultBox.innerText = finalCode;
