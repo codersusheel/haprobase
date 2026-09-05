@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dual Script Encoded Generator</title>
+  <title>Single Script Encoder</title>
   <style>
     * {
       box-sizing: border-box;
@@ -79,7 +79,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s;
-      margin-top: 10px;
+      margin-top: 5px;
     }
 
     .btn-encode:hover {
@@ -100,7 +100,6 @@
       font-family: 'Courier New', Courier, monospace;
       font-size: 0.88rem;
       white-space: pre-wrap;
-      position: relative;
     }
 
     .btn-copy {
@@ -123,20 +122,15 @@
 <body>
 
   <div class="encoder-card">
-    <h2>Dual Script Encoded Generator</h2>
-    <p>दो स्क्रिप्ट फ़ाइल के लिंक डालें और बेस64 एन्कोडेड script टैग पाएँ।</p>
+    <h2>Script Encoder</h2>
+    <p>अपनी JS फ़ाइल का लिंक डालें और एन्कोडेड <code>&lt;script&gt;</code> टैग पाएँ।</p>
 
     <div class="input-group">
-      <label for="script1">पहला Script Link (URL / Path):</label>
-      <input type="text" id="script1" placeholder="उदा. /assets/js/bundle.js">
+      <label for="scriptLink">Script Link (Path / URL):</label>
+      <input type="text" id="scriptLink" placeholder="उदा. /assets/js/bundle.js">
     </div>
 
-    <div class="input-group">
-      <label for="script2">दूसरा Script Link (URL / Path):</label>
-      <input type="text" id="script2" placeholder="उदा. /assets/js/app.js">
-    </div>
-
-    <button class="btn-encode" onclick="generateEncodedScript()">Generate Script</button>
+    <button class="btn-encode" onclick="generateScript()">Generate Encoded Script</button>
 
     <div class="output-group" id="outputGroup">
       <div class="input-group">
@@ -148,24 +142,23 @@
   </div>
 
   <script>
-    function generateEncodedScript() {
-      const link1 = document.getElementById('script1').value.trim();
-      const link2 = document.getElementById('script2').value.trim();
+    function generateScript() {
+      const link = document.getElementById('scriptLink').value.trim();
       const outputGroup = document.getElementById('outputGroup');
       const resultBox = document.getElementById('encodedResult');
 
-      if (!link1 || !link2) {
-        alert("कृपया दोनों Script Link दर्ज करें!");
+      if (!link) {
+        alert("कृपया Script Link दर्ज करें!");
         return;
       }
 
-      // दोनों स्क्रिप्ट्स को लोडिंग करने का प्योर JS लॉजिक
-      const rawJsCode = `var s1=document.createElement('script');s1.src='${link1}';document.head.appendChild(s1);var s2=document.createElement('script');s2.src='${link2}';document.head.appendChild(s2);`;
+      // 1. वही लॉजिक जो आपके उदाहरण में था
+      const rawJsCode = `var s=document.createElement('script');s.src='${link}';document.head.appendChild(s);`;
 
-      // Base64 Encoding
+      // 2. Base64 Encoding
       const base64Encoded = btoa(rawJsCode);
 
-      // पूरा Script Tag
+      // 3. आउटपुट फॉर्मेट तैयार करना
       const finalCode = `<script>\n  eval(atob('${base64Encoded}'));\n<\/script>`;
 
       resultBox.innerText = finalCode;
