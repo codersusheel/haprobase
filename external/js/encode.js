@@ -1,6 +1,6 @@
 const paths = [
-    "https://ha-api.netlify.app/assets/js/global.js",
-    "/external/js/security/content-protect.js",
+    "L2Fzc2V0cy9hcGkvZ2xvYmFsLmpz",
+    
     atob("L2Fzc2V0cy9hcGkvZ2xvYmFsLmpz")
 ];
 
