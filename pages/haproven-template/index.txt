@@ -361,38 +361,55 @@
 
 
 
-    <!-- external/js/bundle.js -->
+
+
+    <!--================== lokal page js ======================== -->
     <script>
-        document.write(atob("ICA8c2NyaXB0IHNyYz0iL2V4dGVybmFsL2pzL2J1bmRsZS5qcyI+PC9zY3JpcHQ+"));
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSIvZXh0ZXJuYWwvanMvYnVuZGxlLmpzIj48L3NjcmlwdD4KCg=="));
+    </script>
+
+    <script>
+        document.write(atob("ICA8c2NyaXB0IHNyYz0iL2Fzc2V0cy9qcy9sb2thbC5qcyI+PC9zY3JpcHQ+Cgo="));
     </script>
 
 
-    <!-- external/js/main -->
-    <script>
-        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vc2NyaXB0LmpzIj48L3NjcmlwdD4K"));
-    </script>
+
+
+    <!--================== external page js ======================== -->
+
+
 
     <!-- external/js/api/global -->
-    <script>
+    <!-- <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL2FwaS9nbG9iYWwuanMiPjwvc2NyaXB0Pgo="));
-    </script>
-
-    <!-- page loader -->
-    <script>
-        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vcGFnZS1sb2FkZXIuanMiPjwvc2NyaXB0Pgo="));
-    </script>
-
-
-    <!-- anti-inspect -->
-    <script>
-        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL3NlY3VyaXR5L2FudGktaW5zcGVjdC5qcyI+PC9zY3JpcHQ+Cg=="));
-    </script>
+    </script> -->
 
 
     <!-- externaljs/auth/ login -->
-    <script>
+    <!-- <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL2F1dGgvYXV0aC5qcyI+PC9zY3JpcHQ+Cg=="));
-    </script>
+    </script> -->
+
+
+    <!-- external/js/main -->
+    <!-- <script>
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vc2NyaXB0LmpzIj48L3NjcmlwdD4K"));
+    </script> -->
+
+
+    <!-- page loader -->
+    <!-- <script>
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vcGFnZS1sb2FkZXIuanMiPjwvc2NyaXB0Pgo="));
+    </script> -->
+
+
+    <!-- anti-inspect -->
+    <!-- <script>
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL3NlY3VyaXR5L2FudGktaW5zcGVjdC5qcyI+PC9zY3JpcHQ+Cg=="));
+    </script> -->
+
+
+
 
 
 
