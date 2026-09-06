@@ -306,6 +306,16 @@
     color: #780ee9;
 }
 
+.tree-item b{
+   padding-left: 15px;
+}
+
+.tree-item strong{
+  color: #1b1b1d;
+   padding: 10px;
+
+}
+
 
 .haprobase-hero .tree-item {
     display: flex;

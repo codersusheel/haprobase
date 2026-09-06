@@ -89,14 +89,11 @@ document.addEventListener("click", function (event) {
 
 
 
-
-
 // =====================
 // file/code copy link
 // =====================
 
 (function () {
-
     "use strict";
 
     document.addEventListener("click", async function (event) {
@@ -107,43 +104,56 @@ document.addEventListener("click", function (event) {
 
         event.preventDefault();
 
-        const originalText = link.textContent;
+        const originalText = link.textContent.trim();
         const filePath = link.dataset.file;
 
-        if (!filePath) return;
+        if (!filePath) {
+            console.error("data-file missing");
+            return;
+        }
 
         try {
+            link.textContent = "Copying...";
 
+            // Current website ke same domain se 1.txt load
             const response = await fetch(filePath, {
-                cache: "force-cache"
+                cache: "no-store"
             });
 
             if (!response.ok) {
-                throw new Error(`File not found: ${response.status}`);
+                throw new Error(
+                    `File not found: ${response.status}`
+                );
             }
 
             const code = await response.text();
 
             if (!code.trim()) {
-                throw new Error("File is empty");
+                throw new Error("TXT file is empty");
             }
 
             await navigator.clipboard.writeText(code);
 
-            link.textContent = "Code Copied!";
+            link.textContent = "✓ Code Copied!";
 
         } catch (error) {
 
-            console.error("Copy failed:", error);
+            console.error("Copy error:", error);
 
-            link.textContent = "Copy Failed!";
+            link.textContent = "✕ Failed";
 
         }
 
         setTimeout(() => {
             link.textContent = originalText;
-        }, 1500);
+        }, 1800);
 
     });
 
 })();
+
+
+
+
+
+
