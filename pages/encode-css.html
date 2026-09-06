@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="HaproBase CSS Encoder - Convert external CSS into Base64 encoded CSS link."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <title>CSS Encoder - HaproBase</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #f6f8fb;
+            --card: #ffffff;
+            --text: #172033;
+            --muted: #687386;
+            --border: #dfe4ec;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --code-bg: #111827;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            width: 100%;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            width: min(1150px, calc(100% - 32px));
+            min-height: 68px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            color: var(--primary);
+            background: #eff6ff;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            width: min(1150px, calc(100% - 32px));
+            margin: auto;
+            padding: 55px 0 70px;
+        }
+
+        .hero {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 38px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 11px;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .badge::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--success);
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 5vw, 48px);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 14px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+            margin-bottom: 24px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .card-description {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .url-input {
+            flex: 1;
+            min-width: 0;
+            height: 48px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            outline: none;
+            padding: 0 15px;
+            font-size: 14px;
+            color: var(--text);
+            background: #fff;
+            transition: 0.2s ease;
+        }
+
+        .url-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .button {
+            height: 48px;
+            border: 0;
+            border-radius: 10px;
+            padding: 0 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 800;
+            transition: 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .encode-btn {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .encode-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .encode-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .clear-btn {
+            background: #f1f5f9;
+            color: var(--text);
+        }
+
+        .clear-btn:hover {
+            background: #e2e8f0;
+        }
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status {
+            display: none;
+            margin-top: 15px;
+            padding: 12px 14px;
+            border-radius: 9px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .status.show {
+            display: block;
+        }
+
+        .status.loading {
+            color: #92400e;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+        }
+
+        .status.success {
+            color: #166534;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+
+        .status.error {
+            color: #991b1b;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        .result {
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .result-title {
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .small-btn {
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--text);
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .small-btn:hover {
+            background: #f8fafc;
+        }
+
+        .code-wrapper {
+            position: relative;
+        }
+
+        .code-box {
+            width: 100%;
+            min-height: 170px;
+            resize: vertical;
+            border: 1px solid #1f2937;
+            border-radius: 10px;
+            background: var(--code-bg);
+            color: #e5e7eb;
+            padding: 18px;
+            outline: none;
+            font-family:
+                "Cascadia Code",
+                "Consolas",
+                "Courier New",
+                monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            word-break: break-all;
+        }
+
+        /* =========================
+           INFO GRID
+        ========================= */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .info-box {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .info-icon {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            background: #eff6ff;
+            color: var(--primary);
+            font-weight: 900;
+            margin-bottom: 13px;
+        }
+
+        .info-box h3 {
+            font-size: 15px;
+            margin-bottom: 7px;
+        }
+
+        .info-box p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           PREVIEW
+        ========================= */
+
+        .preview-box {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px dashed var(--border);
+            background: #f8fafc;
+        }
+
+        .preview-label {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stat {
+            padding: 7px 10px;
+            border-radius: 7px;
+            background: #fff;
+            border: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .stat strong {
+            color: var(--text);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            border-top: 1px solid var(--border);
+            background: #fff;
+        }
+
+        .footer-inner {
+            width: min(1150px, calc(100% - 32px));
+            min-height: 70px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .footer p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            .header-inner {
+                min-height: 60px;
+            }
+
+            .nav a {
+                display: none;
+            }
+
+            .main {
+                padding-top: 38px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .result-actions {
+                width: 100%;
+            }
+
+            .small-btn {
+                flex: 1;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                justify-content: center;
+                padding: 18px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <div class="header-inner">
+
+            <a href="/" class="brand">
+                Hapro<span>Base</span>
+            </a>
+
+            <nav class="nav">
+                <a href="/">Home</a>
+                <a href="/pages/encode.html" class="active">
+                    Encode
+                </a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+        <section class="hero">
+
+            <div class="badge">
+                CSS Utility
+            </div>
+
+            <h1>
+                CSS <span>Encoder</span>
+            </h1>
+
+            <p>
+                Enter an external CSS URL and convert its stylesheet
+                into a Base64 encoded CSS data URL.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             ENCODER
+        ========================== -->
+
+        <section class="card">
+
+            <div class="card-title">
+                Encode CSS
+            </div>
+
+            <div class="card-description">
+                Paste the public CSS file URL below.
+                The CSS will be fetched and converted into
+                a Base64 encoded stylesheet.
+            </div>
+
+
+            <div class="input-group">
+
+                <input
+                    type="url"
+                    id="cssUrl"
+                    class="url-input"
+                    placeholder="https://example.com/style.css"
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+
+                <button
+                    type="button"
+                    id="encodeBtn"
+                    class="button encode-btn"
+                >
+                    Encode CSS
+                </button>
+
+                <button
+                    type="button"
+                    id="clearBtn"
+                    class="button clear-btn"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+
+            <div
+                id="status"
+                class="status"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================
+             RESULT
+        ========================== -->
+
+        <section
+            id="result"
+            class="card result"
+        >
+
+            <div class="result-header">
+
+                <div class="result-title">
+                    Encoded CSS Link
+                </div>
+
+                <div class="result-actions">
+
+                    <button
+                        type="button"
+                        id="copyBtn"
+                        class="small-btn"
+                    >
+                        Copy
+                    </button>
+
+                    <button
+                        type="button"
+                        id="downloadBtn"
+                        class="small-btn"
+                    >
+                        Download
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="code-wrapper">
+
+                <textarea
+                    id="output"
+                    class="code-box"
+                    readonly
+                    spellcheck="false"
+                ></textarea>
+
+            </div>
+
+
+            <div class="preview-box">
+
+                <div class="preview-label">
+                    CSS Information
+                </div>
+
+                <div class="stats">
+
+                    <div class="stat">
+                        Original:
+                        <strong id="originalSize">0 KB</strong>
+                    </div>
+
+                    <div class="stat">
+                        Encoded:
+                        <strong id="encodedSize">0 KB</strong>
+                    </div>
+
+                    <div class="stat">
+                        Characters:
+                        <strong id="charCount">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             INFORMATION
+        ========================== -->
+
+        <section class="info-grid">
+
+            <div class="info-box">
+
+                <div class="info-icon">
+                    01
+                </div>
+
+                <h3>
+                    Paste URL
+                </h3>
+
+                <p>
+                    Enter the publicly accessible URL of
+                    your CSS stylesheet.
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-icon">
+                    02
+                </div>
+
+                <h3>
+                    Encode
+                </h3>
+
+                <p>
+                    The stylesheet is converted into
+                    Base64 format directly in your browser.
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-icon">
+                    03
+                </div>
+
+                <h3>
+                    Copy & Use
+                </h3>
+
+                <p>
+                    Copy the generated link and use it
+                    inside your HTML document.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-inner">
+
+            <p>
+                © 2026 HaproBase. CSS Encoder.
+            </p>
+
+            <a href="/">
+                HaproBase
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        "use strict";
+
+
+        /* =========================
+           ELEMENTS
+        ========================== */
+
+        const cssUrl = document.getElementById("cssUrl");
+
+        const encodeBtn =
+            document.getElementById("encodeBtn");
+
+        const clearBtn =
+            document.getElementById("clearBtn");
+
+        const status =
+            document.getElementById("status");
+
+        const result =
+            document.getElementById("result");
+
+        const output =
+            document.getElementById("output");
+
+        const copyBtn =
+            document.getElementById("copyBtn");
+
+        const downloadBtn =
+            document.getElementById("downloadBtn");
+
+        const originalSize =
+            document.getElementById("originalSize");
+
+        const encodedSize =
+            document.getElementById("encodedSize");
+
+        const charCount =
+            document.getElementById("charCount");
+
+
+        /* =========================
+           STATUS
+        ========================== */
+
+        function showStatus(message, type) {
+
+            status.textContent = message;
+
+            status.className =
+                "status show " + type;
+        }
+
+
+        function hideStatus() {
+
+            status.textContent = "";
+
+            status.className =
+                "status";
+        }
+
+
+        /* =========================
+           SIZE FORMAT
+        ========================== */
+
+        function formatSize(bytes) {
+
+            if (bytes < 1024) {
+                return bytes + " B";
+            }
+
+            if (bytes < 1024 * 1024) {
+                return (bytes / 1024).toFixed(2) + " KB";
+            }
+
+            return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+        }
+
+
+        /* =========================
+           BASE64
+        ========================== */
+
+        function cssToBase64(css) {
+
+            const bytes =
+                new TextEncoder().encode(css);
+
+            let binary = "";
+
+            const chunkSize = 0x8000;
+
+            for (
+                let i = 0;
+                i < bytes.length;
+                i += chunkSize
+            ) {
+
+                const chunk =
+                    bytes.subarray(
+                        i,
+                        Math.min(
+                            i + chunkSize,
+                            bytes.length
+                        )
+                    );
+
+                binary += String.fromCharCode(...chunk);
+            }
+
+            return btoa(binary);
+        }
+
+
+        /* =========================
+           NORMALIZE URL
+        ========================== */
+
+        function normalizeUrl(url) {
+
+            url = url.trim();
+
+            if (!url) {
+                return "";
+            }
+
+            if (
+                !url.startsWith("http://") &&
+                !url.startsWith("https://")
+            ) {
+
+                url =
+                    "https://" + url;
+            }
+
+            return url;
+        }
+
+
+        /* =========================
+           ENCODE
+        ========================== */
+
+        async function encodeCSS() {
+
+            let url =
+                normalizeUrl(cssUrl.value);
+
+            if (!url) {
+
+                showStatus(
+                    "Please enter a CSS file URL.",
+                    "error"
+                );
+
+                cssUrl.focus();
+
+                return;
+            }
+
+
+            try {
+
+                new URL(url);
+
+            } catch {
+
+                showStatus(
+                    "Please enter a valid URL.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            encodeBtn.disabled = true;
+
+            encodeBtn.textContent =
+                "Encoding...";
+
+            result.classList.remove("show");
+
+            showStatus(
+                "Fetching CSS file...",
+                "loading"
+            );
+
+
+            try {
+
+                const response =
+                    await fetch(url, {
+                        method: "GET",
+                        mode: "cors",
+                        cache: "no-cache"
+                    });
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "HTTP " + response.status
+                    );
+                }
+
+
+                const css =
+                    await response.text();
+
+
+                if (!css.trim()) {
+
+                    throw new Error(
+                        "CSS file is empty."
+                    );
+                }
+
+
+                showStatus(
+                    "Encoding CSS...",
+                    "loading"
+                );
+
+
+                const base64 =
+                    cssToBase64(css);
+
+
+                const dataUrl =
+                    "data:text/css;base64," + base64;
+
+
+                const linkCode =
+                    `<link rel="stylesheet" href="${dataUrl}">`;
+
+
+                output.value =
+                    linkCode;
+
+
+                originalSize.textContent =
+                    formatSize(
+                        new Blob([css]).size
+                    );
+
+
+                encodedSize.textContent =
+                    formatSize(
+                        new Blob([dataUrl]).size
+                    );
+
+
+                charCount.textContent =
+                    linkCode.length.toLocaleString();
+
+
+                result.classList.add("show");
+
+
+                showStatus(
+                    "CSS successfully encoded.",
+                    "success"
+                );
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                let message =
+                    "Unable to fetch the CSS file.";
+
+                if (
+                    error &&
+                    error.message
+                ) {
+
+                    message +=
+                        " " + error.message;
+                }
+
+
+                message +=
+                    " The server may block CORS requests.";
+
+
+                showStatus(
+                    message,
+                    "error"
+                );
+
+
+            } finally {
+
+                encodeBtn.disabled = false;
+
+                encodeBtn.textContent =
+                    "Encode CSS";
+            }
+
+        }
+
+
+        /* =========================
+           COPY
+        ========================== */
+
+        async function copyOutput() {
+
+            const text =
+                output.value.trim();
+
+            if (!text) {
+                return;
+            }
+
+
+            try {
+
+                await navigator.clipboard.writeText(text);
+
+                copyBtn.textContent =
+                    "Copied!";
+
+                setTimeout(() => {
+
+                    copyBtn.textContent =
+                        "Copy";
+
+                }, 1500);
+
+
+            } catch {
+
+                output.select();
+
+                document.execCommand("copy");
+
+                copyBtn.textContent =
+                    "Copied!";
+
+                setTimeout(() => {
+
+                    copyBtn.textContent =
+                        "Copy";
+
+                }, 1500);
+            }
+
+        }
+
+
+        /* =========================
+           DOWNLOAD
+        ========================== */
+
+        function downloadOutput() {
+
+            const text =
+                output.value.trim();
+
+            if (!text) {
+                return;
+            }
+
+
+            const blob =
+                new Blob(
+                    [text],
+                    {
+                        type: "text/html;charset=utf-8"
+                    }
+                );
+
+
+            const url =
+                URL.createObjectURL(blob);
+
+
+            const a =
+                document.createElement("a");
+
+            a.href = url;
+
+            a.download =
+                "encoded-css-link.html";
+
+
+            document.body.appendChild(a);
+
+            a.click();
+
+            a.remove();
+
+
+            URL.revokeObjectURL(url);
+
+        }
+
+
+        /* =========================
+           CLEAR
+        ========================== */
+
+        function clearAll() {
+
+            cssUrl.value = "";
+
+            output.value = "";
+
+            result.classList.remove("show");
+
+            hideStatus();
+
+            cssUrl.focus();
+
+        }
+
+
+        /* =========================
+           ENTER KEY
+        ========================== */
+
+        cssUrl.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    encodeCSS();
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           BUTTON EVENTS
+        ========================== */
+
+        encodeBtn.addEventListener(
+            "click",
+            encodeCSS
+        );
+
+
+        copyBtn.addEventListener(
+            "click",
+            copyOutput
+        );
+
+
+        downloadBtn.addEventListener(
+            "click",
+            downloadOutput
+        );
+
+
+        clearBtn.addEventListener(
+            "click",
+            clearAll
+        );
+
+    </script>
+
+</body>
+</html>

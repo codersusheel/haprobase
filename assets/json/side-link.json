@@ -1,7 +1,6 @@
 {
   "navigation_system": [
     {
-      "category": "Pages & Quick Links",
       "items": [
         {
           "name": "encode",
@@ -13,6 +12,22 @@
             "sidebar_laptop",
             "sidebar_mobile"
           ]
+        }
+      ]
+    },
+    {
+      "items": [
+        {
+          "name": "Encode CSS",
+          "icon": "fa-code",
+          "url": "/pages/encode-css.html",
+          "type": "dropdown",
+          "placements": [
+            "header",
+            "sidebar_laptop",
+            "sidebar_mobile"
+          ]
+     
         }
       ]
     },
