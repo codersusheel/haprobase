@@ -343,23 +343,24 @@
                 </div>
 
                 <h1>
-                    Understand the
-                    <span>entire page.</span>
+                    haproBase
+                    <br>
+                    <span>Website Sitemap.</span>
                 </h1>
 
-                <p>
-                    A complete visual guide that explains the purpose,
-                    structure, sections, files and important components
-                    of this page.
-                </p>
+                <p> Explore the complete structure of haproBase — a clear roadmap to every page, section and important
+                    resource, with a short overview and direct access to each destination. </p>
 
                 <div class="hero-meta">
                     <span>PAGE</span>
-                    <strong>/101.html</strong>
-                </div>
+                    <span class="link-f">
+                        <a href="#pages">📂 /pages/</a>
 
+                    </span>
+                </div>
             </div>
         </article>
+        <hr style="border: 1px solid #99a5b58b;">
 
 
         <style>
@@ -369,6 +370,16 @@
                 /* background: rgba(15, 23, 42, 0.43); */
 
 
+            }
+
+            .link-f a {
+                color: #08ceff;
+                opacity: 0.8;
+
+                margin: 0 10px;
+                background: black;
+                padding: 4px 6px;
+                border-radius: 3px;
             }
 
             /* =========================
@@ -384,7 +395,7 @@
                 overflow: hidden;
 
                 margin-top: 30px;
-                padding: 55px 42px;
+                padding: 150px 42px;
 
                 /* border: 1px solid rgba(34, 211, 238, 0.18); */
                 border-radius: 24px;
@@ -420,11 +431,11 @@
 
                 padding: 6px 11px;
 
-                border: 1px solid rgba(158, 25, 225, 0.944);
+                border: 1px solid #d771ff;
                 border-radius: 999px;
 
-                color: rgb(190, 60, 255);
-                background: rgba(190, 60, 255, 0.226);
+                color: #d771ff;
+                /* background: rgba(126, 59, 160, 0.064); */
 
                 font-family: monospace;
                 font-size: 9px;
@@ -464,32 +475,31 @@
                 max-width: 680px;
                 margin-top: 18px;
 
-                color: #94a3b8;
-
+                opacity: 0.7;
                 font-size: 13px;
                 line-height: 1.8;
+            }
+
+            .hero-meta {
+                font-size: 10px;
             }
 
 
             #hero .hero-meta {
                 position: relative;
-                z-index: 1;
+                z-index: 0.9;
 
                 display: inline-flex;
                 align-items: center;
-                gap: 8px;
+                gap: 5px;
 
                 margin-top: 24px;
-
-                color: #64748b;
-
                 font-family: monospace;
                 font-size: 10px;
             }
 
-            #hero .hero-meta strong {
+            .link-show {
                 color: #22d3ee;
-
                 font-weight: 500;
             }
 
@@ -550,216 +560,364 @@
 
 
 
-        <!-- =========================
-     01 — ABOUT
-========================= -->
 
-        <section id="about">
-            <div class="section-head">
-                <span class="section-number">01 / ABOUT</span>
 
-                <h2>What is this page?</h2>
+
+
+
+        <section id="pages" class="company-career-gateway">
+
+            <div class="gateway-section-head">
+                <h2>
+                    1. Company &amp; Career Gateway
+                    <span class="gateway-link-f">
+                        <a href="/pages/about/">(/pages/about/)</a>
+                    </span>
+                </h2>
 
                 <p>
-                    The 101 page is a documentation layer that helps
-                    developers understand a page quickly.
+                    The company and career gateway provides access to
+                    important information about the organization, people,
+                    achievements, verification services and career records.
                 </p>
             </div>
 
-            <div class="about-grid">
+            <div class="gateway-card-grid">
 
-                <div class="about-card">
-                    <div class="about-number">01</div>
+                <!-- 01 -->
+                <div class="gateway-card">
+                    <span class="gateway-card-path">
+                        <a class="gateway-path-link" href="/pages/directory/">
+                            /pages/directory/
+                        </a>
+                        <strong>Page Live</strong>
+                    </span>
 
-                    <h3>Identify</h3>
+                    <h3>
+                        2. Directory &amp; Verification Engine
+                    </h3>
 
                     <p>
-                        Understand what the page is, why it exists
-                        and what purpose it serves.
+                        A central directory for alumni, team members,
+                        public records, achievements and official
+                        verification services.
                     </p>
+
+                    <i class="ri-arrow-right-line">
+                        <a href="/verify-certificate">
+                            Verify Certificate →
+                        </a>
+                    </i>
                 </div>
 
-                <div class="about-card">
-                    <div class="about-number">02</div>
 
-                    <h3>Understand</h3>
+                <!-- 02 -->
+                <div class="gateway-card">
+                    <span class="gateway-card-path">
+                        <a class="gateway-path-link" href="/pages/about/">
+                            /pages/about/
+                        </a>
+                    </span>
+
+                    <h3>
+                        Company &amp; Career
+                    </h3>
 
                     <p>
-                        Learn how the page is divided into sections,
-                        components and important elements.
+                        Learn about the company, its mission, career
+                        opportunities and professional ecosystem.
                     </p>
+
+                    <i>
+                        ⭐ Top Performers
+                    </i>
                 </div>
 
-                <div class="about-card">
-                    <div class="about-number">03</div>
 
-                    <h3>Maintain</h3>
+                <!-- 03 -->
+                <div class="gateway-card">
+                    <span class="gateway-card-path">
+                        <a class="gateway-path-link" href="/101.html">
+                            /101.html
+                        </a>
+                    </span>
+
+                    <h3>
+                        Page Documentation
+                    </h3>
 
                     <p>
-                        Quickly find where changes should be made
-                        and which files are responsible.
+                        Documentation layer explaining the structure,
+                        purpose, files and components of important pages.
                     </p>
+
+                    <i>
+                        Public Record Database
+                    </i>
+                </div>
+
+
+                <!-- 04 -->
+                <div class="gateway-card">
+                    <span class="gateway-card-path">
+                        <a class="gateway-path-link" href="/verify-job">
+                            /verify-job
+                        </a>
+                    </span>
+
+                    <h3>
+                        Employment Verification
+                    </h3>
+
+                    <p>
+                        Official job and internship records with
+                        experience certificate and employment verification.
+                    </p>
+
+                    <i class="ri-arrow-right-line">
+                        <a href="/verify-job">
+                            Verify Job Roll →
+                        </a>
+                    </i>
                 </div>
 
             </div>
+
         </section>
 
 
         <style>
-            /* =========================
-   01 — ABOUT
-========================= */
+            /* =========================================
+   COMPANY & CAREER GATEWAY
+   ========================================= */
 
-            #about {
+            .company-career-gateway {
                 margin-top: 25px;
                 padding: 28px;
-
-                border: 1px solid rgba(148, 163, 184, 0.12);
-                border-radius: 21px;
-
-                background: rgba(15, 23, 42, 0.43);
             }
 
-            /* Section heading */
 
-            #about .section-head {
+            /* =========================================
+   SECTION HEADER
+   ========================================= */
+
+            .company-career-gateway .gateway-section-head {
                 margin-bottom: 20px;
+                border-bottom: 1px solid #8a90a17d;
             }
 
-            #about .section-number {
-                display: block;
-
-                color: #22d3ee;
-
-                font-family: monospace;
-                font-size: 9px;
-                font-weight: 600;
-                letter-spacing: 1px;
-            }
-
-            #about .section-head h2 {
-                margin-top: 6px;
-
-                color: #f8fafc;
-
+            .company-career-gateway .gateway-section-head h2 {
+                margin: 0;
                 font-size: 21px;
                 font-weight: 700;
-                line-height: 1.3;
+                line-height: 1.35;
+                opacity: 0.8;
             }
 
-            #about .section-head p {
-                max-width: 700px;
-                margin-top: 7px;
+            .company-career-gateway .gateway-link-f {
+                margin-left: 5px;
+                color: #64748b;
+                font-family: monospace;
+                font-size: 12px;
+                font-weight: 500;
+            }
 
-                color: #94a3b8;
+            .company-career-gateway .gateway-link-f a {
+                color: #18d2ff;
+                text-decoration: none;
+            }
 
+            .company-career-gateway .gateway-link-f a:hover {
+                text-decoration: underline;
+            }
+
+            .company-career-gateway .gateway-section-head p {
+                max-width: 760px;
+                margin: 8px 0 0;
                 font-size: 11px;
+                line-height: 1.7;
+                opacity: 0.7;
+            }
+
+
+            /* =========================================
+   4 BOX GRID
+   ========================================= */
+
+            .company-career-gateway .gateway-card-grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+
+            /* =========================================
+   CARD
+   ========================================= */
+
+            .company-career-gateway .gateway-card {
+                position: relative;
+                min-width: 0;
+                padding: 18px;
+                border: 1px solid #e2e8f0;
+                border-radius: 15px;
+                background: #f8fafc;
+
+                transition:
+                    transform 0.25s ease,
+                    border-color 0.25s ease,
+                    box-shadow 0.25s ease;
+            }
+
+            .company-career-gateway .gateway-card:hover {
+                transform: translateY(-3px);
+                border-color: rgba(8, 145, 178, 0.35);
+                box-shadow:
+                    0 10px 25px rgba(15, 23, 42, 0.07);
+            }
+
+
+            /* =========================================
+   CARD PATH
+   ========================================= */
+
+            .company-career-gateway .gateway-card-path {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                margin-bottom: 9px;
+
+                font-family: monospace;
+                font-size: 9px !important;
+            }
+
+            .company-career-gateway .gateway-card-path strong {
+                color: #c338fa;
+                font-size: 10px;
+            }
+
+            .company-career-gateway .gateway-path-link {
+                color: #e7e9ec;
+                text-decoration: none;
+
+                background: #000;
+                padding: 2px 4px;
+                border-radius: 2px;
+
+                font-size: 10px !important;
+            }
+
+            .company-career-gateway .gateway-path-link:hover {
+                text-decoration: underline;
+            }
+
+
+            /* =========================================
+   CARD TITLE
+   ========================================= */
+
+            .company-career-gateway .gateway-card h3 {
+                margin: 0;
+
+                color: #0f172a;
+                font-size: 13px;
+                font-weight: 700;
+                line-height: 1.45;
+            }
+
+            .company-career-gateway .gateway-card h3 a {
+                color: #0f172a;
+                text-decoration: none;
+
+                transition: color 0.2s ease;
+            }
+
+            .company-career-gateway .gateway-card h3 a:hover {
+                color: #0891b2;
+            }
+
+
+            /* =========================================
+   CARD DESCRIPTION
+   ========================================= */
+
+            .company-career-gateway .gateway-card p {
+                margin: 9px 0 0;
+
+                color: #64748b;
+                font-size: 10px;
                 line-height: 1.7;
             }
 
 
-            /* Cards */
+            /* =========================================
+   BOTTOM LINK / LABEL
+   ========================================= */
 
-            #about .about-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 12px;
+            .company-career-gateway .gateway-card i {
+                display: block;
+
+                margin-top: 16px;
+
+                color: #64748b;
+                font-size: 9px;
+                font-style: normal;
             }
 
-            #about .about-card {
-                position: relative;
-
-                padding: 19px;
-
-                border: 1px solid rgba(148, 163, 184, 0.10);
-                border-radius: 15px;
-
-                background: rgba(2, 6, 23, 0.65);
-
-                transition:
-                    border-color 0.25s ease,
-                    transform 0.25s ease,
-                    background 0.25s ease;
-            }
-
-            #about .about-card:hover {
-                transform: translateY(-3px);
-
-                border-color: rgba(34, 211, 238, 0.25);
-
-                background: rgba(8, 47, 73, 0.25);
-            }
-
-
-            /* Number */
-
-            #about .about-number {
-                width: 32px;
-                height: 32px;
-
-                display: grid;
-                place-items: center;
-
-                border-radius: 9px;
-
-                color: #22d3ee;
-                background: rgba(34, 211, 238, 0.08);
+            .company-career-gateway .gateway-card i a {
+                color: #0891b2;
+                text-decoration: none;
 
                 font-family: monospace;
-                font-size: 10px;
+                font-weight: 600;
+            }
+
+            .company-career-gateway .gateway-card i a:hover {
+                text-decoration: underline;
             }
 
 
-            /* Title */
+            /* =========================================
+   TABLET
+   ========================================= */
 
-            #about .about-card h3 {
-                margin-top: 13px;
+            @media (max-width: 1000px) {
 
-                color: #f8fafc;
+                .company-career-gateway .gateway-card-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
 
-                font-size: 13px;
-                font-weight: 700;
             }
 
 
-            /* Description */
+            /* =========================================
+   MOBILE
+   ========================================= */
 
-            #about .about-card p {
-                margin-top: 6px;
+            @media (max-width: 600px) {
 
-                color: #94a3b8;
+                .company-career-gateway {
+                    padding: 20px 15px;
+                    border-radius: 17px;
+                }
 
-                font-size: 10px;
-                line-height: 1.75;
-            }
+                .company-career-gateway .gateway-section-head h2 {
+                    font-size: 18px;
+                }
 
+                .company-career-gateway .gateway-link-f {
+                    display: block;
+                    margin: 5px 0 0;
+                }
 
-            /* =========================
-   RESPONSIVE
-========================= */
-
-            @media (max-width: 750px) {
-
-                #about .about-grid {
+                .company-career-gateway .gateway-card-grid {
                     grid-template-columns: 1fr;
-                }
-
-            }
-
-            @media (max-width: 650px) {
-
-                #about {
-                    padding: 21px 16px;
-                    border-radius: 19px;
-                }
-
-                #about .section-head h2 {
-                    font-size: 19px;
+                    gap: 10px;
                 }
 
             }
         </style>
-
 
 
 
