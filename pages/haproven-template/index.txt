@@ -120,36 +120,38 @@
         href="data:text/css;base64,CgpAaW1wb3J0IHVybCgnaHR0cHM6Ly9oYXByb2Jhc2UubmV0bGlmeS5hcHAvZXh0ZXJuYWwvY3NzL21haW4vc3R5bGUuY3NzJyk7CkBpbXBvcnQgdXJsKCdodHRwczovL2hhcHJvYmFzZS5uZXRsaWZ5LmFwcC9leHRlcm5hbC9jc3MvbWFpbi9hc2lkZS5jc3MnKTsKCg==">
 
 
+    <!-- page ke andar ke css join -->
+    <link rel="stylesheet" href="/assets/css/common.css">
 
     <!-- ==================================================
          🔴 PAGE-SPECIFIC — STRUCTURED DATA
          ================================================== -->
 
-    <script type="application/ld+json">
+    <script type=" application/ld+json">
 
     {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
+    "@context": "https://schema.org",
+    "@type": "WebSite",
 
-        "name": "PAGE NAME | Haproven",
+    "name": "PAGE NAME | Haproven",
 
-        "url": "https://haproven.netlify.app/page/YOUR-PAGE/",
+    "url": "https://haproven.netlify.app/page/YOUR-PAGE/",
 
-        "description": "PAGE DESCRIPTION",
+    "description": "PAGE DESCRIPTION",
 
-        "inLanguage": "en",
+    "inLanguage": "en",
 
-        "publisher": {
-            "@type": "Organization",
-            "name": "Haproven",
-            "url": "https://haproven.netlify.app/"
-        },
+    "publisher": {
+    "@type": "Organization",
+    "name": "Haproven",
+    "url": "https://haproven.netlify.app/"
+    },
 
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://haproven.netlify.app/search?q={query}",
-            "query-input": "required name=query"
-        }
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://haproven.netlify.app/search?q={query}",
+    "query-input": "required name=query"
+    }
     }
 
     </script>
@@ -384,6 +386,12 @@
     <!-- anti-inspect -->
     <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL3NlY3VyaXR5L2FudGktaW5zcGVjdC5qcyI+PC9zY3JpcHQ+Cg=="));
+    </script>
+
+
+    <!-- externaljs/auth/ login -->
+    <script>
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL2F1dGgvYXV0aC5qcyI+PC9zY3JpcHQ+Cg=="));
     </script>
 
 

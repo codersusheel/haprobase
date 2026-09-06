@@ -1,0 +1,25 @@
+{
+  "name": "HaproID Official",
+  "short_name": "HaproID",
+  "description": "HaproID by Haproven helps you create a verified profile to share your CV, skills, projects, and social links in one secure identity.",
+  "start_url": ".", 
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#2b6be4",
+  "icons": [
+    {
+      "src": "https://haproid.netlify.app/Assets/IMG/haproid-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://haproid.netlify.app/Assets/IMG/haproid-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose":"maskable"
+    }
+  ],
+  "prefer_related_applications": false
+}

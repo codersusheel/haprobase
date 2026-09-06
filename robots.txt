@@ -1,0 +1,94 @@
+# =========================================
+# HAPROID ROBOTS.TXT
+# =========================================
+
+User-agent: *
+Allow: /
+
+# -----------------------------------------
+# PWA FILES
+# -----------------------------------------
+
+Allow: /manifest.json
+Allow: /service-worker.js
+
+# -----------------------------------------
+# MAIN WEBSITE PAGES
+# -----------------------------------------
+
+Allow: /index.html
+
+Allow: /user/
+Allow: /user/pro-susheel-01/
+Allow: /user/Pro-anand-01/
+Allow: /user/pro-kajal-01/
+Allow: /user/pro-raksha-01/
+Allow: /user/pro-shishir-01/
+Allow: /user/pro-yashika-01/
+Allow: /user/pro-himanshu-01/
+Allow: /user/pro-himanshu-02/
+Allow: /user/pro-anshu-01/
+Allow: /user/pro-suraj-01/
+Allow: /user/pro-kushagra-01/
+Allow: /user/pro-aman-01/
+Allow: /user/pro-shivam-01/
+Allow: /user/pro-uday-01/
+Allow: /user/pro-vijaylaxmi-01/
+
+
+
+Disallow: /services.html
+Disallow: /page/FAQs.html
+Disallow: /page/directory/
+Disallow: /page/team.html
+Disallow: /page/blog.html
+
+Disallow: /privacy-policy.html
+Disallow: /terms-and-conditions.html
+
+# -----------------------------------------
+# IMPORTANT DIRECTORIES
+# -----------------------------------------
+
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /fonts/
+Allow: /icons/
+Allow: /videos/
+
+# -----------------------------------------
+# BLOCK PRIVATE OR SYSTEM FILES
+# -----------------------------------------
+
+Disallow: /admin/
+
+
+# -----------------------------------------
+# BLOCK SEARCH PARAMETERS
+# -----------------------------------------
+
+Disallow: /*?replytocom=
+Disallow: /*?sort=
+Disallow: /*?filter=
+
+# -----------------------------------------
+# SEARCH ENGINE SPECIFIC RULES
+# -----------------------------------------
+
+User-agent: Bingbot
+Crawl-delay: 5
+
+User-agent: Slurp
+Crawl-delay: 10
+
+# -----------------------------------------
+# SITEMAP
+# -----------------------------------------
+
+Sitemap: https://haproid.netlify.app/sitemap.xml
+
+# =========================================
+# END OF FILE
+# =========================================

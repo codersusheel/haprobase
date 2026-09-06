@@ -306,14 +306,38 @@
     color: #780ee9;
 }
 
-.tree-item b{
-   padding-left: 15px;
+.tree-item b {
+    padding-left: 15px;
 }
 
-.tree-item strong{
-  color: #1b1b1d;
-   padding: 10px;
+.tree-item strong {
+    color: #1b1b1d;
+    padding: 10px;
 
+}
+
+
+.base-tree {
+    list-style: decimal-leading-zero;
+    padding-left: 40px;
+}
+
+.base-tree .tree-item {
+    padding-left: 5px;
+}
+
+.base-tree {
+    display: block !important;
+    list-style-type: decimal-leading-zero !important;
+    list-style-position: outside !important;
+    margin: 0 !important;
+    padding-left: 40px !important;
+}
+
+.base-tree>li {
+    display: list-item !important;
+    list-style-type: decimal-leading-zero !important;
+    color: #27292d;
 }
 
 
