@@ -293,6 +293,19 @@
     padding: 15px 0;
 }
 
+.tree-item a {
+    color: #0e53e9;
+}
+
+.tree-item a:active {
+    color: #b60ee9;
+
+}
+
+.tree-item a.clicked {
+    color: #780ee9;
+}
+
 
 .haprobase-hero .tree-item {
     display: flex;

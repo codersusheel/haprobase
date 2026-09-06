@@ -1,4 +1,15 @@
 
+document.addEventListener("click", function (event) {
+    const link = event.target.closest(".tree-item a");
+
+    if (!link) return;
+
+    link.classList.add("clicked");
+});
+
+
+
+
 
 // =====================
 // text copy link
@@ -80,7 +91,12 @@
 
 
 
+// =====================
+// file/code copy link
+// =====================
+
 (function () {
+
     "use strict";
 
     document.addEventListener("click", async function (event) {
@@ -91,49 +107,42 @@
 
         event.preventDefault();
 
-        const originalText = link.textContent.trim();
+        const originalText = link.textContent;
         const filePath = link.dataset.file;
 
-        if (!filePath) {
-            console.error("data-file missing");
-            return;
-        }
+        if (!filePath) return;
 
         try {
-            link.textContent = "Copying...";
 
-            // Current website ke same domain se 1.txt load
             const response = await fetch(filePath, {
-                cache: "no-store"
+                cache: "force-cache"
             });
 
             if (!response.ok) {
-                throw new Error(
-                    `File not found: ${response.status}`
-                );
+                throw new Error(`File not found: ${response.status}`);
             }
 
             const code = await response.text();
 
             if (!code.trim()) {
-                throw new Error("TXT file is empty");
+                throw new Error("File is empty");
             }
 
             await navigator.clipboard.writeText(code);
 
-            link.textContent = "✓ Code Copied!";
+            link.textContent = "Code Copied!";
 
         } catch (error) {
 
-            console.error("Copy error:", error);
+            console.error("Copy failed:", error);
 
-            link.textContent = "✕ Failed";
+            link.textContent = "Copy Failed!";
 
         }
 
         setTimeout(() => {
             link.textContent = originalText;
-        }, 1800);
+        }, 1500);
 
     });
 
