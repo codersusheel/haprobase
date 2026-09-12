@@ -694,8 +694,8 @@ header {
 
 .sidebar-live-box p {
     padding: 10px;
-    text-shadow: 10px 5px 5px rgba(0, 0, 0, 0.559);
-    color: #c490f5;
+    /* text-shadow: 10px 5px 5px rgba(0, 0, 0, 0.559); */
+    color: #b068f4;
 
 }
 
