@@ -1,0 +1,94 @@
+.header,
+.section,
+.footer {
+    padding: 10px 10%;
+
+}
+
+
+
+
+
+
+/* =========================================
+   RESPONSIVE CSS
+   Mobile → Tablet → Laptop → Desktop
+========================================= */
+
+/* 📱 Mobile — 0px to 575px */
+@media (max-width: 575px) {
+
+    .header,
+    .section,
+    .footer {
+        padding: 10px 2%;
+
+    }
+}
+
+
+/* 📱 Large Mobile — 576px to 767px */
+@media (min-width: 576px) and (max-width: 767px) {
+
+    .header,
+    .section,
+    .footer {
+        padding: 10px 3%;
+
+    }
+
+}
+
+
+/* 📱 Tablet — 768px to 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .header,
+    .section,
+    .footer {
+        padding: 10px 5%;
+
+    }
+
+}
+
+
+/* 💻 Laptop — 992px to 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .header,
+    .section,
+    .footer {
+        padding: 10px 5%;
+
+    }
+}
+
+
+/* 🖥️ Desktop — 1200px to 1399px */
+@media (min-width: 1200px) and (max-width: 1399px) {
+
+    .header,
+    .section,
+    .footer {
+        padding: 10px 5%;
+
+    }
+
+
+}
+
+
+/* 🖥️ Large Desktop — 1400px+ */
+@media (min-width: 1400px) {
+
+    .header,
+    .section,
+    .footer {
+        padding: 10px 10%;
+
+    }
+}
+
+
+

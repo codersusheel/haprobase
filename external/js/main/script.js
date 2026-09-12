@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', renderSocialLinks);
             border: 2px solid var(--hap-purple);
             border-left: none;
 
-            background: rgba(10, 10, 10, .88);
+            // background: rgba(10, 10, 10, .88);
 
             backdrop-filter: blur(10px);
         }
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', renderSocialLinks);
         .brand-text strong {
             font-size: 11px;
             font-weight: 900;
-            color: #fff;
+            // color: #fff;
             letter-spacing: .25px;
         }
 
@@ -2091,26 +2091,3 @@ document.addEventListener('DOMContentLoaded', renderSocialLinks);
 //     }
 
 // })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

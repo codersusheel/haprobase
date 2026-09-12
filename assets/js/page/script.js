@@ -1,156 +1,161 @@
 
-document.addEventListener("click", function (event) {
-    const link = event.target.closest(".tree-item a");
 
+
+const searchInput = document.getElementById("linkSearch");
+const linkList = document.getElementById("linkList");
+const links = linkList.querySelectorAll("li");
+
+const clearButton = document.getElementById("clearSearch");
+const searchCount = document.getElementById("searchCount");
+const noResult = document.getElementById("noResult");
+
+
+function searchLinks() {
+
+    const searchValue = searchInput.value
+        .trim()
+        .toLowerCase();
+
+    let visibleCount = 0;
+
+    links.forEach(function (li) {
+
+        const text = li.textContent.toLowerCase();
+
+        if (searchValue === "") {
+
+            li.style.display = "";
+            li.classList.remove("search-highlight");
+
+            visibleCount++;
+
+        } else if (text.includes(searchValue)) {
+
+            li.style.display = "";
+            li.classList.add("search-highlight");
+
+            visibleCount++;
+
+        } else {
+
+            li.style.display = "none";
+            li.classList.remove("search-highlight");
+
+        }
+
+    });
+
+
+    /* Search Count */
+
+    if (searchValue === "") {
+
+        searchCount.textContent =
+            links.length + " links";
+
+    } else {
+
+        searchCount.textContent =
+            visibleCount + " result" +
+            (visibleCount !== 1 ? "s" : "");
+
+    }
+
+
+    /* Clear Button */
+
+    clearButton.style.display =
+        searchValue ? "block" : "none";
+
+
+    /* No Result */
+
+    noResult.style.display =
+        visibleCount === 0 ? "block" : "none";
+
+}
+
+
+/* Search */
+
+searchInput.addEventListener(
+    "input",
+    searchLinks
+);
+
+
+/* Clear */
+
+clearButton.addEventListener(
+    "click",
+    function () {
+
+        searchInput.value = "";
+
+        searchLinks();
+
+        searchInput.focus();
+
+    }
+);
+
+
+/* Initial Count */
+
+searchLinks();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------------------------------------------
+
+/* Auto add copy icon */
+document.querySelectorAll("#linkList li").forEach(li => {
+
+    const link = li.querySelector("a");
     if (!link) return;
 
-    link.classList.add("clicked");
+    const btn = document.createElement("button");
+
+    btn.className = "copy-btn";
+    btn.type = "button";
+    btn.title = "Copy name";
+    btn.textContent = "📋";
+
+    btn.onclick = async () => {
+
+        await navigator.clipboard.writeText(
+            link.textContent.trim()
+        );
+
+        btn.textContent = "✓";
+        btn.classList.add("copied");
+
+        setTimeout(() => {
+            btn.textContent = "📋";
+            btn.classList.remove("copied");
+        }, 1000);
+    };
+
+    li.appendChild(btn);
 });
 
 
-
-
-
-// =====================
-// text copy link
-// =====================
-(function () {
-    "use strict";
-
-    document.addEventListener("click", async function (event) {
-
-        const link = event.target.closest(".copy-link");
-
-        if (!link) return;
-
-        event.preventDefault();
-
-        const originalText = link.textContent;
-        const href = link.getAttribute("href");
-
-        if (!href) return;
-
-        // HaproBase path automatically add
-        const baseURL = "https://codersusheel.github.io/haprobase/";
-
-        const cleanPath = href
-            .replace(/^https?:\/\/[^/]+/i, "")
-            .replace(/^\/+/, "");
-
-        const copyURL = baseURL + cleanPath;
-
-        try {
-
-            await navigator.clipboard.writeText(copyURL);
-
-            link.textContent = "Link Copied!";
-
-            setTimeout(() => {
-                link.textContent = originalText;
-            }, 1500);
-
-        } catch (error) {
-
-            // Fallback
-            const textarea = document.createElement("textarea");
-
-            textarea.value = copyURL;
-            textarea.style.position = "fixed";
-            textarea.style.left = "-9999px";
-
-            document.body.appendChild(textarea);
-
-            textarea.select();
-
-            try {
-                document.execCommand("copy");
-
-                link.textContent = "Link Copied!";
-
-                setTimeout(() => {
-                    link.textContent = originalText;
-                }, 1500);
-
-            } catch (fallbackError) {
-                console.error("Copy failed:", fallbackError);
-            }
-
-            textarea.remove();
-        }
-
-    });
-
-})();
-
-
-
-
-
-
-
-
-// =====================
-// file/code copy link
-// =====================
-
-(function () {
-    "use strict";
-
-    document.addEventListener("click", async function (event) {
-
-        const link = event.target.closest(".copy-file");
-
-        if (!link) return;
-
-        event.preventDefault();
-
-        const originalText = link.textContent.trim();
-        const filePath = link.dataset.file;
-
-        if (!filePath) {
-            console.error("data-file missing");
-            return;
-        }
-
-        try {
-            link.textContent = "Copying...";
-
-            // Current website ke same domain se 1.txt load
-            const response = await fetch(filePath, {
-                cache: "no-store"
-            });
-
-            if (!response.ok) {
-                throw new Error(
-                    `File not found: ${response.status}`
-                );
-            }
-
-            const code = await response.text();
-
-            if (!code.trim()) {
-                throw new Error("TXT file is empty");
-            }
-
-            await navigator.clipboard.writeText(code);
-
-            link.textContent = "✓ Code Copied!";
-
-        } catch (error) {
-
-            console.error("Copy error:", error);
-
-            link.textContent = "✕ Failed";
-
-        }
-
-        setTimeout(() => {
-            link.textContent = originalText;
-        }, 1800);
-
-    });
-
-})();
 
 
 

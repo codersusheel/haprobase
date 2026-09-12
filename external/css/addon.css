@@ -1,6 +1,28 @@
-@import url('https://haprobase.netlify.app/external/css/main/style.css');
+/* @import url('https://haprobase.netlify.app/external/css/main/style.css');
 @import url('https://haprobase.netlify.app/external/css/main/aside.css');
 @import url('https://haprobase.netlify.app/external/css/main/color.css');
 
-@import url('https://haprobase.netlify.app/assets/css/page/101.css');
+@import url('https://haprobase.netlify.app/assets/css/page/101.css'); */
+
+
+
+@import url('/external/css/main/color.css');
+@import url('/external/css/main/style.css');
+/* @import url('/external/css/main/size.css'); */
+
+
+
+
+
+@import url('/external/css/base.css');
+
+@import url('/assets/css/page/index.css');
+@import url('/external/css/main/color.css');
+
+
+@import url('/assets/css/page/101.css');
+
+
+
+ @import url('/external/css/main/aside.css');
 

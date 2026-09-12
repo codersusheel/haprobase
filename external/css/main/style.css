@@ -1,126 +1,12 @@
-:root {
-
-    /* --bg-color: #f9f9f9; */
-    /* --text-color: #191919; */
-
-    --bg-color: #f8fafc;
-    --text-color: #334155;
-
-  
-
-
-    --main-tital: #2010f8;
-
-
-    --tital: #05a8bd;
-
-    --rgba: #00000031;
-    --rgba2: #0000000e;
-
-    --hero-glow: rgba(169, 85, 247, 0.499);
-
-
-
-
-    --bg2-color: #05050532;
-    /* --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); */
-    --box-shadow: 0 1px 2px rgba(0, 0, 0, 0.609);
-
-    --hfa-body: #000000ec;
-    --hfa-text: #fffffff4;
-
-    --btn: #310085;
-
-    --headr-body: #0d1117;
-    --headr-text: #eff2f8cf;
-
-    --transform: translateY(-10px);
-    --transform-bg: #e5f2fdb8;
-
-    --box-shadow-hover: 0px 0px 1px 1px;
-
-    --hero-bg: #c992ff;
-
-    --rjba: #5959593b;
-
-    /* --text-shadow: rgba(0, 0, 0, 0.4); */
-    --text-shadow: rgba(0, 0, 0, 0.2);
-
-}
-
-body.dark-mode {
-
-    --bg-color: rgba(24, 32, 54, 0.903);
-    --text-color: #f9f9f9;
-
-    --main-tital: #00fff8;
-
-
-
-    --rgba: #8c8c8c31;
-    --rgba2: #ffffff0e;
-
-
-
-    --hero-glow: rgba(59, 130, 246, 0.25);
-
-    --hero-bg: #5645b8;
-
-    --bg2-color: #ffffff5b;
-
-
-    /* --box-shadow: 0 10px 25px rgba(84, 84, 84, 0.498); */
-    --box-shadow: 0 1px 2px rgb(255, 255, 255);
-    --transform-bg: #a46ff379;
-
-
-    /* --hfa-body: #ffffff;
-     --hfa-text: #141414; */
-
-    --hfa-body: #000000ec;
-    --hfa-text: #fffffff4;
-
-
-    --headr-body: #111111cf;
-    --headr-text: #eff2f8cf;
-
-    --rjba: #9b9b9b61;
-
-    --text-shadow: rgba(231, 227, 227, 0.5);
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
-  --font-body: "Inter", sans-serif;
-  --font-heading: "Space Grotesk", sans-serif;
+    --font-body: "Inter", sans-serif;
+    --font-heading: "Space Grotesk", sans-serif;
 }
 
 body {
-  font-family: var(--font-body);
+    font-family: var(--font-body);
 }
 
 h1,
@@ -131,7 +17,7 @@ h5,
 h6,
 .logo,
 .brand {
-  font-family: var(--font-heading);
+    font-family: var(--font-heading);
 }
 
 
@@ -166,8 +52,8 @@ h6,
 
 
 body {
-    background: #171717;
-    color: #ccc9c9;
+    /* background: #171717; */
+    /* color: #ccc9c9; */
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -210,9 +96,7 @@ header {
     left: 0;
     top: 0;
     right: 0;
-    background-color: transparent;
     z-index: 1000;
-    background-color: #000;
 }
 
 
@@ -245,7 +129,6 @@ header {
 
 .logo a {
     list-style: none;
-    color: hsl(185, 100%, 50%);
     text-decoration: none;
 }
 
@@ -530,6 +413,8 @@ header {
     .menu-toggle {
         display: none;
     }
+
+
 }
 
 
@@ -661,6 +546,10 @@ header {
         display: none;
     }
 
+        .logo span {
+        color: white;
+    }
+
 }
 
 
@@ -681,12 +570,8 @@ header {
 
 
 .section {
-    /* max-width: 1440px; */
     margin: auto;
 
-    padding: 100px 3%;
-
-   
 }
 
 
@@ -695,9 +580,9 @@ header {
 
 .footer {
     text-align: center;
-    background-color: #000009;
+    /* background-color: #000009; */
     width: 100%;
-    color: #f9f9f9;
+    /* color: #f9f9f9; */
     padding: 25px 0;
 }
 
@@ -776,11 +661,11 @@ header {
     /* width: 250px; */
     width: 220px;
     height: 100vh;
-    background: #000009;
+    /* background: #000009; */
     border-right: 1px solid #878787b9;
     padding: 20px 10px 0 5px;
     padding: 20px 5px 0 5px;
-    color: white;
+    /* color: white; */
 }
 
 .sidebar-nav {
@@ -789,7 +674,7 @@ header {
     padding: 0 1px 301px;
     scrollbar-width: thin;
     scrollbar-color: #777777c2 transparent;
-    background-color: #88888829;
+    /* background-color: #88888829; */
 }
 
 
@@ -829,7 +714,7 @@ header {
     padding-left: 10px;
     padding-right: 10px;
     overflow-y: auto;
-    background: #000008;
+    /* background: #000008; */
     padding-top: 0px;
 }
 
@@ -1026,16 +911,10 @@ header {
 ==================================================*/
 
 
-header {
-    background-color: #000008;
 
-}
 
 .header {
-    max-width: 1440px;
-    padding: 10px 3%;
     margin: auto;
-    color: #f3f3f3;
 }
 
 
@@ -1475,7 +1354,3 @@ body {
     color: var(--text-color);
     /* transition: background-color 0.3s, color 0.3s; */
 }
-
-
-
-

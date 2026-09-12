@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Page</title>
+
+    <link rel="stylesheet" href="/external/css/base.css">
+</head>
+
+<body>
+
+
+
+    <main class="main">
+
+
+
+        <section>
+
+            <div class=" link-search-section section">
+
+
+                <!-- Search -->
+                <div class="link-search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="search" id="linkSearch" placeholder="Search link..." autocomplete="off">
+                    <button type="button" id="clearSearch">×</button>
+                </div>
+
+                <!-- Result Count -->
+                <div class="search-info">
+                    <span id="searchCount">40 links</span>
+                </div>
+
+                <!-- Links -->
+                <ol id="linkList">
+
+                    <li><a href="#">Link 01</a></li>
+                    <li><a href="#">Link 02</a></li>
+                    <li><a href="#">Link 03</a></li>
+                    <li><a href="#">Link 04</a></li>
+                    <li><a href="#">Link 05</a></li>
+                    <li><a href="#">Link 06</a></li>
+                    <li><a href="#">Link 07</a></li>
+                    <li><a href="#">Link 08</a></li>
+                    <li><a href="#">Link 09</a></li>
+                    <li><a href="#">Link 10</a></li>
+
+                    <li><a href="#">Link 11</a></li>
+                    <li><a href="#">Link 12</a></li>
+                    <li><a href="#">Link 13</a></li>
+                    <li><a href="#">Link 14</a></li>
+                    <li><a href="#">Link 15</a></li>
+                    <li><a href="#">Link 16</a></li>
+                    <li><a href="#">Link 17</a></li>
+                    <li><a href="#">Link 18</a></li>
+                    <li><a href="#">Link 19</a></li>
+                    <li><a href="#">Link 20</a></li>
+
+                    <li><a href="#">Link 21</a></li>
+                    <li><a href="#">Link 22</a></li>
+                    <li><a href="#">Link 23</a></li>
+                    <li><a href="#">Link 24</a></li>
+                    <li><a href="#">Link 25</a></li>
+                    <li><a href="#">Link 26</a></li>
+                    <li><a href="#">Link 27</a></li>
+                    <li><a href="#">Link 28</a></li>
+                    <li><a href="#">Link 29</a></li>
+                    <li><a href="#">Link 30</a></li>
+
+                    <li><a href="#">Link 31</a></li>
+                    <li><a href="#">Link 32</a></li>
+                    <li><a href="#">Link 33</a></li>
+                    <li><a href="#">Link 34</a></li>
+                    <li><a href="#">Link 35</a></li>
+                    <li><a href="#">Link 36</a></li>
+                    <li><a href="#">Link 37</a></li>
+                    <li><a href="#">Link 38</a></li>
+                    <li><a href="#">Link 39</a></li>
+                    <li><a href="#">Link 40</a></li>
+                    <li><a href="#">Link 40</a></li>
+                    <li><a href="#">Link 40</a></li>
+                    <li><a href="#">Link 40</a></li>
+                    <li><a href="#">Link 40</a></li>
+                    <li><a href="#">Link 40</a></li>
+                    <li><a href="#">Link 40</a></li>
+                    <li><a href="#">Link 40</a></li>
+
+                </ol>
+
+                <div id="noResult" class="no-result">
+                    No link found
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+
+        <style>
+            /* ================================
+       LINK SEARCH SECTION
+    ================================= */
+
+            .link-search-section {
+                width: 100%;
+                margin: 0 auto 25px;
+            }
+
+
+            /* ================================
+       SEARCH BOX
+    ================================= */
+
+            .link-search-box {
+                width: 100%;
+                height: 48px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 0 12px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                background: #fff;
+                box-sizing: border-box;
+                transition: 0.2s ease;
+            }
+
+            .link-search-box:focus-within {
+                border-color: #555;
+                box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+            }
+
+            .search-icon {
+                font-size: 18px;
+                flex-shrink: 0;
+            }
+
+            #linkSearch {
+                width: 100%;
+                height: 100%;
+                border: 0;
+                outline: 0;
+                background: transparent;
+                font-size: 15px;
+                color: #222;
+            }
+
+            #linkSearch::placeholder {
+                color: #999;
+            }
+
+            #clearSearch {
+                display: none;
+                width: 26px;
+                height: 26px;
+                border: 0;
+                border-radius: 50%;
+                background: #eee;
+                color: #555;
+                font-size: 18px;
+                line-height: 26px;
+                cursor: pointer;
+                padding: 0;
+                flex-shrink: 0;
+            }
+
+            #clearSearch:hover {
+                background: #ddd;
+            }
+
+
+            /* ================================
+       SEARCH INFO
+    ================================= */
+
+            .search-info {
+                margin: 10px 2px;
+                font-size: 13px;
+                color: #777;
+            }
+
+
+            /* ================================
+       LINK LIST
+    ================================= */
+
+            #linkList {
+                margin: 0;
+                padding-left: 30px;
+
+                display: grid;
+
+                /*
+         * Desktop:
+         * 10 LI in one row
+         */
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+
+                gap: 8px 12px;
+            }
+
+
+            #linkList li {
+                min-width: 0;
+                padding: 8px 6px;
+                border-radius: 6px;
+                background: #f7f7f7;
+
+                transition:
+                    background 0.2s ease,
+                    transform 0.2s ease;
+                margin: 1px;
+
+            }
+
+
+            #linkList li:hover {
+                background: #eeeeee;
+                transform: translateY(-1px);
+            }
+
+
+            #linkList li a {
+                display: block;
+
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                color: #222;
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+
+            #linkList li a:hover {
+                text-decoration: underline;
+            }
+
+
+            /* ================================
+       SEARCH HIGHLIGHT
+    ================================= */
+
+            #linkList li.search-highlight {
+                background: #fff3a68c;
+                box-shadow: 0 0 0 2px #f1d84b84;
+                transform: scale(1.02);
+
+            }
+
+
+            /* ================================
+       NO RESULT
+    ================================= */
+
+            .no-result {
+                display: none;
+                padding: 25px 10px;
+                text-align: center;
+                color: #888;
+                font-size: 14px;
+            }
+
+
+            /* ================================
+       TABLET
+    ================================= */
+
+            @media (max-width: 1100px) {
+
+                #linkList {
+                    grid-template-columns: repeat(4, minmax(0, 1fr));
+                }
+
+            }
+
+
+            /* ================================
+       MOBILE
+    ================================= */
+
+            @media (max-width: 600px) {
+
+                #linkList {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    gap: 7px;
+                }
+
+                #linkList li {
+                    padding: 7px 5px;
+                }
+
+                #linkList li a {
+                    font-size: 13px;
+                }
+
+            }
+        </style>
+
+
+        <script>
+
+            const searchInput = document.getElementById("linkSearch");
+            const linkList = document.getElementById("linkList");
+            const links = linkList.querySelectorAll("li");
+
+            const clearButton = document.getElementById("clearSearch");
+            const searchCount = document.getElementById("searchCount");
+            const noResult = document.getElementById("noResult");
+
+
+            function searchLinks() {
+
+                const searchValue = searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+                let visibleCount = 0;
+
+                links.forEach(function (li) {
+
+                    const text = li.textContent.toLowerCase();
+
+                    if (searchValue === "") {
+
+                        li.style.display = "";
+                        li.classList.remove("search-highlight");
+
+                        visibleCount++;
+
+                    } else if (text.includes(searchValue)) {
+
+                        li.style.display = "";
+                        li.classList.add("search-highlight");
+
+                        visibleCount++;
+
+                    } else {
+
+                        li.style.display = "none";
+                        li.classList.remove("search-highlight");
+
+                    }
+
+                });
+
+
+                /* Search Count */
+
+                if (searchValue === "") {
+
+                    searchCount.textContent =
+                        links.length + " links";
+
+                } else {
+
+                    searchCount.textContent =
+                        visibleCount + " result" +
+                        (visibleCount !== 1 ? "s" : "");
+
+                }
+
+
+                /* Clear Button */
+
+                clearButton.style.display =
+                    searchValue ? "block" : "none";
+
+
+                /* No Result */
+
+                noResult.style.display =
+                    visibleCount === 0 ? "block" : "none";
+
+            }
+
+
+            /* Search */
+
+            searchInput.addEventListener(
+                "input",
+                searchLinks
+            );
+
+
+            /* Clear */
+
+            clearButton.addEventListener(
+                "click",
+                function () {
+
+                    searchInput.value = "";
+
+                    searchLinks();
+
+                    searchInput.focus();
+
+                }
+            );
+
+
+            /* Initial Count */
+
+            searchLinks();
+
+        </script>
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+        /* =================================
+   COPY ICON - EXISTING LI
+================================= */
+
+        #linkList li {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+
+        /* Link ko available space do */
+
+        #linkList li a {
+            flex: 1;
+            min-width: 0;
+        }
+
+
+        /* =================================
+   COPY BUTTON
+   JS automatically create karega
+================================= */
+
+        #linkList li .copy-btn {
+            width: 26px;
+            height: 26px;
+
+            flex: 0 0 26px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+            border-radius: 5px;
+
+            background: transparent;
+
+            cursor: pointer;
+
+            font-size: 14px;
+            line-height: 1;
+
+            padding: 0;
+
+            opacity: 0.65;
+
+            /* transition:
+                background 0.2s ease,
+                opacity 0.2s ease,
+                transform 0.15s ease; */
+        }
+
+
+        /* Hover */
+
+        #linkList li:hover .copy-btn {
+            opacity: 1;
+        }
+
+
+        #linkList li .copy-btn:hover {
+            background: #ddd;
+        }
+
+
+        /* Click */
+
+        #linkList li .copy-btn:active {
+            transform: scale(0.85);
+        }
+
+
+        /* Copied */
+
+        #linkList li .copy-btn.copied {
+            background: #d9f7df;
+            opacity: 1;
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            #linkList li .copy-btn {
+                width: 24px;
+                height: 24px;
+
+                flex-basis: 24px;
+
+                font-size: 13px;
+            }
+
+        }
+    </style>
+
+    <script>
+
+        /* =================================
+           AUTO ADD COPY BUTTON
+           EXISTING LI KE LIYE
+        ================================= */
+
+        document
+            .querySelectorAll("#linkList li")
+            .forEach(function (li) {
+
+                const link = li.querySelector("a");
+
+                /* Agar link nahi hai to skip */
+
+                if (!link) return;
+
+
+                /* Copy button already hai to dobara mat banao */
+
+                if (li.querySelector(".copy-btn")) return;
+
+
+                /* Button create */
+
+                const copyButton =
+                    document.createElement("button");
+
+
+                copyButton.type = "button";
+
+                copyButton.className = "copy-btn";
+
+                copyButton.title = "Copy name";
+
+                copyButton.setAttribute(
+                    "aria-label",
+                    "Copy name"
+                );
+
+                copyButton.textContent = "📋";
+
+
+                /* =================================
+                   COPY CLICK
+                ================================= */
+
+                copyButton.addEventListener(
+                    "click",
+                    async function (event) {
+
+                        /* Link click ko rokna */
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+
+                        /*
+                         * Sirf link ka text copy hoga
+                         * URL nahi
+                         */
+
+                        const name =
+                            link.textContent.trim();
+
+
+                        try {
+
+                            await navigator
+                                .clipboard
+                                .writeText(name);
+
+                        }
+
+                        catch (error) {
+
+                            /* Fallback */
+
+                            const textarea =
+                                document.createElement(
+                                    "textarea"
+                                );
+
+                            textarea.value = name;
+
+                            textarea.style.position =
+                                "fixed";
+
+                            textarea.style.left =
+                                "-9999px";
+
+                            document.body.appendChild(
+                                textarea
+                            );
+
+                            textarea.select();
+
+                            document.execCommand(
+                                "copy"
+                            );
+
+                            textarea.remove();
+
+                        }
+
+
+                        /* =================================
+                           COPY → CHECK
+                        ================================= */
+
+                        copyButton.textContent = "✓";
+
+                        copyButton.classList.add(
+                            "copied"
+                        );
+
+
+                        copyButton.title =
+                            "Copied!";
+
+
+                        /* 1 second baad wapas icon */
+
+                        setTimeout(function () {
+
+                            copyButton.textContent =
+                                "📋";
+
+                            copyButton.classList.remove(
+                                "copied"
+                            );
+
+                            copyButton.title =
+                                "Copy name";
+
+                        }, 1000);
+
+                    }
+                );
+
+
+                /*
+                 * Button ko link ke baad add karo
+                 */
+
+                li.appendChild(copyButton);
+
+            });
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

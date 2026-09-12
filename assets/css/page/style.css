@@ -1,0 +1,259 @@
+/* ================================
+       LINK SEARCH SECTION
+    ================================= */
+
+/* body {
+    background-color: white !important;
+    color: #222 !important;
+} */
+
+
+
+.link-search-section {
+    width: 100%;
+    margin: 0 auto 25px;
+}
+
+
+/* ================================
+       SEARCH BOX
+    ================================= */
+
+.link-search-box {
+    /* width: 100%; */
+    width: 500px;
+    margin: auto;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    box-sizing: border-box;
+    transition: 0.2s ease;
+
+
+}
+
+.link-search-box {
+    position: sticky;
+    top: 50px;
+    z-index: 100;
+}
+
+.link-search-box:focus-within {
+    border-color: #555;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.search-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+#linkSearch {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 15px;
+    color: #222;
+}
+
+#linkSearch::placeholder {
+    color: #999;
+}
+
+#clearSearch {
+    display: none;
+    width: 26px;
+    height: 26px;
+    border: 0;
+    border-radius: 50%;
+    background: #eee;
+    color: #555;
+    font-size: 18px;
+    line-height: 26px;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+#clearSearch:hover {
+    background: #ddd;
+}
+
+
+/* ================================
+       SEARCH INFO
+    ================================= */
+
+.search-info {
+    margin: 10px 2px;
+    font-size: 13px;
+    color: #777;
+}
+
+
+/* ================================
+       LINK LIST
+    ================================= */
+
+#linkList {
+    margin: 0;
+    margin-top: 50px;
+    padding-left: 30px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 8px 12px;
+}
+
+
+#linkList li {
+    min-width: 0;
+    padding: 8px 6px;
+    border-radius: 6px;
+    background: #ffffffeb;
+
+
+    /* transition:
+        background 0.2s ease,
+        transform 0.2s ease; */
+    margin: 1px 40px 0 0;
+
+    font-size: 12px;
+
+
+    border: 1px solid #00000026;
+
+
+}
+
+
+
+
+#linkList li:hover {
+    background: #d2fcd6d0;
+    transform: translateY(-1px);
+}
+
+
+#linkList li a {
+    display: block;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    color: #222;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+#linkList li a:hover {
+    text-decoration: underline;
+}
+
+
+/* ================================
+       SEARCH HIGHLIGHT
+    ================================= */
+
+#linkList li.search-highlight {
+    background: #fff3a68c;
+    box-shadow: 0 0 0 2px #f1d84b84;
+    transform: scale(1.02);
+
+}
+
+
+/* ================================
+       NO RESULT
+    ================================= */
+
+.no-result {
+    display: none;
+    padding: 25px 10px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+}
+
+
+/* ================================
+       TABLET
+    ================================= */
+
+@media (max-width: 1100px) {
+
+    #linkList {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ================================
+       MOBILE
+    ================================= */
+
+@media (max-width: 600px) {
+
+    .link-search-box {
+        width: 100%;
+    }
+
+
+
+    #linkList {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+
+    #linkList li a {
+        font-size: 13px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Copy icon */
+#linkList li {
+    position: relative;
+    padding-right: 28px;
+}
+
+#linkList .copy-btn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 2px;
+}
+
+#linkList .copy-btn.copied {
+    color: green;
+}

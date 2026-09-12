@@ -1,12 +1,10 @@
 :root {
 
-    /* --bg-color: #f9f9f9; */
-    /* --text-color: #191919; */
 
     --bg-color: #f8fafc;
     --text-color: #334155;
 
-  
+
 
 
     --main-tital: #2010f8;
@@ -88,4 +86,55 @@ body.dark-mode {
 
     --text-shadow: rgba(231, 227, 227, 0.5);
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+
+
+header {
+    background-color: #000008;
+    color: #f3f3f3;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+}
+
+.logo span{
+    color: var(--text-color);
+}
+
+
+
+.sidebar-footer,
+.sidebar {
+    background: #101525;
+    color: white;
+}
+
+
+
+.sidebar-nav {
+    background-color: #88888815;
+
+}
+
+
+.footer {
+    background-color: #000009;
+    color: #f9f9f9;
 }
