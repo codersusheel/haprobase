@@ -114,6 +114,12 @@ header {
 
 }
 
+
+.header a {
+    color: #000000ec;
+
+}
+
 .logo span{
     color: var(--text-color);
 }
