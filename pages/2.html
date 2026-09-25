@@ -370,32 +370,24 @@
 
 
 
-
-                <ol id="copyhub" class="linkboxs">
-
-                    <li>
-                        <a href="/assets/css/page/" data-copy="folder">
-                            IMG Folder
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/assets/css/" data-copy="folder">
-                            CSS Folder
-                        </a>
-                    </li>
-
-                </ol>
-
-  <ol id="copyhub" class="linkboxs">
+<ol id="copyhub" class="linkboxs">
 
     <li>
-        <a href="/assets/img/" data-copy="folder">
-            IMG Folder
+        <a href="/assets/json/file/css.json" data-copy="folder">
+            CSS Folder
+        </a>
+    </li>
+
+
+        <li>
+        <a href="/assets/json/file/img.json" data-copy="folder">
+            img Folder
         </a>
     </li>
 
 </ol>
+
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -412,20 +404,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 e.preventDefault();
 
-                const originalText =
-                    link.textContent.trim();
+                const oldText = link.textContent.trim();
 
                 try {
 
+                    /* Browser support */
                     if (!window.showDirectoryPicker) {
                         throw new Error(
                             "Folder access is not supported."
                         );
                     }
 
-                    /*
-                     * Destination folder select
-                     */
+                    /* JSON file */
+                    link.textContent = "Reading Files...";
+
+                    const jsonURL = new URL(
+                        link.getAttribute("href"),
+                        window.location.href
+                    );
+
+                    const response = await fetch(
+                        jsonURL.href,
+                        { cache: "no-store" }
+                    );
+
+                    if (!response.ok) {
+                        throw new Error(
+                            "JSON file not found."
+                        );
+                    }
+
+                    const files = await response.json();
+
+                    if (
+                        !Array.isArray(files) ||
+                        files.length === 0
+                    ) {
+                        throw new Error(
+                            "No files found in JSON."
+                        );
+                    }
+
+                    /* Destination folder */
                     link.textContent =
                         "Select Destination...";
 
@@ -434,210 +454,138 @@ document.addEventListener("DOMContentLoaded", () => {
                             mode: "readwrite"
                         });
 
-                    /*
-                     * Read folder URL
-                     */
-                    link.textContent =
-                        "Reading Folder...";
+                    let copied = 0;
+                    let failed = 0;
 
-                    const folderURL =
-                        new URL(
-                            link.getAttribute("href"),
-                            location.href
-                        );
+                    /* Copy files */
+                    for (const filePath of files) {
 
-                    const response =
-                        await fetch(folderURL.href);
+                        try {
 
-                    if (!response.ok) {
-                        throw new Error(
-                            "Folder could not be opened."
-                        );
-                    }
-
-                    const html =
-                        await response.text();
-
-                    /*
-                     * Folder listing read
-                     */
-                    const parser =
-                        new DOMParser();
-
-                    const doc =
-                        parser.parseFromString(
-                            html,
-                            "text/html"
-                        );
-
-                    const fileLinks =
-                        [...doc.querySelectorAll("a")];
-
-                    const files =
-                        fileLinks
-                            .map(a => a.getAttribute("href"))
-                            .filter(href =>
-                                href &&
-                                href !== "../" &&
-                                !href.startsWith("#")
+                            /*
+                             * JSON path:
+                             * /assets/css/common.css
+                             */
+                            const fileURL = new URL(
+                                filePath,
+                                window.location.origin
                             );
 
-                    if (!files.length) {
-                        throw new Error(
-                            "Folder listing is not available."
-                        );
-                    }
+                            /* Fetch file */
+                            const fileResponse =
+                                await fetch(
+                                    fileURL.href,
+                                    {
+                                        cache: "no-store"
+                                    }
+                                );
 
-                    let copied = 0;
+                            if (!fileResponse.ok) {
+                                failed++;
+                                continue;
+                            }
 
-                    /*
-                     * Copy files recursively
-                     */
-                    async function copyFile(
-                        fileURL,
-                        targetFolder,
-                        relativePath
-                    ) {
+                            const blob =
+                                await fileResponse.blob();
 
-                        const fileResponse =
-                            await fetch(fileURL);
+                            /*
+                             * Remove first /
+                             *
+                             * assets/css/common.css
+                             */
+                            const cleanPath =
+                                fileURL.pathname
+                                    .replace(/^\/+/, "");
 
-                        if (!fileResponse.ok) {
-                            return;
-                        }
+                            const parts =
+                                cleanPath.split("/");
 
-                        const blob =
-                            await fileResponse.blob();
+                            const fileName =
+                                parts.pop();
 
-                        const parts =
-                            relativePath
-                                .split("/")
-                                .filter(Boolean);
+                            let currentFolder =
+                                destination;
 
-                        const fileName =
-                            parts.pop();
+                            /*
+                             * Create complete folder structure
+                             */
+                            for (const folderName of parts) {
 
-                        let currentFolder =
-                            targetFolder;
+                                if (!folderName) continue;
 
-                        /*
-                         * Create subfolders
-                         */
-                        for (const folder of parts) {
+                                currentFolder =
+                                    await currentFolder
+                                        .getDirectoryHandle(
+                                            folderName,
+                                            {
+                                                create: true
+                                            }
+                                        );
+                            }
 
-                            currentFolder =
+                            /*
+                             * Create / overwrite file
+                             */
+                            const fileHandle =
                                 await currentFolder
-                                    .getDirectoryHandle(
-                                        folder,
+                                    .getFileHandle(
+                                        fileName,
                                         {
                                             create: true
                                         }
                                     );
-                        }
 
-                        /*
-                         * Create file
-                         */
-                        const fileHandle =
-                            await currentFolder
-                                .getFileHandle(
-                                    fileName,
-                                    {
-                                        create: true
-                                    }
-                                );
+                            const writable =
+                                await fileHandle
+                                    .createWritable();
 
-                        const writable =
-                            await fileHandle
-                                .createWritable();
+                            await writable.write(blob);
 
-                        await writable.write(blob);
+                            await writable.close();
 
-                        await writable.close();
+                            copied++;
 
-                        copied++;
+                            link.textContent =
+                                `Copying ${copied}/${files.length}...`;
 
-                        link.textContent =
-                            `Copying ${copied}...`;
-                    }
+                        } catch (fileError) {
 
-                    /*
-                     * Process folder
-                     */
-                    for (const href of files) {
-
-                        const fileURL =
-                            new URL(
-                                href,
-                                folderURL.href
+                            console.error(
+                                "File failed:",
+                                filePath,
+                                fileError
                             );
 
-                        /*
-                         * Skip external links
-                         */
-                        if (
-                            fileURL.origin !==
-                            folderURL.origin
-                        ) {
-                            continue;
+                            failed++;
                         }
-
-                        /*
-                         * Skip directories
-                         * (normal directory listing
-                         * ends with /)
-                         */
-                        if (
-                            fileURL.pathname.endsWith("/")
-                        ) {
-                            continue;
-                        }
-
-                        const basePath =
-                            folderURL.pathname;
-
-                        let relativePath =
-                            fileURL.pathname;
-
-                        if (
-                            relativePath
-                                .startsWith(basePath)
-                        ) {
-                            relativePath =
-                                relativePath
-                                    .slice(
-                                        basePath.length
-                                    );
-                        }
-
-                        await copyFile(
-                            fileURL.href,
-                            destination,
-                            relativePath
-                        );
                     }
 
-                    link.textContent =
-                        `Copied ✓ (${copied} files)`;
+                    /* Result */
+                    if (copied === files.length) {
+
+                        link.textContent =
+                            `Copied ✓ (${copied} files)`;
+
+                    } else {
+
+                        link.textContent =
+                            `Copied ${copied}/${files.length} ⚠`;
+                    }
 
                     setTimeout(() => {
-                        link.textContent =
-                            originalText;
+                        link.textContent = oldText;
                     }, 2500);
 
                 } catch (error) {
 
-                    if (
-                        error.name ===
-                        "AbortError"
-                    ) {
-                        link.textContent =
-                            originalText;
+                    /* User cancelled */
+                    if (error.name === "AbortError") {
+                        link.textContent = oldText;
                         return;
                     }
 
                     console.error(
-                        "Folder Copy Error:",
+                        "Copy Error:",
                         error
                     );
 
@@ -645,8 +593,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "Copy Failed ✕";
 
                     setTimeout(() => {
-                        link.textContent =
-                            originalText;
+                        link.textContent = oldText;
                     }, 2500);
                 }
 
@@ -656,14 +603,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
-
-
-
-
-
-
-
-
 
 
 

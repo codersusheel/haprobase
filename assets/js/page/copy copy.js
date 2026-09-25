@@ -1,196 +1,10 @@
-
-// document.addEventListener("DOMContentLoaded", () => {
-
-//     // ---------------------------------------------
-//     // Auto add copy icon to all CopyHub items
-//     // ---------------------------------------------
-
-//     document.querySelectorAll("#copyhub li").forEach(li => {
-
-//         const link = li.querySelector("a");
-
-//         if (!link) return;
-
-//         const btn = document.createElement("button");
-
-//         btn.className = "copy-btn";
-//         btn.type = "button";
-//         btn.title = "Copy name";
-//         btn.textContent = "📋";
-
-
-//         btn.onclick = async () => {
-
-//             try {
-
-//                 await navigator.clipboard.writeText(
-//                     link.textContent.trim()
-//                 );
-
-//                 btn.textContent = "✓";
-//                 btn.classList.add("copied");
-
-//                 setTimeout(() => {
-
-//                     btn.textContent = "📋";
-//                     btn.classList.remove("copied");
-
-//                 }, 1000);
-
-//             } catch (error) {
-
-//                 console.error(
-//                     "Copy failed:",
-//                     error
-//                 );
-
-//             }
-
-//         };
-
-
-//         li.appendChild(btn);
-
-//     });
-
-// });
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    // ---------------------------------------------
-    // Auto add type icon to all CopyHub items
-    // ---------------------------------------------
-
-    document.querySelectorAll("#copyhub li").forEach(li => {
-
-        const link = li.querySelector("a");
-
-        if (!link) return;
-
-
-        const type = link.dataset.copy;
-
-        const btn = document.createElement("button");
-
-        btn.className = "copy-btn";
-        btn.type = "button";
-
-
-        // ---------------------------------------------
-        // Icon according to copy type
-        // ---------------------------------------------
-
-        if (type === "link") {
-
-            btn.textContent = "⛓️‍💥";
-            btn.title = "Copy Link";
-
-        } else if (type === "code") {
-
-            btn.textContent = "🌐";
-            btn.title = "Copy Code";
-
-        } else if (type === "folder") {
-
-            btn.textContent = "📂";
-            btn.title = "Copy Folder";
-
-        } else {
-
-            btn.textContent = "📋";
-            btn.title = "Copy Name";
-
-        }
-
-
-        // ---------------------------------------------
-        // Copy name
-        // ---------------------------------------------
-
-        btn.onclick = async () => {
-
-            try {
-
-                await navigator.clipboard.writeText(
-                    link.textContent.trim()
-                );
-
-                btn.textContent = "✓";
-                btn.classList.add("copied");
-
-
-                setTimeout(() => {
-
-                    if (type === "link") {
-                        btn.textContent = "🔗";
-                    } else if (type === "code") {
-                        btn.textContent = "💻";
-                    } else if (type === "folder") {
-                        btn.textContent = "📁";
-                    } else {
-                        btn.textContent = "📋";
-                    }
-
-                    btn.classList.remove("copied");
-
-                }, 1000);
-
-
-            } catch (error) {
-
-                console.error(
-                    "Copy failed:",
-                    error
-                );
-
-            }
-
-        };
-
-
-        li.appendChild(btn);
-
-    });
-
-});
-
-
-// -----------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const copyHub = document.getElementById("copyhub");
 
     if (!copyHub) return;
 
-
-    /* ================================
-       NORMAL LINK + CODE COPY
-    ================================= */
-
     copyHub.querySelectorAll("a").forEach(link => {
-
-        /* Folder links ko yahan skip karo */
-        if (link.dataset.copy === "folder") return;
 
         link.addEventListener("click", async (e) => {
 
@@ -202,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 let text = link.href;
 
-                /* CODE COPY */
                 if (link.dataset.copy === "code") {
 
                     const response = await fetch(link.href, {
@@ -216,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     text = await response.text();
                 }
 
-                /* COPY */
                 await navigator.clipboard.writeText(text);
 
                 link.textContent = "Copied ✓";
@@ -240,10 +52,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+});
 
-    /* ================================
-       FOLDER COPY
-    ================================= */
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const copyHub = document.getElementById("copyhub");
+
+    if (!copyHub) return;
 
     copyHub
         .querySelectorAll('[data-copy="folder"]')
@@ -258,16 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 try {
 
                     /* Browser support */
-
                     if (!window.showDirectoryPicker) {
                         throw new Error(
                             "Folder access is not supported."
                         );
                     }
 
-
-                    /* JSON FILE */
-
+                    /* JSON file */
                     link.textContent = "Reading Files...";
 
                     const jsonURL = new URL(
@@ -277,9 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const response = await fetch(
                         jsonURL.href,
-                        {
-                            cache: "no-store"
-                        }
+                        { cache: "no-store" }
                     );
 
                     if (!response.ok) {
@@ -290,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const files = await response.json();
 
-
                     if (
                         !Array.isArray(files) ||
                         files.length === 0
@@ -300,9 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         );
                     }
 
-
-                    /* DESTINATION FOLDER */
-
+                    /* Destination folder */
                     link.textContent =
                         "Select Destination...";
 
@@ -311,27 +130,24 @@ document.addEventListener("DOMContentLoaded", () => {
                             mode: "readwrite"
                         });
 
-
                     let copied = 0;
                     let failed = 0;
 
-
-                    /* COPY EACH FILE */
-
+                    /* Copy files */
                     for (const filePath of files) {
 
                         try {
 
-                            /* File URL */
-
+                            /*
+                             * JSON path:
+                             * /assets/css/common.css
+                             */
                             const fileURL = new URL(
                                 filePath,
                                 window.location.origin
                             );
 
-
                             /* Fetch file */
-
                             const fileResponse =
                                 await fetch(
                                     fileURL.href,
@@ -340,38 +156,35 @@ document.addEventListener("DOMContentLoaded", () => {
                                     }
                                 );
 
-
                             if (!fileResponse.ok) {
                                 failed++;
                                 continue;
                             }
 
-
                             const blob =
                                 await fileResponse.blob();
 
-
-                            /* Remove first "/" */
-
+                            /*
+                             * Remove first /
+                             *
+                             * assets/css/common.css
+                             */
                             const cleanPath =
                                 fileURL.pathname
                                     .replace(/^\/+/, "");
 
-
                             const parts =
                                 cleanPath.split("/");
-
 
                             const fileName =
                                 parts.pop();
 
-
                             let currentFolder =
                                 destination;
 
-
-                            /* CREATE FOLDERS */
-
+                            /*
+                             * Create complete folder structure
+                             */
                             for (const folderName of parts) {
 
                                 if (!folderName) continue;
@@ -386,9 +199,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                         );
                             }
 
-
-                            /* CREATE / OVERWRITE FILE */
-
+                            /*
+                             * Create / overwrite file
+                             */
                             const fileHandle =
                                 await currentFolder
                                     .getFileHandle(
@@ -398,23 +211,18 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                     );
 
-
                             const writable =
                                 await fileHandle
                                     .createWritable();
-
 
                             await writable.write(blob);
 
                             await writable.close();
 
-
                             copied++;
-
 
                             link.textContent =
                                 `Copying ${copied}/${files.length}...`;
-
 
                         } catch (fileError) {
 
@@ -426,12 +234,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             failed++;
                         }
-
                     }
 
-
-                    /* RESULT */
-
+                    /* Result */
                     if (copied === files.length) {
 
                         link.textContent =
@@ -443,36 +248,29 @@ document.addEventListener("DOMContentLoaded", () => {
                             `Copied ${copied}/${files.length} ⚠`;
                     }
 
-
                     setTimeout(() => {
                         link.textContent = oldText;
                     }, 2500);
 
-
                 } catch (error) {
 
                     /* User cancelled */
-
                     if (error.name === "AbortError") {
                         link.textContent = oldText;
                         return;
                     }
-
 
                     console.error(
                         "Copy Error:",
                         error
                     );
 
-
                     link.textContent =
                         "Copy Failed ✕";
-
 
                     setTimeout(() => {
                         link.textContent = oldText;
                     }, 2500);
-
                 }
 
             });
@@ -481,100 +279,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// =========================================================================
-document.addEventListener("DOMContentLoaded", () => {
-
-    document.querySelectorAll("#copyhub li").forEach(li => {
-
-        const link = li.querySelector("a");
-
-        if (!link) return;
-
-        const type = link.dataset.copy;
-
-        const btn = document.createElement("button");
-
-        btn.className = "copy-btn";
-        btn.type = "button";
-
-
-        /* Icon according to type */
-
-        if (type === "link") {
-
-            btn.textContent = "🔗";
-
-        } else if (type === "code") {
-
-            btn.textContent = "💻";
-
-        } else if (type === "folder") {
-
-            btn.textContent = "📁";
-
-        } else {
-
-            btn.textContent = "📋";
-
-        }
-
-
-        /* Copy name */
-
-        btn.onclick = async () => {
-
-            try {
-
-                await navigator.clipboard.writeText(
-                    link.textContent.trim()
-                );
-
-                btn.textContent = "✓";
-                btn.classList.add("copied");
-
-
-                setTimeout(() => {
-
-                    if (type === "link") {
-                        btn.textContent = "🔗";
-                    } else if (type === "code") {
-                        btn.textContent = "💻";
-                    } else if (type === "folder") {
-                        btn.textContent = "📁";
-                    } else {
-                        btn.textContent = "📋";
-                    }
-
-                    btn.classList.remove("copied");
-
-                }, 1000);
-
-
-            } catch (error) {
-
-                console.error("Copy failed:", error);
-
-            }
-
-        };
-
-
-        li.appendChild(btn);
-
-    });
-
-});

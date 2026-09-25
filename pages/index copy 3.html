@@ -360,182 +360,76 @@
         </section>
 
 
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-
-                const copyHub = document.getElementById("copyhub");
-                const searchInput = document.getElementById("linkSearch");
-                const searchCount = document.getElementById("searchCount");
-                const clearSearch = document.getElementById("clearSearch");
-                const noResult = document.getElementById("noResult");
-
-                if (!copyHub || !searchInput) return;
-
-                const items = Array.from(copyHub.querySelectorAll("li"));
-
-
-                /* =========================
-                   UPDATE SEARCH
-                ========================== */
-
-                function updateSearch() {
-
-                    const searchText =
-                        searchInput.value.trim().toLowerCase();
-
-                    let visibleCount = 0;
-
-                    items.forEach(item => {
-
-                        const text =
-                            item.textContent.toLowerCase();
-
-                        const matched =
-                            searchText === "" ||
-                            text.includes(searchText);
-
-                        item.style.display =
-                            matched ? "" : "none";
-
-                        if (matched) {
-                            visibleCount++;
-                        }
-
-                    });
-
-
-                    /* COUNT */
-
-                    searchCount.textContent =
-                        `${visibleCount} ${visibleCount === 1 ? "item" : "items"}`;
-
-
-                    /* NO RESULT */
-
-                    if (noResult) {
-
-                        noResult.style.display =
-                            visibleCount === 0 ? "block" : "none";
-
-                    }
-
-                }
-
-
-                /* =========================
-                   SEARCH INPUT
-                ========================== */
-
-                searchInput.addEventListener(
-                    "input",
-                    updateSearch
-                );
-
-
-                /* =========================
-                   CLEAR BUTTON
-                ========================== */
-
-                if (clearSearch) {
-
-                    clearSearch.addEventListener("click", () => {
-
-                        searchInput.value = "";
-
-                        updateSearch();
-
-                        searchInput.focus();
-
-                    });
-
-                }
-
-
-                /* =========================
-                   INITIAL LOAD
-                   SHOW ALL ITEMS
-                ========================== */
-
-                updateSearch();
-
-            });
-        </script>
 
 
 
-
-
-        <section id="all-links">
-
+        <section>
             <div class="link-search-section section">
 
-                <div id="copyhub">
-
-
-                    <div class="list-tital">
-                        <h1>copyhub</h1>
-                    </div>
-
-                    <ol class="linkboxs">
-
-                        <li>
-                            <a href="/assets/json/file/css.json" data-copy="folder">
-                                CSS Folder
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/assets/json/file/img.json" data-copy="folder">
-                                img Folder
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="https://example.com/file.css" data-copy="link">
-                                CSS Link
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/assets/css/common.css" data-copy="code">
-                                CSS Code
-                            </a>
-                        </li>
-
-                    </ol>
 
 
 
-                    <div class="list-tital">
-                        <h1>copyhub</h1>
-                    </div>
-                    <ol class="linkboxs">
 
-                        <li>
-                            <a href="/assets/json/file/css.json" data-copy="folder">
-                                CSS Folder
-                            </a>
-                        </li>
+                <ol id="copyhub" class="linkboxs">
 
-                        <li>
-                            <a href="/assets/json/file/img.json" data-copy="folder">
-                                img Folder
-                            </a>
-                        </li>
+                    <!-- URL COPY -->
+                    <li>
+                        <a href="https://haprobase.netlify.app/assets/css/common.css" data-copy="link">
+                            common.css
+                        </a>
+                    </li>
 
-                        <li>
-                            <a href="https://example.com/file.css" data-copy="link">
-                                CSS Link
-                            </a>
-                        </li>
+                    <!-- CODE COPY -->
+                    <li>
+                        <a href="https://haprobase.netlify.app/assets/css/common.css" data-copy="code">
+                            common.css Code
+                        </a>
+                    </li>
 
-                        <li>
-                            <a href="/assets/css/common.css" data-copy="code">
-                                ok Code
-                            </a>
-                        </li>
+                    <li>
+                        <a href="https://haprobase.netlify.app/assets/js/main.js" data-copy="code">
+                            main.js Code
+                        </a>
+                    </li>
 
-                    </ol>
+
+                    <li><a href="https://haprobase.netlify.app/assets/css/common.css" data-copy="code">common.css
+                            Code</a></li>
+                    <li><a href="https://haprobase.netlify.app/assets/" data-copy="code">main.js Code</a></li>
+
+                    <li><a href="/assets/js/page/copy.js" data-copy="link">copy .js</a></li>
+                    <li><a href="/pages/haproven-template/index.txt" data-copy="code">page-map.txt</a></li>
+
+
+
+
+                </ol>
+
+
+
+
+
+
+
+
+
+
+<ol id="copyhub" class="linkboxs">
+
+    <li>
+        <a href="/assets/json/file/css.json" data-copy="folder">
+            CSS Folder
+        </a>
+    </li>
+
+
+        <li>
+        <a href="/assets/json/file/img.json" data-copy="folder">
+            img Folder
+        </a>
+    </li>
+
+</ol>
 
 
 
@@ -550,52 +444,184 @@
 
 
 
-                    <div class="list-tital">
-                        <h1>copyhub</h1>
-                    </div>
-                    <ol class="linkboxs">
-
-                        <li>
-                            <a href="/assets/json/file/css.json" data-copy="folder">
-                                CSS Folder
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/assets/json/file/img.json" data-copy="folder">
-                                img Folder
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="https://example.com/file.css" data-copy="link">
-                                CSS Link
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/assets/css/common.css" data-copy="code">
-                                ok Code
-                            </a>
-                        </li>
-
-                    </ol>
 
 
+
+
+
+
+                <!-- =========================
+             LINK COPY
+        ========================== -->
+                <div class="list-tital">
+                    <h1>copyhub</h1>
                 </div>
+
+                <ol id="copyhub" class="linkboxs">
+                    <li><a href="https://haprobase.netlify.app/assets/css/common.css" data-copy="link">common.css</a>
+                    </li>
+                    <li><a href="https://haproven.netlify.app/" data-copy="link">Haproven</a></li>
+
+
+                </ol>
+
+
+
+
+                <!-- =========================
+             CODE COPY
+        ========================== -->
+                <div class="list-tital">
+                    <h1>codecopy</h1>
+                </div>
+
+                <ol id="codecopy" class="linkboxs">
+
+                    <li>
+                        <a href="#">Code 01</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 02</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 03</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 04</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 05</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 06</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 07</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 08</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 09</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 10</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 11</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 12</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 13</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 14</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 15</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 16</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 17</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 18</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 19</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Code 20</a>
+                    </li>
+
+                </ol>
+
+
+                <!-- =========================
+             LINK + CODE
+        ========================== -->
+                <div class="list-tital">
+                    <h1>linkcode-copy</h1>
+                </div>
+
+                <ol id="linkcode-copy" class="linkboxs">
+
+                    <li>
+                        <a href="#">LinkCode 01</a>
+                    </li>
+
+                    <li>
+                        <a href="#">LinkCode 02</a>
+                    </li>
+
+                    <li>
+                        <a href="#">LinkCode 03</a>
+                    </li>
+
+                    <li>
+                        <a href="#">LinkCode 04</a>
+                    </li>
+
+                    <li>
+                        <a href="#">LinkCode 05</a>
+                    </li>
+
+                    <li>
+                        <a href="#">LinkCode 06</a>
+                    </li>
+
+                    <li>
+                        <a href="#">LinkCode 07</a>
+                    </li>
+
+                    <li>
+                        <a href="#">LinkCode 08</a>
+                    </li>
+
+                    <li>
+                        <a href="#">LinkCode 09</a>
+                    </li>
+
+                    <li>
+                        <a href="#">LinkCode 10</a>
+                    </li>
+
+                </ol>
 
 
                 <!-- =========================
              NO RESULT
         ========================== -->
-
                 <div id="noResult" class="no-result" style="display: none;">
                     No link found
                 </div>
 
             </div>
-
         </section>
+
 
     </main>
 
@@ -613,6 +639,7 @@
 
 
 
+
     <!-- <script src="/assets/js/page/script.js"></script> -->
     <script src="/external/js/bundle.js"></script>
     <script src="/assets/js/page/copy.js"></script>
@@ -620,18 +647,50 @@
 
 
     <!--================== lokal page js ======================== -->
-    <script>
+    <!-- <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSIvZXh0ZXJuYWwvanMvYnVuZGxlLmpzIj48L3NjcmlwdD4KCg=="));
     </script>
 
     <script>
         document.write(atob("ICA8c2NyaXB0IHNyYz0iL2Fzc2V0cy9qcy9sb2thbC5qcyI+PC9zY3JpcHQ+Cgo="));
     </script>
-
+ -->
 
 
 
     <!--================== external page js ======================== -->
+
+
+
+    <!-- external/js/api/global -->
+    <!-- <script>
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL2FwaS9nbG9iYWwuanMiPjwvc2NyaXB0Pgo="));
+    </script> -->
+
+
+    <!-- externaljs/auth/ login -->
+    <!-- <script>
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL2F1dGgvYXV0aC5qcyI+PC9zY3JpcHQ+Cg=="));
+    </script> -->
+
+
+    <!-- external/js/main -->
+    <!-- <script>
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vc2NyaXB0LmpzIj48L3NjcmlwdD4K"));
+    </script> -->
+
+
+    <!-- page loader -->
+    <!-- <script>
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vcGFnZS1sb2FkZXIuanMiPjwvc2NyaXB0Pgo="));
+    </script> -->
+
+
+    <!-- anti-inspect -->
+    <!-- <script>
+        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL3NlY3VyaXR5L2FudGktaW5zcGVjdC5qcyI+PC9zY3JpcHQ+Cg=="));
+    </script> -->
+
 
 
 
