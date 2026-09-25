@@ -387,204 +387,275 @@
 
                 </ol>
 
-                <script>
-                    document.addEventListener("DOMContentLoaded", () => {
+  <ol id="copyhub" class="linkboxs">
 
-                        const copyHub = document.getElementById("copyhub");
+    <li>
+        <a href="/assets/img/" data-copy="folder">
+            IMG Folder
+        </a>
+    </li>
 
-                        if (!copyHub) return;
+</ol>
 
-                        copyHub.querySelectorAll('[data-copy="folder"]').forEach(link => {
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
-                            link.addEventListener("click", async (e) => {
+    const copyHub = document.getElementById("copyhub");
 
-                                e.preventDefault();
+    if (!copyHub) return;
 
-                                const originalText = link.textContent.trim();
+    copyHub
+        .querySelectorAll('[data-copy="folder"]')
+        .forEach(link => {
 
-                                try {
+            link.addEventListener("click", async (e) => {
 
-                                    if (!window.showDirectoryPicker) {
-                                        throw new Error(
-                                            "Folder access is not supported in this browser."
-                                        );
-                                    }
+                e.preventDefault();
 
-                                    /*
-                                     * Folder URL
-                                     * Example:
-                                     * /assets/img/
-                                     */
-                                    const folderURL = new URL(
-                                        link.getAttribute("href"),
-                                        window.location.href
-                                    );
+                const originalText =
+                    link.textContent.trim();
 
-                                    /*
-                                     * File-list API
-                                     *
-                                     * Example:
-                                     * /folder-list.php?path=/assets/img/
-                                     */
-                                    const apiURL =
-                                        "/folder-list.php?path=" +
-                                        encodeURIComponent(folderURL.pathname);
+                try {
 
-                                    link.textContent = "Reading Folder...";
+                    if (!window.showDirectoryPicker) {
+                        throw new Error(
+                            "Folder access is not supported."
+                        );
+                    }
 
-                                    const response = await fetch(apiURL);
+                    /*
+                     * Destination folder select
+                     */
+                    link.textContent =
+                        "Select Destination...";
 
-                                    if (!response.ok) {
-                                        throw new Error("Folder list could not be loaded.");
-                                    }
-
-                                    const data = await response.json();
-
-                                    if (!Array.isArray(data.files)) {
-                                        throw new Error("Invalid folder data.");
-                                    }
-
-                                    if (data.files.length === 0) {
-                                        throw new Error("Folder is empty.");
-                                    }
-
-                                    /*
-                                     * Select destination folder
-                                     */
-                                    link.textContent = "Select Destination...";
-
-                                    const destination =
-                                        await window.showDirectoryPicker({
-                                            mode: "readwrite"
-                                        });
-
-                                    let copied = 0;
-
-                                    /*
-                                     * Copy every file
-                                     */
-                                    for (const file of data.files) {
-
-                                        try {
-
-                                            const fileResponse =
-                                                await fetch(file.url);
-
-                                            if (!fileResponse.ok) {
-                                                console.warn(
-                                                    "File skipped:",
-                                                    file.url
-                                                );
-                                                continue;
-                                            }
-
-                                            const blob =
-                                                await fileResponse.blob();
-
-                                            /*
-                                             * Create subfolders
-                                             */
-                                            const parts =
-                                                file.path.split("/");
-
-                                            const fileName =
-                                                parts.pop();
-
-                                            let currentFolder =
-                                                destination;
-
-                                            for (const folder of parts) {
-
-                                                if (!folder) continue;
-
-                                                currentFolder =
-                                                    await currentFolder
-                                                        .getDirectoryHandle(
-                                                            folder,
-                                                            {
-                                                                create: true
-                                                            }
-                                                        );
-                                            }
-
-                                            /*
-                                             * Create file
-                                             */
-                                            const newFile =
-                                                await currentFolder
-                                                    .getFileHandle(
-                                                        fileName,
-                                                        {
-                                                            create: true
-                                                        }
-                                                    );
-
-                                            const writable =
-                                                await newFile.createWritable();
-
-                                            await writable.write(blob);
-
-                                            await writable.close();
-
-                                            copied++;
-
-                                            link.textContent =
-                                                `Copying ${copied}/${data.files.length}...`;
-
-                                        } catch (fileError) {
-
-                                            console.warn(
-                                                "File copy failed:",
-                                                file.url,
-                                                fileError
-                                            );
-
-                                        }
-                                    }
-
-                                    /*
-                                     * SUCCESS
-                                     */
-                                    link.textContent =
-                                        `Copied ✓ (${copied} files)`;
-
-                                    setTimeout(() => {
-                                        link.textContent = originalText;
-                                    }, 2500);
-
-                                } catch (error) {
-
-                                    /*
-                                     * User cancelled
-                                     */
-                                    if (error.name === "AbortError") {
-                                        link.textContent = originalText;
-                                        return;
-                                    }
-
-                                    console.error(
-                                        "Folder Copy Error:",
-                                        error
-                                    );
-
-                                    link.textContent =
-                                        "Copy Failed ✕";
-
-                                    setTimeout(() => {
-                                        link.textContent = originalText;
-                                    }, 2500);
-
-                                }
-
-                            });
-
+                    const destination =
+                        await window.showDirectoryPicker({
+                            mode: "readwrite"
                         });
 
-                    });
-                </script>
+                    /*
+                     * Read folder URL
+                     */
+                    link.textContent =
+                        "Reading Folder...";
 
+                    const folderURL =
+                        new URL(
+                            link.getAttribute("href"),
+                            location.href
+                        );
 
+                    const response =
+                        await fetch(folderURL.href);
 
+                    if (!response.ok) {
+                        throw new Error(
+                            "Folder could not be opened."
+                        );
+                    }
+
+                    const html =
+                        await response.text();
+
+                    /*
+                     * Folder listing read
+                     */
+                    const parser =
+                        new DOMParser();
+
+                    const doc =
+                        parser.parseFromString(
+                            html,
+                            "text/html"
+                        );
+
+                    const fileLinks =
+                        [...doc.querySelectorAll("a")];
+
+                    const files =
+                        fileLinks
+                            .map(a => a.getAttribute("href"))
+                            .filter(href =>
+                                href &&
+                                href !== "../" &&
+                                !href.startsWith("#")
+                            );
+
+                    if (!files.length) {
+                        throw new Error(
+                            "Folder listing is not available."
+                        );
+                    }
+
+                    let copied = 0;
+
+                    /*
+                     * Copy files recursively
+                     */
+                    async function copyFile(
+                        fileURL,
+                        targetFolder,
+                        relativePath
+                    ) {
+
+                        const fileResponse =
+                            await fetch(fileURL);
+
+                        if (!fileResponse.ok) {
+                            return;
+                        }
+
+                        const blob =
+                            await fileResponse.blob();
+
+                        const parts =
+                            relativePath
+                                .split("/")
+                                .filter(Boolean);
+
+                        const fileName =
+                            parts.pop();
+
+                        let currentFolder =
+                            targetFolder;
+
+                        /*
+                         * Create subfolders
+                         */
+                        for (const folder of parts) {
+
+                            currentFolder =
+                                await currentFolder
+                                    .getDirectoryHandle(
+                                        folder,
+                                        {
+                                            create: true
+                                        }
+                                    );
+                        }
+
+                        /*
+                         * Create file
+                         */
+                        const fileHandle =
+                            await currentFolder
+                                .getFileHandle(
+                                    fileName,
+                                    {
+                                        create: true
+                                    }
+                                );
+
+                        const writable =
+                            await fileHandle
+                                .createWritable();
+
+                        await writable.write(blob);
+
+                        await writable.close();
+
+                        copied++;
+
+                        link.textContent =
+                            `Copying ${copied}...`;
+                    }
+
+                    /*
+                     * Process folder
+                     */
+                    for (const href of files) {
+
+                        const fileURL =
+                            new URL(
+                                href,
+                                folderURL.href
+                            );
+
+                        /*
+                         * Skip external links
+                         */
+                        if (
+                            fileURL.origin !==
+                            folderURL.origin
+                        ) {
+                            continue;
+                        }
+
+                        /*
+                         * Skip directories
+                         * (normal directory listing
+                         * ends with /)
+                         */
+                        if (
+                            fileURL.pathname.endsWith("/")
+                        ) {
+                            continue;
+                        }
+
+                        const basePath =
+                            folderURL.pathname;
+
+                        let relativePath =
+                            fileURL.pathname;
+
+                        if (
+                            relativePath
+                                .startsWith(basePath)
+                        ) {
+                            relativePath =
+                                relativePath
+                                    .slice(
+                                        basePath.length
+                                    );
+                        }
+
+                        await copyFile(
+                            fileURL.href,
+                            destination,
+                            relativePath
+                        );
+                    }
+
+                    link.textContent =
+                        `Copied ✓ (${copied} files)`;
+
+                    setTimeout(() => {
+                        link.textContent =
+                            originalText;
+                    }, 2500);
+
+                } catch (error) {
+
+                    if (
+                        error.name ===
+                        "AbortError"
+                    ) {
+                        link.textContent =
+                            originalText;
+                        return;
+                    }
+
+                    console.error(
+                        "Folder Copy Error:",
+                        error
+                    );
+
+                    link.textContent =
+                        "Copy Failed ✕";
+
+                    setTimeout(() => {
+                        link.textContent =
+                            originalText;
+                    }, 2500);
+                }
+
+            });
+
+        });
+
+});
+</script>
 
 
 
