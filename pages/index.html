@@ -401,8 +401,18 @@
                     <li><a href="/pages/haproven-template/index.txt" data-copy="code">page-map.txt</a></li>
 
 
+
+
+                </ol>
+
+
+
+
+                <ol id="copyhub" class="linkboxs">
+
+
                     <li>
-                        <a href="/assets/css/" data-copy="folder">
+                        <a href="#" data-copy="folder">
                             CSS Folder
                         </a>
                     </li>
@@ -411,10 +421,95 @@
 
 
 
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
 
+                        const copyHub = document.getElementById("copyhub");
 
+                        copyHub.querySelectorAll('[data-copy="folder"]').forEach(link => {
 
+                            link.addEventListener("click", async (e) => {
 
+                                e.preventDefault();
+
+                                try {
+
+                                    // Source folder
+                                    const source =
+                                        await window.showDirectoryPicker({
+                                            mode: "read"
+                                        });
+
+                                    // Destination folder
+                                    const target =
+                                        await window.showDirectoryPicker({
+                                            mode: "readwrite"
+                                        });
+
+                                    async function copyFolder(source, target) {
+
+                                        for await (const entry of source.values()) {
+
+                                            if (entry.kind === "file") {
+
+                                                const file = await entry.getFile();
+
+                                                const newFile =
+                                                    await target.getFileHandle(
+                                                        entry.name,
+                                                        { create: true }
+                                                    );
+
+                                                const writable =
+                                                    await newFile.createWritable();
+
+                                                await writable.write(
+                                                    await file.arrayBuffer()
+                                                );
+
+                                                await writable.close();
+
+                                            }
+
+                                            if (entry.kind === "directory") {
+
+                                                const newFolder =
+                                                    await target.getDirectoryHandle(
+                                                        entry.name,
+                                                        { create: true }
+                                                    );
+
+                                                await copyFolder(entry, newFolder);
+                                            }
+                                        }
+                                    }
+
+                                    await copyFolder(source, target);
+
+                                    link.textContent = "Folder Copied ✓";
+
+                                    setTimeout(() => {
+                                        link.textContent = "CSS Folder";
+                                    }, 1500);
+
+                                } catch (error) {
+
+                                    if (error.name !== "AbortError") {
+                                        console.error(error);
+                                        link.textContent = "Copy Failed ✕";
+
+                                        setTimeout(() => {
+                                            link.textContent = "CSS Folder";
+                                        }, 1500);
+                                    }
+                                }
+
+                            });
+
+                        });
+
+                    });
+                </script>
 
 
 
