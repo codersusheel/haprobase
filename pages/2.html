@@ -370,54 +370,17 @@
 
 
 
-                <ol id="copyhub" class="linkboxs">
-
-                    <!-- URL COPY -->
-                    <li>
-                        <a href="https://haprobase.netlify.app/assets/css/common.css" data-copy="link">
-                            common.css
-                        </a>
-                    </li>
-
-                    <!-- CODE COPY -->
-                    <li>
-                        <a href="https://haprobase.netlify.app/assets/css/common.css" data-copy="code">
-                            common.css Code
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="https://haprobase.netlify.app/assets/js/main.js" data-copy="code">
-                            main.js Code
-                        </a>
-                    </li>
-
-
-                    <li><a href="https://haprobase.netlify.app/assets/css/common.css" data-copy="code">common.css
-                            Code</a></li>
-                    <li><a href="https://haprobase.netlify.app/assets/" data-copy="code">main.js Code</a></li>
-
-                    <li><a href="/assets/js/page/copy.js" data-copy="link">copy .js</a></li>
-                    <li><a href="/pages/haproven-template/index.txt" data-copy="code">page-map.txt</a></li>
-
-
-
-
-                </ol>
-
-
-
-
-
-
-
-
-
 
                 <ol id="copyhub" class="linkboxs">
 
                     <li>
-                        <a href="#" data-copy="folder">
+                        <a href="/assets/css/page/" data-copy="folder">
+                            IMG Folder
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/assets/css/" data-copy="folder">
                             CSS Folder
                         </a>
                     </li>
@@ -443,105 +406,147 @@
 
                                     if (!window.showDirectoryPicker) {
                                         throw new Error(
-                                            "Your browser does not support folder access."
+                                            "Folder access is not supported in this browser."
                                         );
                                     }
 
-                                    /* SOURCE FOLDER */
-                                    link.textContent = "Select Source Folder...";
+                                    /*
+                                     * Folder URL
+                                     * Example:
+                                     * /assets/img/
+                                     */
+                                    const folderURL = new URL(
+                                        link.getAttribute("href"),
+                                        window.location.href
+                                    );
 
-                                    const source =
-                                        await window.showDirectoryPicker({
-                                            mode: "read"
-                                        });
+                                    /*
+                                     * File-list API
+                                     *
+                                     * Example:
+                                     * /folder-list.php?path=/assets/img/
+                                     */
+                                    const apiURL =
+                                        "/folder-list.php?path=" +
+                                        encodeURIComponent(folderURL.pathname);
 
-                                    /* DESTINATION FOLDER */
+                                    link.textContent = "Reading Folder...";
+
+                                    const response = await fetch(apiURL);
+
+                                    if (!response.ok) {
+                                        throw new Error("Folder list could not be loaded.");
+                                    }
+
+                                    const data = await response.json();
+
+                                    if (!Array.isArray(data.files)) {
+                                        throw new Error("Invalid folder data.");
+                                    }
+
+                                    if (data.files.length === 0) {
+                                        throw new Error("Folder is empty.");
+                                    }
+
+                                    /*
+                                     * Select destination folder
+                                     */
                                     link.textContent = "Select Destination...";
 
-                                    const target =
+                                    const destination =
                                         await window.showDirectoryPicker({
                                             mode: "readwrite"
                                         });
 
-                                    let fileCount = 0;
-                                    let folderCount = 0;
+                                    let copied = 0;
 
-                                    /* RECURSIVE COPY */
-                                    async function copyFolder(sourceDir, targetDir) {
+                                    /*
+                                     * Copy every file
+                                     */
+                                    for (const file of data.files) {
 
-                                        for await (const entry of sourceDir.values()) {
+                                        try {
 
-                                            /* FILE */
-                                            if (entry.kind === "file") {
+                                            const fileResponse =
+                                                await fetch(file.url);
 
-                                                const file = await entry.getFile();
-
-                                                const newFile =
-                                                    await targetDir.getFileHandle(
-                                                        entry.name,
-                                                        {
-                                                            create: true
-                                                        }
-                                                    );
-
-                                                const writable =
-                                                    await newFile.createWritable();
-
-                                                try {
-
-                                                    await writable.write(
-                                                        await file.arrayBuffer()
-                                                    );
-
-                                                    await writable.close();
-
-                                                } catch (error) {
-
-                                                    try {
-                                                        await writable.abort();
-                                                    } catch (_) { }
-
-                                                    throw error;
-                                                }
-
-                                                fileCount++;
-
-                                                link.textContent =
-                                                    `Copying ${fileCount} files...`;
-                                            }
-
-                                            /* FOLDER */
-                                            else if (entry.kind === "directory") {
-
-                                                const newFolder =
-                                                    await targetDir.getDirectoryHandle(
-                                                        entry.name,
-                                                        {
-                                                            create: true
-                                                        }
-                                                    );
-
-                                                folderCount++;
-
-                                                await copyFolder(
-                                                    entry,
-                                                    newFolder
+                                            if (!fileResponse.ok) {
+                                                console.warn(
+                                                    "File skipped:",
+                                                    file.url
                                                 );
+                                                continue;
                                             }
+
+                                            const blob =
+                                                await fileResponse.blob();
+
+                                            /*
+                                             * Create subfolders
+                                             */
+                                            const parts =
+                                                file.path.split("/");
+
+                                            const fileName =
+                                                parts.pop();
+
+                                            let currentFolder =
+                                                destination;
+
+                                            for (const folder of parts) {
+
+                                                if (!folder) continue;
+
+                                                currentFolder =
+                                                    await currentFolder
+                                                        .getDirectoryHandle(
+                                                            folder,
+                                                            {
+                                                                create: true
+                                                            }
+                                                        );
+                                            }
+
+                                            /*
+                                             * Create file
+                                             */
+                                            const newFile =
+                                                await currentFolder
+                                                    .getFileHandle(
+                                                        fileName,
+                                                        {
+                                                            create: true
+                                                        }
+                                                    );
+
+                                            const writable =
+                                                await newFile.createWritable();
+
+                                            await writable.write(blob);
+
+                                            await writable.close();
+
+                                            copied++;
+
+                                            link.textContent =
+                                                `Copying ${copied}/${data.files.length}...`;
+
+                                        } catch (fileError) {
+
+                                            console.warn(
+                                                "File copy failed:",
+                                                file.url,
+                                                fileError
+                                            );
+
                                         }
                                     }
 
-                                    /* START COPY */
-                                    link.textContent = "Copying...";
-
-                                    await copyFolder(
-                                        source,
-                                        target
-                                    );
-
-                                    /* SUCCESS */
+                                    /*
+                                     * SUCCESS
+                                     */
                                     link.textContent =
-                                        `Copied ✓ (${fileCount} files)`;
+                                        `Copied ✓ (${copied} files)`;
 
                                     setTimeout(() => {
                                         link.textContent = originalText;
@@ -549,35 +554,26 @@
 
                                 } catch (error) {
 
-                                    /* USER CANCEL */
+                                    /*
+                                     * User cancelled
+                                     */
                                     if (error.name === "AbortError") {
-
                                         link.textContent = originalText;
                                         return;
                                     }
 
-                                    console.error("Folder Copy Error:", error);
+                                    console.error(
+                                        "Folder Copy Error:",
+                                        error
+                                    );
 
-                                    /* ERROR STATUS */
-                                    if (error.name === "NotAllowedError") {
-
-                                        link.textContent =
-                                            "Permission Denied ✕";
-
-                                    } else if (error.name === "SecurityError") {
-
-                                        link.textContent =
-                                            "Security Error ✕";
-
-                                    } else {
-
-                                        link.textContent =
-                                            "Copy Failed ✕";
-                                    }
+                                    link.textContent =
+                                        "Copy Failed ✕";
 
                                     setTimeout(() => {
                                         link.textContent = originalText;
                                     }, 2500);
+
                                 }
 
                             });
@@ -601,169 +597,6 @@
 
 
 
-
-
-
-                <!-- =========================
-             LINK COPY
-        ========================== -->
-                <div class="list-tital">
-                    <h1>copyhub</h1>
-                </div>
-
-                <ol id="copyhub" class="linkboxs">
-                    <li><a href="https://haprobase.netlify.app/assets/css/common.css" data-copy="link">common.css</a>
-                    </li>
-                    <li><a href="https://haproven.netlify.app/" data-copy="link">Haproven</a></li>
-
-
-                </ol>
-
-
-
-
-                <!-- =========================
-             CODE COPY
-        ========================== -->
-                <div class="list-tital">
-                    <h1>codecopy</h1>
-                </div>
-
-                <ol id="codecopy" class="linkboxs">
-
-                    <li>
-                        <a href="#">Code 01</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 02</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 03</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 04</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 05</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 06</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 07</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 08</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 09</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 10</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 11</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 12</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 13</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 14</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 15</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 16</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 17</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 18</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 19</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Code 20</a>
-                    </li>
-
-                </ol>
-
-
-                <!-- =========================
-             LINK + CODE
-        ========================== -->
-                <div class="list-tital">
-                    <h1>linkcode-copy</h1>
-                </div>
-
-                <ol id="linkcode-copy" class="linkboxs">
-
-                    <li>
-                        <a href="#">LinkCode 01</a>
-                    </li>
-
-                    <li>
-                        <a href="#">LinkCode 02</a>
-                    </li>
-
-                    <li>
-                        <a href="#">LinkCode 03</a>
-                    </li>
-
-                    <li>
-                        <a href="#">LinkCode 04</a>
-                    </li>
-
-                    <li>
-                        <a href="#">LinkCode 05</a>
-                    </li>
-
-                    <li>
-                        <a href="#">LinkCode 06</a>
-                    </li>
-
-                    <li>
-                        <a href="#">LinkCode 07</a>
-                    </li>
-
-                    <li>
-                        <a href="#">LinkCode 08</a>
-                    </li>
-
-                    <li>
-                        <a href="#">LinkCode 09</a>
-                    </li>
-
-                    <li>
-                        <a href="#">LinkCode 10</a>
-                    </li>
-
-                </ol>
 
 
                 <!-- =========================
@@ -796,7 +629,7 @@
 
     <!-- <script src="/assets/js/page/script.js"></script> -->
     <script src="/external/js/bundle.js"></script>
-    <script src="/assets/js/page/copy.js"></script>
+    <!-- <script src="/assets/js/page/copy.js"></script> -->
 
 
 
