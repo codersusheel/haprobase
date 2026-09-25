@@ -30,9 +30,10 @@
     padding: 0 12px;
     border: 1px solid #ddd;
     border-radius: 10px;
-    background: #fff;
+    background: #c5c4c4dd;
     box-sizing: border-box;
     transition: 0.2s ease;
+    color: black;
 
 
 }
@@ -42,6 +43,8 @@
     top: 50px;
     z-index: 100;
 }
+
+
 
 .link-search-box:focus-within {
     border-color: #555;
@@ -53,6 +56,13 @@
     flex-shrink: 0;
 }
 
+.link-search-box {
+    box-shadow:
+        -8px 0 20px rgba(0, 0, 0, 0.08),
+        8px 0 20px rgba(0, 0, 0, 0.08);
+}
+
+
 #linkSearch {
     width: 100%;
     height: 100%;
@@ -60,8 +70,10 @@
     outline: 0;
     background: transparent;
     font-size: 15px;
-    color: #222;
+    color: #241725;
 }
+
+
 
 #linkSearch::placeholder {
     color: #999;
@@ -102,7 +114,7 @@
        LINK LIST
     ================================= */
 
-#linkList {
+.linkboxs {
     margin: 0;
     margin-top: 50px;
     padding-left: 30px;
@@ -115,9 +127,9 @@
 }
 
 
-#linkList li {
+.linkboxs li {
     min-width: 0;
-    padding: 8px 6px;
+    padding: 3px 3px;
     border-radius: 6px;
     background: #ffffffeb;
 
@@ -132,19 +144,26 @@
 
     border: 1px solid #00000026;
 
+}
 
+
+.list-tital {
+    padding: 5px;
+    margin-bottom: -30px;
+    margin-top: 15px;
+    font-size: 10px;
 }
 
 
 
 
-#linkList li:hover {
+.linkboxs li:hover {
     background: #d2fcd6d0;
     transform: translateY(-1px);
 }
 
 
-#linkList li a {
+.linkboxs li a {
     display: block;
 
     overflow: hidden;
@@ -154,10 +173,11 @@
     color: #222;
     text-decoration: none;
     font-size: 14px;
+    padding: 5px;
 }
 
 
-#linkList li a:hover {
+.linkboxs li a:hover {
     text-decoration: underline;
 }
 
@@ -166,10 +186,9 @@
        SEARCH HIGHLIGHT
     ================================= */
 
-#linkList li.search-highlight {
-    background: #fff3a68c;
-    box-shadow: 0 0 0 2px #f1d84b84;
-    transform: scale(1.02);
+.linkboxs li.search-highlight {
+    background: #ddffe0;
+    transform: scale(1.01);
 
 }
 
@@ -193,7 +212,7 @@
 
 @media (max-width: 1100px) {
 
-    #linkList {
+    .linkboxs {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
@@ -212,12 +231,12 @@
 
 
 
-    #linkList {
+    .linkboxs {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
 
-    #linkList li a {
+    .linkboxs li a {
         font-size: 13px;
     }
 
@@ -237,12 +256,12 @@
 
 
 /* Copy icon */
-#linkList li {
+.linkboxs li {
     position: relative;
     padding-right: 28px;
 }
 
-#linkList .copy-btn {
+.linkboxs .copy-btn {
     position: absolute;
     right: 5px;
     top: 50%;
@@ -254,6 +273,6 @@
     padding: 2px;
 }
 
-#linkList .copy-btn.copied {
+.linkboxs .copy-btn.copied {
     color: green;
 }
