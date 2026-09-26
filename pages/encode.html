@@ -89,6 +89,8 @@
 
   <link rel="stylesheet" href="/assets/css/page/Encoder.css">
 
+
+
 </head>
 
 
@@ -262,6 +264,10 @@
 
 
 
+
+
+
+
     <section class="main-box">
 
       <div class="encoder-card">
@@ -269,45 +275,172 @@
         <h2>CSS & JavaScript Encoder</h2>
 
         <p>
-          Enter a CSS or JavaScript file URL/path to generate
-          an encoded version that is harder to read directly.
+          Encode or decode CSS and JavaScript files using multiple
+          loading and protection methods.
         </p>
 
+
+        <!-- ================= MODE ================= -->
+
+        <div class="mode-switch">
+
+          <button type="button" class="mode-btn active" id="encodeModeBtn">
+            Encoder
+          </button>
+
+          <button type="button" class="mode-btn" id="decodeModeBtn">
+            Decoder
+          </button>
+
+        </div>
+
+
+        <!-- ================= FILE TYPE ================= -->
+
+        <div class="input-group">
+
+          <label for="fileType">
+            File Type:
+          </label>
+
+          <select id="fileType">
+
+            <option value="auto">
+              Auto Detect
+            </option>
+
+            <option value="css">
+              CSS
+            </option>
+
+            <option value="js">
+              JavaScript
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- ================= INPUT ================= -->
 
         <div class="input-group">
 
           <label for="fileInput">
-            Enter CSS or JavaScript File:
+            File URL / Path / Code:
           </label>
 
-          <input type="text" id="fileInput" placeholder="e.g. /assets/css/style.css" autocomplete="off">
+          <textarea id="fileInput" class="input-box" placeholder="e.g. /assets/js/index.js"
+            autocomplete="off"></textarea>
 
         </div>
 
+
+        <!-- ================= ENCODING METHOD ================= -->
+
+        <div class="input-group" id="encodingOptions">
+
+          <label for="encodeMethod">
+            Encoding Method:
+          </label>
+
+          <select id="encodeMethod">
+
+            <option value="base64">
+              Base64 Loader
+            </option>
+
+            <option value="dynamic">
+              Dynamic Loader
+            </option>
+
+            <option value="src">
+              Encoded Script / Link
+            </option>
+
+            <option value="fast">
+              Fast Loader
+            </option>
+
+            <option value="document">
+              Document Loader
+            </option>
+
+            <option value="runtime">
+              Runtime Decoder
+            </option>
+
+            <option value="compact">
+              Compact Loader
+            </option>
+
+            <option value="minimal">
+              Minimal Loader
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- ================= METHOD INFO ================= -->
+
+        <div class="method-info" id="methodInfo">
+
+          <strong>Base64 Loader</strong>
+
+          <span>
+            Hides the original file URL and restores it at runtime.
+          </span>
+
+        </div>
+
+
+        <!-- ================= BUTTONS ================= -->
 
         <div class="button-row">
 
           <button type="button" class="btn-encode" id="encodeBtn">
-            Encode File
+
+            Encode
+
+          </button>
+
+          <button type="button" class="btn-decode" id="decodeBtn">
+
+            Decode
+
+          </button>
+
+          <button type="button" class="btn-swap" id="swapBtn">
+
+            Swap
+
           </button>
 
           <button type="button" class="btn-clear" id="clearBtn">
+
             Clear
+
           </button>
 
         </div>
 
+
+        <!-- ================= STATUS ================= -->
 
         <div class="status" id="status">
         </div>
 
+
+        <!-- ================= OUTPUT ================= -->
 
         <div class="output-group" id="outputGroup">
 
           <div class="input-group">
 
             <label for="outputCode">
-              Encoded Output:
+              Result:
             </label>
 
             <textarea id="outputCode" class="output-box" readonly></textarea>
@@ -315,14 +448,45 @@
           </div>
 
 
+          <!-- OUTPUT INFO -->
+
+          <div class="result-info" id="resultInfo">
+
+            <span>
+              Type: <b id="resultType">—</b>
+            </span>
+
+            <span>
+              Method: <b id="resultMethod">—</b>
+            </span>
+
+            <span>
+              Size: <b id="resultSize">—</b>
+            </span>
+
+          </div>
+
+
+          <!-- OUTPUT ACTIONS -->
+
           <div class="output-actions">
 
             <button type="button" id="copyBtn">
+
               Copy
+
             </button>
 
             <button type="button" id="downloadBtn">
+
               Download
+
+            </button>
+
+            <button type="button" id="useOutputBtn">
+
+              Use Result
+
             </button>
 
           </div>
@@ -332,53 +496,16 @@
 
         <!-- ================= EXAMPLES ================= -->
 
-        <div class="examples-box">
 
-          <h3>Examples</h3>
+        <!-- ================= NOTES ================= -->
 
+        <div class="tool-note">
 
-          <div class="example-item">
+          <strong>Note:</strong>
 
-            <strong>CSS File</strong>
-
-            <code>style.css</code>
-
-            <code>/assets/css/style.css</code>
-
-          </div>
-
-
-          <div class="example-item">
-
-            <strong>JavaScript File</strong>
-
-            <code>index.js</code>
-
-            <code>/assets/js/index.js</code>
-
-          </div>
-
-
-          <div class="example-item">
-
-            <strong>CSS Result</strong>
-
-            <code>
-                    Encoded &lt;style&gt; + Base64 CSS + automatic decoder
-                </code>
-
-          </div>
-
-
-          <div class="example-item">
-
-            <strong>JavaScript Result</strong>
-
-            <code>
-                    Encoded &lt;script&gt; + Base64 JavaScript + automatic decoder
-                </code>
-
-          </div>
+          These methods provide obfuscation and runtime loading.
+          They do not provide encryption or prevent inspection
+          through browser developer tools.
 
         </div>
 
@@ -396,595 +523,12 @@
 
 
 
-<script>
-"use strict";
 
 
-/* =========================
-   ELEMENTS
-========================= */
 
-const fileInput =
-    document.getElementById("fileInput");
 
-const encodeBtn =
-    document.getElementById("encodeBtn");
 
-const clearBtn =
-    document.getElementById("clearBtn");
 
-const status =
-    document.getElementById("status");
-
-const outputGroup =
-    document.getElementById("outputGroup");
-
-const outputCode =
-    document.getElementById("outputCode");
-
-const copyBtn =
-    document.getElementById("copyBtn");
-
-const downloadBtn =
-    document.getElementById("downloadBtn");
-
-
-/* =========================
-   STATUS
-========================= */
-
-function showStatus(message, type) {
-
-    status.textContent = message;
-
-    status.className =
-        "status show " + type;
-}
-
-
-function hideStatus() {
-
-    status.textContent = "";
-
-    status.className = "status";
-}
-
-
-/* =========================
-   GET EXTENSION
-========================= */
-
-function getExtension(path) {
-
-    const cleanPath =
-        path
-            .split("?")[0]
-            .split("#")[0]
-            .trim()
-            .toLowerCase();
-
-    if (cleanPath.endsWith(".css")) {
-        return "css";
-    }
-
-    if (cleanPath.endsWith(".js")) {
-        return "js";
-    }
-
-    return "";
-}
-
-
-/* =========================
-   RESOLVE FILE URL
-========================= */
-
-function resolveFileUrl(path) {
-
-    path = path.trim();
-
-    /*
-        Example:
-
-        index.js
-        /assets/js/index.js
-        ./assets/js/index.js
-        https://example.com/index.js
-    */
-
-    try {
-
-        return new URL(
-            path,
-            window.location.href
-        ).href;
-
-    } catch {
-
-        return path;
-    }
-}
-
-
-/* =========================
-   UTF-8 BASE64
-========================= */
-
-function encodeBase64(text) {
-
-    const bytes =
-        new TextEncoder().encode(text);
-
-    let binary = "";
-
-    const chunkSize = 0x8000;
-
-    for (
-        let i = 0;
-        i < bytes.length;
-        i += chunkSize
-    ) {
-
-        const chunk =
-            bytes.subarray(
-                i,
-                Math.min(
-                    i + chunkSize,
-                    bytes.length
-                )
-            );
-
-        binary +=
-            String.fromCharCode(...chunk);
-    }
-
-    return btoa(binary);
-}
-
-
-/* =========================
-   FETCH FILE
-========================= */
-
-async function fetchFile(url) {
-
-    let response;
-
-    try {
-
-        response =
-            await fetch(url, {
-                method: "GET",
-                cache: "no-cache",
-                credentials: "same-origin"
-            });
-
-    } catch (error) {
-
-        throw new Error(
-            "Unable to access the file. " +
-            "The server may block this request or CORS may be disabled."
-        );
-    }
-
-
-    if (!response.ok) {
-
-        throw new Error(
-            "File could not be loaded. HTTP " +
-            response.status +
-            " " +
-            response.statusText
-        );
-    }
-
-
-    const text =
-        await response.text();
-
-
-    if (!text || !text.trim()) {
-
-        throw new Error(
-            "The file was loaded, but its content is empty."
-        );
-    }
-
-
-    return text;
-}
-
-
-/* =========================
-   CSS ENCODER
-========================= */
-
-async function encodeCSS(fileUrl) {
-
-    showStatus(
-        "Fetching CSS file...",
-        "loading"
-    );
-
-
-    const css =
-        await fetchFile(fileUrl);
-
-
-    showStatus(
-        "Encoding CSS...",
-        "loading"
-    );
-
-
-    const encoded =
-        encodeBase64(css);
-
-
-    /*
-        Generated code decodes
-        Base64 back into CSS.
-    */
-
-    const result =
-`<script>
-(function() {
-
-    const encodedCSS = "${encoded}";
-
-    const binary = atob(encodedCSS);
-
-    const bytes = Uint8Array.from(
-        binary,
-        function(char) {
-            return char.charCodeAt(0);
-        }
-    );
-
-    const css =
-        new TextDecoder().decode(bytes);
-
-    const style =
-        document.createElement("style");
-
-    style.textContent = css;
-
-    document.head.appendChild(style);
-
-})();
-<\/script>`;
-
-
-    outputCode.value =
-        result;
-
-    outputGroup.classList.add("show");
-
-
-    showStatus(
-        "CSS successfully encoded.",
-        "success"
-    );
-}
-
-
-/* =========================
-   JAVASCRIPT ENCODER
-========================= */
-
-async function encodeJS(fileUrl) {
-
-    showStatus(
-        "Fetching JavaScript file...",
-        "loading"
-    );
-
-
-    const js =
-        await fetchFile(fileUrl);
-
-
-    showStatus(
-        "Encoding JavaScript...",
-        "loading"
-    );
-
-
-    const encoded =
-        encodeBase64(js);
-
-
-    /*
-        Generated code decodes
-        Base64 and executes JS.
-    */
-
-    const result =
-`<script>
-(function() {
-
-    const encodedJS = "${encoded}";
-
-    const binary = atob(encodedJS);
-
-    const bytes = Uint8Array.from(
-        binary,
-        function(char) {
-            return char.charCodeAt(0);
-        }
-    );
-
-    const code =
-        new TextDecoder().decode(bytes);
-
-    const script =
-        document.createElement("script");
-
-    script.textContent = code;
-
-    document.body.appendChild(script);
-
-})();
-<\/script>`;
-
-
-    outputCode.value =
-        result;
-
-    outputGroup.classList.add("show");
-
-
-    showStatus(
-        "JavaScript successfully encoded.",
-        "success"
-    );
-}
-
-
-/* =========================
-   MAIN ENCODER
-========================= */
-
-async function encodeFile() {
-
-    const input =
-        fileInput.value.trim();
-
-
-    if (!input) {
-
-        showStatus(
-            "Please enter a CSS or JavaScript file path.",
-            "error"
-        );
-
-        fileInput.focus();
-
-        return;
-    }
-
-
-    const extension =
-        getExtension(input);
-
-
-    if (!extension) {
-
-        showStatus(
-            "Only .css and .js files are supported.",
-            "error"
-        );
-
-        return;
-    }
-
-
-    const fileUrl =
-        resolveFileUrl(input);
-
-
-    encodeBtn.disabled = true;
-
-    encodeBtn.textContent =
-        "Encoding...";
-
-    outputGroup.classList.remove("show");
-
-
-    try {
-
-        if (extension === "css") {
-
-            await encodeCSS(fileUrl);
-
-        }
-
-        else if (extension === "js") {
-
-            await encodeJS(fileUrl);
-
-        }
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Encoder Error:",
-            error
-        );
-
-
-        showStatus(
-            error.message ||
-            "Unable to encode the file.",
-            "error"
-        );
-
-    }
-
-    finally {
-
-        encodeBtn.disabled = false;
-
-        encodeBtn.textContent =
-            "Encode File";
-    }
-}
-
-
-/* =========================
-   COPY
-========================= */
-
-async function copyOutput() {
-
-    const text =
-        outputCode.value.trim();
-
-
-    if (!text) {
-        return;
-    }
-
-
-    try {
-
-        await navigator.clipboard.writeText(text);
-
-    }
-
-    catch {
-
-        outputCode.select();
-
-        document.execCommand("copy");
-    }
-
-
-    copyBtn.textContent =
-        "Copied!";
-
-
-    setTimeout(function() {
-
-        copyBtn.textContent =
-            "Copy";
-
-    }, 1500);
-}
-
-
-/* =========================
-   DOWNLOAD
-========================= */
-
-function downloadOutput() {
-
-    const text =
-        outputCode.value.trim();
-
-
-    if (!text) {
-        return;
-    }
-
-
-    const blob =
-        new Blob(
-            [text],
-            {
-                type:
-                    "text/html;charset=utf-8"
-            }
-        );
-
-
-    const url =
-        URL.createObjectURL(blob);
-
-
-    const link =
-        document.createElement("a");
-
-
-    link.href = url;
-
-    link.download =
-        "encoded-file.html";
-
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    link.remove();
-
-
-    URL.revokeObjectURL(url);
-}
-
-
-/* =========================
-   CLEAR
-========================= */
-
-function clearAll() {
-
-    fileInput.value = "";
-
-    outputCode.value = "";
-
-    outputGroup.classList.remove("show");
-
-    hideStatus();
-
-    fileInput.focus();
-}
-
-
-/* =========================
-   ENTER KEY
-========================= */
-
-fileInput.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (event.key === "Enter") {
-
-            encodeFile();
-
-        }
-
-    }
-);
-
-
-/* =========================
-   BUTTON EVENTS
-========================= */
-
-encodeBtn.addEventListener(
-    "click",
-    encodeFile
-);
-
-copyBtn.addEventListener(
-    "click",
-    copyOutput
-);
-
-downloadBtn.addEventListener(
-    "click",
-    downloadOutput
-);
-
-clearBtn.addEventListener(
-    "click",
-    clearAll
-);
-</script>
 
 
 
@@ -1004,11 +548,17 @@ clearBtn.addEventListener(
 
 
 
+  <script src="/pages/encode.js"></script>
 
 
 
-
+  
   <script src="/external/js/bundle.js"></script>
+  
+  <!-- 
+  <script>
+  document.write(atob("ICA8c2NyaXB0IHNyYz0iL2V4dGVybmFsL2pzL2J1bmRsZS5qcyI+PC9zY3JpcHQ+Cg=="));
+  </script> -->
 
 
 
