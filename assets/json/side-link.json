@@ -1,9 +1,10 @@
 {
   "navigation_system": [
     {
+      "category": "Tools",
       "items": [
         {
-          "name": "encode",
+          "name": "Encode",
           "icon": "fa-code",
           "url": "/pages/encode.html",
           "type": "dropdown",
@@ -12,11 +13,7 @@
             "sidebar_laptop",
             "sidebar_mobile"
           ]
-        }
-      ]
-    },
-    {
-      "items": [
+        },
         {
           "name": "Encode CSS",
           "icon": "fa-code",
@@ -27,12 +24,7 @@
             "sidebar_laptop",
             "sidebar_mobile"
           ]
-        }
-      ]
-    },
-    {
-      "category": "Pages & Quick Links",
-      "items": [
+        },
         {
           "name": "Encoded Generator",
           "icon": "fa-gears",
@@ -47,27 +39,23 @@
       ]
     },
     {
+      "category": "Pages & Quick Links",
       "items": [
         {
-          "name": "101 page",
+          "name": "101 Page",
           "icon": "fa-file-lines",
           "url": "/101.html",
-          "type": "dropdown",
+          "type": "link",
           "placements": [
             "header",
             "sidebar_laptop",
             "sidebar_mobile"
           ]
-        }
-      ]
-    },
-    {
-      "category": "Pages & Quick Links",
-      "items": [
+        },
         {
           "name": "Pages",
-          "url": "/pages/",
           "icon": "fa-file",
+          "url": "/pages/",
           "type": "dropdown",
           "placements": [
             "header",
@@ -85,11 +73,20 @@
               ]
             },
             {
+              "name": "Encode CSS",
+              "icon": "fa-code",
+              "url": "/pages/encode-css.html",
+              "placements": [
+                "sidebar_laptop",
+                "sidebar_mobile"
+              ]
+            },
+            {
               "name": "Encoded Generator",
               "icon": "fa-gears",
               "url": "/pages/Encoded Generator.html",
               "placements": [
-                "header",
+                "sidebar_laptop",
                 "sidebar_mobile"
               ]
             }
