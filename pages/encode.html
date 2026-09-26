@@ -1,151 +1,1017 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en-in">
+
 <head>
+
+  <!-- ================= BASIC ================= -->
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>File Name Encoder</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
 
-    body {
-      background-color: #f4f6f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+  <!-- ================= PAGE INFORMATION ================= -->
+  <title>File Name Encoder | HaproBase</title>
 
-    .encoder-card {
-      background: #ffffff;
-      padding: 25px 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      max-width: 480px;
-      width: 100%;
-    }
+  <meta name="description"
+    content="Encode file names into Base64 format for safer URL handling and file name processing with HaproBase.">
 
-    .encoder-card h2 {
-      font-size: 1.4rem;
-      color: #1e293b;
-      margin-bottom: 8px;
-    }
+  <meta name="author" content="Haproven">
+  <meta name="publisher" content="Haproven">
+  <meta name="application-name" content="HaproBase">
 
-    .encoder-card p {
-      font-size: 0.9rem;
-      color: #64748b;
-      margin-bottom: 20px;
-    }
+  <!-- ================= CANONICAL ================= -->
+  <link rel="canonical" href="https://haprobase.netlify.app/pages/encode.html">
 
-    .input-group {
-      margin-bottom: 15px;
-    }
+  <!-- ================= ROBOTS ================= -->
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
 
-    .input-group label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #334155;
-      margin-bottom: 6px;
-    }
+  <!-- ================= OPEN GRAPH ================= -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="File Name Encoder | HaproBase">
+  <meta property="og:description"
+    content="Encode file names into Base64 format for safer URL handling and file name processing.">
+  <meta property="og:url" content="https://haprobase.netlify.app/pages/encode.html">
+  <meta property="og:image" content="https://haproven.netlify.app/assets/img/haproven-logo.png">
+  <meta property="og:site_name" content="HaproBase">
 
-    .input-group input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
+  <!-- ================= TWITTER / X ================= -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="File Name Encoder | HaproBase">
+  <meta name="twitter:description"
+    content="Encode file names into Base64 format for safer URL handling and file name processing.">
+  <meta name="twitter:image" content="https://haproven.netlify.app/assets/img/haproven-logo.png">
 
-    .input-group input:focus {
-      border-color: #2563eb;
-    }
+  <!-- ================= FAVICON ================= -->
+  <link rel="icon" href="https://haproven.netlify.app/assets/img/haproven.ico" type="image/x-icon">
 
-    .btn-encode {
-      width: 100%;
-      padding: 12px;
-      background-color: #2563eb;
-      color: #ffffff;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
+  <link rel="apple-touch-icon" href="https://haproven.netlify.app/assets/img/haproven-logo.png">
 
-    .btn-encode:hover {
-      background-color: #1d4ed8;
-    }
+  <!-- ================= PWA ================= -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
-    .output-group {
-      margin-top: 20px;
-      display: none; /* डिफ़ॉल्ट रूप से छिपा रहेगा */
-    }
+  <!-- ================= ICONS ================= -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    .output-box {
-      background-color: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 12px;
-      word-break: break-all;
-      font-family: monospace;
-      font-size: 0.9rem;
-      color: #0f172a;
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+
+  <!-- ================= GLOBAL CSS ================= -->
+  <link rel="stylesheet" href="https://haprobase.netlify.app/external/css/style.css">
+
+  <!-- ================= COMMON CSS ================= -->
+  <link rel="stylesheet" href="https://haprobase.netlify.app/external/css/base.css">
+
+  <link rel="stylesheet" href="https://haprobase.netlify.app/external/css/addon.css">
+
+  <!-- ================= STRUCTURED DATA ================= -->
+  <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "File Name Encoder",
+        "url": "https://haprobase.netlify.app/pages/encode.html",
+        "description": "A tool for encoding file names into Base64 format for safer URL handling and file name processing.",
+        "inLanguage": "en-IN",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "HaproBase",
+            "url": "https://haprobase.netlify.app/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Haproven",
+            "url": "https://haproven.netlify.app/"
+        }
     }
-  </style>
+    </script>
+
+
+  <link rel="stylesheet" href="/assets/css/page/Encoder.css">
+
 </head>
+
+
+
 <body>
 
-  <!-- Encoder Section -->
-  <div class="encoder-card">
-    <h2>File Name Encoder</h2>
-    <p>अपना फ़ाइल नाम दर्ज करें और उसे सुरक्षा/URL के लिए Encoded Base64 में बदलें।</p>
 
-    <div class="input-group">
-      <label for="fileNameInput">फ़ाइल नाम दर्ज करें:</label>
-      <input type="text" id="fileNameInput" placeholder="उदा. my-village-app.png">
-    </div>
+  <!-- ======================================================================================================================================================================================= -->
+  <header id="header">
 
-    <button class="btn-encode" onclick="encodeFileName()">Encode File Name</button>
-
-    <div class="output-group" id="outputGroup">
-      <div class="input-group">
-        <label>Encoded Output (Base64):</label>
-        <div class="output-box" id="encodedResult"></div>
+    <div class="header">
+      <div class="logo">
+        <a href="/">
+          <div class="haproven-brand animate" data-name="site name by haproven ">haproven</div>
+        </a>
       </div>
+
+      <div class="header-senter">
+        <ul id="header-links">
+          <li class="nav-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</li>
+          <li class="nav-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</li>
+          <li class="nav-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</li>
+        </ul>
+      </div>
+
+
+      <div class="header-right-side">
+
+        <div class="header-manu">
+          <div class="menu-wrapper">
+
+            <button class="dot-menu-btn" id="dot6menu" aria-label="Toggle Apps Menu">
+              <span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+            </button>
+
+            <div class="team-dropdown" id="teamDropdown">
+
+              <div class="quick-actions" id="dot6">
+                <a href="javascript:void(0)" class="action-box" onclick="toggleLanguage()">
+                  <div class="language-switch">
+                    <button id="langBtn">हिंदी</button>
+                  </div>
+                  <span>Lang..</span>
+                </a>
+                <a id="theme-toggle" class="action-box" href="javascript:void(0)">
+                  <span class="icon sun">☀️</span>
+                  <span class="icon moon">🌙</span>
+                  <span>Theme</span>
+                </a>
+                <a href="#" id="login-action" class="action-box">
+                  <i class="ri-login-circle-line"></i>
+                  <span>Login</span>
+                </a>
+
+                <a href="#" id="main-audio-button" class="action-box">
+                  <i class="fa-solid fa-volume-low"></i>
+                  <span>Audio</span>
+                </a>
+
+              </div>
+
+              <ul class="by-haproven" id="by-haproven">
+                <!-- haproven eco. link -->
+                <li>
+                  <a href="" class="member-box">
+                    <i class="fas fa-circle-notch fa-spin fa-4px"></i>
+                    <span>Loading...</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="" class="member-box">
+                    <i class="fas fa-circle-notch fa-spin fa-4px"></i>
+                    <span>Loading...</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="" class="member-box">
+                    <i class="fas fa-circle-notch fa-spin fa-4px"></i>
+                    <span>Loading...</span>
+                  </a>
+                </li>
+
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <nav id="navbar-mobile">
+          <div class="menu-title">Main Menu</div>
+
+          <ul class="navbar-mobile" id="mobile-sidebar">
+            <li class="sidebar-icon-loading">
+              <i class="fas fa-circle-notch fa-spin"></i> <span>Loading Menu...</span>
+            </li>
+          </ul>
+
+          <hr class="hr">
+
+          <div class="mobile-social haproven-sosal-links">
+            <a aria-label="loading"><i class="fas fa-circle-notch fa-spin" style="color: #007bff;"></i></a>
+            <a aria-label="loading"><i class="fas fa-circle-notch fa-spin" style="color: #007bff;"></i></a>
+            <a aria-label="loading"><i class="fas fa-circle-notch fa-spin" style="color: #007bff;"></i></a>
+          </div>
+        </nav>
+      </div>
+
     </div>
-  </div>
+  </header>
 
-  <script>
-    function encodeFileName() {
-      const input = document.getElementById('fileNameInput').value.trim();
-      const outputGroup = document.getElementById('outputGroup');
-      const resultBox = document.getElementById('encodedResult');
 
-      if (!input) {
-        alert("कृपया पहले फ़ाइल नाम दर्ज करें!");
-        return;
-      }
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-live-box">
+        <p id="live-text">
+          <i class="fas fa-circle-notch fa-spin icon-loader"></i> <span>Loading status...</span>
+        </p>
+      </div>
+      <!-- <br> -->
 
-      // UTF-8 सपोर्ट के साथ Base64 Encoding
-      const encoded = btoa(encodeURIComponent(input).replace(/%([0-9A-F]{2})/g,
-          function toSolidBytes(match, p1) {
-              return String.fromCharCode('0x' + p1);
-      }));
+      <p id="liv-open-page">
+        <span class="page-loading"><i class="fas fa-spinner fa-spin"></i> Detecting Page...</span>
+      </p>
+    </div>
 
-      // आउटपुट दिखाएं
-      resultBox.innerText = encoded;
-      outputGroup.style.display = 'block';
+
+
+
+    <nav class="sidebar-nav" id="sidebar_lapto">
+      <ul class="nav-list" id="laptop-sidebar">
+
+        <li class="nav-item has-submenu">
+          <a href=""> Page link.</a>
+          <ul class="submenu">
+            <li><i class="fas fa-spinner fa-spin"></i> Loading... </li>
+            <li><i class="fas fa-spinner fa-spin"></i> Loading... </li>
+
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <hr>
+      <ul class="social-links haproven-sosal-links">
+        <li><i class="fas fa-spinner fa-spin social-loader"></i></li>
+        <li><i class="fas fa-spinner fa-spin social-loader"></i></li>
+        <li><i class="fas fa-spinner fa-spin social-loader"></i></li>
+        <li><i class="fas fa-spinner fa-spin social-loader"></i></li>
+        <li><i class="fas fa-spinner fa-spin social-loader"></i></li>
+      </ul>
+    </div>
+
+  </aside>
+
+  <!-- ======================================================================================================================================================================================= -->
+
+
+  <main class="main">
+
+
+
+
+
+
+    <section class="main-box">
+
+      <div class="encoder-card">
+
+        <h2>CSS & JavaScript Encoder</h2>
+
+        <p>
+          Enter a CSS or JavaScript file URL/path to generate
+          an encoded version that is harder to read directly.
+        </p>
+
+
+        <div class="input-group">
+
+          <label for="fileInput">
+            Enter CSS or JavaScript File:
+          </label>
+
+          <input type="text" id="fileInput" placeholder="e.g. /assets/css/style.css" autocomplete="off">
+
+        </div>
+
+
+        <div class="button-row">
+
+          <button type="button" class="btn-encode" id="encodeBtn">
+            Encode File
+          </button>
+
+          <button type="button" class="btn-clear" id="clearBtn">
+            Clear
+          </button>
+
+        </div>
+
+
+        <div class="status" id="status">
+        </div>
+
+
+        <div class="output-group" id="outputGroup">
+
+          <div class="input-group">
+
+            <label for="outputCode">
+              Encoded Output:
+            </label>
+
+            <textarea id="outputCode" class="output-box" readonly></textarea>
+
+          </div>
+
+
+          <div class="output-actions">
+
+            <button type="button" id="copyBtn">
+              Copy
+            </button>
+
+            <button type="button" id="downloadBtn">
+              Download
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- ================= EXAMPLES ================= -->
+
+        <div class="examples-box">
+
+          <h3>Examples</h3>
+
+
+          <div class="example-item">
+
+            <strong>CSS File</strong>
+
+            <code>style.css</code>
+
+            <code>/assets/css/style.css</code>
+
+          </div>
+
+
+          <div class="example-item">
+
+            <strong>JavaScript File</strong>
+
+            <code>index.js</code>
+
+            <code>/assets/js/index.js</code>
+
+          </div>
+
+
+          <div class="example-item">
+
+            <strong>CSS Result</strong>
+
+            <code>
+                    Encoded &lt;style&gt; + Base64 CSS + automatic decoder
+                </code>
+
+          </div>
+
+
+          <div class="example-item">
+
+            <strong>JavaScript Result</strong>
+
+            <code>
+                    Encoded &lt;script&gt; + Base64 JavaScript + automatic decoder
+                </code>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+"use strict";
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const fileInput =
+    document.getElementById("fileInput");
+
+const encodeBtn =
+    document.getElementById("encodeBtn");
+
+const clearBtn =
+    document.getElementById("clearBtn");
+
+const status =
+    document.getElementById("status");
+
+const outputGroup =
+    document.getElementById("outputGroup");
+
+const outputCode =
+    document.getElementById("outputCode");
+
+const copyBtn =
+    document.getElementById("copyBtn");
+
+const downloadBtn =
+    document.getElementById("downloadBtn");
+
+
+/* =========================
+   STATUS
+========================= */
+
+function showStatus(message, type) {
+
+    status.textContent = message;
+
+    status.className =
+        "status show " + type;
+}
+
+
+function hideStatus() {
+
+    status.textContent = "";
+
+    status.className = "status";
+}
+
+
+/* =========================
+   GET EXTENSION
+========================= */
+
+function getExtension(path) {
+
+    const cleanPath =
+        path
+            .split("?")[0]
+            .split("#")[0]
+            .trim()
+            .toLowerCase();
+
+    if (cleanPath.endsWith(".css")) {
+        return "css";
     }
-  </script>
+
+    if (cleanPath.endsWith(".js")) {
+        return "js";
+    }
+
+    return "";
+}
+
+
+/* =========================
+   RESOLVE FILE URL
+========================= */
+
+function resolveFileUrl(path) {
+
+    path = path.trim();
+
+    /*
+        Example:
+
+        index.js
+        /assets/js/index.js
+        ./assets/js/index.js
+        https://example.com/index.js
+    */
+
+    try {
+
+        return new URL(
+            path,
+            window.location.href
+        ).href;
+
+    } catch {
+
+        return path;
+    }
+}
+
+
+/* =========================
+   UTF-8 BASE64
+========================= */
+
+function encodeBase64(text) {
+
+    const bytes =
+        new TextEncoder().encode(text);
+
+    let binary = "";
+
+    const chunkSize = 0x8000;
+
+    for (
+        let i = 0;
+        i < bytes.length;
+        i += chunkSize
+    ) {
+
+        const chunk =
+            bytes.subarray(
+                i,
+                Math.min(
+                    i + chunkSize,
+                    bytes.length
+                )
+            );
+
+        binary +=
+            String.fromCharCode(...chunk);
+    }
+
+    return btoa(binary);
+}
+
+
+/* =========================
+   FETCH FILE
+========================= */
+
+async function fetchFile(url) {
+
+    let response;
+
+    try {
+
+        response =
+            await fetch(url, {
+                method: "GET",
+                cache: "no-cache",
+                credentials: "same-origin"
+            });
+
+    } catch (error) {
+
+        throw new Error(
+            "Unable to access the file. " +
+            "The server may block this request or CORS may be disabled."
+        );
+    }
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "File could not be loaded. HTTP " +
+            response.status +
+            " " +
+            response.statusText
+        );
+    }
+
+
+    const text =
+        await response.text();
+
+
+    if (!text || !text.trim()) {
+
+        throw new Error(
+            "The file was loaded, but its content is empty."
+        );
+    }
+
+
+    return text;
+}
+
+
+/* =========================
+   CSS ENCODER
+========================= */
+
+async function encodeCSS(fileUrl) {
+
+    showStatus(
+        "Fetching CSS file...",
+        "loading"
+    );
+
+
+    const css =
+        await fetchFile(fileUrl);
+
+
+    showStatus(
+        "Encoding CSS...",
+        "loading"
+    );
+
+
+    const encoded =
+        encodeBase64(css);
+
+
+    /*
+        Generated code decodes
+        Base64 back into CSS.
+    */
+
+    const result =
+`<script>
+(function() {
+
+    const encodedCSS = "${encoded}";
+
+    const binary = atob(encodedCSS);
+
+    const bytes = Uint8Array.from(
+        binary,
+        function(char) {
+            return char.charCodeAt(0);
+        }
+    );
+
+    const css =
+        new TextDecoder().decode(bytes);
+
+    const style =
+        document.createElement("style");
+
+    style.textContent = css;
+
+    document.head.appendChild(style);
+
+})();
+<\/script>`;
+
+
+    outputCode.value =
+        result;
+
+    outputGroup.classList.add("show");
+
+
+    showStatus(
+        "CSS successfully encoded.",
+        "success"
+    );
+}
+
+
+/* =========================
+   JAVASCRIPT ENCODER
+========================= */
+
+async function encodeJS(fileUrl) {
+
+    showStatus(
+        "Fetching JavaScript file...",
+        "loading"
+    );
+
+
+    const js =
+        await fetchFile(fileUrl);
+
+
+    showStatus(
+        "Encoding JavaScript...",
+        "loading"
+    );
+
+
+    const encoded =
+        encodeBase64(js);
+
+
+    /*
+        Generated code decodes
+        Base64 and executes JS.
+    */
+
+    const result =
+`<script>
+(function() {
+
+    const encodedJS = "${encoded}";
+
+    const binary = atob(encodedJS);
+
+    const bytes = Uint8Array.from(
+        binary,
+        function(char) {
+            return char.charCodeAt(0);
+        }
+    );
+
+    const code =
+        new TextDecoder().decode(bytes);
+
+    const script =
+        document.createElement("script");
+
+    script.textContent = code;
+
+    document.body.appendChild(script);
+
+})();
+<\/script>`;
+
+
+    outputCode.value =
+        result;
+
+    outputGroup.classList.add("show");
+
+
+    showStatus(
+        "JavaScript successfully encoded.",
+        "success"
+    );
+}
+
+
+/* =========================
+   MAIN ENCODER
+========================= */
+
+async function encodeFile() {
+
+    const input =
+        fileInput.value.trim();
+
+
+    if (!input) {
+
+        showStatus(
+            "Please enter a CSS or JavaScript file path.",
+            "error"
+        );
+
+        fileInput.focus();
+
+        return;
+    }
+
+
+    const extension =
+        getExtension(input);
+
+
+    if (!extension) {
+
+        showStatus(
+            "Only .css and .js files are supported.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const fileUrl =
+        resolveFileUrl(input);
+
+
+    encodeBtn.disabled = true;
+
+    encodeBtn.textContent =
+        "Encoding...";
+
+    outputGroup.classList.remove("show");
+
+
+    try {
+
+        if (extension === "css") {
+
+            await encodeCSS(fileUrl);
+
+        }
+
+        else if (extension === "js") {
+
+            await encodeJS(fileUrl);
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Encoder Error:",
+            error
+        );
+
+
+        showStatus(
+            error.message ||
+            "Unable to encode the file.",
+            "error"
+        );
+
+    }
+
+    finally {
+
+        encodeBtn.disabled = false;
+
+        encodeBtn.textContent =
+            "Encode File";
+    }
+}
+
+
+/* =========================
+   COPY
+========================= */
+
+async function copyOutput() {
+
+    const text =
+        outputCode.value.trim();
+
+
+    if (!text) {
+        return;
+    }
+
+
+    try {
+
+        await navigator.clipboard.writeText(text);
+
+    }
+
+    catch {
+
+        outputCode.select();
+
+        document.execCommand("copy");
+    }
+
+
+    copyBtn.textContent =
+        "Copied!";
+
+
+    setTimeout(function() {
+
+        copyBtn.textContent =
+            "Copy";
+
+    }, 1500);
+}
+
+
+/* =========================
+   DOWNLOAD
+========================= */
+
+function downloadOutput() {
+
+    const text =
+        outputCode.value.trim();
+
+
+    if (!text) {
+        return;
+    }
+
+
+    const blob =
+        new Blob(
+            [text],
+            {
+                type:
+                    "text/html;charset=utf-8"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.href = url;
+
+    link.download =
+        "encoded-file.html";
+
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+
+    URL.revokeObjectURL(url);
+}
+
+
+/* =========================
+   CLEAR
+========================= */
+
+function clearAll() {
+
+    fileInput.value = "";
+
+    outputCode.value = "";
+
+    outputGroup.classList.remove("show");
+
+    hideStatus();
+
+    fileInput.focus();
+}
+
+
+/* =========================
+   ENTER KEY
+========================= */
+
+fileInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            encodeFile();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   BUTTON EVENTS
+========================= */
+
+encodeBtn.addEventListener(
+    "click",
+    encodeFile
+);
+
+copyBtn.addEventListener(
+    "click",
+    copyOutput
+);
+
+downloadBtn.addEventListener(
+    "click",
+    downloadOutput
+);
+
+clearBtn.addEventListener(
+    "click",
+    clearAll
+);
+</script>
+
+
+
+
+
+
+  </main>
+
+
+
+
+  <footer style="display: none;">
+    <div class="footer">
+      &copy;<span id="year"></span> Haproven • Built with ❤️ in India
+    </div>
+  </footer>
+
+
+
+
+
+
+
+  <script src="/external/js/bundle.js"></script>
+
+
 
 </body>
+
 </html>

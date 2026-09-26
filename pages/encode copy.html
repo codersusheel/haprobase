@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Name Encoder</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .encoder-card {
+      background: #ffffff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .encoder-card h2 {
+      font-size: 1.4rem;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .encoder-card p {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-group input:focus {
+      border-color: #2563eb;
+    }
+
+    .btn-encode {
+      width: 100%;
+      padding: 12px;
+      background-color: #2563eb;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-encode:hover {
+      background-color: #1d4ed8;
+    }
+
+    .output-group {
+      margin-top: 20px;
+      display: none; /* डिफ़ॉल्ट रूप से छिपा रहेगा */
+    }
+
+    .output-box {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px;
+      word-break: break-all;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encoder Section -->
+  <div class="encoder-card">
+    <h2>File Name Encoder</h2>
+    <p>अपना फ़ाइल नाम दर्ज करें और उसे सुरक्षा/URL के लिए Encoded Base64 में बदलें।</p>
+
+    <div class="input-group">
+      <label for="fileNameInput">फ़ाइल नाम दर्ज करें:</label>
+      <input type="text" id="fileNameInput" placeholder="उदा. my-village-app.png">
+    </div>
+
+    <button class="btn-encode" onclick="encodeFileName()">Encode File Name</button>
+
+    <div class="output-group" id="outputGroup">
+      <div class="input-group">
+        <label>Encoded Output (Base64):</label>
+        <div class="output-box" id="encodedResult"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function encodeFileName() {
+      const input = document.getElementById('fileNameInput').value.trim();
+      const outputGroup = document.getElementById('outputGroup');
+      const resultBox = document.getElementById('encodedResult');
+
+      if (!input) {
+        alert("कृपया पहले फ़ाइल नाम दर्ज करें!");
+        return;
+      }
+
+      // UTF-8 सपोर्ट के साथ Base64 Encoding
+      const encoded = btoa(encodeURIComponent(input).replace(/%([0-9A-F]{2})/g,
+          function toSolidBytes(match, p1) {
+              return String.fromCharCode('0x' + p1);
+      }));
+
+      // आउटपुट दिखाएं
+      resultBox.innerText = encoded;
+      outputGroup.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
