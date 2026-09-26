@@ -293,9 +293,12 @@
     padding: 15px 0;
 }
 
+
+
+
 .tree-item a {
     color: #0e53e9;
-    padding: 0px 173px 0px 0px;
+    /* padding: 0px 173px 0px 0px; */
 }
 
 .tree-item a:active {
@@ -342,7 +345,9 @@
 }
 
 
-.haprobase-hero .tree-item {
+.haprobase-hero
+ .tree-item
+  {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -356,7 +361,7 @@
 
 .haprobase-hero .tree-item:hover {
     background:
-        var(--hover-bg, #f8fafc);
+        var(--hover-bg, #d3dee9);
     transform: translateX(5px);
 }
 
@@ -550,6 +555,7 @@
 
     .haprobase-hero .tree-item {
         padding: 11px 6px;
+
     }
 
 

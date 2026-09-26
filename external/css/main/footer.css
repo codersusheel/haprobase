@@ -1,0 +1,87 @@
+        footer {
+            background-color: #101525;
+            color: #e5e7eb;
+        }
+
+        /* =================================
+       FOOTER MAIN
+    ================================= */
+
+        .footer-main {
+            /* background: #f5f7fa; */
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .footer-content {
+            margin: auto;
+            padding: 45px 30px;
+
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+        }
+
+
+        /* =================================
+       FOOTER BOX
+    ================================= */
+
+        .footer-box h3 {
+            margin: 0 0 15px;
+            font-size: 18px;
+
+        }
+
+        .footer-box p {
+            max-width: 420px;
+            margin: 0;
+
+            font-size: 14px;
+            line-height: 1.7;
+            opacity: 0.8;
+        }
+
+
+        /* =================================
+       FOOTER LINKS
+    ================================= */
+
+        .footer-box a {
+            display: block;
+            width: fit-content;
+            color: beige;
+            margin-bottom: 10px;
+
+            font-size: 14px;
+            text-decoration: none;
+
+            transition: color .2s ease,
+                transform .2s ease;
+        }
+
+        .footer-box a:hover {
+            color: #faf5f5;
+            transform: translateX(3px);
+        }
+
+
+
+
+        /* =================================
+       MOBILE
+       Upar wala detailed footer hide
+       Bottom footer visible rahega
+    ================================= */
+
+        @media (max-width: 700px) {
+
+            .footer-main {
+                display: none;
+            }
+
+            .footer {
+                padding: 15px 10px;
+                font-size: 13px;
+            }
+
+        }

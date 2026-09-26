@@ -4,172 +4,108 @@
 
 <head>
 
-    <!-- ================= BASIC ================= -->
-
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Page Title | Example Website</title>
 
-    <!-- ==================================================
-         🔴 PAGE-SPECIFIC — HAR PAGE PAR CHANGE KAREIN
-         ================================================== -->
+    <meta name="description" content="Short and clear description of this page.">
 
-    <title>PAGE TITLE | Haproven</title>
-
-    <meta name="description" content="PAGE DESCRIPTION — is page ke baare mein short description.">
-
-    <meta name="keywords" content="PAGE, SPECIFIC, KEYWORDS, Haproven">
-
-
-    <!-- ================= BRAND — FIXED ================= -->
-
-    <meta name="author" content="Haproven Team">
-    <meta name="publisher" content="Haproven">
-
-    <meta name="application-name" content="Haproven">
-
-    <meta name="apple-mobile-web-app-title" content="Haproven">
-
-
-    <!-- ================= ROBOTS — FIXED ================= -->
+    <link rel="canonical" href="https://example.com/page/example/">
 
     <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
-
-
-    <!-- ==================================================
-         🔴 PAGE-SPECIFIC — CANONICAL URL
-         ================================================== -->
-
-    <link rel="canonical" href="https://haproven.netlify.app/page/YOUR-PAGE/">
-
-
-    <!-- ================= OPEN GRAPH ================= -->
 
     <meta property="og:type" content="website">
 
-    <!-- 🔴 CHANGE -->
-    <meta property="og:title" content="PAGE TITLE | Haproven">
+    <meta property="og:title" content="Page Title | Example Website">
 
-    <!-- 🔴 CHANGE -->
-    <meta property="og:description" content="PAGE DESCRIPTION">
+    <meta property="og:description" content="Short description of this page.">
 
-    <!-- 🔴 CHANGE -->
-    <meta property="og:url" content="https://haproven.netlify.app/page/YOUR-PAGE/">
+    <meta property="og:url" content="https://example.com/page/example/">
 
-    <!-- 🟢 Usually FIXED — agar page-specific image ho to change -->
-    <meta property="og:image" content="https://haproven.netlify.app/assets/img/haproven-logo.png">
+    <meta property="og:image" content="https://example.com/assets/img/og-image.png">
 
-    <meta property="og:site_name" content="Haproven">
+    <meta property="og:site_name" content="Example Website">
 
 
     <!-- ================= TWITTER / X ================= -->
 
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- 🔴 CHANGE -->
-    <meta name="twitter:title" content="PAGE TITLE | Haproven">
+    <meta name="twitter:title" content="Page Title | Example Website">
 
-    <!-- 🔴 CHANGE -->
-    <meta name="twitter:description" content="PAGE DESCRIPTION">
+    <meta name="twitter:description" content="Short description of this page.">
 
-    <!-- 🟢 Usually FIXED -->
-    <meta name="twitter:image" content="https://haproven.netlify.app/assets/img/haproven-logo.png">
+    <meta name="twitter:image" content="https://example.com/assets/img/og-image.png">
 
 
-    <!-- ================= FAVICON — FIXED ================= -->
+    <!-- ================= FAVICON ================= -->
 
-    <link rel="icon" href="https://haproven.netlify.app/assets/img/haproven.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
 
-    <link rel="apple-touch-icon" href="https://haproven.netlify.app/assets/img/haproven-logo.png">
+    <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
 
 
-
-    <!-- ================= PWA — FIXED ================= -->
-
-    <meta name="mobile-web-app-capable" content="yes">
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- ================= PWA ================= -->
 
     <link rel="manifest" href="/manifest.json">
 
 
-    <!-- ================= PERFORMANCE — FIXED ================= -->
+    <!-- ================= ICONS ================= -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-    <!-- ================= ICONS — FIXED ================= -->
-
+    <!-- 🟢 Keep only if Font Awesome is used on this page -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
 
 
-    <!-- ================= HAPROVEN GLOBAL CSS — FIXED ================= -->
-
-    <link rel="stylesheet"
-        href="data:text/css;base64,CkBpbXBvcnQgdXJsKCdodHRwczovL2hhcHJvYmFzZS5uZXRsaWZ5LmFwcC9leHRlcm5hbC9jc3MvbWFpbi9zdHlsZS5jc3MnKTs=">
-
-    <link rel="stylesheet"
-        href="data:text/css;base64,CgpAaW1wb3J0IHVybCgnaHR0cHM6Ly9oYXByb2Jhc2UubmV0bGlmeS5hcHAvZXh0ZXJuYWwvY3NzL21haW4vc3R5bGUuY3NzJyk7CkBpbXBvcnQgdXJsKCdodHRwczovL2hhcHJvYmFzZS5uZXRsaWZ5LmFwcC9leHRlcm5hbC9jc3MvbWFpbi9hc2lkZS5jc3MnKTsKCg==">
+    <!-- ================= GLOBAL CSS ================= -->
 
 
-    <!-- page ke andar ke css join -->
-    <link rel="stylesheet" href="/assets/css/common.css">
-
-    <!-- ==================================================
-         🔴 PAGE-SPECIFIC — STRUCTURED DATA
-         ================================================== -->
-
-    <script type=" application/ld+json">
-
+    <!-- ================= STRUCTURED DATA ================= -->
+    <!-- 🔴 Change page-specific information -->
+    <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
+        "@context": "https://schema.org",
+        "@type": "WebPage",
 
-    "name": "PAGE NAME | Haproven",
+        "name": "Page Title",
 
-    "url": "https://haproven.netlify.app/page/YOUR-PAGE/",
+        "url": "https://example.com/page/example/",
 
-    "description": "PAGE DESCRIPTION",
+        "description": "Short description of this page.",
 
-    "inLanguage": "en",
+        "inLanguage": "en-IN",
 
-    "publisher": {
-    "@type": "Organization",
-    "name": "Haproven",
-    "url": "https://haproven.netlify.app/"
-    },
-
-    "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://haproven.netlify.app/search?q={query}",
-    "query-input": "required name=query"
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Example Website",
+            "url": "https://example.com/"
+        }
     }
-    }
-
     </script>
 
 
+
+    <!-- 🟢 Common/global website CSS -->
+    <link rel="stylesheet" href="https://haprobase.netlify.app/external/css/style.css">
+
+    <!-- 🔴 Page-specific CSS -->
+    <link rel="stylesheet" href="https://haprobase.netlify.app/external/css/base.css">
+
 </head>
+
 
 
 <body>
 
 
-
+<!-- ======================================================================================================================================================================================= -->
     <header id="header">
 
         <div class="header">
             <div class="logo">
                 <a href="/">
-                    <div class="haproven-brand animate" data-name="Haproven by haproven ">haproven</div>
+                    <div class="haproven-brand animate" data-name="site name by haproven ">haproven</div>
                 </a>
             </div>
 
@@ -274,13 +210,6 @@
     </header>
 
 
-
-
-
-
-    <!-- =====================================================
-     ///////          aside      sidebar           ////////////
-    ======================================================= -->
     <aside class="sidebar">
         <div class="sidebar-brand">
             <div class="sidebar-live-box">
@@ -326,23 +255,105 @@
 
     </aside>
 
+<!-- ======================================================================================================================================================================================= -->
 
 
+
+    <style>
+        #hero {
+            background-color: rgb(74, 76, 78);
+            height: 100vh;
+            color: rgb(232, 226, 226);
+        }
+
+        #about {
+            background-color: rgb(86, 67, 87);
+
+            color: rgb(232, 226, 226);
+        }
+
+        .section {
+            height: 100vh;
+        }
+    </style>
 
 
     <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <main class="main">
 
-        <div class="box" data-hi="अभी देखें: हैप्रोवेन टेक्नोलॉजीज">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem id sit harum expedita quidem! Illum
-            nemo enim accusantium omnis nam quidem sed sint voluptas placeat ipsam suscipit architecto reiciendis,
-            deserunt porro tempora eveniet repellendus illo tempore fugit quisquam culpa quo quaerat. Obcaecati, totam.
-            Reiciendis hic, repellendus magnam quisquam aperiam adipisci sequi dicta est! Incidunt vero obcaecati
-            numquam excepturi labore, quas optio error laborum perspiciatis culpa veniam laudantium consequatur debitis
-            quod nemo necessitatibus cupiditate fuga pariatur! Aspernatur, quam nostrum. Quis, temporibus! Ullam
-            perspiciatis mollitia tempora fugit id error laborum quaerat molestiae vel, esse eos. Id amet vel autem quae
-            placeat tempora!
+
+        <article id="hero">
+            <h1>hero section</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio minima suscipit odio sint ut quod
+                molestiae repudiandae corrupti eum, eos ad rem, quia deleniti maxime, atque exercitationem? Iure,
+                beatae! Perferendis aliquam dicta optio, recusandae cumque, inventore ad illo magni ipsum impedit
+                exercitationem labore quisquam! Deserunt debitis laborum earum. Iure libero quod incidunt officia culpa
+                necessitatibus sequi sed. Blanditiis doloribus iure odit, consectetur saepe earum, tenetur reiciendis
+                voluptates quaerat natus officia ex aspernatur, quasi rem. Delectus quod debitis id maiores quis ex
+                pariatur, dolores sunt voluptatum laborum officiis itaque rerum eligendi impedit suscipit est ducimus
+                voluptate consequatur omnis quae ab architecto! Repellat iste minus, dolores harum porro temporibus.
+                Quidem doloribus porro velit nobis, enim voluptatem delectus sed consectetur deserunt animi saepe
+                corrupti laboriosam eveniet maxime. Error doloremque consequatur adipisci culpa debitis eaque illum
+                impedit assumenda perspiciatis, voluptatem, itaque esse quis. Reprehenderit necessitatibus minus, quod
+                at impedit architecto dolore corrupti aut cum amet corporis praesentium odit accusantium, culpa veniam,
+                repudiandae dolores officia quia. Vitae odio unde ipsum nesciunt dolores. Dolores repellat alias
+                molestiae perspiciatis voluptate repellendus, praesentium voluptas sint iste sit officia? Dolor facilis
+                expedita cupiditate quis molestias voluptates ipsam? Vitae nam minus quam repellendus labore ad vel
+                numquam esse necessitatibus? Cum, blanditiis reprehenderit. Consequuntur, obcaecati architecto odio fuga
+                culpa officiis et illum hic incidunt molestias rerum minus ratione. Porro cupiditate explicabo aliquid
+                dolore, vero aspernatur vitae. Corporis eveniet nisi rerum dolor similique odit consequuntur atque non
+                doloribus voluptatibus, iste quisquam et vero provident ipsa eos optio vel quaerat nihil sequi
+                repudiandae error incidunt! Cum nesciunt, fugiat repudiandae deleniti ut repellendus! Autem placeat
+                dolorem nostrum voluptas et tempora sint voluptatibus doloribus recusandae mollitia tempore id iste
+                culpa quisquam nisi voluptate, modi perferendis eaque! Nisi inventore blanditiis eos esse provident
+                sapiente assumenda nemo, eius placeat dolorem odio error rerum natus, dicta animi est illo, quos dolor
+                sunt eaque voluptate aliquid. Assumenda cumque minus omnis ab eos fugit quos nobis corrupti porro,
+                repellat ex, nulla laboriosam? Accusamus praesentium illo recusandae, illum totam saepe quidem sed,
+                aspernatur veritatis voluptatibus vel facere delectus vero beatae doloribus. Voluptates officiis quaerat
+                ipsa provident aperiam molestias assumenda veritatis quae maiores vero suscipit ullam vel, quisquam qui
+                velit ipsum commodi, alias labore natus adipisci fuga. Sapiente, esse recusandae. Illum, quidem. Iure
+                aliquid dolor provident tempore, exercitationem illum! Recusandae rem veritatis tenetur pariatur.
+                Repellat perferendis excepturi rerum. Recusandae voluptas alias qui assumenda rem! Ut necessitatibus
+                molestias neque ipsam repudiandae adipisci nostrum nihil vero incidunt quasi quo consequatur impedit
+                doloribus eius sapiente reiciendis et labore atque eaque, sequi at aperiam dolorem, illo error? Omnis
+                magni dolor quia? Porro animi dolorum quasi. Quos omnis, porro ad debitis provident deserunt molestiae
+                quibusdam, culpa quod tenetur illo eligendi voluptatibus temporibus laboriosam laudantium illum eveniet
+                quidem natus consequuntur accusamus ipsa modi magni beatae reiciendis? Cumque inventore molestiae eius
+                est autem explicabo quidem saepe qui incidunt sapiente doloremque recusandae sunt consequuntur maiores
+                libero ad reprehenderit placeat aliquid praesentium id ratione consequatur, quaerat et. Magni enim
+                placeat veritatis quo aliquid perspiciatis earum dolore eos incidunt, dolores minus consequuntur!</p>
+
+
+        </article>
+
+
+        <section class="section" id="about">
+
+            <h2>about section</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus culpa quae impedit fugit sunt atque
+                nulla minus provident saepe est aliquid placeat, quis laudantium ducimus officiis inventore nesciunt
+                corrupti modi fugiat qui dignissimos error dolorum nihil voluptatibus! Praesentium mollitia placeat
+                officia vitae corporis delectus perferendis perspiciatis eius quam suscipit totam aut numquam sed quasi
+                reprehenderit debitis tempore distinctio doloribus nam, repudiandae tenetur error nostrum! Id illo
+                asperiores officia repellat ex qui quas doloribus facilis, amet eum praesentium aliquam vero ipsam est
+                quaerat itaque ab voluptatum, sapiente iusto quisquam eos repellendus molestias, exercitationem nihil.
+                Sunt velit laborum id nisi delectus in libero, quisquam enim voluptatem facilis unde. Autem iusto saepe
+                quaerat repellendus ratione nobis, officia dignissimos cumque exercitationem cum id repellat eum
+                molestiae dolorum impedit. Officia magnam at, veniam exercitationem dicta voluptatum suscipit voluptatem
+                veritatis magni! Nobis eos natus pariatur sapiente perspiciatis ullam quam odit, culpa maiores modi
+                maxime saepe exercitationem explicabo unde magni amet quis eveniet, cum voluptas, consequatur possimus
+                illum commodi. Expedita ad aut sunt provident, qui quas dolor culpa eveniet assumenda hic. Impedit
+                perferendis et voluptate eos quae temporibus tempore molestias, ea quia quis, cupiditate pariatur iste
+                nobis dolores itaque. Nesciunt voluptatum porro in natus repellat accusantium itaque.</p>
+
+        </section>
+
+
+        <div class="section">
+
         </div>
+
+
 
 
         <!-- --------------------------------------------------------------------------------------------------------- -->
@@ -380,27 +391,27 @@
 
 
     <!-- external/js/api/global -->
-     <script>
+    <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL2FwaS9nbG9iYWwuanMiPjwvc2NyaXB0Pgo="));
-    </script> 
+    </script>
 
 
     <!-- externaljs/auth/ login -->
-     <script>
+    <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL2F1dGgvYXV0aC5qcyI+PC9zY3JpcHQ+Cg=="));
-    </script> 
+    </script>
 
 
     <!-- external/js/main -->
-     <script>
+    <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vc2NyaXB0LmpzIj48L3NjcmlwdD4K"));
-    </script> 
+    </script>
 
 
     <!-- page loader -->
-     <script>
+    <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vcGFnZS1sb2FkZXIuanMiPjwvc2NyaXB0Pgo="));
-    </script> 
+    </script>
 
 
     <!-- anti-inspect -->
