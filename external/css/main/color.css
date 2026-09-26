@@ -120,7 +120,7 @@ header {
 
 }
 
-.logo span{
+.logo span {
     color: var(--text-color);
 }
 
@@ -140,7 +140,7 @@ header {
 }
 
 
-.footer {
-    background-color: #000009;
-    color: #f9f9f9;
+footer {
+    background-color: #101525;
+    color: #e5e7eb;
 }
