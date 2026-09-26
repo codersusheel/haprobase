@@ -7,7 +7,7 @@
     // ==========================================
 
     const PASSWORDS = [
-        "haproid",
+        "haproven",
         "etnar",
         "haproid",
         "gitprohub",
