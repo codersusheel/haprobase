@@ -1,0 +1,63 @@
+
+
+    <footer>
+
+        <!-- ==============================
+         DESKTOP FOOTER
+         Mobile par hide ho jayega
+    =============================== -->
+        <div class="footer-main">
+
+            <div class="footer-content">
+
+                <!-- Brand -->
+                <div class="footer-box footer-brand">
+                    <h3>Haproven</h3>
+
+                    <p>
+                        Building technology, developer tools,
+                        digital platforms and community-driven
+                        projects.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-box">
+                    <h3>Quick Links</h3>
+
+                    <a href="/">Home</a>
+                    <a href="/pages/projects/">Projects</a>
+                    <a href="/pages/events/">Events</a>
+                    <a href="/pages/contact/">Contact</a>
+                </div>
+
+                <!-- Resources -->
+                <div class="footer-box">
+                    <h3>Resources</h3>
+
+                    <a href="/sitemap.xml">Sitemap</a>
+                    <a href="/robots.txt">Robots</a>
+                    <a href="/manifest.json">Manifest</a>
+                    <a href="/gitprohub.md">GitProHub</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==============================
+         BOTTOM FOOTER
+         Mobile par bhi visible rahega
+    =============================== -->
+        <div class="footer">
+
+            &copy;<span id="year"></span>
+            Haproven • Built with ❤️ in India
+
+        </div>
+
+    </footer>
+
+
+
