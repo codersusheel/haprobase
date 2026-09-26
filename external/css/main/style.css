@@ -397,6 +397,8 @@ header {
     height: 45px;
     border-radius: 50%;
     object-fit: cover;
+    border: 1px solid;
+
 }
 
 .member-box span {
