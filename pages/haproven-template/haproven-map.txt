@@ -1,0 +1,49 @@
+```text
+# Haproven Page Map
+# =================
+
+/
+├── index.html
+│
+├── pages/
+│   ├── directory/
+│   │   └── index.html
+│   │
+│   ├── hackathon/
+│   │   └── index.html
+│   │
+│   ├── projects/
+│   │   └── index.html
+│   │
+│   ├── events/
+│   │   └── index.html
+│   │
+│   ├── tools/
+│   │   └── index.html
+│   │
+│   ├── benefits/
+│   │   └── index.html
+│   │
+│   ├── hapro-cert/
+│   │   └── index.html
+│   │
+│   └── faq/
+│       └── index.html
+│
+├── assets/
+│   ├── css/
+│   ├── js/
+│   ├── json/
+│   └── img/
+│       ├── icons/
+│       └── content/
+│
+├── 404.html
+├── 403.html
+├── offline.html
+├── sitemap.xml
+├── robots.txt
+├── manifest.json
+├── service-worker.js
+└── gitprohub.md
+```

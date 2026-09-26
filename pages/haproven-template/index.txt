@@ -380,27 +380,27 @@
 
 
     <!-- external/js/api/global -->
-    <!-- <script>
+     <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL2FwaS9nbG9iYWwuanMiPjwvc2NyaXB0Pgo="));
-    </script> -->
+    </script> 
 
 
     <!-- externaljs/auth/ login -->
-    <!-- <script>
+     <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL2F1dGgvYXV0aC5qcyI+PC9zY3JpcHQ+Cg=="));
-    </script> -->
+    </script> 
 
 
     <!-- external/js/main -->
-    <!-- <script>
+     <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vc2NyaXB0LmpzIj48L3NjcmlwdD4K"));
-    </script> -->
+    </script> 
 
 
     <!-- page loader -->
-    <!-- <script>
+     <script>
         document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vcGFnZS1sb2FkZXIuanMiPjwvc2NyaXB0Pgo="));
-    </script> -->
+    </script> 
 
 
     <!-- anti-inspect -->
