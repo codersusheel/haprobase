@@ -295,6 +295,7 @@
 
 .tree-item a {
     color: #0e53e9;
+    padding: 0px 173px 0px 0px;
 }
 
 .tree-item a:active {
