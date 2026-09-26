@@ -2,46 +2,87 @@
 <html lang="en">
 
 <head>
+
+    <!-- ================= BASIC ================= -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- ================= PAGE INFORMATION ================= -->
     <title>HaproBase | Haproven</title>
 
     <meta name="description"
-        content="HaproBase is the shared foundation of reusable CSS, JavaScript, JSON, components, utilities, and common resources for the Haproven ecosystem.">
+        content="HaproBase is the shared foundation of reusable code, files, layouts, components, utilities, and common resources for building Haproven projects faster.">
 
+    <!-- ================= BRAND ================= -->
     <meta name="author" content="Haproven Team">
     <meta name="publisher" content="Haproven">
+    <meta name="application-name" content="HaproBase">
+    <meta name="apple-mobile-web-app-title" content="HaproBase">
 
+    <!-- ================= ROBOTS ================= -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- ================= CANONICAL ================= -->
+    <link rel="canonical" href="https://haprobase.netlify.app/">
+
+    <!-- ================= OPEN GRAPH ================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HaproBase | Haproven">
+    <meta property="og:description"
+        content="A shared foundation of reusable code, files, layouts, components, utilities, and common resources for the Haproven Ecosystem.">
+    <meta property="og:url" content="https://haprobase.netlify.app/">
+    <meta property="og:image" content="https://haproven.netlify.app/assets/img/haproven-logo.png">
+    <meta property="og:site_name" content="HaproBase">
+
+    <!-- ================= TWITTER / X ================= -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HaproBase | Haproven">
+    <meta name="twitter:description"
+        content="Reusable code, files, layouts, components, utilities, and common resources for the Haproven Ecosystem.">
+    <meta name="twitter:image" content="https://haproven.netlify.app/assets/img/haproven-logo.png">
+
+    <!-- ================= FAVICON ================= -->
     <link rel="icon" type="image/png" href="https://haproven.netlify.app/assets/img/haproven-logo.png">
+
     <link rel="apple-touch-icon" href="https://haproven.netlify.app/assets/img/haproven-logo.png">
+
     <link rel="shortcut icon" href="https://haproven.netlify.app/assets/img/haproven-logo.png">
 
+    <!-- ================= PERFORMANCE ================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-
-
-
+    <!-- ================= ICONS ================= -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
 
-    <!-- <style>
-        html {
-            visibility: hidden
-        }
-    </style> -->
-
-
-
-
+    <!-- ================= COMMON CSS ================= -->
     <link rel="stylesheet" href="/external/css/base.css">
-    <link rel="stylesheet" href="/assets/css/page/index.css">
+
+    <!-- ================= PAGE CSS ================= -->
+    <link rel="stylesheet" href="/assets/css/index.css">
 
 
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "HaproBase",
+    "url": "https://haprobase.netlify.app/",
+    "description": "HaproBase is the shared foundation of reusable code, files, layouts, components, utilities, and common resources for building Haproven projects faster.",
+    "inLanguage": "en",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Haproven",
+        "url": "https://haproven.netlify.app/"
+    }
+}
+</script>
 
-
+    <!-- ================= PAGE CUSTOM CSS ================= -->
     <style>
         .base-tree li {
             display: flex !important;
@@ -53,8 +94,8 @@
         }
     </style>
 
-
 </head>
+
 
 
 
@@ -62,7 +103,7 @@
 
 <body>
 
-
+    <!--====================================================================================================================================================================================================================== -->
 
 
     <header id="header">
@@ -175,7 +216,7 @@
     </header>
 
 
-
+    <!--====================================================================================================================================================================================================================== -->
 
     <main class="main">
         <article class="hero haprobase-hero">
@@ -187,8 +228,11 @@
 
                     <h1>
                         HaproBase
-                        <span>Built for the Haproven Ecosystem.</span>
                     </h1>
+                    <h2>
+                        <span>Built for the Haproven Ecosystem.</span>
+
+                    </h2>
 
                     <p class="hero-description" data-hi="कोड, फाइल्स, लेआउट, कंपोनेंट्स और सामान्य संसाधनों का एक पुनः उपयोग योग्य आधार,
 जो एक ही काम को बार-बार किए बिना Haproven प्रोजेक्ट्स को तेज़ी से बनाने में मदद करता है।">
@@ -206,7 +250,7 @@
                         </a>
 
                         <a href="/pages/" class="hero-btn hero-btn-secondary">
-                            ALL Links
+                            Links Directory
                         </a>
 
                     </div>
@@ -359,25 +403,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         </ol>
 
 
@@ -410,26 +435,6 @@
 
 
 
-        <!-- <section style="height: 100vh; background-color: #e73c3c;">
-
-
-            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti fugit quis tenetur praesentium maiores
-                libero sapiente, vero ratione possimus porro.
-            </h2>
-        </section> -->
-
-
-        <!-- 
-        <section>
-
-            <div class="section" style="height: 100vh; background-color: #3ce742;">
-
-                <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit veniam quo quos. Deserunt distinctio
-                    eaque hic similique reiciendis nobis sapiente perspiciatis architecto maxime eveniet labore, dolorum
-                    voluptas omnis error unde?</h1>
-            </div>
-
-        </section> -->
 
 
 
@@ -453,7 +458,6 @@
 
 
     <script src="/external/js/bundle.js"></script>
-    <!-- <script src="/assets/js/page/index.js"></script> -->
     <script src="/assets/js/page/copy.js"></script>
 
 
