@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (type === "code") {
-            return "💻";
+            return "💱";
         }
 
         if (type === "folder") {
