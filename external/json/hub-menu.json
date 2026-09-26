@@ -4,12 +4,17 @@
         {
             "name": "Haproven",
             "url": "https://Haproven.netlify.app/",
-            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+            "img": "/external/img/logo/haproven.png"
         },
         {
             "name": "HaproID",
             "url": "https://haproid.netlify.app/",
-            "img": "https://haproid.netlify.app/assets/img/haproid-icon.png"
+            "img": "/external/img/logo/haproid.png"
+        },
+        {
+            "name": "Gitprohub",
+            "url": "https://gitprohub.netlify.app/",
+            "img": "/external/img/logo/gitprohub.png"
         },
         {
             "name": "HaproFrame",
