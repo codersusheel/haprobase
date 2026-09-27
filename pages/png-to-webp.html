@@ -4,64 +4,92 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>URL Performance Tester | HaproBase</title>
+    <title>PNG to WebP Converter | HaproBase</title>
 
     <meta name="description"
-        content="Test URL availability, response speed and overall performance with the HaproBase URL Performance Tester.">
-    <link rel="canonical" href="https://haprobase.netlify.app/pages/url-tester.html">
+        content="Convert PNG images to WebP format online with HaproBase's fast, free and browser-based PNG to WebP converter.">
+
+    <link rel="canonical" href="https://haprobase.netlify.app/pages/png-to-webp.html">
+
     <meta name="robots" content="index, follow">
 
+
     <!-- ================= OPEN GRAPH ================= -->
+
     <meta property="og:type" content="website">
-    <meta property="og:title" content="URL Performance Tester | HaproBase">
+
+    <meta property="og:title" content="PNG to WebP Converter | HaproBase">
+
     <meta property="og:description"
-        content="Test URL availability, response speed and overall performance with the HaproBase URL Performance Tester.">
-    <meta property="og:url" content="https://haprobase.netlify.app/pages/url-tester.html">
+        content="Convert PNG images to WebP format quickly and easily with HaproBase's free browser-based converter.">
+
+    <meta property="og:url" content="https://haprobase.netlify.app/pages/png-to-webp.html">
+
     <meta property="og:image" content="https://haprobase.netlify.app/assets/img/og-image.png">
+
     <meta property="og:site_name" content="HaproBase">
 
+
     <!-- ================= TWITTER / X ================= -->
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="URL Performance Tester | HaproBase">
+
+    <meta name="twitter:title" content="PNG to WebP Converter | HaproBase">
+
     <meta name="twitter:description"
-        content="Test URL availability, response speed and overall performance with the HaproBase URL Performance Tester.">
+        content="Convert PNG images to WebP format quickly and easily with HaproBase's free browser-based converter.">
+
     <meta name="twitter:image" content="https://haprobase.netlify.app/assets/img/og-image.png">
 
-    <!-- <link rel="icon" type="image/png" href="https://haprobase.netlify.app/external/img/logo/haproven.png"> -->
 
     <!-- ================= FAVICON ================= -->
+
     <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+
     <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
 
+
     <!-- ================= PWA ================= -->
+
     <link rel="manifest" href="/manifest.json">
 
+
     <!-- ================= ICONS ================= -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
 
+
     <!-- ================= GLOBAL CSS ================= -->
+
     <link rel="stylesheet" href="/external/css/style.css">
 
+
     <!-- ================= HAPROBASE CSS ================= -->
+
     <link rel="stylesheet" href="/external/css/base.css">
 
     <link rel="stylesheet" href="/external/css/addon.css">
 
+
     <!-- ================= PAGE CSS ================= -->
-    <link rel="stylesheet" href="/assets/css/page/url-tester.css">
+
+    <link rel="stylesheet" href="/assets/css/page/png-to-webp.css">
+
 
     <!-- ================= STRUCTURED DATA ================= -->
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "URL Performance Tester",
-        "url": "https://haprobase.netlify.app/pages/url-tester.html",
-        "description": "Test URL availability, response speed and overall performance with the HaproBase URL Performance Tester.",
+        "name": "PNG to WebP Converter",
+        "url": "https://haprobase.netlify.app/pages/png-to-webp.html",
+        "description": "Convert PNG images to WebP format quickly and easily with HaproBase's free browser-based converter.",
         "inLanguage": "en-IN",
         "isPartOf": {
             "@type": "WebSite",
@@ -71,13 +99,7 @@
     }
     </script>
 
-
-
-    <link rel="stylesheet" href="/assets/css/page/png-to-webp.css">
-
-
 </head>
-
 
 
 
@@ -254,92 +276,164 @@
             <p>Convert PNG images to WebP quickly and easily.</p>
         </article>
 
+
         <section class="section">
             <div class="converter">
 
-            <div class="drop-zone" id="dropZone">
-                <h2>Drop your PNG image here</h2>
-                <p>or select an image from your device</p>
+                <div class="drop-zone" id="dropZone">
 
-                <label for="fileInput" class="upload-btn">
-                    Choose PNG
-                </label>
+                    <h2>Drop your PNG image here</h2>
 
-                <input type="file" id="fileInput" accept="image/png">
-            </div>
+                    <p>
+                        or select an image from your device
+                    </p>
 
-            <div class="settings" id="settings">
+                    <label for="fileInput" class="upload-btn">
+                        Choose PNG
+                    </label>
 
-                <div class="setting-row">
-
-                    <strong>WebP Quality</strong>
-
-                    <div class="quality-box">
-                        <input type="range" id="quality" min="10" max="100" value="80">
-
-                        <span id="qualityValue">80%</span>
-                    </div>
+                    <input type="file" id="fileInput" accept="image/png">
 
                 </div>
 
-                <button class="convert-btn" id="convertBtn">
-                    Convert to WebP
-                </button>
 
-            </div>
+                <div class="settings" id="settings">
 
-            <div class="result" id="result">
+                    <div class="setting-row">
 
-                <div class="preview">
+                        <strong>
+                            WebP Quality
+                        </strong>
 
-                    <div class="preview-card">
+                        <div class="quality-box">
 
-                        <h3>Original PNG</h3>
+                            <input type="range" id="quality" min="10" max="100" value="80">
 
-                        <div class="image-box">
-                            <img id="originalPreview" alt="Original PNG">
-                        </div>
+                            <span id="qualityValue">
+                                80%
+                            </span>
 
-                        <div class="file-info">
-                            <div id="originalName"></div>
-                            <div id="originalSize"></div>
                         </div>
 
                     </div>
 
-                    <div class="preview-card">
 
-                        <h3>Converted WebP</h3>
+                    <!-- File Name -->
 
-                        <div class="image-box">
-                            <img id="webpPreview" alt="Converted WebP">
-                        </div>
+                    <div class="filename-box">
 
-                        <div class="file-info">
-                            <div id="webpName"></div>
-                            <div id="webpSize"></div>
+                        <label for="outputFileName">
+                            WebP File Name
+                        </label>
+
+                        <div class="filename-input">
+
+                            <input type="text" id="outputFileName" placeholder="Enter file name">
+
+                            <span>
+                                .webp
+                            </span>
+
                         </div>
 
                     </div>
+
+
+                    <button class="convert-btn" id="convertBtn">
+                        Convert to WebP
+                    </button>
 
                 </div>
 
-                <div class="saving" id="savingInfo"></div>
 
-                <a href="#" class="download-btn" id="downloadBtn" download="converted.webp">
-                    Download WebP
-                </a>
+                <div class="result" id="result">
+
+                    <div class="preview">
+
+
+                        <!-- Original -->
+
+                        <div class="preview-card">
+
+                            <h3>
+                                Original PNG
+                            </h3>
+
+                            <div class="image-box">
+
+                                <img id="originalPreview" alt="Original PNG">
+
+                            </div>
+
+                            <div class="file-info">
+
+                                <div id="originalName"></div>
+
+                                <div id="originalSize"></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Converted -->
+
+                        <div class="preview-card">
+
+                            <h3>
+                                Converted WebP
+                            </h3>
+
+                            <div class="image-box">
+
+                                <img id="webpPreview" alt="Converted WebP">
+
+                            </div>
+
+                            <div class="file-info">
+
+                                <div id="webpName"></div>
+
+                                <div id="webpSize"></div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Saving Info -->
+
+                    <div class="saving" id="savingInfo"></div>
+
+
+                    <!-- Download / Save Buttons -->
+
+                    <div class="download-actions">
+
+                        <a href="#" class="download-btn" id="downloadBtn" download="converted.webp">
+                            Download WebP
+                        </a>
+
+
+                        <button type="button" class="save-btn" id="saveBtn">
+                            Save WebP
+                        </button>
+
+                    </div>
+
+
+                </div>
 
             </div>
-
-            </div>
-
         </section>
+
 
         <p class="footer-note">
             Your image is processed directly in your browser.
         </p>
-
 
 
 
@@ -359,19 +453,27 @@
 
 
 
-
-
     <script>
-        const fileInput = document.getElementById("fileInput");
-        const dropZone = document.getElementById("dropZone");
+        const fileInput =
+            document.getElementById("fileInput");
 
-        const settings = document.getElementById("settings");
-        const result = document.getElementById("result");
+        const dropZone =
+            document.getElementById("dropZone");
 
-        const quality = document.getElementById("quality");
-        const qualityValue = document.getElementById("qualityValue");
+        const settings =
+            document.getElementById("settings");
 
-        const convertBtn = document.getElementById("convertBtn");
+        const result =
+            document.getElementById("result");
+
+        const quality =
+            document.getElementById("quality");
+
+        const qualityValue =
+            document.getElementById("qualityValue");
+
+        const convertBtn =
+            document.getElementById("convertBtn");
 
         const originalPreview =
             document.getElementById("originalPreview");
@@ -397,8 +499,16 @@
         const downloadBtn =
             document.getElementById("downloadBtn");
 
+        const saveBtn =
+            document.getElementById("saveBtn");
+
+        const outputFileName =
+            document.getElementById("outputFileName");
+
+
         let selectedFile = null;
         let convertedUrl = null;
+        let convertedBlob = null;
 
 
         function formatBytes(bytes) {
@@ -421,12 +531,41 @@
 
             return (
                 parseFloat(
-                    (bytes / Math.pow(1024, index))
-                        .toFixed(2)
-                )
-                + " "
-                + units[index]
+                    (
+                        bytes /
+                        Math.pow(1024, index)
+                    ).toFixed(2)
+                ) +
+                " " +
+                units[index]
             );
+        }
+
+
+        function cleanFileName(name) {
+
+            return name
+                .trim()
+                .replace(/[\\/:*?"<>|]/g, "")
+                .replace(/\.webp$/i, "");
+        }
+
+
+        function getOutputFileName() {
+
+            let name =
+                cleanFileName(
+                    outputFileName.value
+                );
+
+            if (!name) {
+
+                name =
+                    selectedFile.name
+                        .replace(/\.png$/i, "");
+            }
+
+            return name + ".webp";
         }
 
 
@@ -438,7 +577,9 @@
 
             if (file.type !== "image/png") {
 
-                alert("Please select a PNG image.");
+                alert(
+                    "Please select a PNG image."
+                );
 
                 return;
             }
@@ -448,16 +589,44 @@
             const originalUrl =
                 URL.createObjectURL(file);
 
-            originalPreview.src = originalUrl;
+            originalPreview.src =
+                originalUrl;
 
             originalName.textContent =
                 "File: " + file.name;
 
             originalSize.textContent =
-                "Size: " + formatBytes(file.size);
+                "Size: " +
+                formatBytes(file.size);
 
-            settings.style.display = "block";
-            result.style.display = "none";
+
+            const defaultName =
+                file.name.replace(
+                    /\.png$/i,
+                    ""
+                );
+
+            outputFileName.value =
+                defaultName;
+
+
+            settings.style.display =
+                "block";
+
+            result.style.display =
+                "none";
+
+
+            convertedBlob = null;
+
+            if (convertedUrl) {
+
+                URL.revokeObjectURL(
+                    convertedUrl
+                );
+
+                convertedUrl = null;
+            }
         }
 
 
@@ -465,7 +634,9 @@
             "change",
             function () {
 
-                loadFile(this.files[0]);
+                loadFile(
+                    this.files[0]
+                );
 
             }
         );
@@ -477,7 +648,9 @@
 
                 event.preventDefault();
 
-                dropZone.classList.add("dragover");
+                dropZone.classList.add(
+                    "dragover"
+                );
 
             }
         );
@@ -487,7 +660,9 @@
             "dragleave",
             function () {
 
-                dropZone.classList.remove("dragover");
+                dropZone.classList.remove(
+                    "dragover"
+                );
 
             }
         );
@@ -499,7 +674,9 @@
 
                 event.preventDefault();
 
-                dropZone.classList.remove("dragover");
+                dropZone.classList.remove(
+                    "dragover"
+                );
 
                 const file =
                     event.dataTransfer.files[0];
@@ -529,122 +706,309 @@
                     return;
                 }
 
+
                 const image =
                     new Image();
 
                 const imageUrl =
-                    URL.createObjectURL(selectedFile);
-
-                image.onload = function () {
-
-                    const canvas =
-                        document.createElement("canvas");
-
-                    canvas.width = image.naturalWidth;
-                    canvas.height = image.naturalHeight;
-
-                    const ctx =
-                        canvas.getContext("2d");
-
-                    ctx.drawImage(
-                        image,
-                        0,
-                        0
+                    URL.createObjectURL(
+                        selectedFile
                     );
 
-                    const qualityValueNumber =
-                        Number(quality.value) / 100;
 
-                    canvas.toBlob(
-                        function (blob) {
+                image.onload =
+                    function () {
 
-                            if (!blob) {
+                        const canvas =
+                            document.createElement(
+                                "canvas"
+                            );
 
-                                alert(
-                                    "Conversion failed."
-                                );
+                        canvas.width =
+                            image.naturalWidth;
 
-                                return;
-                            }
+                        canvas.height =
+                            image.naturalHeight;
 
-                            if (convertedUrl) {
-                                URL.revokeObjectURL(
-                                    convertedUrl
-                                );
-                            }
 
-                            convertedUrl =
-                                URL.createObjectURL(blob);
+                        const ctx =
+                            canvas.getContext(
+                                "2d"
+                            );
 
-                            webpPreview.src =
-                                convertedUrl;
 
-                            const newName =
-                                selectedFile.name
-                                    .replace(
-                                        /\.png$/i,
-                                        ""
-                                    )
-                                + ".webp";
+                        ctx.drawImage(
+                            image,
+                            0,
+                            0
+                        );
 
-                            webpName.textContent =
-                                "File: " + newName;
 
-                            webpSize.textContent =
-                                "Size: " +
-                                formatBytes(blob.size);
+                        const qualityValueNumber =
+                            Number(
+                                quality.value
+                            ) / 100;
 
-                            downloadBtn.href =
-                                convertedUrl;
 
-                            downloadBtn.download =
-                                newName;
+                        canvas.toBlob(
+                            function (blob) {
 
-                            const saved =
-                                selectedFile.size -
-                                blob.size;
+                                if (!blob) {
 
-                            const percentage =
-                                (
-                                    saved /
-                                    selectedFile.size
-                                ) * 100;
+                                    alert(
+                                        "Conversion failed."
+                                    );
 
-                            if (saved > 0) {
+                                    return;
+                                }
 
-                                savingInfo.textContent =
-                                    "Reduced by " +
-                                    formatBytes(saved) +
-                                    " (" +
-                                    percentage.toFixed(1) +
-                                    "% smaller)";
 
-                            } else {
+                                convertedBlob =
+                                    blob;
 
-                                savingInfo.textContent =
-                                    "The WebP file is larger than the original PNG at this quality.";
 
-                            }
+                                if (convertedUrl) {
 
-                            result.style.display =
-                                "block";
+                                    URL.revokeObjectURL(
+                                        convertedUrl
+                                    );
+                                }
 
-                        },
-                        "image/webp",
-                        qualityValueNumber
+
+                                convertedUrl =
+                                    URL.createObjectURL(
+                                        blob
+                                    );
+
+
+                                webpPreview.src =
+                                    convertedUrl;
+
+
+                                const newName =
+                                    getOutputFileName();
+
+
+                                webpName.textContent =
+                                    "File: " +
+                                    newName;
+
+
+                                webpSize.textContent =
+                                    "Size: " +
+                                    formatBytes(
+                                        blob.size
+                                    );
+
+
+                                downloadBtn.href =
+                                    convertedUrl;
+
+                                downloadBtn.download =
+                                    newName;
+
+
+                                const saved =
+                                    selectedFile.size -
+                                    blob.size;
+
+
+                                const percentage =
+                                    (
+                                        saved /
+                                        selectedFile.size
+                                    ) * 100;
+
+
+                                if (saved > 0) {
+
+                                    savingInfo.textContent =
+                                        "Reduced by " +
+                                        formatBytes(
+                                            saved
+                                        ) +
+                                        " (" +
+                                        percentage.toFixed(
+                                            1
+                                        ) +
+                                        "% smaller)";
+
+                                } else {
+
+                                    savingInfo.textContent =
+                                        "The WebP file is larger than the original PNG at this quality.";
+
+                                }
+
+
+                                result.style.display =
+                                    "block";
+
+                            },
+
+                            "image/webp",
+
+                            qualityValueNumber
+                        );
+
+
+                        URL.revokeObjectURL(
+                            imageUrl
+                        );
+
+                    };
+
+
+                image.src =
+                    imageUrl;
+
+            }
+        );
+
+
+        outputFileName.addEventListener(
+            "input",
+            function () {
+
+                if (!convertedBlob) {
+                    return;
+                }
+
+                const newName =
+                    getOutputFileName();
+
+                webpName.textContent =
+                    "File: " + newName;
+
+                downloadBtn.download =
+                    newName;
+
+            }
+        );
+
+
+        downloadBtn.addEventListener(
+            "click",
+            function (event) {
+
+                if (!convertedBlob) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Please convert the image first."
                     );
 
-                    URL.revokeObjectURL(imageUrl);
+                    return;
+                }
 
-                };
+                downloadBtn.download =
+                    getOutputFileName();
+            }
+        );
 
-                image.src = imageUrl;
+
+        saveBtn.addEventListener(
+            "click",
+            async function () {
+
+                if (!convertedBlob) {
+
+                    alert(
+                        "Please convert the image first."
+                    );
+
+                    return;
+                }
+
+
+                const fileName =
+                    getOutputFileName();
+
+
+                /*
+                 * Modern browsers:
+                 * Open native Save As dialog.
+                 */
+
+                if ("showSaveFilePicker" in window) {
+
+                    try {
+
+                        const handle =
+                            await window.showSaveFilePicker({
+
+                                suggestedName:
+                                    fileName,
+
+                                types: [
+                                    {
+                                        description:
+                                            "WebP Image",
+
+                                        accept: {
+                                            "image/webp":
+                                                [".webp"]
+                                        }
+                                    }
+                                ]
+
+                            });
+
+
+                        const writable =
+                            await handle.createWritable();
+
+
+                        await writable.write(
+                            convertedBlob
+                        );
+
+                        await writable.close();
+
+
+                        return;
+
+                    } catch (error) {
+
+                        if (
+                            error.name ===
+                            "AbortError"
+                        ) {
+                            return;
+                        }
+
+                    }
+                }
+
+
+                /*
+                 * Fallback for browsers that
+                 * don't support Save File Picker.
+                 */
+
+                const link =
+                    document.createElement(
+                        "a"
+                    );
+
+                link.href =
+                    convertedUrl;
+
+                link.download =
+                    fileName;
+
+                document.body.appendChild(
+                    link
+                );
+
+                link.click();
+
+                link.remove();
 
             }
         );
     </script>
-
-
 
 
 
