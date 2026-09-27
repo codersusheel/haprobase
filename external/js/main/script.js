@@ -568,6 +568,24 @@ document.addEventListener('DOMContentLoaded', renderSocialLinks);
 
 
 
+// ////////////////////////////////////////////////////////////////
+
+(function () {
+    const faviconUrl = "https://haprobase.netlify.app/external/img/logo/haproven.png";
+
+    if (!document.querySelector('link[rel="icon"]')) {
+        const favicon = document.createElement("link");
+
+        favicon.rel = "icon";
+        favicon.type = "image/png";
+        favicon.href = faviconUrl;
+
+        document.head.appendChild(favicon);
+    }
+})();
+
+// /////////////////////////////////////////////////////////////////////
+
 
 
 

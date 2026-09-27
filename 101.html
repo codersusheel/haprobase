@@ -4,160 +4,91 @@
 
 <head>
 
-    <!-- ================= BASIC ================= -->
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>101 — Page Guide | HaproBase</title>
 
-    <!-- ==================================================
-         🔴 PAGE-SPECIFIC — HAR PAGE PAR CHANGE KAREIN
-         ================================================== -->
+    <meta name="description"
+        content="HaproBase 101 Page Guide — the complete website structure, page directory, sections and important resources.">
 
-    <title>PAGE TITLE | Haproven</title>
-
-    <meta name="description" content="PAGE DESCRIPTION — is page ke baare mein short description.">
-
-    <meta name="keywords" content="PAGE, SPECIFIC, KEYWORDS, Haproven">
-
-
-    <!-- ================= BRAND — FIXED ================= -->
+    <meta name="keywords"
+        content="HaproBase 101, 101 Page Guide, HaproBase Page Guide, HaproBase Sitemap, HaproBase Pages, Website Structure">
 
     <meta name="author" content="Haproven Team">
     <meta name="publisher" content="Haproven">
-
-    <meta name="application-name" content="Haproven">
-
-    <meta name="apple-mobile-web-app-title" content="Haproven">
-
-
-    <!-- ================= ROBOTS — FIXED ================= -->
+    <meta name="application-name" content="HaproBase">
 
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
 
-
-    <!-- ==================================================
-         🔴 PAGE-SPECIFIC — CANONICAL URL
-         ================================================== -->
-
-    <link rel="canonical" href="https://haproven.netlify.app/page/YOUR-PAGE/">
-
+    <link rel="canonical" href="https://haprobase.netlify.app/101.html">
 
     <!-- ================= OPEN GRAPH ================= -->
 
     <meta property="og:type" content="website">
-
-    <!-- 🔴 CHANGE -->
-    <meta property="og:title" content="PAGE TITLE | Haproven">
-
-    <!-- 🔴 CHANGE -->
-    <meta property="og:description" content="PAGE DESCRIPTION">
-
-    <!-- 🔴 CHANGE -->
-    <meta property="og:url" content="https://haproven.netlify.app/page/YOUR-PAGE/">
-
-    <!-- 🟢 Usually FIXED — agar page-specific image ho to change -->
-    <meta property="og:image" content="https://haproven.netlify.app/assets/img/haproven-logo.png">
-
-    <meta property="og:site_name" content="Haproven">
-
+    <meta property="og:title" content="101 — Page Guide | HaproBase">
+    <meta property="og:description"
+        content="HaproBase 101 Page Guide — the complete website structure, page directory, sections and important resources.">
+    <meta property="og:url" content="https://haprobase.netlify.app/101.html">
+    <meta property="og:image" content="https://haprobase.netlify.app/external/img/logo/haproven.png">
+    <meta property="og:site_name" content="HaproBase">
 
     <!-- ================= TWITTER / X ================= -->
 
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="101 — Page Guide | HaproBase">
+    <meta name="twitter:description"
+        content="HaproBase 101 Page Guide — the complete website structure, page directory, sections and important resources.">
+    <meta name="twitter:image" content="https://haprobase.netlify.app/external/img/logo/haproven.png">
 
-    <!-- 🔴 CHANGE -->
-    <meta name="twitter:title" content="PAGE TITLE | Haproven">
+    <!-- ================= FAVICON ================= -->
 
-    <!-- 🔴 CHANGE -->
-    <meta name="twitter:description" content="PAGE DESCRIPTION">
+    <link rel="icon" href="https://haprobase.netlify.app/external/img/logo/haproven.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://haprobase.netlify.app/external/img/logo/haproven.png">
 
-    <!-- 🟢 Usually FIXED -->
-    <meta name="twitter:image" content="https://haproven.netlify.app/assets/img/haproven-logo.png">
-
-
-    <!-- ================= FAVICON — FIXED ================= -->
-
-    <link rel="icon" href="https://haproven.netlify.app/assets/img/haproven.ico" type="image/x-icon">
-
-    <link rel="apple-touch-icon" href="https://haproven.netlify.app/assets/img/haproven-logo.png">
-
-
-
-    <!-- ================= PWA — FIXED ================= -->
+    <!-- ================= PWA ================= -->
 
     <meta name="mobile-web-app-capable" content="yes">
-
     <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
     <link rel="manifest" href="/manifest.json">
 
-
-    <!-- ================= PERFORMANCE — FIXED ================= -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-    <!-- ================= ICONS — FIXED ================= -->
+    <!-- ================= ICONS ================= -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
 
+    <!-- ================= GLOBAL CSS ================= -->
 
-    <!-- ================= HAPROVEN GLOBAL CSS — FIXED ================= -->
-
-    <link rel="stylesheet"
-        href="data:text/css;base64,CkBpbXBvcnQgdXJsKCdodHRwczovL2hhcHJvYmFzZS5uZXRsaWZ5LmFwcC9leHRlcm5hbC9jc3MvbWFpbi9zdHlsZS5jc3MnKTs=">
-
-    <!-- <link rel="stylesheet"
-        href="data:text/css;base64,CgpAaW1wb3J0IHVybCgnaHR0cHM6Ly9oYXByb2Jhc2UubmV0bGlmeS5hcHAvZXh0ZXJuYWwvY3NzL21haW4vc3R5bGUuY3NzJyk7CkBpbXBvcnQgdXJsKCdodHRwczovL2hhcHJvYmFzZS5uZXRsaWZ5LmFwcC9leHRlcm5hbC9jc3MvbWFpbi9hc2lkZS5jc3MnKTsKCg=="> -->
-
-
-    <!-- page ke andar ke css join -->
     <link rel="stylesheet" href="/assets/css/common.css">
 
-    <!-- ==================================================
-         🔴 PAGE-SPECIFIC — STRUCTURED DATA
-         ================================================== -->
+    <!-- ================= STRUCTURED DATA ================= -->
 
-    <script type=" application/ld+json">
-
+    <script type="application/ld+json">
     {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-
-    "name": "PAGE NAME | Haproven",
-
-    "url": "https://haproven.netlify.app/page/YOUR-PAGE/",
-
-    "description": "PAGE DESCRIPTION",
-
-    "inLanguage": "en",
-
-    "publisher": {
-    "@type": "Organization",
-    "name": "Haproven",
-    "url": "https://haproven.netlify.app/"
-    },
-
-    "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://haproven.netlify.app/search?q={query}",
-    "query-input": "required name=query"
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "101 — Page Guide",
+        "url": "https://haprobase.netlify.app/101.html",
+        "description": "HaproBase 101 Page Guide — the complete website structure, page directory, sections and important resources.",
+        "inLanguage": "en",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "HaproBase",
+            "url": "https://haprobase.netlify.app/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Haproven",
+            "url": "https://haproven.netlify.app/"
+        }
     }
-    }
-
     </script>
 
-
 </head>
+
 
 
 <body>
@@ -559,6 +490,10 @@
 
 
     </section>
+
+
+
+    <script src="/external/js/bundle.js"></script>
 
 
 

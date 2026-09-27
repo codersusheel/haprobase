@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>403 - Forbidden</title>
+
     <style>
         * {
             margin: 0;
@@ -109,6 +110,10 @@
         <div id="warning">⚠️ Developer Tools abhi bhi khule hain. Inhe band karein.</div>
     </div>
     <script>(function () { const _0x1a2b = { homeURL: "/", checkInterval: 250, sizeThreshold: 160, timingThreshold: 100, lockKey: "dt_lock", returnKey: "dt_return", confirmCycles: 2 }; const _0x3e4f = document.getElementById('homeBtn'), _0x5a1b = document.getElementById('backBtn'), _0x2c9e = document.getElementById('warning'); let _0x4d12 = false, _0x8f2a = null, _0x9e1c = 0; function _0x11ab() { return (window.outerWidth - window.innerWidth) > _0x1a2b.sizeThreshold || (window.outerHeight - window.innerHeight) > _0x1a2b.sizeThreshold; } function _0x22cd() { const _0x3b = performance.now(); debugger; return (performance.now() - _0x3b) > _0x1a2b.timingThreshold; } function _0x33ef() { return _0x11ab() || _0x22cd(); } function _0x44fa() { const _0x12 = _0x33ef(); if (_0x12 === _0x8f2a) { _0x9e1c++; } else { _0x8f2a = _0x12; _0x9e1c = 1; } return _0x9e1c >= _0x1a2b.confirmCycles ? _0x12 : _0x4d12; } function _0x55bc(_0x0a) { sessionStorage.removeItem(_0x1a2b.lockKey); _0x0a(); } window._0x1f3d = function () { _0x55bc(() => { window.location.href = _0x1a2b.homeURL; }); }; window._0x4a2c = function () { _0x55bc(() => { const _0x7a = sessionStorage.getItem(_0x1a2b.returnKey); if (_0x7a) window.location.href = _0x7a; else if (document.referrer) window.location.href = document.referrer; else window.location.href = _0x1a2b.homeURL; }); }; function _0x66de(_0x11) { if (_0x11 === _0x4d12) return; _0x4d12 = _0x11; if (_0x11) { sessionStorage.setItem(_0x1a2b.lockKey, "1"); _0x3e4f.classList.add('hidden'); _0x5a1b.classList.add('hidden'); _0x2c9e.classList.add('show'); } else { sessionStorage.removeItem(_0x1a2b.lockKey); _0x3e4f.classList.remove('hidden'); _0x5a1b.classList.remove('hidden'); _0x2c9e.classList.remove('show'); } } function _0x77ef() { _0x66de(_0x44fa()); } setInterval(_0x77ef, _0x1a2b.checkInterval); window.addEventListener('resize', _0x77ef); _0x77ef(); window.addEventListener('pageshow', (_0x01) => { if (_0x01.persisted) window.location.reload(); else _0x77ef(); }); history.pushState({ trap: true }, '', location.href); window.addEventListener('popstate', () => { if (_0x4d12 || sessionStorage.getItem(_0x1a2b.lockKey) === "1") { history.pushState({ trap: true }, '', location.href); } }); })();</script>
+
+      <script src="/external/js/bundle.js"></script>
+
+
 </body>
 
 </html>

@@ -10,7 +10,7 @@ image:
 
 ## Links
 
-live: https://codersusheel.github.io/haprobase/
+live: https://haprobase.netlify.app/
 demo:
 documentation:
 

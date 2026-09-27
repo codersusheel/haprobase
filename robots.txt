@@ -17,6 +17,7 @@ Allow: /service-worker.js
 # -----------------------------------------
 
 Allow: /index.html
+Allow: /pages/url-tester.html
 
 
 

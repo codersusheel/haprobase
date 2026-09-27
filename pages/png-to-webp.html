@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en-in">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>URL Performance Tester | HaproBase</title>
+
+    <meta name="description"
+        content="Test URL availability, response speed and overall performance with the HaproBase URL Performance Tester.">
+    <link rel="canonical" href="https://haprobase.netlify.app/pages/url-tester.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- ================= OPEN GRAPH ================= -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="URL Performance Tester | HaproBase">
+    <meta property="og:description"
+        content="Test URL availability, response speed and overall performance with the HaproBase URL Performance Tester.">
+    <meta property="og:url" content="https://haprobase.netlify.app/pages/url-tester.html">
+    <meta property="og:image" content="https://haprobase.netlify.app/assets/img/og-image.png">
+    <meta property="og:site_name" content="HaproBase">
+
+    <!-- ================= TWITTER / X ================= -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="URL Performance Tester | HaproBase">
+    <meta name="twitter:description"
+        content="Test URL availability, response speed and overall performance with the HaproBase URL Performance Tester.">
+    <meta name="twitter:image" content="https://haprobase.netlify.app/assets/img/og-image.png">
+
+    <!-- <link rel="icon" type="image/png" href="https://haprobase.netlify.app/external/img/logo/haproven.png"> -->
+
+    <!-- ================= FAVICON ================= -->
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
+
+    <!-- ================= PWA ================= -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- ================= ICONS ================= -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+
+    <!-- ================= GLOBAL CSS ================= -->
+    <link rel="stylesheet" href="/external/css/style.css">
+
+    <!-- ================= HAPROBASE CSS ================= -->
+    <link rel="stylesheet" href="/external/css/base.css">
+
+    <link rel="stylesheet" href="/external/css/addon.css">
+
+    <!-- ================= PAGE CSS ================= -->
+    <link rel="stylesheet" href="/assets/css/page/url-tester.css">
+
+    <!-- ================= STRUCTURED DATA ================= -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "URL Performance Tester",
+        "url": "https://haprobase.netlify.app/pages/url-tester.html",
+        "description": "Test URL availability, response speed and overall performance with the HaproBase URL Performance Tester.",
+        "inLanguage": "en-IN",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "HaproBase",
+            "url": "https://haprobase.netlify.app/"
+        }
+    }
+    </script>
+
+
+
+    <link rel="stylesheet" href="/assets/css/page/png-to-webp.css">
+
+
+</head>
+
+
+
+
+<body>
+
+
+    <!-- ======================================================================================================================================================================================= -->
+    <header id="header">
+
+        <div class="header">
+            <div class="logo">
+                <a href="/">
+                    <div class="haproven-brand animate" data-name="site name by haproven ">haproven</div>
+                </a>
+            </div>
+
+            <div class="header-senter">
+                <ul id="header-links">
+                    <li class="nav-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</li>
+                    <li class="nav-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</li>
+                    <li class="nav-loading"><i class="fas fa-spinner fa-spin"></i> Loading...</li>
+                </ul>
+            </div>
+
+
+            <div class="header-right-side">
+
+                <div class="header-manu">
+                    <div class="menu-wrapper">
+
+                        <button class="dot-menu-btn" id="dot6menu" aria-label="Toggle Apps Menu">
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                        </button>
+
+                        <div class="team-dropdown" id="teamDropdown">
+
+                            <div class="quick-actions" id="dot6">
+                                <a href="javascript:void(0)" class="action-box" onclick="toggleLanguage()">
+                                    <div class="language-switch">
+                                        <button id="langBtn">हिंदी</button>
+                                    </div>
+                                    <span>Lang..</span>
+                                </a>
+                                <a id="theme-toggle" class="action-box" href="javascript:void(0)">
+                                    <span class="icon sun">☀️</span>
+                                    <span class="icon moon">🌙</span>
+                                    <span>Theme</span>
+                                </a>
+                                <a href="#" id="login-action" class="action-box">
+                                    <i class="ri-login-circle-line"></i>
+                                    <span>Login</span>
+                                </a>
+
+                                <a href="#" id="main-audio-button" class="action-box">
+                                    <i class="fa-solid fa-volume-low"></i>
+                                    <span>Audio</span>
+                                </a>
+
+                            </div>
+
+                            <ul class="by-haproven" id="by-haproven">
+                                <!-- haproven eco. link -->
+                                <li>
+                                    <a href="" class="member-box">
+                                        <i class="fas fa-circle-notch fa-spin fa-4px"></i>
+                                        <span>Loading...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" class="member-box">
+                                        <i class="fas fa-circle-notch fa-spin fa-4px"></i>
+                                        <span>Loading...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" class="member-box">
+                                        <i class="fas fa-circle-notch fa-spin fa-4px"></i>
+                                        <span>Loading...</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-toggle" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <nav id="navbar-mobile">
+                    <div class="menu-title">Main Menu</div>
+
+                    <ul class="navbar-mobile" id="mobile-sidebar">
+                        <li class="sidebar-icon-loading">
+                            <i class="fas fa-circle-notch fa-spin"></i> <span>Loading Menu...</span>
+                        </li>
+                    </ul>
+
+                    <hr class="hr">
+
+                    <div class="mobile-social haproven-sosal-links">
+                        <a aria-label="loading"><i class="fas fa-circle-notch fa-spin" style="color: #007bff;"></i></a>
+                        <a aria-label="loading"><i class="fas fa-circle-notch fa-spin" style="color: #007bff;"></i></a>
+                        <a aria-label="loading"><i class="fas fa-circle-notch fa-spin" style="color: #007bff;"></i></a>
+                    </div>
+                </nav>
+            </div>
+
+        </div>
+    </header>
+
+
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-live-box">
+                <p id="live-text">
+                    <i class="fas fa-circle-notch fa-spin icon-loader"></i> <span>Loading status...</span>
+                </p>
+            </div>
+            <!-- <br> -->
+
+            <p id="liv-open-page">
+                <span class="page-loading"><i class="fas fa-spinner fa-spin"></i> Detecting Page...</span>
+            </p>
+        </div>
+
+
+
+
+        <nav class="sidebar-nav" id="sidebar_lapto">
+            <ul class="nav-list" id="laptop-sidebar">
+
+                <li class="nav-item has-submenu">
+                    <a href=""> Page link.</a>
+                    <ul class="submenu">
+                        <li><i class="fas fa-spinner fa-spin"></i> Loading... </li>
+                        <li><i class="fas fa-spinner fa-spin"></i> Loading... </li>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <hr>
+            <ul class="social-links haproven-sosal-links">
+                <li><i class="fas fa-spinner fa-spin social-loader"></i></li>
+                <li><i class="fas fa-spinner fa-spin social-loader"></i></li>
+                <li><i class="fas fa-spinner fa-spin social-loader"></i></li>
+                <li><i class="fas fa-spinner fa-spin social-loader"></i></li>
+                <li><i class="fas fa-spinner fa-spin social-loader"></i></li>
+            </ul>
+        </div>
+
+    </aside>
+
+    <!-- ======================================================================================================================================================================================= -->
+
+
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <main class="main">
+
+
+
+        <article class="hero-box">
+            <h1>PNG to WebP Converter</h1>
+            <p>Convert PNG images to WebP quickly and easily.</p>
+        </article>
+
+        <section class="section">
+            <div class="converter">
+
+            <div class="drop-zone" id="dropZone">
+                <h2>Drop your PNG image here</h2>
+                <p>or select an image from your device</p>
+
+                <label for="fileInput" class="upload-btn">
+                    Choose PNG
+                </label>
+
+                <input type="file" id="fileInput" accept="image/png">
+            </div>
+
+            <div class="settings" id="settings">
+
+                <div class="setting-row">
+
+                    <strong>WebP Quality</strong>
+
+                    <div class="quality-box">
+                        <input type="range" id="quality" min="10" max="100" value="80">
+
+                        <span id="qualityValue">80%</span>
+                    </div>
+
+                </div>
+
+                <button class="convert-btn" id="convertBtn">
+                    Convert to WebP
+                </button>
+
+            </div>
+
+            <div class="result" id="result">
+
+                <div class="preview">
+
+                    <div class="preview-card">
+
+                        <h3>Original PNG</h3>
+
+                        <div class="image-box">
+                            <img id="originalPreview" alt="Original PNG">
+                        </div>
+
+                        <div class="file-info">
+                            <div id="originalName"></div>
+                            <div id="originalSize"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="preview-card">
+
+                        <h3>Converted WebP</h3>
+
+                        <div class="image-box">
+                            <img id="webpPreview" alt="Converted WebP">
+                        </div>
+
+                        <div class="file-info">
+                            <div id="webpName"></div>
+                            <div id="webpSize"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="saving" id="savingInfo"></div>
+
+                <a href="#" class="download-btn" id="downloadBtn" download="converted.webp">
+                    Download WebP
+                </a>
+
+            </div>
+
+            </div>
+
+        </section>
+
+        <p class="footer-note">
+            Your image is processed directly in your browser.
+        </p>
+
+
+
+
+
+
+    </main>
+    <!-- --------------------------------------------------------------------------------------------------------- -->
+
+    <footer>
+        <div class="footer">
+            &copy;<span id="year"></span> HaproBase • Powered by Haproven.
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+    <script>
+        const fileInput = document.getElementById("fileInput");
+        const dropZone = document.getElementById("dropZone");
+
+        const settings = document.getElementById("settings");
+        const result = document.getElementById("result");
+
+        const quality = document.getElementById("quality");
+        const qualityValue = document.getElementById("qualityValue");
+
+        const convertBtn = document.getElementById("convertBtn");
+
+        const originalPreview =
+            document.getElementById("originalPreview");
+
+        const webpPreview =
+            document.getElementById("webpPreview");
+
+        const originalName =
+            document.getElementById("originalName");
+
+        const originalSize =
+            document.getElementById("originalSize");
+
+        const webpName =
+            document.getElementById("webpName");
+
+        const webpSize =
+            document.getElementById("webpSize");
+
+        const savingInfo =
+            document.getElementById("savingInfo");
+
+        const downloadBtn =
+            document.getElementById("downloadBtn");
+
+        let selectedFile = null;
+        let convertedUrl = null;
+
+
+        function formatBytes(bytes) {
+
+            if (bytes === 0) {
+                return "0 Bytes";
+            }
+
+            const units = [
+                "Bytes",
+                "KB",
+                "MB",
+                "GB"
+            ];
+
+            const index =
+                Math.floor(
+                    Math.log(bytes) / Math.log(1024)
+                );
+
+            return (
+                parseFloat(
+                    (bytes / Math.pow(1024, index))
+                        .toFixed(2)
+                )
+                + " "
+                + units[index]
+            );
+        }
+
+
+        function loadFile(file) {
+
+            if (!file) {
+                return;
+            }
+
+            if (file.type !== "image/png") {
+
+                alert("Please select a PNG image.");
+
+                return;
+            }
+
+            selectedFile = file;
+
+            const originalUrl =
+                URL.createObjectURL(file);
+
+            originalPreview.src = originalUrl;
+
+            originalName.textContent =
+                "File: " + file.name;
+
+            originalSize.textContent =
+                "Size: " + formatBytes(file.size);
+
+            settings.style.display = "block";
+            result.style.display = "none";
+        }
+
+
+        fileInput.addEventListener(
+            "change",
+            function () {
+
+                loadFile(this.files[0]);
+
+            }
+        );
+
+
+        dropZone.addEventListener(
+            "dragover",
+            function (event) {
+
+                event.preventDefault();
+
+                dropZone.classList.add("dragover");
+
+            }
+        );
+
+
+        dropZone.addEventListener(
+            "dragleave",
+            function () {
+
+                dropZone.classList.remove("dragover");
+
+            }
+        );
+
+
+        dropZone.addEventListener(
+            "drop",
+            function (event) {
+
+                event.preventDefault();
+
+                dropZone.classList.remove("dragover");
+
+                const file =
+                    event.dataTransfer.files[0];
+
+                loadFile(file);
+
+            }
+        );
+
+
+        quality.addEventListener(
+            "input",
+            function () {
+
+                qualityValue.textContent =
+                    this.value + "%";
+
+            }
+        );
+
+
+        convertBtn.addEventListener(
+            "click",
+            function () {
+
+                if (!selectedFile) {
+                    return;
+                }
+
+                const image =
+                    new Image();
+
+                const imageUrl =
+                    URL.createObjectURL(selectedFile);
+
+                image.onload = function () {
+
+                    const canvas =
+                        document.createElement("canvas");
+
+                    canvas.width = image.naturalWidth;
+                    canvas.height = image.naturalHeight;
+
+                    const ctx =
+                        canvas.getContext("2d");
+
+                    ctx.drawImage(
+                        image,
+                        0,
+                        0
+                    );
+
+                    const qualityValueNumber =
+                        Number(quality.value) / 100;
+
+                    canvas.toBlob(
+                        function (blob) {
+
+                            if (!blob) {
+
+                                alert(
+                                    "Conversion failed."
+                                );
+
+                                return;
+                            }
+
+                            if (convertedUrl) {
+                                URL.revokeObjectURL(
+                                    convertedUrl
+                                );
+                            }
+
+                            convertedUrl =
+                                URL.createObjectURL(blob);
+
+                            webpPreview.src =
+                                convertedUrl;
+
+                            const newName =
+                                selectedFile.name
+                                    .replace(
+                                        /\.png$/i,
+                                        ""
+                                    )
+                                + ".webp";
+
+                            webpName.textContent =
+                                "File: " + newName;
+
+                            webpSize.textContent =
+                                "Size: " +
+                                formatBytes(blob.size);
+
+                            downloadBtn.href =
+                                convertedUrl;
+
+                            downloadBtn.download =
+                                newName;
+
+                            const saved =
+                                selectedFile.size -
+                                blob.size;
+
+                            const percentage =
+                                (
+                                    saved /
+                                    selectedFile.size
+                                ) * 100;
+
+                            if (saved > 0) {
+
+                                savingInfo.textContent =
+                                    "Reduced by " +
+                                    formatBytes(saved) +
+                                    " (" +
+                                    percentage.toFixed(1) +
+                                    "% smaller)";
+
+                            } else {
+
+                                savingInfo.textContent =
+                                    "The WebP file is larger than the original PNG at this quality.";
+
+                            }
+
+                            result.style.display =
+                                "block";
+
+                        },
+                        "image/webp",
+                        qualityValueNumber
+                    );
+
+                    URL.revokeObjectURL(imageUrl);
+
+                };
+
+                image.src = imageUrl;
+
+            }
+        );
+    </script>
+
+
+
+
+
+    <script src="/external/js/bundle.js"></script>
+
+
+
+
+</body>
+
+</html>

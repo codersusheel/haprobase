@@ -4,9 +4,20 @@
       "category": "Tools",
       "items": [
         {
-          "name": "Speed Tester",
+          "name": "URL Perf. Tester",
           "icon": "fa-gauge-high",
-          "url": "/pages/speed-tester.html",
+          "url": "/pages/url-tester.html",
+          "type": "dropdown",
+          "placements": [
+            "header",
+            "sidebar_laptop",
+            "sidebar_mobile"
+          ]
+        },
+        {
+          "name": "PNG to WebP",
+          "icon": "fa-file-image",
+          "url": "/pages/png-to-webp.html",
           "type": "dropdown",
           "placements": [
             "header",

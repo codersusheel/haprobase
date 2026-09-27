@@ -48,7 +48,6 @@ h1 {
     border: 0;
     border-radius: 8px;
     background: #eee;
-    /* color: #333; */
     cursor: pointer;
     font-size: 18px;
 }
@@ -64,21 +63,19 @@ h1 {
     flex-wrap: wrap;
 }
 
-button {
+.chekbutton {
     border: 0;
     padding: 11px 18px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
-    background: #111;
-    color: #fff;
 }
 
-button:hover {
+.chekbutton:hover {
     opacity: .9;
 }
 
-button:disabled {
+.chekbutton:disabled {
     opacity: .6;
     cursor: not-allowed;
 }
@@ -99,6 +96,7 @@ button:disabled {
     margin-bottom: 20px;
     gap: 15px;
     align-items: center;
+    color: #111;
 }
 
 .test-count {
@@ -117,7 +115,7 @@ button:disabled {
 .progress-bar {
     width: 0;
     height: 100%;
-    background: #111;
+    background: #6852fa;
     transition: width .2s ease;
 }
 
@@ -140,6 +138,7 @@ button:disabled {
     padding: 20px;
     margin-bottom: 20px;
     text-align: center;
+    color: #111;
 }
 
 .winner-title {
@@ -164,6 +163,7 @@ button:disabled {
 .results {
     display: grid;
     gap: 15px;
+    color: #111;
 }
 
 .card {
@@ -252,7 +252,7 @@ button:disabled {
         flex-direction: column;
     }
 
-    .input-actions button {
+    .input-actions .chekbutton {
         width: 100%;
     }
 }

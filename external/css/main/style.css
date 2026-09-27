@@ -268,7 +268,7 @@ header {
 
 #langBtn {
     padding: 1px 2px;
-    border: 1px solid #43434359;
+    /* border: 1px solid #43434359; */
     background: transparent;
 }
 
@@ -314,6 +314,13 @@ header {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    
+}
+
+
+.action-box .icon  {
+ font-size: large;
+    
 }
 
 
@@ -855,7 +862,7 @@ article{
 }
 
 .icon {
-    border: 1px solid;
+    /* border: 1px solid; */
     padding: 0px 6px;
 
 }
