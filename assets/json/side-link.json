@@ -4,9 +4,9 @@
       "category": "Tools",
       "items": [
         {
-          "name": "Encode",
-          "icon": "fa-code",
-          "url": "/pages/encode.html",
+          "name": "Speed Tester",
+          "icon": "fa-gauge-high",
+          "url": "/pages/speed-tester.html",
           "type": "dropdown",
           "placements": [
             "header",
