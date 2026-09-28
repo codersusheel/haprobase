@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobReady — Job Application & Interview Preparation</title>
+    <meta name="description"
+        content="Prepare your resume, LinkedIn, GitHub, portfolio, company research and interview before applying for a job. Check GitHub strength, track readiness and go interview-ready.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg: #f6f7f9;
+            --card: #ffffff;
+            --text: #15171a;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --soft: #f0f2f5;
+            --primary: #111827;
+            --success: #16803c;
+            --warning: #a16207;
+            --danger: #b42318;
+            --radius: 16px;
+            --shadow: 0 8px 30px rgba(0, 0, 0, .06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, .94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: 1180px;
+            margin: auto;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -.4px;
+        }
+
+        .logo span {
+            color: #6b7280;
+        }
+
+        .nav {
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav a {
+            white-space: nowrap;
+            padding: 8px 11px;
+            border-radius: 9px;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .nav a:hover {
+            background: var(--soft);
+            color: var(--text);
+        }
+
+        .hero {
+            max-width: 1180px;
+            margin: auto;
+            padding: 70px 20px 35px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.5fr .8fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--soft);
+            border: 1px solid var(--border);
+            padding: 6px 11px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 5vw, 60px);
+            line-height: 1.03;
+            letter-spacing: -2.5px;
+            max-width: 760px;
+        }
+
+        .hero h1 span {
+            color: #6b7280;
+        }
+
+        .hero p {
+            max-width: 700px;
+            color: var(--muted);
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .btn {
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--text);
+            padding: 11px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .btn:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-title {
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .progress-subtitle {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .progress-circle {
+            width: 145px;
+            height: 145px;
+            margin: 25px auto 15px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: conic-gradient(var(--primary) calc(var(--progress) * 1%), #eceef1 0);
+            position: relative;
+        }
+
+        .progress-circle::after {
+            content: "";
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: white;
+            position: absolute;
+        }
+
+        .progress-number {
+            position: relative;
+            z-index: 2;
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .progress-status {
+            text-align: center;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        main {
+            max-width: 1180px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        section {
+            scroll-margin-top: 90px;
+            margin: 45px 0;
+        }
+
+        .section-heading {
+            margin-bottom: 20px;
+        }
+
+        .section-heading small {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            margin-bottom: 5px;
+        }
+
+        .section-heading h2 {
+            font-size: 28px;
+            letter-spacing: -.8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin-top: 6px;
+            max-width: 720px;
+        }
+
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+        }
+
+        .flow-item {
+            position: relative;
+            background: white;
+            border: 1px solid var(--border);
+            padding: 17px 12px;
+            border-radius: 14px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .flow-item i {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .flow-item::after {
+            content: "→";
+            position: absolute;
+            right: -9px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            z-index: 2;
+        }
+
+        .flow-item:last-child::after {
+            display: none;
+        }
+
+        .check-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .check-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .check-card-header {
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .check-card-header h3 {
+            font-size: 16px;
+        }
+
+        .check-card-header .count {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--muted);
+            background: var(--soft);
+            padding: 4px 8px;
+            border-radius: 999px;
+        }
+
+        .check-list {
+            list-style: none;
+            padding: 8px 18px 15px;
+        }
+
+        .check-list li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            padding: 9px 0;
+            border-bottom: 1px solid #f0f1f3;
+            font-size: 14px;
+        }
+
+        .check-list li:last-child {
+            border-bottom: 0;
+        }
+
+        .check-list input {
+            width: 17px;
+            height: 17px;
+            margin-top: 3px;
+            accent-color: #111827;
+            flex-shrink: 0;
+        }
+
+        .check-list label {
+            cursor: pointer;
+        }
+
+        .check-list input:checked+label {
+            color: #8a9099;
+            text-decoration: line-through;
+        }
+
+        .readiness {
+            background: #111827;
+            color: white;
+            border-radius: 20px;
+            padding: 28px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .readiness h2 {
+            font-size: 28px;
+        }
+
+        .readiness p {
+            color: #c9ced6;
+            margin-top: 8px;
+        }
+
+        .readiness-items {
+            display: grid;
+            gap: 9px;
+        }
+
+        .readiness-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .09);
+            border-radius: 10px;
+            font-size: 13px;
+        }
+
+        .status {
+            font-weight: 800;
+        }
+
+        .status.ready {
+            color: #86efac;
+        }
+
+        .status.pending {
+            color: #fcd34d;
+        }
+
+        .status.partial {
+            color: #93c5fd;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .research-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .research-card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .research-card ul {
+            list-style: none;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .research-card li {
+            padding: 6px 0;
+        }
+
+        .research-card li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: 800;
+            margin-right: 9px;
+        }
+
+        .form-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        .field label {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 11px 12px;
+            outline: none;
+            background: #fff;
+        }
+
+        .field textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .field input:focus,
+        .field textarea:focus,
+        .field select:focus {
+            border-color: #9ca3af;
+        }
+
+        .question-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .question-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 19px;
+        }
+
+        .question-card .number {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: var(--soft);
+            display: grid;
+            place-items: center;
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .question-card h3 {
+            font-size: 15px;
+            margin-bottom: 7px;
+        }
+
+        .question-card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .gap-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .gap-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .gap-card h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .gap-list {
+            list-style: none;
+        }
+
+        .gap-list li {
+            display: flex;
+            gap: 10px;
+            padding: 9px 0;
+            border-bottom: 1px solid #f0f1f3;
+            font-size: 14px;
+        }
+
+        .gap-list li:last-child {
+            border-bottom: 0;
+        }
+
+        .gap-list i {
+            margin-top: 4px;
+            color: var(--warning);
+        }
+
+        .rounds {
+            display: grid;
+            gap: 12px;
+        }
+
+        .round {
+            display: grid;
+            grid-template-columns: 55px 1fr auto;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 15px;
+        }
+
+        .round-number {
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--soft);
+            font-weight: 800;
+        }
+
+        .round h3 {
+            font-size: 15px;
+        }
+
+        .round p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .round-tag {
+            font-size: 11px;
+            padding: 5px 8px;
+            border-radius: 999px;
+            background: var(--soft);
+            white-space: nowrap;
+            font-weight: 700;
+        }
+
+        .final-gate {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .gate-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 15px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            background: var(--soft);
+            font-size: 23px;
+        }
+
+        .final-gate h2 {
+            font-size: 28px;
+        }
+
+        .final-gate p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: 8px auto 20px;
+        }
+
+        .gate-result {
+            font-size: 18px;
+            font-weight: 800;
+            margin-top: 15px;
+            min-height: 28px;
+        }
+
+        /* GitHub Checker */
+        .gh-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+        }
+
+        .gh-input-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .gh-input-row input {
+            flex: 1;
+            min-width: 200px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 14px;
+            outline: none;
+        }
+
+        .gh-input-row input:focus {
+            border-color: #9ca3af;
+        }
+
+        .gh-result {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .gh-result.show {
+            display: block;
+        }
+
+        .gh-profile {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 16px;
+            background: var(--soft);
+            border-radius: 14px;
+            margin-bottom: 16px;
+        }
+
+        .gh-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+
+        .gh-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .gh-stat {
+            background: var(--soft);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .gh-stat .num {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .gh-stat .lbl {
+            font-size: 11px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .gh-score-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+
+        .gh-score-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 18px;
+            color: white;
+        }
+
+        .gh-tips {
+            margin-top: 14px;
+        }
+
+        .gh-tips li {
+            font-size: 13px;
+            color: var(--muted);
+            padding: 4px 0;
+            list-style: none;
+        }
+
+        .gh-tips li::before {
+            content: "→ ";
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .gh-error {
+            color: var(--danger);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Interview Day */
+        .day-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .day-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .day-card h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .day-list {
+            list-style: none;
+        }
+
+        .day-list li {
+            display: flex;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f1f3;
+            font-size: 14px;
+            align-items: flex-start;
+        }
+
+        .day-list li:last-child {
+            border-bottom: 0;
+        }
+
+        .day-list input {
+            width: 17px;
+            height: 17px;
+            margin-top: 2px;
+            accent-color: #111827;
+            flex-shrink: 0;
+        }
+
+        .day-list input:checked+label {
+            color: #8a9099;
+            text-decoration: line-through;
+        }
+
+        /* How checked */
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .how-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .how-card h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .how-card p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            padding: 30px 20px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .note-box {
+            background: #fefce8;
+            border: 1px solid #fde68a;
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 13px;
+            color: #854d0e;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 900px) {
+
+            .hero-grid,
+            .readiness,
+            .day-grid,
+            .how-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .flow-item:nth-child(3)::after {
+                display: none;
+            }
+
+            .question-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .header-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .check-grid,
+            .research-grid,
+            .gap-grid,
+            .form-grid,
+            .question-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .field.full {
+                grid-column: auto;
+            }
+
+            .flow {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .flow-item::after {
+                display: none;
+            }
+
+            .round {
+                grid-template-columns: 45px 1fr;
+            }
+
+            .round-tag {
+                grid-column: 2;
+                justify-self: start;
+            }
+
+            .readiness {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo">Job<span>Ready</span></a>
+            <nav class="nav">
+                <a href="#checklist">Checklist</a>
+                <a href="#github">GitHub Check</a>
+                <a href="#readiness">Readiness</a>
+                <a href="#research">Company</a>
+                <a href="#questions">Questions</a>
+                <a href="#day">Interview Day</a>
+                <a href="#gaps">Gaps</a>
+                <a href="#interview">Rounds</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-grid">
+            <div>
+                <div class="eyebrow">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Before You Apply
+                </div>
+                <h1>
+                    Don't just apply.
+                    <span>Get job-ready first.</span>
+                </h1>
+                <p>
+                    Resume, LinkedIn, GitHub, portfolio, projects, company research,
+                    interview questions and weak areas — check everything before
+                    sending the application. GitHub strength check abhi se live hai.
+                </p>
+                <div class="hero-actions">
+                    <a href="#checklist" class="btn btn-primary">Start Checklist</a>
+                    <a href="#github" class="btn">Check GitHub Strength</a>
+                </div>
+            </div>
+            <div class="progress-card">
+                <div class="progress-title">Your Job Readiness</div>
+                <div class="progress-subtitle">Complete the checklist below</div>
+                <div class="progress-circle" id="progressCircle" style="--progress: 0">
+                    <div class="progress-number" id="progressNumber">0%</div>
+                </div>
+                <div class="progress-status" id="progressStatus">Start preparing</div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- FLOW -->
+        <section>
+            <div class="section-heading">
+                <small>Process</small>
+                <h2>Job Preparation Flow</h2>
+                <p>
+                    Pehle profile ready karo, phir job samjho, company research karo,
+                    interview prepare karo aur uske baad apply karo.
+                </p>
+            </div>
+            <div class="flow">
+                <div class="flow-item"><i class="fa-regular fa-id-card"></i>Profile</div>
+                <div class="flow-item"><i class="fa-solid fa-file-lines"></i>Resume</div>
+                <div class="flow-item"><i class="fa-brands fa-github"></i>GitHub</div>
+                <div class="flow-item"><i class="fa-solid fa-globe"></i>Portfolio</div>
+                <div class="flow-item"><i class="fa-solid fa-building"></i>Company</div>
+                <div class="flow-item"><i class="fa-solid fa-comments"></i>Interview</div>
+            </div>
+        </section>
+
+        <!-- CHECKLIST -->
+        <section id="checklist">
+            <div class="section-heading">
+                <small>Step 01</small>
+                <h2>Before You Apply Checklist</h2>
+                <p>Agar ye basic things ready nahi hain, pehle inhe complete karo. Progress auto-update hota hai.</p>
+            </div>
+            <div class="check-grid">
+
+                <div class="check-card" data-category="resume">
+                    <div class="check-card-header">
+                        <h3><i class="fa-solid fa-file-lines"></i> Resume</h3>
+                        <span class="count" data-count>0/5</span>
+                    </div>
+                    <ul class="check-list">
+                        <li><input type="checkbox" class="task" data-cat="resume"><label>Updated resume ready</label>
+                        </li>
+                        <li><input type="checkbox" class="task" data-cat="resume"><label>Resume job role ke according
+                                relevant hai</label></li>
+                        <li><input type="checkbox" class="task" data-cat="resume"><label>Contact details correct
+                                hain</label></li>
+                        <li><input type="checkbox" class="task" data-cat="resume"><label>LinkedIn, GitHub aur portfolio
+                                links working hain</label></li>
+                        <li><input type="checkbox" class="task" data-cat="resume"><label>Resume mein fake
+                                skill/experience nahi hai</label></li>
+                    </ul>
+                </div>
+
+                <div class="check-card" data-category="linkedin">
+                    <div class="check-card-header">
+                        <h3><i class="fa-brands fa-linkedin"></i> LinkedIn</h3>
+                        <span class="count" data-count>0/5</span>
+                    </div>
+                    <ul class="check-list">
+                        <li><input type="checkbox" class="task" data-cat="linkedin"><label>Professional profile
+                                photo</label></li>
+                        <li><input type="checkbox" class="task" data-cat="linkedin"><label>Clear professional
+                                headline</label></li>
+                        <li><input type="checkbox" class="task" data-cat="linkedin"><label>About section
+                                complete</label></li>
+                        <li><input type="checkbox" class="task" data-cat="linkedin"><label>Experience and education
+                                updated</label></li>
+                        <li><input type="checkbox" class="task" data-cat="linkedin"><label>Relevant skills and projects
+                                added</label></li>
+                    </ul>
+                </div>
+
+                <div class="check-card" data-category="github">
+                    <div class="check-card-header">
+                        <h3><i class="fa-brands fa-github"></i> GitHub</h3>
+                        <span class="count" data-count>0/5</span>
+                    </div>
+                    <ul class="check-list">
+                        <li><input type="checkbox" class="task" data-cat="github"><label>Profile bio updated</label>
+                        </li>
+                        <li><input type="checkbox" class="task" data-cat="github"><label>Important repositories
+                                pinned</label></li>
+                        <li><input type="checkbox" class="task" data-cat="github"><label>Important repositories have
+                                README</label></li>
+                        <li><input type="checkbox" class="task" data-cat="github"><label>Live/demo links working</label>
+                        </li>
+                        <li><input type="checkbox" class="task" data-cat="github"><label>No passwords/API secrets
+                                uploaded</label></li>
+                    </ul>
+                </div>
+
+                <div class="check-card" data-category="portfolio">
+                    <div class="check-card-header">
+                        <h3><i class="fa-solid fa-globe"></i> Portfolio</h3>
+                        <span class="count" data-count>0/5</span>
+                    </div>
+                    <ul class="check-list">
+                        <li><input type="checkbox" class="task" data-cat="portfolio"><label>Portfolio is live</label>
+                        </li>
+                        <li><input type="checkbox" class="task" data-cat="portfolio"><label>Mobile responsive</label>
+                        </li>
+                        <li><input type="checkbox" class="task" data-cat="portfolio"><label>Projects clearly
+                                visible</label></li>
+                        <li><input type="checkbox" class="task" data-cat="portfolio"><label>Live demo and GitHub buttons
+                                work</label></li>
+                        <li><input type="checkbox" class="task" data-cat="portfolio"><label>Contact information is
+                                correct</label></li>
+                    </ul>
+                </div>
+
+                <div class="check-card" data-category="projects">
+                    <div class="check-card-header">
+                        <h3><i class="fa-solid fa-code"></i> Projects</h3>
+                        <span class="count" data-count>0/5</span>
+                    </div>
+                    <ul class="check-list">
+                        <li><input type="checkbox" class="task" data-cat="projects"><label>At least 2 strong projects
+                                ready</label></li>
+                        <li><input type="checkbox" class="task" data-cat="projects"><label>Project ka problem explain
+                                kar sakte ho</label></li>
+                        <li><input type="checkbox" class="task" data-cat="projects"><label>Technology aur architecture
+                                explain kar sakte ho</label></li>
+                        <li><input type="checkbox" class="task" data-cat="projects"><label>Apna contribution clearly
+                                bata sakte ho</label></li>
+                        <li><input type="checkbox" class="task" data-cat="projects"><label>Challenges aur solutions
+                                explain kar sakte ho</label></li>
+                    </ul>
+                </div>
+
+                <div class="check-card" data-category="documents">
+                    <div class="check-card-header">
+                        <h3><i class="fa-solid fa-folder-open"></i> Documents</h3>
+                        <span class="count" data-count>0/5</span>
+                    </div>
+                    <ul class="check-list">
+                        <li><input type="checkbox" class="task" data-cat="documents"><label>Resume PDF ready</label>
+                        </li>
+                        <li><input type="checkbox" class="task" data-cat="documents"><label>Certificates
+                                organized</label></li>
+                        <li><input type="checkbox" class="task" data-cat="documents"><label>Required education documents
+                                ready</label></li>
+                        <li><input type="checkbox" class="task" data-cat="documents"><label>Professional email
+                                ready</label></li>
+                        <li><input type="checkbox" class="task" data-cat="documents"><label>Application tracker
+                                ready</label></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- GITHUB CHECKER -->
+        <section id="github">
+            <div class="section-heading">
+                <small>Live Tool</small>
+                <h2>GitHub Strength Checker</h2>
+                <p>
+                    Apna GitHub username daalo. Public profile se score nikalta hai —
+                    repos, followers, bio, activity. Yeh approximate hai; real interview
+                    mein quality of code aur READMEs matter karte hain.
+                </p>
+            </div>
+            <div class="gh-card">
+                <div class="gh-input-row">
+                    <input type="text" id="ghUsername" placeholder="GitHub username (e.g. octocat)" autocomplete="off">
+                    <button class="btn btn-primary" id="ghCheckBtn">
+                        <i class="fa-brands fa-github"></i> Check Strength
+                    </button>
+                </div>
+                <div id="ghError" class="gh-error" style="display:none;"></div>
+                <div id="ghResult" class="gh-result">
+                    <div class="gh-profile" id="ghProfile"></div>
+                    <div class="gh-stats" id="ghStats"></div>
+                    <div class="gh-score-box" id="ghScoreBox"></div>
+                    <ul class="gh-tips" id="ghTips"></ul>
+                </div>
+                <div class="note-box">
+                    <strong>Note:</strong> GitHub API public data use karta hai (rate limit ~60 requests/hour without
+                    token).
+                    CV Checker aur deeper analysis aage add hoga. Abhi profile + basic strength check ready hai.
+                </div>
+            </div>
+        </section>
+
+        <!-- READINESS -->
+        <section id="readiness">
+            <div class="readiness">
+                <div>
+                    <h2>Application Gate</h2>
+                    <p>
+                        Har job ke liye apply karne se pehle ye check karo ki tumhare
+                        profile ke important parts ready hain ya nahi. Categories auto-update.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#research" class="btn">Continue Preparation</a>
+                    </div>
+                </div>
+                <div class="readiness-items" id="readinessItems">
+                    <div class="readiness-row" data-ready="resume"><span>Resume</span><span
+                            class="status pending">Check</span></div>
+                    <div class="readiness-row" data-ready="linkedin"><span>LinkedIn</span><span
+                            class="status pending">Check</span></div>
+                    <div class="readiness-row" data-ready="github"><span>GitHub</span><span
+                            class="status pending">Check</span></div>
+                    <div class="readiness-row" data-ready="portfolio"><span>Portfolio</span><span
+                            class="status pending">Check</span></div>
+                    <div class="readiness-row" data-ready="projects"><span>Projects</span><span
+                            class="status pending">Check</span></div>
+                    <div class="readiness-row" data-ready="documents"><span>Documents</span><span
+                            class="status pending">Check</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW ANSWERS / ITEMS ARE CHECKED -->
+        <section>
+            <div class="section-heading">
+                <small>Clarity</small>
+                <h2>Jo answer / checklist diya hai — kaise check hoga?</h2>
+                <p>
+                    Yahan pe items self-check hain. Interviewer aur recruiter alag tarike se dekhte hain.
+                    Neeche clear mapping hai taaki tum properly prepare kar sako.
+                </p>
+            </div>
+            <div class="how-grid">
+                <div class="how-card">
+                    <h3><i class="fa-solid fa-file-lines"></i> Resume items</h3>
+                    <p>Recruiter 6–10 sec scan karta hai. Links click karta hai. Fake skills interview mein pakde jaate
+                        hain. ATS keywords + clarity important.</p>
+                </div>
+                <div class="how-card">
+                    <h3><i class="fa-brands fa-linkedin"></i> LinkedIn</h3>
+                    <p>Photo + headline pehle dikhte hain. About aur experience consistency resume se match honi
+                        chahiye. Activity bhi score karti hai.</p>
+                </div>
+                <div class="how-card">
+                    <h3><i class="fa-brands fa-github"></i> GitHub</h3>
+                    <p>Public repos, README quality, recent commits, live demos. Empty ya secret-leaking repos red flag
+                        hain. Strength checker yahan approximate score deta hai.</p>
+                </div>
+                <div class="how-card">
+                    <h3><i class="fa-solid fa-globe"></i> Portfolio</h3>
+                    <p>Mobile pe open hona, projects clear, buttons kaam karna. Broken links = negative signal.</p>
+                </div>
+                <div class="how-card">
+                    <h3><i class="fa-solid fa-code"></i> Project explanation</h3>
+                    <p>Interview mein: Problem → Approach → Tech → Your part → Result / Challenge. Agar explain nahi kar
+                        sakte to project weak maana jaata hai.</p>
+                </div>
+                <div class="how-card">
+                    <h3><i class="fa-solid fa-comments"></i> Behavioural answers</h3>
+                    <p>STAR method (Situation, Task, Action, Result). Vague answers reject ho jaate hain. Specific
+                        examples + learning dikhao.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPANY RESEARCH -->
+        <section id="research">
+            <div class="section-heading">
+                <small>Step 02</small>
+                <h2>Company Research</h2>
+                <p>
+                    Interview se pehle company ko sirf naam se nahi — product, role,
+                    team aur current work ke level par samjho.
+                </p>
+            </div>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3><i class="fa-solid fa-building"></i> Company Basics</h3>
+                    <ul>
+                        <li>Company kya karti hai?</li>
+                        <li>Products/services kya hain?</li>
+                        <li>Customers/users kaun hain?</li>
+                        <li>Business model kya hai?</li>
+                        <li>Company kis problem ko solve karti hai?</li>
+                    </ul>
+                </div>
+                <div class="research-card">
+                    <h3><i class="fa-solid fa-code"></i> Role Research</h3>
+                    <ul>
+                        <li>Exact job role kya hai?</li>
+                        <li>Required skills kya hain?</li>
+                        <li>Daily responsibilities kya ho sakti hain?</li>
+                        <li>Kaunse tools/technologies mention hain?</li>
+                        <li>Experience requirement kya hai?</li>
+                    </ul>
+                </div>
+                <div class="research-card">
+                    <h3><i class="fa-solid fa-chart-line"></i> Recent Information</h3>
+                    <ul>
+                        <li>Recent product launch</li>
+                        <li>Recent company announcement</li>
+                        <li>Recent engineering/blog updates</li>
+                        <li>Leadership/team updates</li>
+                        <li>Important recent news</li>
+                    </ul>
+                </div>
+                <div class="research-card">
+                    <h3><i class="fa-solid fa-users"></i> Team & Work</h3>
+                    <ul>
+                        <li>Team kis product par kaam karti hai?</li>
+                        <li>Engineering workflow kaisa ho sakta hai?</li>
+                        <li>Role kis team ke under hai?</li>
+                        <li>Growth/learning expectations kya hain?</li>
+                        <li>Work location/remote setup kya hai?</li>
+                    </ul>
+                </div>
+                <div class="research-card">
+                    <h3><i class="fa-solid fa-scale-balanced"></i> Alternatives / Competitors</h3>
+                    <ul>
+                        <li>Main competitors kaun hain?</li>
+                        <li>Similar products kaunse hain?</li>
+                        <li>Company ka product kis category mein hai?</li>
+                        <li>Customer ke alternatives kya hain?</li>
+                    </ul>
+                </div>
+                <div class="research-card">
+                    <h3><i class="fa-solid fa-link"></i> Your Connection</h3>
+                    <ul>
+                        <li>Mere kaunse projects relevant hain?</li>
+                        <li>Meri kaunsi skill role se match karti hai?</li>
+                        <li>Main company ke problem mein kya contribute kar sakta hoon?</li>
+                        <li>Kaunsa experience highlight karna hai?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPANY NOTES -->
+        <section>
+            <div class="section-heading">
+                <small>Research Notes</small>
+                <h2>Company Research Sheet</h2>
+                <p>Interview se pehle apne notes yahan prepare kar sakte ho. Browser mein save ho jaate hain.</p>
+            </div>
+            <div class="form-card">
+                <div class="form-grid">
+                    <div class="field">
+                        <label>Company Name</label>
+                        <input type="text" id="noteCompany" placeholder="e.g. Company Name">
+                    </div>
+                    <div class="field">
+                        <label>Job Role</label>
+                        <input type="text" id="noteRole" placeholder="e.g. Frontend Developer">
+                    </div>
+                    <div class="field">
+                        <label>Company Website</label>
+                        <input type="url" id="noteWebsite" placeholder="https://">
+                    </div>
+                    <div class="field">
+                        <label>Job Posting</label>
+                        <input type="url" id="noteJobLink" placeholder="Job link">
+                    </div>
+                    <div class="field full">
+                        <label>What does the company do?</label>
+                        <textarea id="noteWhat" placeholder="Company ka simple explanation..."></textarea>
+                    </div>
+                    <div class="field full">
+                        <label>What does this role require?</label>
+                        <textarea id="noteRequire" placeholder="Required skills, responsibilities..."></textarea>
+                    </div>
+                    <div class="field full">
+                        <label>What did you learn about the company?</label>
+                        <textarea id="noteLearn" placeholder="Products, customers, recent updates, team..."></textarea>
+                    </div>
+                    <div class="field full">
+                        <label>Why does this role match you?</label>
+                        <textarea id="noteMatch" placeholder="Apni relevant skills/projects likho..."></textarea>
+                    </div>
+                </div>
+                <div style="margin-top: 16px;">
+                    <button class="btn btn-primary" id="saveNotesBtn">Save Notes (Local)</button>
+                    <span id="notesSaved"
+                        style="margin-left:10px;font-size:13px;color:var(--success);display:none;">Saved ✓</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPECTED QUESTIONS -->
+        <section id="questions">
+            <div class="section-heading">
+                <small>Step 03</small>
+                <h2>Interview Questions You Should Prepare</h2>
+                <p>
+                    Exact questions company aur role ke according change ho sakte hain,
+                    lekin ye categories pehle se prepare karna useful hai.
+                </p>
+            </div>
+            <div class="question-grid">
+                <div class="question-card">
+                    <div class="number">01</div>
+                    <h3>Tell me about yourself.</h3>
+                    <p>30–90 second ka clear professional introduction prepare karo. Present → Past → Why this role.</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">02</div>
+                    <h3>Why do you want this role?</h3>
+                    <p>Role ki requirements ko apni skills aur projects se connect karo. Specific raho.</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">03</div>
+                    <h3>Why this company?</h3>
+                    <p>Company research ke basis par specific answer prepare karo (product / mission / tech).</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">04</div>
+                    <h3>Explain your best project.</h3>
+                    <p>Problem → Solution → Technology → Contribution → Result. Numbers / impact agar ho to batao.</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">05</div>
+                    <h3>What challenge did you face?</h3>
+                    <p>Real problem + tumne kaise solve kiya + kya seekha. STAR format use karo.</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">06</div>
+                    <h3>What are your strengths?</h3>
+                    <p>Sirf adjectives nahi — concrete examples ke saath answer do.</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">07</div>
+                    <h3>What is an area you need to improve?</h3>
+                    <p>Genuine improvement area + uspar tum kya kar rahe ho (learning plan).</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">08</div>
+                    <h3>Why should we hire you?</h3>
+                    <p>Role ke relevant evidence, skills aur attitude ke basis par answer do.</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">09</div>
+                    <h3>Technical questions</h3>
+                    <p>JD mein mentioned technologies ke fundamentals + common problems revise karo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAPS -->
+        <section id="gaps">
+            <div class="section-heading">
+                <small>Step 04</small>
+                <h2>Apni Kami / Gaps Identify Karo</h2>
+                <p>Job apply karne se pehle ye pata hona chahiye ki tumhare profile mein kya missing hai.</p>
+            </div>
+            <div class="gap-grid">
+                <div class="gap-card">
+                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Common Gaps</h3>
+                    <ul class="gap-list">
+                        <li><i class="fa-solid fa-circle"></i><span>Resume mein irrelevant information zyada hai.</span>
+                        </li>
+                        <li><i class="fa-solid fa-circle"></i><span>Projects hain but properly explain nahi kar
+                                paate.</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span>GitHub repositories incomplete hain.</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span>Portfolio links ya demos broken hain.</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span>Job description ki required skill weak hai.</span>
+                        </li>
+                        <li><i class="fa-solid fa-circle"></i><span>Company ke baare mein kuch research nahi ki.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="gap-card">
+                    <h3><i class="fa-solid fa-wrench"></i> Improvement Plan</h3>
+                    <ul class="gap-list">
+                        <li><i class="fa-solid fa-circle"></i><span>Weak skill identify karo.</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span>Us skill ke fundamentals revise karo.</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span>Small practical project banao.</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span>Project ko GitHub par properly document karo.</span>
+                        </li>
+                        <li><i class="fa-solid fa-circle"></i><span>Mock interview mein test karo.</span></li>
+                        <li><i class="fa-solid fa-circle"></i><span>Phir application submit karo.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERVIEW ROUNDS -->
+        <section id="interview">
+            <div class="section-heading">
+                <small>Step 05</small>
+                <h2>Interview Round Preparation</h2>
+                <p>
+                    Company ka actual process different ho sakta hai. Job description
+                    aur recruiter se available process ko verify karo.
+                </p>
+            </div>
+            <div class="rounds">
+                <div class="round">
+                    <div class="round-number">01</div>
+                    <div>
+                        <h3>Application / Resume Screening</h3>
+                        <p>Resume, profile, experience aur relevant skills.</p>
+                    </div>
+                    <span class="round-tag">Profile</span>
+                </div>
+                <div class="round">
+                    <div class="round-number">02</div>
+                    <div>
+                        <h3>Recruiter / HR Screen</h3>
+                        <p>Introduction, role, availability, experience and basic fit.</p>
+                    </div>
+                    <span class="round-tag">HR</span>
+                </div>
+                <div class="round">
+                    <div class="round-number">03</div>
+                    <div>
+                        <h3>Technical Round</h3>
+                        <p>Role-specific concepts, coding, projects and problem solving.</p>
+                    </div>
+                    <span class="round-tag">Technical</span>
+                </div>
+                <div class="round">
+                    <div class="round-number">04</div>
+                    <div>
+                        <h3>Project / Practical Round</h3>
+                        <p>Existing project, practical task or technical discussion.</p>
+                    </div>
+                    <span class="round-tag">Practical</span>
+                </div>
+                <div class="round">
+                    <div class="round-number">05</div>
+                    <div>
+                        <h3>Final Discussion</h3>
+                        <p>Role expectations, team, compensation and next steps.</p>
+                    </div>
+                    <span class="round-tag">Final</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUESTIONS TO ASK -->
+        <section>
+            <div class="section-heading">
+                <small>Step 06</small>
+                <h2>Interviewer Se Kya Puchhna Hai?</h2>
+                <p>
+                    Interview ke end mein role aur team ko better understand karne ke
+                    liye thoughtful questions ready rakho.
+                </p>
+            </div>
+            <div class="question-grid">
+                <div class="question-card">
+                    <div class="number">01</div>
+                    <h3>What would I work on initially?</h3>
+                    <p>First few weeks/months ke expected work ko samjho.</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">02</div>
+                    <h3>What does success look like?</h3>
+                    <p>Role ke expectations clear karo.</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">03</div>
+                    <h3>How is the team structured?</h3>
+                    <p>Team aur reporting structure samjho.</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">04</div>
+                    <h3>What technologies does the team use?</h3>
+                    <p>Actual development environment ke baare mein jaan sakte ho.</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">05</div>
+                    <h3>What are the biggest challenges?</h3>
+                    <p>Team ke current technical/work challenges ko samjho.</p>
+                </div>
+                <div class="question-card">
+                    <div class="number">06</div>
+                    <h3>What are the next steps?</h3>
+                    <p>Interview process ka next stage clear kar lo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERVIEW DAY CHECKLIST -->
+        <section id="day">
+            <div class="section-heading">
+                <small>Step 07 — Critical</small>
+                <h2>Interview Ke Liye Jate Time Kya-Kya Hona Chahiye</h2>
+                <p>
+                    Physical / virtual dono ke liye. Ye items properly check karo taaki last moment panic na ho.
+                </p>
+            </div>
+            <div class="day-grid">
+                <div class="day-card">
+                    <h3><i class="fa-solid fa-file"></i> Documents & Materials</h3>
+                    <ul class="day-list">
+                        <li><input type="checkbox" class="day-task"><label>2–3 printed copies of resume (clean, no
+                                folds)</label></li>
+                        <li><input type="checkbox" class="day-task"><label>ID proof (Aadhaar / Passport / DL) +
+                                photocopy</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Certificates / marksheets (if asked) in
+                                folder</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Portfolio / project notes (1–2 page
+                                summary)</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Pen + small notebook</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Job description printed / saved
+                                offline</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Company research notes (your sheet)</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="day-card">
+                    <h3><i class="fa-solid fa-shirt"></i> Appearance & Presence</h3>
+                    <ul class="day-list">
+                        <li><input type="checkbox" class="day-task"><label>Clean formal / smart-casual clothes (role ke
+                                hisaab se)</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Shoes polished / neat</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Grooming done (hair, nails, light fragrance
+                                ok)</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Watch / phone on silent</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Arrive 10–15 min early (or join 5 min early
+                                for video)</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Water bottle / light snack if needed</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="day-card">
+                    <h3><i class="fa-solid fa-laptop"></i> Virtual Interview Extra</h3>
+                    <ul class="day-list">
+                        <li><input type="checkbox" class="day-task"><label>Stable internet + backup (mobile
+                                hotspot)</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Camera + mic tested, good lighting, quiet
+                                room</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Background clean / professional</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Laptop charged + charger ready</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Meeting link open, name correct</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Resume + notes on second screen /
+                                printed</label></li>
+                    </ul>
+                </div>
+                <div class="day-card">
+                    <h3><i class="fa-solid fa-brain"></i> Mental & Content Ready</h3>
+                    <ul class="day-list">
+                        <li><input type="checkbox" class="day-task"><label>"Tell me about yourself" practised (60–90
+                                sec)</label></li>
+                        <li><input type="checkbox" class="day-task"><label>2–3 projects ready to explain
+                                end-to-end</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Why this company / role answers ready</label>
+                        </li>
+                        <li><input type="checkbox" class="day-task"><label>2–3 questions to ask interviewer
+                                ready</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Weak areas + honest improvement story
+                                ready</label></li>
+                        <li><input type="checkbox" class="day-task"><label>Phone numbers / emergency contact
+                                saved</label></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="note-box" style="margin-top:18px;">
+                <strong>Pro tip:</strong> Physical interview = folder with documents + 2 resume copies + notebook.
+                Virtual = test call 1 day before + quiet place + water. Dono mein: smile, clear voice, honest answers.
+            </div>
+        </section>
+
+        <!-- FINAL GATE -->
+        <section>
+            <div class="final-gate">
+                <div class="gate-icon"><i class="fa-solid fa-flag-checkered"></i></div>
+                <h2>Ready to Apply?</h2>
+                <p>
+                    Agar profile, resume, projects, company research aur interview
+                    preparation complete hai, tab application submit karo.
+                </p>
+                <button class="btn btn-primary" id="finalCheck">Check My Readiness</button>
+                <div class="gate-result" id="gateResult"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <strong>JobReady</strong><br>
+        Prepare → Research → Practice → Apply → Interview<br><br>
+        <span>Your preparation checklist, not a guarantee of selection. CV Checker coming next.</span>
+    </footer>
+
+    <script>
+        const tasks = document.querySelectorAll(".task");
+        const progressCircle = document.getElementById("progressCircle");
+        const progressNumber = document.getElementById("progressNumber");
+        const progressStatus = document.getElementById("progressStatus");
+        const finalCheck = document.getElementById("finalCheck");
+        const gateResult = document.getElementById("gateResult");
+
+        function saveTasks() {
+            const state = [];
+            tasks.forEach((task, index) => { state[index] = task.checked; });
+            localStorage.setItem("jobready-checklist", JSON.stringify(state));
+        }
+
+        function loadTasks() {
+            const saved = localStorage.getItem("jobready-checklist");
+            if (!saved) return;
+            try {
+                const state = JSON.parse(saved);
+                tasks.forEach((task, index) => {
+                    if (state[index]) task.checked = true;
+                });
+            } catch (e) { }
+        }
+
+        function updateCategoryCounts() {
+            document.querySelectorAll(".check-card").forEach(card => {
+                const cat = card.dataset.category;
+                const inputs = card.querySelectorAll(".task");
+                const done = [...inputs].filter(t => t.checked).length;
+                const countEl = card.querySelector("[data-count]");
+                if (countEl) countEl.textContent = done + "/" + inputs.length;
+            });
+        }
+
+        function updateReadinessRows() {
+            const cats = ["resume", "linkedin", "github", "portfolio", "projects", "documents"];
+            cats.forEach(cat => {
+                const inputs = document.querySelectorAll(`.task[data-cat="${cat}"]`);
+                const done = [...inputs].filter(t => t.checked).length;
+                const total = inputs.length;
+                const row = document.querySelector(`[data-ready="${cat}"]`);
+                if (!row) return;
+                const status = row.querySelector(".status");
+                if (done === total) {
+                    status.textContent = "Ready";
+                    status.className = "status ready";
+                } else if (done > 0) {
+                    status.textContent = done + "/" + total;
+                    status.className = "status partial";
+                } else {
+                    status.textContent = "Check";
+                    status.className = "status pending";
+                }
+            });
+        }
+
+        function updateProgress() {
+            const total = tasks.length;
+            const completed = [...tasks].filter(task => task.checked).length;
+            const percentage = total === 0 ? 0 : Math.round((completed / total) * 100);
+            progressCircle.style.setProperty("--progress", percentage);
+            progressNumber.textContent = percentage + "%";
+            if (percentage === 0) progressStatus.textContent = "Start preparing";
+            else if (percentage < 40) progressStatus.textContent = "Preparation started";
+            else if (percentage < 70) progressStatus.textContent = "Keep preparing";
+            else if (percentage < 100) progressStatus.textContent = "Almost ready";
+            else progressStatus.textContent = "Ready to apply";
+            updateCategoryCounts();
+            updateReadinessRows();
+            saveTasks();
+        }
+
+        tasks.forEach(task => task.addEventListener("change", updateProgress));
+
+        finalCheck.addEventListener("click", function () {
+            const total = tasks.length;
+            const completed = [...tasks].filter(task => task.checked).length;
+            const percentage = Math.round((completed / total) * 100);
+            if (percentage === 100) {
+                gateResult.textContent = "✓ Your checklist is complete. You can move to the application stage.";
+                gateResult.style.color = "#16803c";
+            } else if (percentage >= 80) {
+                gateResult.textContent = "Almost ready — complete the remaining checklist items.";
+                gateResult.style.color = "#a16207";
+            } else {
+                gateResult.textContent = "Not ready yet — complete more preparation before applying.";
+                gateResult.style.color = "#b42318";
+            }
+        });
+
+        // ========== GitHub Strength Checker ==========
+        const ghBtn = document.getElementById("ghCheckBtn");
+        const ghInput = document.getElementById("ghUsername");
+        const ghError = document.getElementById("ghError");
+        const ghResult = document.getElementById("ghResult");
+
+        async function checkGitHub() {
+            const username = ghInput.value.trim().replace(/^@/, "");
+            if (!username) {
+                ghError.style.display = "block";
+                ghError.textContent = "Please enter a GitHub username.";
+                ghResult.classList.remove("show");
+                return;
+            }
+            ghError.style.display = "none";
+            ghBtn.disabled = true;
+            ghBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Checking...';
+            ghResult.classList.remove("show");
+
+            try {
+                const userRes = await fetch(`https://api.github.com/users/${encodeURIComponent(username)}`);
+                if (userRes.status === 404) throw new Error("User not found. Check the username.");
+                if (userRes.status === 403) throw new Error("API rate limit reached. Try again in a few minutes.");
+                if (!userRes.ok) throw new Error("Could not fetch profile. Try again later.");
+                const user = await userRes.json();
+
+                const reposRes = await fetch(`https://api.github.com/users/${encodeURIComponent(username)}/repos?per_page=100&sort=updated`);
+                const repos = reposRes.ok ? await reposRes.json() : [];
+
+                // Score logic (0–100)
+                let score = 0;
+                const tips = [];
+
+                // Bio
+                if (user.bio && user.bio.trim().length > 10) { score += 10; }
+                else tips.push("Add a clear professional bio on your GitHub profile.");
+
+                // Avatar
+                if (user.avatar_url && !user.avatar_url.includes("identicon")) { score += 5; }
+                else tips.push("Upload a proper profile photo (not default avatar).");
+
+                // Public repos
+                const publicRepos = user.public_repos || 0;
+                if (publicRepos >= 8) score += 20;
+                else if (publicRepos >= 4) score += 12;
+                else if (publicRepos >= 1) score += 6;
+                else tips.push("Create at least 2–3 quality public repositories.");
+
+                // Followers
+                const followers = user.followers || 0;
+                if (followers >= 50) score += 10;
+                else if (followers >= 10) score += 6;
+                else if (followers >= 1) score += 3;
+
+                // Recent activity (repos updated in last year)
+                const oneYearAgo = Date.now() - 365 * 24 * 60 * 60 * 1000;
+                const recentRepos = repos.filter(r => new Date(r.updated_at).getTime() > oneYearAgo).length;
+                if (recentRepos >= 5) score += 15;
+                else if (recentRepos >= 2) score += 10;
+                else if (recentRepos >= 1) score += 5;
+                else tips.push("Show recent activity — update or push to repos in the last year.");
+
+                // Stars received
+                const totalStars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
+                if (totalStars >= 20) score += 15;
+                else if (totalStars >= 5) score += 8;
+                else if (totalStars >= 1) score += 4;
+                else tips.push("Improve project quality and README so people star your work.");
+
+                // Has description / homepage on some repos
+                const withDesc = repos.filter(r => (r.description && r.description.length > 5) || r.homepage).length;
+                if (withDesc >= 3) score += 10;
+                else if (withDesc >= 1) score += 5;
+                else tips.push("Add clear descriptions and live demo links (homepage) to important repos.");
+
+                // Blog / website
+                if (user.blog && user.blog.trim().length > 5) score += 5;
+                else tips.push("Add your portfolio or personal site link in GitHub profile.");
+
+                // Company / location (small)
+                if (user.location || user.company) score += 5;
+
+                // Cap
+                score = Math.min(100, Math.round(score));
+
+                // Render profile
+                document.getElementById("ghProfile").innerHTML = `
+          <img class="gh-avatar" src="${user.avatar_url}" alt="${user.login}">
+          <div>
+            <div style="font-weight:800;font-size:18px;">${user.name || user.login}</div>
+            <div style="color:var(--muted);font-size:13px;">@${user.login}</div>
+            <div style="font-size:13px;margin-top:4px;">${user.bio || "No bio"}</div>
+            <a href="${user.html_url}" target="_blank" rel="noopener" style="font-size:13px;font-weight:600;color:#2563eb;">View on GitHub →</a>
+          </div>
+        `;
+
+                document.getElementById("ghStats").innerHTML = `
+          <div class="gh-stat"><div class="num">${publicRepos}</div><div class="lbl">Public Repos</div></div>
+          <div class="gh-stat"><div class="num">${followers}</div><div class="lbl">Followers</div></div>
+          <div class="gh-stat"><div class="num">${totalStars}</div><div class="lbl">Total Stars</div></div>
+          <div class="gh-stat"><div class="num">${recentRepos}</div><div class="lbl">Active (1yr)</div></div>
+          <div class="gh-stat"><div class="num">${user.public_gists || 0}</div><div class="lbl">Gists</div></div>
+        `;
+
+                let scoreColor = "#b42318";
+                let scoreLabel = "Needs work";
+                if (score >= 75) { scoreColor = "#16803c"; scoreLabel = "Strong"; }
+                else if (score >= 50) { scoreColor = "#a16207"; scoreLabel = "Decent"; }
+                else if (score >= 30) { scoreColor = "#ca8a04"; scoreLabel = "Basic"; }
+
+                document.getElementById("ghScoreBox").innerHTML = `
+          <div class="gh-score-circle" style="background:${scoreColor}">${score}</div>
+          <div>
+            <div style="font-weight:800;font-size:16px;">Strength Score: ${score}/100 — ${scoreLabel}</div>
+            <div style="font-size:13px;color:var(--muted);margin-top:4px;">
+              Based on public profile, repos, activity, stars and presentation. Quality of code still matters most in interviews.
+            </div>
+          </div>
+        `;
+
+                const tipsEl = document.getElementById("ghTips");
+                if (tips.length === 0) {
+                    tipsEl.innerHTML = "<li>Looking good! Focus on README quality and being ready to explain every repo in interviews.</li>";
+                } else {
+                    tipsEl.innerHTML = tips.map(t => `<li>${t}</li>`).join("") +
+                        "<li>Pin your best 2–4 repos and make sure each has a solid README + live demo if possible.</li>";
+                }
+
+                ghResult.classList.add("show");
+            } catch (err) {
+                ghError.style.display = "block";
+                ghError.textContent = err.message || "Something went wrong. Try again.";
+            } finally {
+                ghBtn.disabled = false;
+                ghBtn.innerHTML = '<i class="fa-brands fa-github"></i> Check Strength';
+            }
+        }
+
+        ghBtn.addEventListener("click", checkGitHub);
+        ghInput.addEventListener("keydown", e => { if (e.key === "Enter") checkGitHub(); });
+
+        // ========== Company Notes LocalStorage ==========
+        const noteFields = ["noteCompany", "noteRole", "noteWebsite", "noteJobLink", "noteWhat", "noteRequire", "noteLearn", "noteMatch"];
+        function loadNotes() {
+            try {
+                const data = JSON.parse(localStorage.getItem("jobready-notes") || "{}");
+                noteFields.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el && data[id]) el.value = data[id];
+                });
+            } catch (e) { }
+        }
+        document.getElementById("saveNotesBtn").addEventListener("click", () => {
+            const data = {};
+            noteFields.forEach(id => { data[id] = document.getElementById(id).value; });
+            localStorage.setItem("jobready-notes", JSON.stringify(data));
+            const msg = document.getElementById("notesSaved");
+            msg.style.display = "inline";
+            setTimeout(() => { msg.style.display = "none"; }, 2000);
+        });
+
+        // Day tasks (optional persist)
+        const dayTasks = document.querySelectorAll(".day-task");
+        function saveDay() {
+            const state = [...dayTasks].map(t => t.checked);
+            localStorage.setItem("jobready-day", JSON.stringify(state));
+        }
+        function loadDay() {
+            try {
+                const state = JSON.parse(localStorage.getItem("jobready-day") || "[]");
+                dayTasks.forEach((t, i) => { if (state[i]) t.checked = true; });
+            } catch (e) { }
+        }
+        dayTasks.forEach(t => t.addEventListener("change", saveDay));
+
+        // Init
+        loadTasks();
+        loadNotes();
+        loadDay();
+        updateProgress();
+    </script>
+</body>
+
+</html>
