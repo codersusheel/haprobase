@@ -11,6 +11,7 @@
 
 
     "https://github.com/codersusheel/CodeLib/blob/main/assets/css/style.css",
+    "https://github.com/codersusheel/CodeLib/blob/main/assets/js/directory.js",
     "https://github.com/codersusheel/CodeLib/blob/main/assets/js/script.js",
     "https://github.com/codersusheel/CodeLib/blob/main/assets/json/side-link.json",
     "https://github.com/codersusheel/CodeLib/blob/main/pages/index.html",
@@ -19,5 +20,6 @@
 
     "https://github.com/codersusheel/CodeLib/blob/main/assets/img/icons/icon-192.png",
     "https://github.com/codersusheel/CodeLib/blob/main/assets/img/icons/icon-512-maskable.png",
+    "https://github.com/codersusheel/CodeLib/blob/main/assets/img/content/demo.png",
     "https://github.com/codersusheel/CodeLib/blob/main/assets/img/icons/icon-512.png"
 ]
