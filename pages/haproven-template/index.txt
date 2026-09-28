@@ -57,7 +57,6 @@
 
 
 
-
     <!-- ================= STRUCTURED DATA ================= -->
     <!-- 🔴 Change page-specific information -->
     <script type="application/ld+json">
@@ -251,27 +250,27 @@
 
 
 
-    <style>
-        #hero {
-            background-color: rgb(74, 76, 78);
-            height: 100vh;
-            color: rgb(232, 226, 226);
-        }
 
-        #about {
-            background-color: rgb(86, 67, 87);
-
-            color: rgb(232, 226, 226);
-        }
-
-        .section {
-            height: 100vh;
-        }
-    </style>
 
 
     <main class="main">
 
+
+        <style>
+            #hero {
+                padding: 10px;
+
+            }
+
+            #about {
+                background-color: rgb(86, 67, 87);
+                color: rgb(232, 226, 226);
+            }
+
+            .section {
+                height: 100vh;
+            }
+        </style>
 
         <article id="hero">
             <h1>hero section</h1>
@@ -340,15 +339,15 @@
         </section>
 
 
-        <div class="section">
-
-        </div>
 
 
 
-        <!-- --------------------------------------------------------------------------------------------------------- -->
 
     </main>
+
+
+
+
 
     <footer>
         <div class="footer">
@@ -363,15 +362,15 @@
 
 
 
-
-<script>
-    document.write(atob("PHNjcmlwdCBzcmM9Ii9hc3NldHMvanMvZGlyZWN0b3J5LmpzIj48L3NjcmlwdD4="));
-    document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvYXBpL2dsb2JhbC5qcyI+PC9zY3JpcHQ+"));
-    document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvYXV0aC9hdXRoLmpzIj48L3NjcmlwdD4="));
-    document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvbWFpbi9zY3JpcHQuanMiPjwvc2NyaXB0Pg=="));
-    document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvbWFpbi9wYWdlLWxvYWRlci5qcyI+PC9zY3JpcHQ+"));
-    // document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvc2VjdXJpdHkvYW50aS1pbnNwZWN0LmpzIj48L3NjcmlwdD4="));
-</script>
+    <!-- --------------------------------------------------------------------------------------------------------- -->
+    <script>
+        document.write(atob("PHNjcmlwdCBzcmM9Ii9hc3NldHMvanMvZGlyZWN0b3J5LmpzIj48L3NjcmlwdD4="));
+        document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvYXBpL2dsb2JhbC5qcyI+PC9zY3JpcHQ+"));
+        document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvYXV0aC9hdXRoLmpzIj48L3NjcmlwdD4="));
+        document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvbWFpbi9zY3JpcHQuanMiPjwvc2NyaXB0Pg=="));
+        document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvbWFpbi9wYWdlLWxvYWRlci5qcyI+PC9zY3JpcHQ+"));
+        // document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvc2VjdXJpdHkvYW50aS1pbnNwZWN0LmpzIj48L3NjcmlwdD4="));
+    </script>
 
 
 
