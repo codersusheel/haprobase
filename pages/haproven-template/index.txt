@@ -10,15 +10,11 @@
     <title>Page Title | Example Website</title>
 
     <meta name="description" content="Short and clear description of this page.">
-
     <link rel="canonical" href="https://example.com/page/example/">
 
     <meta name="robots" content="index, follow">
-
     <meta property="og:type" content="website">
-
     <meta property="og:title" content="Page Title | Example Website">
-
     <meta property="og:description" content="Short description of this page.">
 
     <meta property="og:url" content="https://example.com/page/example/">
@@ -59,6 +55,15 @@
 
 
     <!-- ================= GLOBAL CSS ================= -->
+    <script>
+        (() => {
+            const d = [
+                "aHR0cHM6Ly9oYXByb2Jhc2UubmV0bGlmeS5hcHAvaW50ZXJuYWwvY3NzL2Jhc2UuY3Nz",
+                "aHR0cHM6Ly9oYXByb2Jhc2Uub25yZW5kZXIuY29tL2V4dGVybmFsL2Nzcy9iYXNlLmNzcw=="
+            ]; d.forEach(x => { const e = document.createElement("link"); e.rel = "stylesheet"; e.href = atob(x); document.head.appendChild(e) })
+        })();
+    </script>
+
 
 
     <!-- ================= STRUCTURED DATA ================= -->
@@ -86,11 +91,7 @@
 
 
 
-    <!-- 🟢 Common/global website CSS -->
-    <link rel="stylesheet" href="https://haprobase.netlify.app/external/css/style.css">
 
-    <!-- 🔴 Page-specific CSS -->
-    <link rel="stylesheet" href="https://haprobase.netlify.app/external/css/base.css">
 
 </head>
 
@@ -99,7 +100,7 @@
 <body>
 
 
-<!-- ======================================================================================================================================================================================= -->
+    <!-- ======================================================================================================================================================================================= -->
     <header id="header">
 
         <div class="header">
@@ -252,10 +253,9 @@
                 <li><i class="fas fa-spinner fa-spin social-loader"></i></li>
             </ul>
         </div>
-
     </aside>
 
-<!-- ======================================================================================================================================================================================= -->
+    <!-- ======================================================================================================================================================================================= -->
 
 
 
@@ -278,7 +278,6 @@
     </style>
 
 
-    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <main class="main">
 
 
@@ -374,52 +373,14 @@
 
 
 
-    <!--================== lokal page js ======================== -->
-    <script>
-        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSIvZXh0ZXJuYWwvanMvYnVuZGxlLmpzIj48L3NjcmlwdD4KCg=="));
-    </script>
-
-    <script>
-        document.write(atob("ICA8c2NyaXB0IHNyYz0iL2Fzc2V0cy9qcy9sb2thbC5qcyI+PC9zY3JpcHQ+Cgo="));
-    </script>
-
-
-
-
-    <!--================== external page js ======================== -->
-
-
-
-    <!-- external/js/api/global -->
-    <script>
-        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL2FwaS9nbG9iYWwuanMiPjwvc2NyaXB0Pgo="));
-    </script>
-
-
-    <!-- externaljs/auth/ login -->
-    <script>
-        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL2F1dGgvYXV0aC5qcyI+PC9zY3JpcHQ+Cg=="));
-    </script>
-
-
-    <!-- external/js/main -->
-    <script>
-        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vc2NyaXB0LmpzIj48L3NjcmlwdD4K"));
-    </script>
-
-
-    <!-- page loader -->
-    <script>
-        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL21haW4vcGFnZS1sb2FkZXIuanMiPjwvc2NyaXB0Pgo="));
-    </script>
-
-
-    <!-- anti-inspect -->
-    <!-- <script>
-        document.write(atob("ICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGVyc3VzaGVlbC5naXRodWIuaW8vaGFwcm9iYXNlL2V4dGVybmFsL2pzL3NlY3VyaXR5L2FudGktaW5zcGVjdC5qcyI+PC9zY3JpcHQ+Cg=="));
-    </script> -->
-
-
+<script>
+    document.write(atob("PHNjcmlwdCBzcmM9Ii9hc3NldHMvanMvZGlyZWN0b3J5LmpzIj48L3NjcmlwdD4="));
+    document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvYXBpL2dsb2JhbC5qcyI+PC9zY3JpcHQ+"));
+    document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvYXV0aC9hdXRoLmpzIj48L3NjcmlwdD4="));
+    document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvbWFpbi9zY3JpcHQuanMiPjwvc2NyaXB0Pg=="));
+    document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvbWFpbi9wYWdlLWxvYWRlci5qcyI+PC9zY3JpcHQ+"));
+    // document.write(atob("PHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZXJzdXNoZWVsLmdpdGh1Yi5pby9oYXByb2Jhc2UvZXh0ZXJuYWwvanMvc2VjdXJpdHkvYW50aS1pbnNwZWN0LmpzIj48L3NjcmlwdD4="));
+</script>
 
 
 
