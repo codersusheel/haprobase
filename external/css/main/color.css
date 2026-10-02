@@ -133,11 +133,12 @@ header {
 }
 
 
-/* 
-.sidebar-nav {
-    background-color: #88888815;
 
-} */
+.sidebar-nav {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    /* background-color: #88888815; */
+
+}
 
 
 footer {
