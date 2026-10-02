@@ -314,13 +314,13 @@ header {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    
+
 }
 
 
-.action-box .icon  {
- font-size: large;
-    
+.action-box .icon {
+    font-size: large;
+
 }
 
 
@@ -417,6 +417,24 @@ header {
 .submenu a {
     color: #c1d1db !important;
 }
+
+.submenu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 5px 10px !important;
+
+}
+
+.submenu a:hover {
+    border: 1px solid #d1ced6 !important;
+    color: #f140ef !important;
+    border-radius: 5px;
+}
+
+
+
 
 
 
@@ -558,7 +576,7 @@ header {
         display: none;
     }
 
-        .logo span {
+    .logo span {
         color: white;
     }
 
@@ -578,7 +596,7 @@ header {
 
 }
 
-article{
+article {
     padding-top: 60px;
 
 }
@@ -809,10 +827,10 @@ article{
     cursor: pointer;
 }
 
-.submenu li:hover {
+/* .submenu li:hover {
     color: #bc1be7;
     opacity: 1;
-}
+} */
 
 .submenu a:hover {
     color: #bc1be7;
@@ -1350,16 +1368,3 @@ ul {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
