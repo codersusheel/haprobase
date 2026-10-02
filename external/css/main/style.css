@@ -718,7 +718,6 @@ article {
     height: 77px;
     /* background-color: #3f3f3f39; */
     /* background-color: #a1a1a139; */
-    background-color: #faf8f825;
     border-radius: 5px;
     overflow: auto;
     padding: 0 1px 0px;
@@ -731,7 +730,7 @@ article {
 
 .sidebar-live-box p {
     padding: 4px 4px;        
-    text-shadow: 10px 5px 5px rgba(0, 0, 0, 0.559);
+    text-shadow: 10px 5px 5px rgba(242, 33, 238, 0.559);
     /* color: #d4a5ff; */
     color: #ff9ef0bf;
 
