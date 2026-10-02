@@ -142,8 +142,8 @@
 .page-nav-item > a:hover,
 .page-submenu-item > a:hover {
     color: #1d4ed8;
-    background: #eff6ffca;
-    border:1px solid #525353;
+    /* background: #eff6ffca; */
+    border:1px solid #f8f8f8;
 
 }
 
