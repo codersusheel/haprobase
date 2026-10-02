@@ -28,7 +28,7 @@
         background: transparent;
     }
 
-  
+
 
 
 }
@@ -97,7 +97,14 @@
 
 
 
+@media (max-width: 1280px) {
 
+
+    #version-info {
+        display: none;
+    }
+
+}
 
 
 
