@@ -589,286 +589,6 @@ document.addEventListener('DOMContentLoaded', renderSocialLinks);
 
 
 
-// (function () {
-
-//     if (document.querySelector("#haproven-brand-style")) return;
-
-//     const style = document.createElement("style");
-//     style.id = "haproven-brand-style";
-
-//     style.innerHTML = `
-
-//     :root {
-//         --hap-purple: #bc1be7;
-//     }
-
-//     .haproven-brand {
-//         display: flex;
-//         align-items: center;
-//         width: max-content;
-//         font-family: Inter, system-ui, sans-serif;
-//         cursor: pointer;
-//         user-select: none;
-//         transition: transform .25s ease;
-//     }
-
-//     .haproven-brand:active {
-//         transform: scale(.96);
-//     }
-
-//     /* ICON */
-//     .haproven-icon {
-//         position: relative;
-//         width: 30px;
-//         height: 40px;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         flex-shrink: 0;
-//         transition: transform .3s ease;
-//     }
-
-//     .haproven-brand:hover .haproven-icon {
-//         transform: scale(1.04);
-//     }
-
-//     /* SHADOW */
-//     .shadow-layer {
-//         position: absolute;
-//         width: 28px;
-//         height: 37px;
-//         top: -2px;
-//         left: -2px;
-//         opacity: .35;
-
-//         background:
-//             linear-gradient(
-//                 135deg,
-//                 var(--hap-purple),
-//                 #ffffff55
-//             );
-
-//         clip-path: polygon(
-//             0 0,
-//             100% 0,
-//             100% 100%,
-//             50% 88%,
-//             0 100%
-//         );
-
-//         border-radius: 5px 5px 0 0;
-//     }
-
-//     /* MAIN ICON */
-//     .main-bookmark {
-//         position: relative;
-//         width: 25px;
-//         height: 35px;
-
-//         background:
-//             linear-gradient(
-//                 135deg,
-//                 var(--hap-purple),
-//                 #d94dff
-//             );
-
-//         clip-path: polygon(
-//             0 0,
-//             100% 0,
-//             100% 100%,
-//             50% 88%,
-//             0 100%
-//         );
-
-//         border-radius: 5px 5px 0 0;
-
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-
-//         z-index: 2;
-
-//         box-shadow:
-//             0 5px 12px rgba(188, 27, 231, .28);
-//     }
-
-//     /* SVG */
-//     .haproven-icon svg {
-//         width: 27px;
-//         height: 27px;
-//         margin-right: -3px;
-//         fill: none;
-//     }
-
-//     .path-line {
-//         stroke: #fff;
-//         stroke-width: 6;
-//         stroke-linecap: round;
-//         stroke-linejoin: round;
-
-//         stroke-dasharray: 260;
-//         stroke-dashoffset: 260;
-
-//         animation:
-//             hapDraw 2.8s ease-in-out infinite;
-//     }
-
-//     /* TEXT BAR */
-//     .brand-bar {
-//         min-height: 25px;
-
-//         padding: 1px 6px;
-
-//         display: flex;
-//         align-items: center;
-
-//         margin-left: -2px;
-
-//         border-radius: 0 7px 7px 0;
-
-//         border: 2px solid var(--hap-purple);
-//         border-left: none;
-
-//         background: rgba(10, 10, 10, .88);
-
-//         backdrop-filter: blur(8px);
-//     }
-
-//     .brand-text {
-//         display: flex;
-//         flex-direction: column;
-//         line-height: 1;
-//     }
-
-//     .brand-text strong {
-//         font-size: 10px;
-//         font-weight: 900;
-//         color: #fff;
-//         letter-spacing: .2px;
-//     }
-
-//     .brand-text small {
-//         font-size: 7px;
-//         font-weight: 600;
-//         opacity: .7;
-//         margin-top: 2px;
-//         letter-spacing: .25px;
-//         text-transform: uppercase;
-//     }
-
-//     /* HOVER */
-//     .haproven-brand:hover .main-bookmark {
-//         box-shadow:
-//             0 0 15px rgba(188, 27, 231, .5),
-//             0 6px 16px rgba(188, 27, 231, .22);
-//     }
-
-//     /* ICON ONLY */
-//     .haproven-brand.icon-only .brand-bar {
-//         display: none;
-//     }
-
-//     /* ANIMATION */
-//     @keyframes hapDraw {
-
-//         0% {
-//             stroke-dashoffset: 260;
-//             opacity: .6;
-//         }
-
-//         50% {
-//             stroke-dashoffset: 0;
-//             opacity: 1;
-//         }
-
-//         100% {
-//             stroke-dashoffset: -260;
-//             opacity: .6;
-//         }
-
-//     }
-
-//     `;
-
-//     document.head.appendChild(style);
-
-
-//     function initBrand(el) {
-
-//         const brandName =
-//             el.dataset.name || "Haproven";
-
-//         const parts =
-//             brandName.split(" by ");
-
-//         let finalName =
-//             `<strong>${brandName}</strong>`;
-
-//         if (parts.length > 1) {
-
-//             finalName = `
-//                 <strong>${parts[0]}</strong>
-//                 <small>by ${parts[1]}</small>
-//             `;
-
-//         }
-
-//         el.innerHTML = `
-
-//             <div class="haproven-icon">
-
-//                 <div class="shadow-layer"></div>
-
-//                 <div class="main-bookmark">
-
-//                     <svg viewBox="0 0 100 100">
-
-//                         <path
-//                             class="path-line"
-//                             d="
-//                                 M10 0 L10 70
-//                                 A10 10 0 0 0 30 70
-//                                 L30 20
-//                                 A10 10 0 0 1 50 20
-//                                 L50 70
-//                                 A16 9 0 0 0 70 80
-//                                 A13 20 0 0 1 80 94
-//                                 L100 95
-//                             "
-//                         />
-
-//                     </svg>
-
-//                 </div>
-
-//             </div>
-
-//             <div class="brand-bar">
-
-//                 <span class="brand-text">
-//                     ${finalName}
-//                 </span>
-
-//             </div>
-
-//         `;
-//     }
-
-
-//     document.addEventListener("DOMContentLoaded", () => {
-
-//         document
-//             .querySelectorAll(".haproven-brand")
-//             .forEach(initBrand);
-
-//     });
-
-// })();
-
-
-
-
-
 
 
 
@@ -1222,890 +942,415 @@ document.addEventListener('DOMContentLoaded', renderSocialLinks);
 
 
 
-// // ============================================================
-// // HAPROVEN LOGIN
-// // Login UI + Demo Authentication
-// // ============================================================
+  /* =========================================
+       TEAMTRACK DYNAMIC SIDEBAR
+       Fast Cache + Fresh JSON + Auto Update
+    ========================================= */
+(() => {
+    "use strict";
+
+  
+
+    const CONFIG = {
+        jsonPath: "/assets/json/page-sidebar.json",
+        navSelector: "#page-laptop-sidebar",
+        cacheKey: "page_sidebar_cache_v3",
+        fetchTimeout: 10000
+    };
+
+    const nav = document.querySelector(CONFIG.navSelector);
+    if (!nav) return;
+
+    let isLoading = false;
+    let lastRenderedData = "";
+
+    /* =========================================
+       PATH HELPERS
+    ========================================= */
+
+    function normalizePath(path) {
+        if (!path) return "/";
+
+        let cleanPath = path.split("?")[0].split("#")[0];
+        cleanPath = cleanPath.replace(/\/+/g, "/");
+
+        if (cleanPath.length > 1) {
+            cleanPath = cleanPath.replace(/\/+$/, "");
+        }
+
+        return cleanPath || "/";
+    }
+
+    function getCurrentPath() {
+        return normalizePath(window.location.pathname);
+    }
+
+    /* =========================================
+       GET DEFAULT + CURRENT PAGE NAVIGATION
+    ========================================= */
+
+    function getPageNavigation(data) {
+        const currentPath = getCurrentPath();
+        const pages = data.pages || {};
+
+        const matchedKey = Object.keys(pages).find(
+            path => normalizePath(path) === currentPath
+        );
+
+        const defaultNavigation =
+            Array.isArray(data.default?.navigation)
+                ? data.default.navigation
+                : [];
+
+        const pageNavigation =
+            matchedKey &&
+            Array.isArray(pages[matchedKey]?.navigation)
+                ? pages[matchedKey].navigation
+                : [];
+
+        return [...defaultNavigation, ...pageNavigation];
+    }
 
-// (function () {
+    /* =========================================
+       ICON
+    ========================================= */
 
-//     function initLogin() {
+    function createIcon(className) {
+        const icon = document.createElement("i");
 
-//         const loginButton =
-//             document.getElementById("login-action");
+        if (className) {
+            icon.className = className;
+            icon.setAttribute("aria-hidden", "true");
+        }
 
-//         if (!loginButton) return;
+        return icon;
+    }
+
+    /* =========================================
+       ACTIVE LINK CHECK
+    ========================================= */
+
+    function isCurrentLink(href) {
+        if (!href || href === "#") return false;
+
+        try {
+            const target = new URL(href, window.location.href);
+            const current = new URL(window.location.href);
+
+            if (
+                normalizePath(target.pathname) !==
+                normalizePath(current.pathname)
+            ) {
+                return false;
+            }
+
+            if (target.hash) {
+                return target.hash === current.hash;
+            }
+
+            return !current.hash;
+        } catch (error) {
+            return false;
+        }
+    }
 
-//         if (loginButton.dataset.loginReady === "true") {
-//             return;
-//         }
+    /* =========================================
+       CREATE LINK
+    ========================================= */
 
-//         loginButton.dataset.loginReady = "true";
+    function createLink(item) {
+        const link = document.createElement("a");
 
+        link.href = item.href || "#";
 
-//         // ====================================================
-//         // LOGIN BUTTON
-//         // ====================================================
+        if (item.icon) {
+            link.appendChild(createIcon(item.icon));
+        }
 
-//         loginButton.addEventListener("click", function (event) {
+        const title = document.createElement("span");
+        title.textContent = item.title || "Untitled";
+        link.appendChild(title);
 
-//             event.preventDefault();
+        if (item.disabled === true) {
+            link.removeAttribute("href");
+            link.setAttribute("aria-disabled", "true");
+            link.classList.add("page-link-disabled");
+        }
+
+        if (item.disabled !== true && isCurrentLink(item.href)) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
+        }
 
-//             openLogin();
+        return link;
+    }
 
-//         });
+    /* =========================================
+       CREATE NAVIGATION ITEM
+    ========================================= */
 
-//     }
+    function createNavigationItem(item) {
+        const li = document.createElement("li");
+        li.className = "page-nav-item";
 
+        const children = Array.isArray(item.children)
+            ? item.children
+            : [];
 
-//     // ========================================================
-//     // OPEN LOGIN
-//     // ========================================================
+        if (children.length > 0) {
+            li.classList.add("page-has-submenu");
 
-//     function openLogin() {
+            const parentLink = createLink(item);
+            li.appendChild(parentLink);
 
-//         if (document.getElementById("haproven-login")) {
-//             return;
-//         }
+            const submenu = document.createElement("ul");
+            submenu.className = "page-submenu";
 
+            let childIsActive = false;
 
-//         const popup =
-//             document.createElement("div");
+            children.forEach(child => {
+                const childItem = createNavigationItem(child);
 
-//         popup.id = "haproven-login";
-
-
-//         popup.innerHTML = `
-
-//             <div class="login-overlay">
-
-//                 <div class="login-box">
-
-//                     <button
-//                         type="button"
-//                         class="login-close"
-//                         id="login-close"
-//                     >
-//                         ×
-//                     </button>
-
-
-//                     <div class="login-header">
-
-//                         <i class="ri-login-circle-line"></i>
-
-//                         <h2>Login</h2>
-
-//                         <p>
-//                             Login to your Haproven account
-//                         </p>
-
-//                     </div>
-
-
-//                     <form id="haproven-login-form">
-
-//                         <div class="login-field">
-
-//                             <label>
-//                                 Username or Email
-//                             </label>
-
-//                             <input
-//                                 type="text"
-//                                 id="login-username"
-//                                 placeholder="Enter username or email"
-//                                 autocomplete="username"
-//                                 required
-//                             >
-
-//                         </div>
-
-
-//                         <div class="login-field">
-
-//                             <label>
-//                                 Password
-//                             </label>
-
-//                             <input
-//                                 type="password"
-//                                 id="login-password"
-//                                 placeholder="Enter password"
-//                                 autocomplete="current-password"
-//                                 required
-//                             >
-
-//                         </div>
-
-
-//                         <button
-//                             type="submit"
-//                             class="login-submit"
-//                         >
-//                             <i class="ri-login-circle-line"></i>
-//                             Login
-//                         </button>
-
-
-//                         <p
-//                             id="login-message"
-//                             class="login-message"
-//                         ></p>
-
-//                     </form>
-
-//                 </div>
-
-//             </div>
-
-//         `;
-
-
-//         document.body.appendChild(popup);
-
-//         addLoginStyles();
-
-
-//         // ====================================================
-//         // CLOSE
-//         // ====================================================
-
-//         document
-//             .getElementById("login-close")
-//             .addEventListener(
-//                 "click",
-//                 closeLogin
-//             );
-
-
-//         // ====================================================
-//         // LOGIN FORM
-//         // ====================================================
-
-//         document
-//             .getElementById("haproven-login-form")
-//             .addEventListener(
-//                 "submit",
-//                 handleLogin
-//             );
-
-
-//         // Overlay close
-
-//         popup
-//             .querySelector(".login-overlay")
-//             .addEventListener(
-//                 "click",
-//                 function (event) {
-
-//                     if (
-//                         event.target ===
-//                         event.currentTarget
-//                     ) {
-
-//                         closeLogin();
-
-//                     }
-
-//                 }
-//             );
-
-//     }
-
-
-//     // ========================================================
-//     // LOGIN
-//     // ========================================================
-
-//     function handleLogin(event) {
-
-//         event.preventDefault();
-
-
-//         const username =
-//             document
-//                 .getElementById("login-username")
-//                 .value
-//                 .trim();
-
-
-//         const password =
-//             document
-//                 .getElementById("login-password")
-//                 .value;
-
-
-//         const message =
-//             document.getElementById(
-//                 "login-message"
-//             );
-
-
-//         if (!username || !password) {
-
-//             message.textContent =
-//                 "Please enter username and password.";
-
-//             return;
-
-//         }
-
-
-//         // ====================================================
-//         // DEMO LOGIN
-//         // ====================================================
-
-//         message.textContent =
-//             "Checking login...";
-
-
-//         setTimeout(function () {
-
-//             /*
-//                 DEMO LOGIN
-
-//                 Username:
-//                 demo
-
-//                 Password:
-//                 123456
-//             */
-
-//             if (
-//                 username === "demo" &&
-//                 password === "123456"
-//             ) {
-
-//                 const user = {
-
-//                     username: "demo",
-
-//                     name: "Demo User",
-
-//                     login: true
-
-//                 };
-
-
-//                 localStorage.setItem(
-//                     "haproven_user",
-//                     JSON.stringify(user)
-//                 );
-
-
-//                 message.textContent =
-//                     "Login successful!";
-
-
-//                 setTimeout(function () {
-
-//                     closeLogin();
-
-//                 }, 1000);
-
-
-//             } else {
-
-//                 message.textContent =
-//                     "Invalid username or password.";
-
-//             }
-
-//         }, 700);
-
-//     }
-
-
-//     // ========================================================
-//     // CLOSE LOGIN
-//     // ========================================================
-
-//     function closeLogin() {
-
-//         const popup =
-//             document.getElementById(
-//                 "haproven-login"
-//             );
-
-//         if (popup) {
-//             popup.remove();
-//         }
-
-//     }
-
-
-//     // ========================================================
-//     // LOGIN CSS
-//     // ========================================================
-
-//     function addLoginStyles() {
-
-//         if (
-//             document.getElementById(
-//                 "haproven-login-style"
-//             )
-//         ) {
-//             return;
-//         }
-
-
-//         const style =
-//             document.createElement("style");
-
-
-//         style.id =
-//             "haproven-login-style";
-
-
-//         style.textContent = `
-
-//             .login-overlay {
-
-//                 position: fixed;
-
-//                 inset: 0;
-
-//                 z-index: 99999;
-
-//                 display: flex;
-
-//                 align-items: center;
-
-//                 justify-content: center;
-
-//                 padding: 20px;
-
-//                 background:
-//                     rgba(0, 0, 0, .65);
-
-//                 backdrop-filter:
-//                     blur(8px);
-
-//             }
-
-
-//             .login-box {
-
-//                 position: relative;
-
-//                 width: 100%;
-
-//                 max-width: 390px;
-
-//                 padding: 32px 25px;
-
-//                 box-sizing: border-box;
-
-//                 background: #fff;
-
-//                 border-radius: 18px;
-
-//                 box-shadow:
-//                     0 20px 60px
-//                     rgba(0, 0, 0, .3);
-
-//             }
-
-
-//             .login-close {
-
-//                 position: absolute;
-
-//                 top: 8px;
-
-//                 right: 14px;
-
-//                 border: none;
-
-//                 background: none;
-
-//                 font-size: 28px;
-
-//                 cursor: pointer;
-
-//                 color: #555;
-
-//             }
-
-
-//             .login-header {
-
-//                 text-align: center;
-
-//                 margin-bottom: 25px;
-
-//             }
-
-
-//             .login-header > i {
-
-//                 font-size: 45px;
-
-//                 color: #bc1be7;
-
-//             }
-
-
-//             .login-header h2 {
-
-//                 margin: 10px 0 5px;
-
-//             }
-
-
-//             .login-header p {
-
-//                 margin: 0;
-
-//                 color: #777;
-
-//                 font-size: 14px;
-
-//             }
-
-
-//             .login-field {
-
-//                 margin-bottom: 16px;
-
-//             }
-
-
-//             .login-field label {
-
-//                 display: block;
-
-//                 margin-bottom: 6px;
-
-//                 font-size: 14px;
-
-//                 font-weight: 600;
-
-//             }
-
-
-//             .login-field input {
-
-//                 width: 100%;
-
-//                 box-sizing: border-box;
-
-//                 padding: 12px;
-
-//                 border: 1px solid #ddd;
-
-//                 border-radius: 8px;
-
-//                 outline: none;
-
-//                 font-size: 14px;
-
-//             }
-
-
-//             .login-field input:focus {
-
-//                 border-color: #bc1be7;
-
-//                 box-shadow:
-//                     0 0 0 3px
-//                     rgba(188, 27, 231, .1);
-
-//             }
-
-
-//             .login-submit {
-
-//                 width: 100%;
-
-//                 border: none;
-
-//                 padding: 12px;
-
-//                 border-radius: 8px;
-
-//                 background: #bc1be7;
-
-//                 color: #fff;
-
-//                 font-size: 15px;
-
-//                 font-weight: 600;
-
-//                 cursor: pointer;
-
-//             }
-
-
-//             .login-submit:hover {
-
-//                 opacity: .9;
-
-//             }
-
-
-//             .login-message {
-
-//                 min-height: 20px;
-
-//                 margin: 12px 0 0;
-
-//                 text-align: center;
-
-//                 font-size: 13px;
-
-//             }
-
-//         `;
-
-
-//         document.head.appendChild(style);
-
-//     }
-
-
-//     // ========================================================
-//     // DOM READY
-//     // Works with hub.js
-//     // ========================================================
-
-//     if (document.readyState === "loading") {
-
-//         document.addEventListener(
-//             "DOMContentLoaded",
-//             initLogin
-//         );
-
-//     } else {
-
-//         initLogin();
-
-//     }
-
-// })();
-
-
-
-
-
-
-
-
-
-
-
-
-// // ============================================================
-// // HAPROVEN LOGIN
-// // Demo Login Component
-// // ============================================================
-
-// (function () {
-
-//     function initLogin() {
-
-//         const loginButton =
-//             document.getElementById("login-action");
-
-//         if (!loginButton) return;
-
-//         if (loginButton.dataset.loginReady === "true") {
-//             return;
-//         }
-
-//         loginButton.dataset.loginReady = "true";
-
-
-//         // ====================================================
-//         // LOGIN BUTTON
-//         // ====================================================
-
-//         loginButton.addEventListener("click", function (event) {
-
-//             event.preventDefault();
-
-//             openLoginDemo();
-
-//         });
-
-//     }
-
-
-//     // ========================================================
-//     // OPEN LOGIN DEMO
-//     // ========================================================
-
-//     function openLoginDemo() {
-
-//         if (document.getElementById("haproven-login-demo")) {
-//             return;
-//         }
-
-
-//         const popup =
-//             document.createElement("div");
-
-//         popup.id =
-//             "haproven-login-demo";
-
-
-//         popup.innerHTML = `
-
-//             <div class="login-overlay">
-
-//                 <div class="login-box">
-
-//                     <button
-//                         class="login-close"
-//                         type="button"
-//                     >
-//                         ×
-//                     </button>
-
-//                     <i class="ri-login-circle-line login-icon"></i>
-
-//                     <h2>Login</h2>
-
-//                     <p>
-//                         Haproven Login Demo
-//                     </p>
-
-//                     <button
-//                         type="button"
-//                         class="login-demo-btn"
-//                     >
-//                         Demo Login
-//                     </button>
-
-//                 </div>
-
-//             </div>
-
-//         `;
-
-
-//         document.body.appendChild(popup);
-
-//         addLoginStyle();
-
-
-//         // Close
-//         popup
-//             .querySelector(".login-close")
-//             .addEventListener(
-//                 "click",
-//                 closeLoginDemo
-//             );
-
-
-//         // Overlay close
-//         popup
-//             .querySelector(".login-overlay")
-//             .addEventListener(
-//                 "click",
-//                 function (event) {
-
-//                     if (
-//                         event.target ===
-//                         event.currentTarget
-//                     ) {
-
-//                         closeLoginDemo();
-
-//                     }
-
-//                 }
-//             );
-
-
-//         // Demo Login
-//         popup
-//             .querySelector(".login-demo-btn")
-//             .addEventListener(
-//                 "click",
-//                 function () {
-
-//                     alert(
-//                         "Login system will be connected here."
-//                     );
-
-//                 }
-//             );
-
-//     }
-
-
-//     // ========================================================
-//     // CLOSE LOGIN
-//     // ========================================================
-
-//     function closeLoginDemo() {
-
-//         const popup =
-//             document.getElementById(
-//                 "haproven-login-demo"
-//             );
-
-//         if (popup) {
-//             popup.remove();
-//         }
-
-//     }
-
-
-//     // ========================================================
-//     // LOGIN CSS
-//     // ========================================================
-
-//     function addLoginStyle() {
-
-//         if (
-//             document.getElementById(
-//                 "haproven-login-style"
-//             )
-//         ) {
-//             return;
-//         }
-
-
-//         const style =
-//             document.createElement("style");
-
-
-//         style.id =
-//             "haproven-login-style";
-
-
-//         style.textContent = `
-
-//             .login-overlay {
-
-//                 position: fixed;
-//                 inset: 0;
-
-//                 z-index: 99999;
-
-//                 display: flex;
-//                 align-items: center;
-//                 justify-content: center;
-
-//                 padding: 20px;
-
-//                 background:
-//                     rgba(0, 0, 0, .65);
-
-//                 backdrop-filter:
-//                     blur(8px);
-
-//             }
-
-
-//             .login-box {
-
-//                 position: relative;
-
-//                 width: 100%;
-//                 max-width: 380px;
-
-//                 padding: 35px 25px;
-
-//                 text-align: center;
-
-//                 background: #fff;
-
-//                 border-radius: 18px;
-
-//                 box-shadow:
-//                     0 20px 60px
-//                     rgba(0, 0, 0, .3);
-
-//             }
-
-
-//             .login-icon {
-
-//                 font-size: 48px;
-
-//                 color: #bc1be7;
-
-//             }
-
-
-//             .login-box h2 {
-
-//                 margin: 12px 0 8px;
-//                color: #191919;
-
-//             }
-
-
-//             .login-box p {
-
-//                 margin-bottom: 22px;
-
-//                 color: #666;
-
-//             }
-
-
-//             .login-demo-btn {
-
-//                 border: none;
-
-//                 padding: 11px 25px;
-
-//                 border-radius: 8px;
-
-//                 background: #bc1be7;
-
-//                 color: #fff;
-
-//                 cursor: pointer;
-
-//             }
-
-
-//             .login-close {
-
-//                 position: absolute;
-
-//                 top: 8px;
-//                 right: 14px;
-
-//                 border: none;
-
-//                 background: transparent;
-
-//                 font-size: 28px;
-
-//                 cursor: pointer;
-
-//             }
-
-//         `;
-
-
-//         document.head.appendChild(style);
-
-//     }
-
-
-//     // ========================================================
-//     // DOM READY + HUB.JS SUPPORT
-//     // ========================================================
-
-//     if (document.readyState === "loading") {
-
-//         document.addEventListener(
-//             "DOMContentLoaded",
-//             initLogin
-//         );
-
-//     } else {
-
-//         initLogin();
-
-//     }
-
-// })();
+                if (
+                    childItem.classList.contains("page-item-active")
+                ) {
+                    childIsActive = true;
+                }
+
+                submenu.appendChild(childItem);
+            });
+
+            if (
+                childIsActive ||
+                parentLink.classList.contains("active")
+            ) {
+                li.classList.add("page-item-active");
+            }
+
+            li.appendChild(submenu);
+        } else {
+            const link = createLink(item);
+            li.appendChild(link);
+
+            if (link.classList.contains("active")) {
+                li.classList.add("page-item-active");
+            }
+        }
+
+        return li;
+    }
+
+    /* =========================================
+       RENDER NAVIGATION
+    ========================================= */
+
+    function renderNavigation(items, force = false) {
+        if (!Array.isArray(items) || items.length === 0) {
+            showError("No navigation configured for this page.");
+            return;
+        }
+
+        const dataKey = JSON.stringify(items);
+
+        // Avoid unnecessary DOM replacement.
+        if (!force && dataKey === lastRenderedData) {
+            return;
+        }
+
+        const fragment = document.createDocumentFragment();
+
+        items.forEach(item => {
+            if (item && typeof item === "object") {
+                fragment.appendChild(createNavigationItem(item));
+            }
+        });
+
+        nav.replaceChildren(fragment);
+        lastRenderedData = dataKey;
+    }
+
+    /* =========================================
+       LOADING STATE
+    ========================================= */
+
+    function showLoading() {
+        const li = document.createElement("li");
+        li.className = "page-sidebar-loading";
+
+        li.appendChild(createIcon("fas fa-spinner fa-spin"));
+
+        const text = document.createElement("span");
+        text.textContent = " Loading...";
+        li.appendChild(text);
+
+        nav.replaceChildren(li);
+    }
+
+    /* =========================================
+       ERROR STATE
+    ========================================= */
+
+    function showError(message) {
+        const li = document.createElement("li");
+        li.className = "page-sidebar-error";
+        li.textContent = message || "Navigation could not be loaded.";
+
+        nav.replaceChildren(li);
+    }
+
+    /* =========================================
+       CACHE
+    ========================================= */
+
+    function readCache() {
+        try {
+            const raw = localStorage.getItem(CONFIG.cacheKey);
+            if (!raw) return null;
+
+            const cached = JSON.parse(raw);
+
+            if (
+                cached &&
+                cached.data &&
+                typeof cached.timestamp === "number"
+            ) {
+                return cached;
+            }
+        } catch (error) {
+            console.warn("Sidebar cache error:", error);
+        }
+
+        return null;
+    }
+
+    function saveCache(data) {
+        try {
+            localStorage.setItem(
+                CONFIG.cacheKey,
+                JSON.stringify({
+                    data: data,
+                    timestamp: Date.now()
+                })
+            );
+        } catch (error) {
+            console.warn("Sidebar cache could not be saved:", error);
+        }
+    }
+
+    /* =========================================
+       FETCH LATEST JSON
+    ========================================= */
+
+    async function fetchSidebarJSON() {
+        const controller = new AbortController();
+        const timeout = setTimeout(
+            () => controller.abort(),
+            CONFIG.fetchTimeout
+        );
+
+        try {
+            const separator = CONFIG.jsonPath.includes("?")
+                ? "&"
+                : "?";
+
+            const response = await fetch(
+                CONFIG.jsonPath + separator + "_=" + Date.now(),
+                {
+                    method: "GET",
+                    cache: "no-store",
+                    headers: {
+                        "Accept": "application/json"
+                    },
+                    signal: controller.signal
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("HTTP " + response.status);
+            }
+
+            const data = await response.json();
+
+            if (
+                !data ||
+                typeof data !== "object" ||
+                Array.isArray(data) ||
+                !data.pages ||
+                typeof data.pages !== "object"
+            ) {
+                throw new Error("Invalid sidebar JSON format");
+            }
+
+            return data;
+        } finally {
+            clearTimeout(timeout);
+        }
+    }
+
+    /* =========================================
+       LOAD NAVIGATION
+    ========================================= */
+
+    async function loadNavigation() {
+        if (isLoading) return;
+        isLoading = true;
+
+        const cached = readCache();
+
+        // Render cache immediately for faster first display.
+        if (cached?.data) {
+            renderNavigation(
+                getPageNavigation(cached.data),
+                true
+            );
+        } else {
+            showLoading();
+        }
+
+        try {
+            const data = await fetchSidebarJSON();
+            const freshNavigation = getPageNavigation(data);
+
+            // Save fresh JSON to cache.
+            saveCache(data);
+
+            // Render only if navigation has changed.
+            renderNavigation(freshNavigation);
+        } catch (error) {
+            console.error("Sidebar loading error:", error);
+
+            // Preserve cached links when network request fails.
+            if (!cached?.data) {
+                showError(
+                    error.name === "AbortError"
+                        ? "Navigation request timed out."
+                        : "Navigation could not be loaded."
+                );
+            }
+        } finally {
+            isLoading = false;
+        }
+    }
+
+    /* =========================================
+       UPDATE ACTIVE LINK ON HASH CHANGE
+    ========================================= */
+
+    window.addEventListener("hashchange", () => {
+        const cached = readCache();
+
+        if (cached?.data) {
+            renderNavigation(
+                getPageNavigation(cached.data),
+                true
+            );
+        }
+    });
+
+    /* =========================================
+       INITIAL LOAD
+    ========================================= */
+
+    loadNavigation();
+
+})();
