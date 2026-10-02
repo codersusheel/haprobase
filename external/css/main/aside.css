@@ -142,13 +142,13 @@
 .page-nav-item > a:hover,
 .page-submenu-item > a:hover {
     color: #1d4ed8;
-    background: #eff6ff;
+    /* background: #eff6ff; */
 }
 
 .page-nav-item > a.active,
 .page-submenu-item > a.active {
     color: #1d4ed8;
-    background: #eff6ff;
+    /* background: #eff6ff; */
     font-weight: 600;
 }
 
