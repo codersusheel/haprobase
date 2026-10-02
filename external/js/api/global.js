@@ -488,11 +488,6 @@ function renderNavigation(navigationSystem) {
 
 
 
-/* =========================================
-     TEAMTRACK DYNAMIC SIDEBAR
-     Fast Cache + Fresh JSON + Auto Update
-  ========================================= */
-
 /* =========================================================
  * Haproven Page Sidebar Loader
  * Loads Default & Current Page Navigation
@@ -500,22 +495,404 @@ function renderNavigation(navigationSystem) {
  * Fast Cache + Fresh JSON Update
  * ========================================================= */
 
+// document.addEventListener("DOMContentLoaded", () => {
+
+//     "use strict";
+
+//     const CONFIG = {
+//         jsonPath: "/assets/json/page-sidebar.json",
+//         cacheKey: "page_sidebar_cache_v4",
+//         cacheTime: 5 * 60 * 1000
+//     };
+
+//     const navContainer = document.getElementById("page-laptop-sidebar");
+
+//     if (!navContainer) return;
+
+//     /* =====================================================
+//        1. PATH HELPERS
+//     ===================================================== */
+
+//     function normalizePath(path) {
+//         if (!path) return "/";
+
+//         let cleanPath = path.split("?")[0].split("#")[0];
+//         cleanPath = cleanPath.replace(/\/+/g, "/");
+
+//         if (cleanPath.length > 1) {
+//             cleanPath = cleanPath.replace(/\/+$/, "");
+//         }
+
+//         return cleanPath || "/";
+//     }
+
+//     function getCurrentPath() {
+//         return normalizePath(window.location.pathname);
+//     }
+
+//     /* =====================================================
+//        2. GET DEFAULT + PAGE NAVIGATION
+//     ===================================================== */
+
+//     function getPageNavigation(data) {
+//         const pages = data.pages || {};
+//         const currentPath = getCurrentPath();
+
+//         const matchedPath = Object.keys(pages).find(
+//             path => normalizePath(path) === currentPath
+//         );
+
+//         const defaultNavigation =
+//             Array.isArray(data.default?.navigation)
+//                 ? data.default.navigation
+//                 : [];
+
+//         const pageNavigation =
+//             matchedPath &&
+//             Array.isArray(pages[matchedPath]?.navigation)
+//                 ? pages[matchedPath].navigation
+//                 : [];
+
+//         return [...defaultNavigation, ...pageNavigation];
+//     }
+
+//     /* =====================================================
+//        3. CREATE ICON
+//     ===================================================== */
+
+//     function createIcon(iconClass) {
+//         const icon = document.createElement("i");
+
+//         if (iconClass) {
+//             icon.className = iconClass;
+//             icon.setAttribute("aria-hidden", "true");
+//         }
+
+//         return icon;
+//     }
+
+//     /* =====================================================
+//        4. CHECK ACTIVE LINK
+//     ===================================================== */
+
+//     function isCurrentLink(href) {
+//         if (!href || href === "#") return false;
+
+//         try {
+//             const target = new URL(href, window.location.href);
+//             const current = new URL(window.location.href);
+
+//             if (
+//                 normalizePath(target.pathname) !==
+//                 normalizePath(current.pathname)
+//             ) {
+//                 return false;
+//             }
+
+//             if (target.hash) {
+//                 return target.hash === current.hash;
+//             }
+
+//             return !current.hash;
+//         } catch (error) {
+//             return false;
+//         }
+//     }
+
+//     /* =====================================================
+//        5. CREATE NAVIGATION LINK
+//     ===================================================== */
+
+//     function createLink(item) {
+//         const link = document.createElement("a");
+
+//         link.href = item.href || "#";
+
+//         if (item.icon) {
+//             link.appendChild(createIcon(item.icon));
+//         }
+
+//         const title = document.createElement("span");
+//         title.textContent = item.title || "Untitled";
+
+//         link.appendChild(title);
+
+//         if (item.disabled === true) {
+//             link.removeAttribute("href");
+//             link.setAttribute("aria-disabled", "true");
+//             link.classList.add("page-link-disabled");
+//         }
+
+//         if (
+//             item.disabled !== true &&
+//             isCurrentLink(item.href)
+//         ) {
+//             link.classList.add("active");
+//             link.setAttribute("aria-current", "page");
+//         }
+
+//         return link;
+//     }
+
+//     /* =====================================================
+//        6. CREATE SIDEBAR ITEM + SUBMENU
+//     ===================================================== */
+
+//     function createNavigationItem(item) {
+//         const li = document.createElement("li");
+//         li.className = "page-nav-item";
+
+//         const link = createLink(item);
+//         li.appendChild(link);
+
+//         const children = Array.isArray(item.children)
+//             ? item.children
+//             : [];
+
+//         if (children.length > 0) {
+//             li.classList.add("page-has-submenu");
+
+//             const submenu = document.createElement("ul");
+//             submenu.className = "page-submenu";
+
+//             let childIsActive = false;
+
+//             children.forEach(child => {
+//                 const childItem = createNavigationItem(child);
+
+//                 if (
+//                     childItem.classList.contains("page-item-active")
+//                 ) {
+//                     childIsActive = true;
+//                 }
+
+//                 submenu.appendChild(childItem);
+//             });
+
+//             if (
+//                 childIsActive ||
+//                 link.classList.contains("active")
+//             ) {
+//                 li.classList.add("page-item-active");
+//             }
+
+//             li.appendChild(submenu);
+//         } else if (link.classList.contains("active")) {
+//             li.classList.add("page-item-active");
+//         }
+
+//         return li;
+//     }
+
+//     /* =====================================================
+//        7. RENDER NAVIGATION
+//     ===================================================== */
+
+//     function renderNavigation(navigation) {
+//         if (!Array.isArray(navigation) || !navigation.length) {
+//             showError("No navigation configured for this page.");
+//             return;
+//         }
+
+//         const fragment = document.createDocumentFragment();
+
+//         navigation.forEach(item => {
+//             if (item && typeof item === "object") {
+//                 fragment.appendChild(createNavigationItem(item));
+//             }
+//         });
+
+//         navContainer.replaceChildren(fragment);
+//     }
+
+//     /* =====================================================
+//        8. LOADING & ERROR
+//     ===================================================== */
+
+//     function showLoading() {
+//         const li = document.createElement("li");
+//         li.className = "page-sidebar-loading";
+
+//         li.appendChild(createIcon("fas fa-spinner fa-spin"));
+
+//         const text = document.createElement("span");
+//         text.textContent = " Loading...";
+
+//         li.appendChild(text);
+//         navContainer.replaceChildren(li);
+//     }
+
+//     function showError(message) {
+//         const li = document.createElement("li");
+//         li.className = "page-sidebar-error";
+//         li.textContent = message || "Navigation could not be loaded.";
+
+//         navContainer.replaceChildren(li);
+//     }
+
+//     /* =====================================================
+//        9. LOCAL STORAGE CACHE
+//     ===================================================== */
+
+//     function readCache() {
+//         try {
+//             const cached = JSON.parse(
+//                 localStorage.getItem(CONFIG.cacheKey)
+//             );
+
+//             if (
+//                 cached &&
+//                 cached.data &&
+//                 typeof cached.timestamp === "number"
+//             ) {
+//                 return cached;
+//             }
+//         } catch (error) {
+//             console.warn("Sidebar cache error:", error);
+//         }
+
+//         return null;
+//     }
+
+//     function saveCache(data) {
+//         try {
+//             localStorage.setItem(
+//                 CONFIG.cacheKey,
+//                 JSON.stringify({
+//                     data: data,
+//                     timestamp: Date.now()
+//                 })
+//             );
+//         } catch (error) {
+//             console.warn("Sidebar cache could not be saved:", error);
+//         }
+//     }
+
+//     /* =====================================================
+//        10. FETCH JSON
+//     ===================================================== */
+
+//     async function fetchNavigation() {
+//         const url = CONFIG.jsonPath +
+//             (CONFIG.jsonPath.includes("?") ? "&" : "?") +
+//             "_=" + Date.now();
+
+//         const response = await fetch(url, {
+//             method: "GET",
+//             cache: "no-store",
+//             headers: {
+//                 "Accept": "application/json"
+//             }
+//         });
+
+//         if (!response.ok) {
+//             throw new Error("HTTP " + response.status);
+//         }
+
+//         const data = await response.json();
+
+//         if (
+//             !data ||
+//             typeof data !== "object" ||
+//             !data.pages ||
+//             typeof data.pages !== "object"
+//         ) {
+//             throw new Error("Invalid sidebar JSON format");
+//         }
+
+//         return data;
+//     }
+
+//     /* =====================================================
+//        11. LOAD NAVIGATION
+//     ===================================================== */
+
+//     async function loadNavigation() {
+//         const cached = readCache();
+
+//         // Display cached navigation instantly.
+//         if (cached) {
+//             renderNavigation(getPageNavigation(cached.data));
+//         } else {
+//             showLoading();
+//         }
+
+//         // Use cache while it is fresh.
+//         if (
+//             cached &&
+//             Date.now() - cached.timestamp < CONFIG.cacheTime
+//         ) {
+//             return;
+//         }
+
+//         try {
+//             const data = await fetchNavigation();
+
+//             const navigation = getPageNavigation(data);
+
+//             // Render and update cache with fresh JSON.
+//             renderNavigation(navigation);
+//             saveCache(data);
+
+//         } catch (error) {
+//             console.error("Sidebar JSON Loading Error:", error);
+
+//             // Keep old cached navigation if request fails.
+//             if (!cached) {
+//                 showError("Navigation could not be loaded.");
+//             }
+//         }
+//     }
+
+//     /* =====================================================
+//        12. HASH CHANGE
+//     ===================================================== */
+
+//     window.addEventListener("hashchange", () => {
+//         const cached = readCache();
+
+//         if (cached) {
+//             renderNavigation(getPageNavigation(cached.data));
+//         }
+//     });
+
+//     /* =====================================================
+//        13. INITIALIZE
+//     ===================================================== */
+
+//     loadNavigation();
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   Haproven Page Sidebar Loader
+   Fast Cache + Fresh JSON + Auto Update
+   ========================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
     const CONFIG = {
         jsonPath: "/assets/json/page-sidebar.json",
-        cacheKey: "page_sidebar_cache_v4",
-        cacheTime: 5 * 60 * 1000
+        cacheKey: "page_sidebar_cache_v5"
     };
 
     const navContainer = document.getElementById("page-laptop-sidebar");
-
     if (!navContainer) return;
 
-    /* =====================================================
-       1. PATH HELPERS
-    ===================================================== */
+    /* 1. PATH HELPERS */
 
     function normalizePath(path) {
         if (!path) return "/";
@@ -534,9 +911,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return normalizePath(window.location.pathname);
     }
 
-    /* =====================================================
-       2. GET DEFAULT + PAGE NAVIGATION
-    ===================================================== */
+    /* 2. GET DEFAULT + PAGE NAVIGATION */
 
     function getPageNavigation(data) {
         const pages = data.pages || {};
@@ -546,23 +921,19 @@ document.addEventListener("DOMContentLoaded", () => {
             path => normalizePath(path) === currentPath
         );
 
-        const defaultNavigation =
-            Array.isArray(data.default?.navigation)
-                ? data.default.navigation
-                : [];
+        const defaultNavigation = Array.isArray(data.default?.navigation)
+            ? data.default.navigation
+            : [];
 
         const pageNavigation =
-            matchedPath &&
-            Array.isArray(pages[matchedPath]?.navigation)
+            matchedPath && Array.isArray(pages[matchedPath]?.navigation)
                 ? pages[matchedPath].navigation
                 : [];
 
         return [...defaultNavigation, ...pageNavigation];
     }
 
-    /* =====================================================
-       3. CREATE ICON
-    ===================================================== */
+    /* 3. CREATE ICON */
 
     function createIcon(iconClass) {
         const icon = document.createElement("i");
@@ -575,9 +946,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return icon;
     }
 
-    /* =====================================================
-       4. CHECK ACTIVE LINK
-    ===================================================== */
+    /* 4. CHECK ACTIVE LINK */
 
     function isCurrentLink(href) {
         if (!href || href === "#") return false;
@@ -586,10 +955,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const target = new URL(href, window.location.href);
             const current = new URL(window.location.href);
 
-            if (
-                normalizePath(target.pathname) !==
-                normalizePath(current.pathname)
-            ) {
+            if (normalizePath(target.pathname) !== normalizePath(current.pathname)) {
                 return false;
             }
 
@@ -603,9 +969,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /* =====================================================
-       5. CREATE NAVIGATION LINK
-    ===================================================== */
+    /* 5. CREATE NAVIGATION LINK */
 
     function createLink(item) {
         const link = document.createElement("a");
@@ -618,7 +982,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const title = document.createElement("span");
         title.textContent = item.title || "Untitled";
-
         link.appendChild(title);
 
         if (item.disabled === true) {
@@ -627,10 +990,7 @@ document.addEventListener("DOMContentLoaded", () => {
             link.classList.add("page-link-disabled");
         }
 
-        if (
-            item.disabled !== true &&
-            isCurrentLink(item.href)
-        ) {
+        if (item.disabled !== true && isCurrentLink(item.href)) {
             link.classList.add("active");
             link.setAttribute("aria-current", "page");
         }
@@ -638,9 +998,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return link;
     }
 
-    /* =====================================================
-       6. CREATE SIDEBAR ITEM + SUBMENU
-    ===================================================== */
+    /* 6. CREATE SIDEBAR ITEM + SUBMENU */
 
     function createNavigationItem(item) {
         const li = document.createElement("li");
@@ -664,19 +1022,14 @@ document.addEventListener("DOMContentLoaded", () => {
             children.forEach(child => {
                 const childItem = createNavigationItem(child);
 
-                if (
-                    childItem.classList.contains("page-item-active")
-                ) {
+                if (childItem.classList.contains("page-item-active")) {
                     childIsActive = true;
                 }
 
                 submenu.appendChild(childItem);
             });
 
-            if (
-                childIsActive ||
-                link.classList.contains("active")
-            ) {
+            if (childIsActive || link.classList.contains("active")) {
                 li.classList.add("page-item-active");
             }
 
@@ -688,12 +1041,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return li;
     }
 
-    /* =====================================================
-       7. RENDER NAVIGATION
-    ===================================================== */
+    /* 7. RENDER NAVIGATION */
 
     function renderNavigation(navigation) {
-        if (!Array.isArray(navigation) || !navigation.length) {
+        if (!Array.isArray(navigation) || navigation.length === 0) {
             showError("No navigation configured for this page.");
             return;
         }
@@ -709,9 +1060,7 @@ document.addEventListener("DOMContentLoaded", () => {
         navContainer.replaceChildren(fragment);
     }
 
-    /* =====================================================
-       8. LOADING & ERROR
-    ===================================================== */
+    /* 8. LOADING & ERROR */
 
     function showLoading() {
         const li = document.createElement("li");
@@ -721,8 +1070,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const text = document.createElement("span");
         text.textContent = " Loading...";
-
         li.appendChild(text);
+
         navContainer.replaceChildren(li);
     }
 
@@ -734,9 +1083,7 @@ document.addEventListener("DOMContentLoaded", () => {
         navContainer.replaceChildren(li);
     }
 
-    /* =====================================================
-       9. LOCAL STORAGE CACHE
-    ===================================================== */
+    /* 9. LOCAL STORAGE CACHE */
 
     function readCache() {
         try {
@@ -763,7 +1110,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem(
                 CONFIG.cacheKey,
                 JSON.stringify({
-                    data: data,
+                    data,
                     timestamp: Date.now()
                 })
             );
@@ -772,9 +1119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /* =====================================================
-       10. FETCH JSON
-    ===================================================== */
+    /* 10. FETCH FRESH JSON */
 
     async function fetchNavigation() {
         const url = CONFIG.jsonPath +
@@ -785,7 +1130,7 @@ document.addEventListener("DOMContentLoaded", () => {
             method: "GET",
             cache: "no-store",
             headers: {
-                "Accept": "application/json"
+                Accept: "application/json"
             }
         });
 
@@ -807,50 +1152,35 @@ document.addEventListener("DOMContentLoaded", () => {
         return data;
     }
 
-    /* =====================================================
-       11. LOAD NAVIGATION
-    ===================================================== */
+    /* 11. LOAD NAVIGATION */
 
     async function loadNavigation() {
         const cached = readCache();
 
-        // Display cached navigation instantly.
+        // Show cached navigation immediately.
         if (cached) {
             renderNavigation(getPageNavigation(cached.data));
         } else {
             showLoading();
         }
 
-        // Use cache while it is fresh.
-        if (
-            cached &&
-            Date.now() - cached.timestamp < CONFIG.cacheTime
-        ) {
-            return;
-        }
-
+        // Always fetch fresh JSON on every page load.
         try {
             const data = await fetchNavigation();
 
-            const navigation = getPageNavigation(data);
-
-            // Render and update cache with fresh JSON.
-            renderNavigation(navigation);
+            renderNavigation(getPageNavigation(data));
             saveCache(data);
-
         } catch (error) {
             console.error("Sidebar JSON Loading Error:", error);
 
-            // Keep old cached navigation if request fails.
+            // Keep cached navigation if fresh JSON fails.
             if (!cached) {
                 showError("Navigation could not be loaded.");
             }
         }
     }
 
-    /* =====================================================
-       12. HASH CHANGE
-    ===================================================== */
+    /* 12. HASH CHANGE */
 
     window.addEventListener("hashchange", () => {
         const cached = readCache();
@@ -860,9 +1190,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    /* =====================================================
-       13. INITIALIZE
-    ===================================================== */
+    /* 13. INITIALIZE */
 
     loadNavigation();
 });
