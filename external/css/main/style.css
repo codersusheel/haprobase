@@ -708,7 +708,9 @@ article {
     height: 100%;
     padding: 0 1px 301px;
     scrollbar-width: thin;
-    scrollbar-color: #777777c2 transparent;
+    scrollbar-width: none;
+    /* scrollbar-color: #777777c2 transparent; */
+    scrollbar-color: #7777775e transparent;
     /* background-color: #88888829; */
 }
 
