@@ -716,14 +716,15 @@ article {
 .sidebar-live-box {
     margin-top: 45px;
     height: 77px;
-    background-color: #3f3f3f39;
-    background-color: #a1a1a139;
+    /* background-color: #3f3f3f39;
+    background-color: #a1a1a139; */
     border-radius: 5px;
     overflow: auto;
     padding: 0 1px 0px;
-    scrollbar-width: thin;
+    scrollbar-width: none;
     scrollbar-color: #777777c2 transparent;
-    border: 1px solid rgba(0, 0, 255, 0.588);
+    /* border: 1px solid rgba(0, 0, 255, 0.588); */
+    border: 1px solid rgba(0, 0, 0, 0.588);
 
 }
 
