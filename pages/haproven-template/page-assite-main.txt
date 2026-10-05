@@ -1,0 +1,12 @@
+
+
+        <nav class="page-sidebar-nav" id="page_sidebar_laptop" data-page-sidebar aria-label="Page Navigation">
+
+            <ul class="page-nav-list" id="page-laptop-sidebar">
+                <li class="page-sidebar-loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Loading...</span>
+                </li>
+            </ul>
+
+        </nav>
