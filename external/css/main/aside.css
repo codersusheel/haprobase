@@ -112,7 +112,12 @@
 
 
 
-
+.page-sidebar-nav{
+    height: 70vh;
+    padding-bottom: 60px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
 
 
 
