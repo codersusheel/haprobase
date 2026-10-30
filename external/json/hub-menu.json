@@ -30,42 +30,42 @@
         {
             "name": "HaproAPI",
             "url": "https://haproapi.netlify.app/",
-            "img": "https://haprobase.netlify.app/external/img/logo/haproapi.png"
+            "img": "https://haprobase.netlify.app/external/img/logo/haproven.png"
         },
         {
             "name": "Hapro.Blog",
             "url": "https://haproven-blog.netlify.app/",
-            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+            "img": "https://haprobase.netlify.app/external/img/logo/haproven.png"
         },
         {
             "name": "Hapro..Core",
             "url": "https://haproven-core.netlify.app/",
-            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+            "img": "https://haprobase.netlify.app/external/img/logo/haproven.png"
         },
         {
             "name": "HaproFun",
             "url": "https://haprofun.netlify.app/",
-            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+            "img": "https://haprobase.netlify.app/external/img/logo/haproven.png"
         },
         {
             "name": "HaproSel",
             "url": "https://haprosel.netlify.app/",
-            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+            "img": "https://haprobase.netlify.app/external/img/logo/haproven.png"
         },
         {
             "name": "HaproLearn",
             "url": "https://haprolearn.netlify.app/",
-            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+            "img": "https://haprobase.netlify.app/external/img/logo/haproven.png"
         },
         {
             "name": "HaproHack",
             "url": "https://HaproHack.netlify.app/",
-            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+            "img": "https://haprobase.netlify.app/external/img/logo/haproven.png"
         },
         {
             "name": "haproBase",
             "url": "https://haprobase.netlify.app/",
-            "img": "https://haproven.netlify.app/assets/img/haproven-logo.png"
+            "img": "https://haprobase.netlify.app/external/img/logo/haproven.png"
         }
     ],
     "social_links": [
